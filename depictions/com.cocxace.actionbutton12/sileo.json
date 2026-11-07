@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.0.0 by @cocxace"
+          "title": "Имитация Action Button (iPhone 15 Pro) для iOS 12"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**ActionButton12** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nAction Button HUD with 2x2 grid and smooth sliders for iOS 12"
+          "markdown": "**ActionButton12** переносит опыт Action Button с iPhone 15 Pro на классические устройства iOS 12 (iPhone 5s, 6, 6 Plus).\n\n### ⚡ Главные возможности:\n- **Триггеры:** Долгое нажатие Power (0.6 сек) и/или двойное нажатие Home.\n- **Кастомный HUD:** Полупрозрачная панель 2x2 в темном стиле с закруглением 20pt.\n- **4 быстрых действия:**\n  - 🔦 Фонарик (AVCaptureDevice toggleTorch)\n  - 📷 Камера (launchApplicationWithIdentifier)\n  - 🎙️ Диктофон (Voice Memos)\n  - 📸 Скриншот (SpringBoard takeScreenshot)\n  - 📶 Wi-Fi переключатель\n  - 📡 Bluetooth переключатель\n- **Плавные ползунки:** Интерактивное управление громкостью и яркостью экрана прямо из HUD!\n- **Тактильный/звуковой отклик:** Аудио-отклик (звук 1519) специально для iPhone 5s.\n- **Настройки:** PreferenceBundle в Настройках iOS с выбором действий и триггеров."
         },
         {
           "class": "DepictionSpacerView",
@@ -27,6 +27,15 @@
           "title": "Разработчик: @cocxace",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
+        }
+      ]
+    },
+    {
+      "tabname": "История версий",
+      "views": [
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "### Версия 1.0.0\n- Официальный первый релиз ActionButton12\n- 4 слота быстрых действий (фонарик, камера, диктофон, скриншот)\n- Плавные ползунки громкости и яркости\n- Выбор триггеров: Power / Home / Оба\n- Полная совместимость с iOS 12.0 — 12.5.8 (rootful, Sileo, A7)\n- Автор: @cocxace"
         }
       ]
     }
