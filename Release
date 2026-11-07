@@ -1,0 +1,23 @@
+Origin: cocxace's Repo
+Label: cocxace's Repo
+Suite: stable
+Version: 1.0
+Codename: ios
+Architectures: iphoneos-arm iphoneos-arm64
+Components: main
+Description: Official tweak repository by @cocxace for iOS 12+
+MD5Sum:
+ 6918ff5aff48d645f268afa726bbd96f 576 Packages
+ f87e2a0055a307fd28d8dc1227987296 387 Packages.gz
+ 3489c6d22e185f74bccae448691a38fc 425 Packages.bz2
+ b2078dbee952da2008895c0c94149e96 448 Packages.xz
+SHA1:
+ 848fe71dc63e63aea49da4d8a89d97b2ac36a653 576 Packages
+ 18cb9ec5bff429ff28dc2fd07a88fa6f9d47d9c7 387 Packages.gz
+ 8d9d78936baf57b33b3314732cc206f80a3d7c53 425 Packages.bz2
+ 305a55f7c686e6d10c658bd9b22e134ce8ff85a0 448 Packages.xz
+SHA256:
+ 626b16710fb0c84438353fbd1e8e4029318265c174c319c46982cb41cf4b743d 576 Packages
+ 885ca994432c7b9c2b8e78cec8b2f3babd9005522097b677a0a5680457e6e234 387 Packages.gz
+ 79171bc128f33d929166ed61bb1e4f4e8758cd66a0edb40324745e968f2b5cf7 425 Packages.bz2
+ c106689d71a71687577cc133562c1d8abf3af799b1d7fef2fa8de09f7690b80a 448 Packages.xz
