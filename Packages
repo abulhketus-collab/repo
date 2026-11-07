@@ -7,10 +7,10 @@ Author: cocxace <@cocxace>
 Depends: mobilesubstrate, firmware (>= 12.0)
 Section: Tweaks
 Filename: debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb
-Size: 39574
-MD5sum: 588d3cbcd5bb672b808ddecbd7286dbc
-SHA1: ff429abe09d1c5d2118cd3242c4b1c889812cc69
-SHA256: fb22fea017fef492b0b1fe8a7d089208a6846a4856c992072865d58c0316e1f1
+Size: 38506
+MD5sum: eba5b710abe609cee1079632ac05189b
+SHA1: 59e8d51a7cdcf34e08b3f41b97e5e9a0b5b42b77
+SHA256: 3e690d5f51a1a0072e8dcbaa4d6f6a7ba89f8583098bc0e78a42a24151e473c8
 Description: Action Button HUD for iOS 12 by @cocxace
 SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
 
