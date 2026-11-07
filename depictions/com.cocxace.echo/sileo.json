@@ -1,0 +1,34 @@
+{
+  "minVersion": "0.1",
+  "headerImage": "https://raw.githubusercontent.com/abulhketus-collab/repo/main/CydiaIcon.png",
+  "tintColor": "#007AFF",
+  "tabs": [
+    {
+      "tabname": "Описание",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "Echo"
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "Версия 1.0.0 by @cocxace"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "**Echo** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nClean custom carrier string changer for iOS 12 StatusBar"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 16
+        },
+        {
+          "class": "DepictionTableButtonView",
+          "title": "Разработчик: @cocxace",
+          "action": "https://github.com/abulhketus-collab",
+          "openExternal": true
+        }
+      ]
+    }
+  ]
+}

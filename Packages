@@ -1,16 +1,96 @@
 Package: com.cocxace.actionbutton12
 Name: ActionButton12
+Depends: mobilesubstrate, firmware (>= 12.0)
 Version: 1.0.0
 Architecture: iphoneos-arm
+Description: Action Button HUD for iOS 12 by @cocxace
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
-Depends: mobilesubstrate, firmware (>= 12.0)
 Section: Tweaks
 Filename: debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb
 Size: 38506
 MD5sum: eba5b710abe609cee1079632ac05189b
 SHA1: 59e8d51a7cdcf34e08b3f41b97e5e9a0b5b42b77
 SHA256: 3e690d5f51a1a0072e8dcbaa4d6f6a7ba89f8583098bc0e78a42a24151e473c8
-Description: Action Button HUD for iOS 12 by @cocxace
 SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
+
+Package: com.cocxace.aura
+Name: Aura
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Action Button HUD with 2x2 grid and smooth sliders for iOS 12
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.aura_1.0.0_iphoneos-arm.deb
+Size: 9992
+MD5sum: d7066c9eafe75365b016f046992b9c06
+SHA1: eea328197b627b49948e31426763772103f86609
+SHA256: 5aeee9e0352499c9872207705e619c9cd92ad962d48bee1eddb97c6fbcfb0d68
+SileoDepiction: depictions/com.cocxace.aura/sileo.json
+
+Package: com.cocxace.echo
+Name: Echo
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Clean custom carrier string changer for iOS 12 StatusBar
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.echo_1.0.0_iphoneos-arm.deb
+Size: 3666
+MD5sum: 9cb0df38d1ca414ac8e443914b3665e1
+SHA1: 793ccbe7bb2229de501a7be1375ec073ed7ff7c0
+SHA256: 4b5293f184c7757c82983a89e5125fabfdfbe36494f0d791837e100274ac0997
+SileoDepiction: depictions/com.cocxace.echo/sileo.json
+
+Package: com.cocxace.glint
+Name: Glint
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Smooth Dynamic Island pill for iOS 12 notchless devices
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.glint_1.0.0_iphoneos-arm.deb
+Size: 8028
+MD5sum: 989c88526c9fa8f6afce05ede5bd8336
+SHA1: 194a5b8fd61b1fa77f7c7ad29c369bf8146309be
+SHA256: 57f951215627e74a6a27d38a68d8e53d28d519ad3f4579b803220bacc1865c27
+SileoDepiction: depictions/com.cocxace.glint/sileo.json
+
+Package: com.cocxace.lumina
+Name: Lumina
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Elegant Always-On Display with UltraLight Typography for iOS 12
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.lumina_1.0.0_iphoneos-arm.deb
+Size: 5404
+MD5sum: ab2656ea564f7158c197f2ec2dd26c93
+SHA1: 17cb8431e3f2850aafee94903ffdba74c1e17583
+SHA256: f2d18feee278e7a3f4cbd4c0d8bb3fadf031bb58df9ddb6a9d2c574a7c33e195
+SileoDepiction: depictions/com.cocxace.lumina/sileo.json
+
+Package: com.cocxace.volt
+Name: Volt
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Dynamic smooth battery percentage with colored tint for iOS 12
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.volt_1.0.0_iphoneos-arm.deb
+Size: 3906
+MD5sum: 0b551a8d3b9ea4fae9e1455a7fa1fbb3
+SHA1: 7a28557f52ab317e6f791149e2470a01d5307461
+SHA256: 8bbb0e0651b1ec6b224a4e969a78cfda52375085bc9cc732c1acc1bf41f529b2
+SileoDepiction: depictions/com.cocxace.volt/sileo.json
 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@cocxace Repository — Эксклюзивные твики для iOS 12</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="CydiaIcon.png">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <main class="container">
+        <header class="header">
+            <div class="repo-badge">
+                <img src="CydiaIcon.png" alt="Icon" class="repo-icon" onerror="this.style.display='none'">
+            </div>
+            <h1 class="repo-title">cocxace's Suite</h1>
+            <p class="repo-subtitle">Элитные 60 FPS твики для iPhone 5s & iOS 12.5.8</p>
+            <div class="author-tag">Разработчик: @cocxace</div>
+        </header>
+
+        <!-- Пульсирующая главная кнопка Sileo -->
+        <section class="cta-section">
+            <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn-sileo-pulse">
+                <span class="pulse-ring"></span>
+                <span class="btn-content">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    ДОБАВИТЬ В SILEO
+                </span>
+            </a>
+            
+            <div class="secondary-btns">
+                <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-secondary">🦓 Zebra</a>
+                <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-secondary">📦 Cydia</a>
+                <button class="btn-secondary" onclick="copyRepo()">📋 Скопировать</button>
+            </div>
+        </section>
+
+        <!-- Витрина твиков -->
+        <section class="tweaks-grid">
+            <h2 class="section-heading">Доступные твики (60 FPS Suite)</h2>
+
+            <!-- Card 1: ActionButton12 -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar aura-grad">🔘</div>
+                    <div class="tweak-meta">
+                        <h3>ActionButton12</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Оригинальный Action Button HUD с iPhone 15 Pro. Вызов по длинному нажатию Power (0.6s) или Home. Сетка 2x2, фонарик, камера, диктофон, скриншот и интерактивные ползунки.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Glass Blur</span>
+                    <a href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 2: Aura -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar aura-grad">✨</div>
+                    <div class="tweak-meta">
+                        <h3>Aura</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Премиум-эволюция Action Button: пружинная анимация появления (scale 0.7 -> 1.0), темный блюр UIBlurEffectStyleDark, тактильный отклик 1519.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Spring Physics</span>
+                    <a href="debs/com.cocxace.aura_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 3: Glint -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar glint-grad">🏝️</div>
+                    <div class="tweak-meta">
+                        <h3>Glint</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Овальный Fake Dynamic Island по центру экрана. Мягко расширяется с 120pt до 250pt при получении уведомлений, показывает текст и плавно сворачивается.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Island HUD</span>
+                    <a href="debs/com.cocxace.glint_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 4: Lumina -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar lumina-grad">🌙</div>
+                    <div class="tweak-meta">
+                        <h3>Lumina</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Always-On Display для экрана блокировки. Мягкое затемнение за 0.5с с пульсирующими часами сверхтонкого начертания UltraLight.</p>
+                <div class="tweak-footer">
+                    <span class="badge">OLED AOD</span>
+                    <a href="debs/com.cocxace.lumina_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 5: Echo -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar echo-grad">📶</div>
+                    <div class="tweak-meta">
+                        <h3>Echo</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Кастомный текст оператора в строке состояния. Мгновенное применение из настроек с поддержкой Emoji.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Status Bar</span>
+                    <a href="debs/com.cocxace.echo_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 6: Volt -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar volt-grad">🔋</div>
+                    <div class="tweak-meta">
+                        <h3>Volt</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Процент заряда батареи с плавной сменой цвета (Зеленый ➔ Желтый ➔ Красный) прямо в статус-баре.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Dynamic Tint</span>
+                    <a href="debs/com.cocxace.volt_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 cocxace's Suite • Crafted for iOS 12.5.8</p>
+        </footer>
+    </main>
+
+    <script>
+        function copyRepo() {
+            navigator.clipboard.writeText("https://abulhketus-collab.github.io/repo/").then(() => {
+                alert("URL репозитория скопирован в буфер обмена!");
+            });
+        }
+    </script>
+</body>
+</html>

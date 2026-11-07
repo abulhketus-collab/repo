@@ -1,0 +1,48 @@
+name: Tweak Suite CI/CD & APT Repository Builder
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev bzip2 xz-utils gzip tar ar
+
+      - name: Verify Clean GNU Format (Zero PAX)
+        run: |
+          mkdir -p debs
+          for deb in debs/*.deb; do
+            if [ -f "$deb" ]; then
+              TEMP_D=$(mktemp -d)
+              ar x "$deb" --output="$TEMP_D"
+              PAX_COUNT=$(tar -tvf "$TEMP_D/data.tar.gz" 2>&1 | grep -c "PaxHeaders" || true)
+              if [ "$PAX_COUNT" -gt 0 ]; then
+                echo "PAX header found in $deb! Fixing..."
+                mkdir -p "$TEMP_D/data"
+                tar -xzf "$TEMP_D/data.tar.gz" -C "$TEMP_D/data"
+                tar --format=gnu --owner=0 --group=0 -czf "$TEMP_D/data.tar.gz" -C "$TEMP_D/data" .
+                ar -rc "$deb" "$TEMP_D/debian-binary" "$TEMP_D/control.tar.gz" "$TEMP_D/data.tar.gz"
+              fi
+              rm -rf "$TEMP_D"
+            fi
+          done
+
+      - name: Update APT Indexes
+        run: |
+          dpkg-scanpackages -m debs /dev/null > Packages
+          bzip2 -k -f Packages
+          gzip -c Packages > Packages.gz
+          xz -c Packages > Packages.xz

@@ -1,56 +1,56 @@
-# cocxace's Repo 📦
+# cocxace's Suite ⚡
 
-[![Sileo](https://img.shields.io/badge/Sileo-Compatible-blue.svg)](https://abulhketus-collab.github.io/repo/)
-[![Zebra](https://img.shields.io/badge/Zebra-Compatible-black.svg)](https://abulhketus-collab.github.io/repo/)
-[![Cydia](https://img.shields.io/badge/Cydia-Compatible-brown.svg)](https://abulhketus-collab.github.io/repo/)
-[![Author](https://img.shields.io/badge/Author-@cocxace-orange.svg)](https://github.com/abulhketus-collab)
+[![Sileo](https://img.shields.io/badge/Sileo-Compatible-5856D6.svg?style=for-the-badge&logo=sileo)](https://abulhketus-collab.github.io/repo/)
+[![Zebra](https://img.shields.io/badge/Zebra-Compatible-black.svg?style=for-the-badge)](https://abulhketus-collab.github.io/repo/)
+[![Cydia](https://img.shields.io/badge/Cydia-Compatible-brown.svg?style=for-the-badge)](https://abulhketus-collab.github.io/repo/)
+[![Author](https://img.shields.io/badge/Author-@cocxace-orange.svg?style=for-the-badge)](https://github.com/abulhketus-collab)
+[![iOS](https://img.shields.io/badge/iOS-12.0%20--%2012.5.8-green.svg?style=for-the-badge)](https://apple.com)
+[![Arch](https://img.shields.io/badge/Arch-arm64%20(A7)-blue.svg?style=for-the-badge)](https://apple.com)
 
-Официальный персональный репозиторий джейлбрейк-твиков от **@cocxace**.
+Официальная экосистема твиков для iOS 12 (12.0 — 12.5.8, iPhone 5s) от **@cocxace**.
 
-🔗 **URL репозитория:**
+🔗 **URL репозитория для Sileo / Zebra / Cydia:**
 ```text
 https://abulhketus-collab.github.io/repo/
 ```
 
----
-
-## 🚀 Как добавить в пакетные менеджеры
-
-- **Sileo:** Откройте Safari на устройстве и нажмите 👉 [Добавить в Sileo](sileo://source/https://abulhketus-collab.github.io/repo/)
-- **Zebra:** 👉 [Добавить в Zebra](zbra://sources/add/https://abulhketus-collab.github.io/repo/)
-- **Cydia:** 👉 [Добавить в Cydia](cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/)
-
-Либо откройте ваш пакетный менеджер (Sileo / Zebra / Cydia), перейдите в **Источники** -> **Добавить** и вставьте URL:
-`https://abulhketus-collab.github.io/repo/`
+<p align="center">
+  <a href="sileo://source/https://abulhketus-collab.github.io/repo/">
+    <img src="https://img.shields.io/badge/👉%20ДОБАВИТЬ%20В%20SILEO-007AFF?style=for-the-badge&logo=apple&logoColor=white" height="42">
+  </a>
+</p>
 
 ---
 
-## 📱 Список твиков в репозитории
+## 📦 Каталог твиков в репозитории
 
-### 1. **ActionButton12** (v1.0.0)
-- **Описание:** Имитация кнопки Action Button с iPhone 15 Pro для устройств на iOS 12 (iPhone 5s / A7).
-- **Функции:**
-  - Полупрозрачный HUD поверх SpringBoard (сетка 2x2).
-  - 4 быстрых действия (фонарик, камера, диктофон, скриншот, Wi-Fi, Bluetooth).
-  - Плавные ползунки громкости и яркости прямо в HUD.
-  - Настройки в Settings.app (триггеры Power / Home).
-- **Пакет:** `com.cocxace.actionbutton12`
-- **Файл:** `debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb`
-- **Исходный код:** [github.com/abulhketus-collab/actionbutton12](https://github.com/abulhketus-collab/actionbutton12)
+| Название | Версия | Описание |
+| :--- | :--- | :--- |
+| **🔘 ActionButton12** | `1.0.0` | Action Button HUD с iPhone 15 Pro, сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки. |
+| **✨ Aura** | `1.0.0` | Премиум Action Button HUD с пружинной анимацией (0.7 -> 1.0) и темным блюром UIBlurEffect. |
+| **🏝️ Glint** | `1.0.0` | Овальный Dynamic Island по центру экрана, расширяется при входящих уведомлениях. |
+| **🌙 Lumina** | `1.0.0` | Always-On Display с мягким затемнением Lockscreen и пульсирующими часами UltraLight. |
+| **📶 Echo** | `1.0.0` | Кастомный текст имени оператора в статус-баре. |
+| **🔋 Volt** | `1.0.0` | Процент батареи с плавной цветовой интерполяцией (Зеленый / Желтый / Красный). |
 
 ---
 
-## 🛠 Как добавить новый твик в этот репозиторий
+## 🛠 Структура репозитория
 
-В репозитории есть готовый скрипт автоматизации:
-
-1. Положите новый `.deb` файл в папку `debs/` (или передайте путь к нему).
-2. Запустите:
-   ```cmd
-   py add_tweak.py путь_к_файлу.deb
-   ```
-   *Или просто запустите файл `update_repo.bat` двойным кликом.*
-3. Скрипт сам пересчитает контрольные суммы MD5/SHA1/SHA256, обновит `Packages` и `Release`, сделает коммит и отправит изменения на GitHub!
+```text
+├── tweaks/                   # Исходный код каждого твика (Makefile, control, Tweak.xm)
+│   ├── Aura/
+│   ├── Glint/
+│   ├── Lumina/
+│   ├── Echo/
+│   └── Volt/
+├── debs/                     # Скомпилированные .deb пакеты (строгий GNU формат, без PAX)
+├── depictions/               # Нативные Sileo JSON описания
+├── docs/                     # Исходники сайта для GitHub Pages
+├── scripts/                  # Скрипты проверки PAX и обновления
+├── Packages & Release        # APT-индексы
+└── index.html & style.css    # Главная неоновая веб-витрина
+```
 
 ---
 

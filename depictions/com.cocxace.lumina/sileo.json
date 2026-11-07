@@ -1,0 +1,34 @@
+{
+  "minVersion": "0.1",
+  "headerImage": "https://raw.githubusercontent.com/abulhketus-collab/repo/main/CydiaIcon.png",
+  "tintColor": "#007AFF",
+  "tabs": [
+    {
+      "tabname": "Описание",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "Lumina"
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "Версия 1.0.0 by @cocxace"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "**Lumina** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nElegant Always-On Display with UltraLight Typography for iOS 12"
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 16
+        },
+        {
+          "class": "DepictionTableButtonView",
+          "title": "Разработчик: @cocxace",
+          "action": "https://github.com/abulhketus-collab",
+          "openExternal": true
+        }
+      ]
+    }
+  ]
+}
