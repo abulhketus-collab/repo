@@ -4,80 +4,75 @@
 
 static void (*orig_viewWillAppear)(UIViewController *self, SEL _cmd, BOOL animated);
 static void (*orig_viewWillDisappear)(UIViewController *self, SEL _cmd, BOOL animated);
-
-static UIView *aodOverlay = nil;
-static UILabel *aodClockLabel = nil;
+static UIView *aodView = nil;
+static UILabel *aodLabel = nil;
 static NSTimer *aodTimer = nil;
 
-static void updateAODClock() {
+static void updateClock() {
     @try {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"HH:mm"];
-        aodClockLabel.text = [formatter stringFromDate:[NSDate date]];
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        [fmt setDateFormat:@"HH:mm"];
+        aodLabel.text = [fmt stringFromDate:[NSDate date]];
     } @catch (NSException *e) {}
 }
 
-static void custom_viewWillAppear(UIViewController *self, SEL _cmd, BOOL animated) {
-    if (orig_viewWillAppear) {
-        orig_viewWillAppear(self, _cmd, animated);
-    }
-    @try {
-        if (!aodOverlay && self.isViewLoaded) {
-            aodOverlay = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-            aodOverlay.backgroundColor = [UIColor blackColor];
-            aodOverlay.alpha = 0.0;
-            aodOverlay.userInteractionEnabled = NO;
+static void hook_viewWillAppear(UIViewController *self, SEL _cmd, BOOL animated) {
+    if (orig_viewWillAppear) orig_viewWillAppear(self, _cmd, animated);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            if (!aodView && self.isViewLoaded) {
+                // iPhone 5s 320x568 screen bounds
+                aodView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+                aodView.backgroundColor = [UIColor blackColor];
+                aodView.alpha = 0.0;
+                aodView.userInteractionEnabled = NO;
 
-            aodClockLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.3, [UIScreen mainScreen].bounds.size.width, 80)];
-            aodClockLabel.textColor = [UIColor whiteColor];
-            aodClockLabel.font = [UIFont systemFontOfSize:64 weight:UIFontWeightUltraLight];
-            aodClockLabel.textAlignment = NSTextAlignmentCenter;
-            [aodOverlay addSubview:aodClockLabel];
+                aodLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 180, 320, 70)];
+                aodLabel.textColor = [UIColor whiteColor];
+                aodLabel.font = [UIFont systemFontOfSize:58 weight:UIFontWeightUltraLight];
+                aodLabel.textAlignment = NSTextAlignmentCenter;
+                [aodView addSubview:aodLabel];
 
-            [self.view addSubview:aodOverlay];
+                [self.view addSubview:aodView];
+            }
+            updateClock();
+            if (!aodTimer) {
+                aodTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer *t) { updateClock(); }];
+            }
+            [UIView animateWithDuration:0.5 animations:^{ aodView.alpha = 0.88; }];
+        } @catch (NSException *e) {
+            NSLog(@"[Tweak Error] Lumina appear: %@", e);
         }
-
-        updateAODClock();
-        if (!aodTimer) {
-            aodTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-                updateAODClock();
-            }];
-        }
-
-        [UIView animateWithDuration:0.5 animations:^{
-            aodOverlay.alpha = 0.88;
-        }];
-    } @catch (NSException *e) {}
+    });
 }
 
-static void custom_viewWillDisappear(UIViewController *self, SEL _cmd, BOOL animated) {
-    if (orig_viewWillDisappear) {
-        orig_viewWillDisappear(self, _cmd, animated);
-    }
-    @try {
-        if (aodOverlay) {
-            [UIView animateWithDuration:0.2 animations:^{
-                aodOverlay.alpha = 0.0;
-            }];
-        }
-        [aodTimer invalidate];
-        aodTimer = nil;
-    } @catch (NSException *e) {}
+static void hook_viewWillDisappear(UIViewController *self, SEL _cmd, BOOL animated) {
+    if (orig_viewWillDisappear) orig_viewWillDisappear(self, _cmd, animated);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            if (aodView) {
+                [UIView animateWithDuration:0.2 animations:^{ aodView.alpha = 0.0; }];
+            }
+            [aodTimer invalidate];
+            aodTimer = nil;
+        } @catch (NSException *e) {}
+    });
 }
 
 __attribute__((constructor)) static void initLumina() {
     @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Lumina Loaded successfully");
         Class cls = objc_getClass("SBLockScreenViewControllerBase");
         if (cls) {
-            Method mApp = class_getInstanceMethod(cls, sel_registerName("viewWillAppear:"));
-            if (mApp) {
-                orig_viewWillAppear = (void (*)(UIViewController *, SEL, BOOL))method_getImplementation(mApp);
-                method_setImplementation(mApp, (IMP)custom_viewWillAppear);
+            Method m1 = class_getInstanceMethod(cls, sel_registerName("viewWillAppear:"));
+            if (m1) {
+                orig_viewWillAppear = (void (*)(UIViewController *, SEL, BOOL))method_getImplementation(m1);
+                method_setImplementation(m1, (IMP)hook_viewWillAppear);
             }
-            Method mDis = class_getInstanceMethod(cls, sel_registerName("viewWillDisappear:"));
-            if (mDis) {
-                orig_viewWillDisappear = (void (*)(UIViewController *, SEL, BOOL))method_getImplementation(mDis);
-                method_setImplementation(mDis, (IMP)custom_viewWillDisappear);
+            Method m2 = class_getInstanceMethod(cls, sel_registerName("viewWillDisappear:"));
+            if (m2) {
+                orig_viewWillDisappear = (void (*)(UIViewController *, SEL, BOOL))method_getImplementation(m2);
+                method_setImplementation(m2, (IMP)hook_viewWillDisappear);
             }
         }
     }

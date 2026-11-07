@@ -2,109 +2,80 @@
 #import <objc/runtime.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-@interface GlintRootVC : UIViewController
-@end
-@implementation GlintRootVC
-- (BOOL)shouldAutorotate { return YES; }
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations { return UIInterfaceOrientationMaskAll; }
-@end
-
-@interface GlintIsland : NSObject
-+ (instancetype)shared;
-- (void)setupAfterLaunch;
-- (void)expandDemo;
-@property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) UIView *pillView;
+@interface GlintVC : UIViewController
+@property (nonatomic, strong) UIView *pill;
 @property (nonatomic, strong) UILabel *titleLabel;
 @end
 
-@implementation GlintIsland
+@implementation GlintVC
+- (BOOL)shouldAutorotate { return YES; }
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations { return UIInterfaceOrientationMaskAll; }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    // Fit 320 width screen: 110x26 pill
+    self.pill = [[UIView alloc] initWithFrame:CGRectMake((320 - 110)/2, 6, 110, 26)];
+    self.pill.backgroundColor = [UIColor blackColor];
+    self.pill.layer.cornerRadius = 13.0;
+    self.pill.clipsToBounds = YES;
+    self.pill.layer.borderWidth = 0.5;
+    self.pill.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.2].CGColor;
+
+    self.titleLabel = [[UILabel alloc] initWithFrame:self.pill.bounds];
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
+    self.titleLabel.text = @"Glint";
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.pill addSubview:self.titleLabel];
+
+    [self.view addSubview:self.pill];
+}
+@end
+
+@interface GlintManager : NSObject
++ (instancetype)shared;
+- (void)start;
+@property (nonatomic, strong) UIWindow *window;
+@end
+
+@implementation GlintManager
 + (instancetype)shared {
-    static GlintIsland *s = nil;
+    static GlintManager *s = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        s = [[GlintIsland alloc] init];
-    });
+    dispatch_once(&onceToken, ^{ s = [[GlintManager alloc] init]; });
     return s;
 }
 
-- (void)setupAfterLaunch {
+- (void)start {
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             if (self.window) return;
-            CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-            self.window = [[UIWindow alloc] initWithFrame:CGRectMake((screenWidth - 120)/2, 6, 120, 28)];
+            self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
             self.window.windowLevel = UIWindowLevelStatusBar - 1.0;
             self.window.backgroundColor = [UIColor clearColor];
             self.window.userInteractionEnabled = NO;
-
-            GlintRootVC *vc = [[GlintRootVC alloc] init];
-            self.window.rootViewController = vc;
-
-            self.pillView = [[UIView alloc] initWithFrame:vc.view.bounds];
-            self.pillView.backgroundColor = [UIColor blackColor];
-            self.pillView.layer.cornerRadius = 14.0;
-            self.pillView.clipsToBounds = YES;
-            self.pillView.layer.borderWidth = 0.5;
-            self.pillView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.2].CGColor;
-
-            self.titleLabel = [[UILabel alloc] initWithFrame:self.pillView.bounds];
-            self.titleLabel.textColor = [UIColor whiteColor];
-            self.titleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
-            self.titleLabel.text = @"Glint";
-            self.titleLabel.textAlignment = NSTextAlignmentCenter;
-            [self.pillView addSubview:self.titleLabel];
-
-            [vc.view addSubview:self.pillView];
+            self.window.rootViewController = [[GlintVC alloc] init];
             self.window.hidden = NO;
-        } @catch (NSException *e) {}
+        } @catch (NSException *e) {
+            NSLog(@"[Tweak Error] Glint start: %@", e);
+        }
     });
 }
-
-- (void)expandDemo {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        @try {
-            if (!self.window) return;
-            CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-            AudioServicesPlaySystemSound(1519);
-            [UIView animateWithDuration:0.35 delay:0.0 usingSpringWithDamping:0.75 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                self.window.frame = CGRectMake((screenWidth - 220)/2, 6, 220, 36);
-                self.window.rootViewController.view.frame = self.window.bounds;
-                self.pillView.frame = self.window.bounds;
-                self.pillView.layer.cornerRadius = 18.0;
-                self.titleLabel.frame = self.pillView.bounds;
-                self.titleLabel.text = @"Glint Island ⚡";
-            } completion:^(BOOL finished) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [UIView animateWithDuration:0.3 animations:^{
-                        self.window.frame = CGRectMake((screenWidth - 120)/2, 6, 120, 28);
-                        self.window.rootViewController.view.frame = self.window.bounds;
-                        self.pillView.frame = self.window.bounds;
-                        self.pillView.layer.cornerRadius = 14.0;
-                        self.titleLabel.frame = self.pillView.bounds;
-                        self.titleLabel.text = @"Glint";
-                    }];
-                });
-            }];
-        } @catch (NSException *e) {}
-    });
-}
-
 @end
 
 static void (*orig_appDidFinishLaunching)(id self, SEL _cmd, id app);
 static void hook_appDidFinishLaunching(id self, SEL _cmd, id app) {
-    if (orig_appDidFinishLaunching) {
-        orig_appDidFinishLaunching(self, _cmd, app);
-    }
+    if (orig_appDidFinishLaunching) orig_appDidFinishLaunching(self, _cmd, app);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[GlintIsland shared] setupAfterLaunch];
+        [[GlintManager shared] start];
     });
 }
 
 __attribute__((constructor)) static void initGlint() {
     @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Glint Loaded successfully");
         Class sb = objc_getClass("SpringBoard");
         if (sb) {
             Method m = class_getInstanceMethod(sb, sel_registerName("applicationDidFinishLaunching:"));

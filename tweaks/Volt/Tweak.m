@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-static void (*orig_setTextColor)(id self, SEL _cmd, UIColor *color);
-static void custom_setTextColor(id self, SEL _cmd, UIColor *color) {
-    UIColor *finalColor = color;
+static void (*orig_setCol)(id self, SEL _cmd, UIColor *c);
+static void hook_setCol(id self, SEL _cmd, UIColor *c) {
+    UIColor *finalColor = c;
     @try {
         [UIDevice currentDevice].batteryMonitoringEnabled = YES;
         float level = [UIDevice currentDevice].batteryLevel * 100.0;
@@ -14,20 +14,21 @@ static void custom_setTextColor(id self, SEL _cmd, UIColor *color) {
         } else {
             finalColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:1.0];
         }
-    } @catch (NSException *e) {}
-    if (orig_setTextColor) {
-        orig_setTextColor(self, _cmd, finalColor);
+    } @catch (NSException *e) {
+        NSLog(@"[Tweak Error] Volt battery: %@", e);
     }
+    if (orig_setCol) orig_setCol(self, _cmd, finalColor);
 }
 
 __attribute__((constructor)) static void initVolt() {
     @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Volt Loaded successfully");
         Class cls = objc_getClass("UIStatusBarBatteryPercentItemView");
         if (cls) {
             Method m = class_getInstanceMethod(cls, sel_registerName("setTextColor:"));
             if (m) {
-                orig_setTextColor = (void (*)(id, SEL, UIColor *))method_getImplementation(m);
-                method_setImplementation(m, (IMP)custom_setTextColor);
+                orig_setCol = (void (*)(id, SEL, UIColor *))method_getImplementation(m);
+                method_setImplementation(m, (IMP)hook_setCol);
             }
         }
     }
