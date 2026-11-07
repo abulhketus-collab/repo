@@ -1,59 +1,63 @@
-# cocxace's Repo 📦
+<div align="center">
 
-[![Sileo](https://img.shields.io/badge/Sileo-Compatible-blue.svg)](https://abulhketus-collab.github.io/repo/)
-[![Zebra](https://img.shields.io/badge/Zebra-Compatible-black.svg)](https://abulhketus-collab.github.io/repo/)
-[![Cydia](https://img.shields.io/badge/Cydia-Compatible-brown.svg)](https://abulhketus-collab.github.io/repo/)
-[![Author](https://img.shields.io/badge/Author-@cocxace-orange.svg)](https://github.com/abulhketus-collab)
+# ⚡ cocxace's Jailbreak Suite
+### Элитные 60 FPS твики для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip) & Официальный APT Репозиторий
 
-Официальный персональный репозиторий джейлбрейк-твиков от **@cocxace**.
+[![Author](https://img.shields.io/badge/Developer-@cocxace-blue.svg?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/abulhketus-collab)
+[![iOS](https://img.shields.io/badge/iOS-12.0%20--%2012.5.8-34C759.svg?style=for-the-badge)](https://apple.com)
+[![Architecture](https://img.shields.io/badge/Arch-arm64%20(A7)-FF9500.svg?style=for-the-badge)](https://apple.com)
+[![Sileo](https://img.shields.io/badge/Sileo-Ready-5856D6.svg?style=for-the-badge&logo=sileo&logoColor=white)](https://abulhketus-collab.github.io/repo/)
+[![Zebra](https://img.shields.io/badge/Zebra-Supported-black.svg?style=for-the-badge)](https://abulhketus-collab.github.io/repo/)
 
-🔗 **URL репозитория:**
+<br>
+
+<p align="center">
+  <a href="sileo://source/https://abulhketus-collab.github.io/repo/">
+    <img src="https://img.shields.io/badge/👉%20ДОБАВИТЬ%20В%20SILEO-007AFF?style=for-the-badge&logo=apple&logoColor=white" height="46">
+  </a>
+</p>
+
+**Официальный APT-адрес репозитория:**
 ```text
 https://abulhketus-collab.github.io/repo/
 ```
 
----
-
-## 🚀 Как добавить в пакетные менеджеры
-
-- **Sileo:** Откройте Safari на устройстве и нажмите 👉 [Добавить в Sileo](sileo://source/https://abulhketus-collab.github.io/repo/)
-- **Zebra:** 👉 [Добавить в Zebra](zbra://sources/add/https://abulhketus-collab.github.io/repo/)
-- **Cydia:** 👉 [Добавить в Cydia](cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/)
-
-Либо откройте ваш пакетный менеджер (Sileo / Zebra / Cydia), перейдите в **Источники** -> **Добавить** и вставьте URL:
-`https://abulhketus-collab.github.io/repo/`
+</div>
 
 ---
 
-## 📱 Список твиков в репозитории
+## 📱 Коллекция проверенных твиков (@cocxace Suite)
 
-### 1. **ActionButton12** (v1.0.0)
-- **Описание:** Имитация кнопки Action Button с iPhone 15 Pro для устройств на iOS 12 (iPhone 5s / A7).
-- **Функции:**
-  - Полупрозрачный HUD поверх SpringBoard (сетка 2x2).
-  - 4 быстрых действия (фонарик, камера, диктофон, скриншот, Wi-Fi, Bluetooth).
-  - Плавные ползунки громкости и яркости прямо в HUD.
-  - Настройки в Settings.app (триггеры Power / Home).
-- **Пакет:** `com.cocxace.actionbutton12`
-- **Файл:** `debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb`
-- **Исходный код:** [github.com/abulhketus-collab/actionbutton12](https://github.com/abulhketus-collab/actionbutton12)
+| Твик | Версия | Описание и возможности | Статус |
+| :--- | :---: | :--- | :---: |
+| **🔘 ActionButton12** | `1.0.0` | **Action Button HUD с iPhone 15 Pro**: сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки громкости/яркости. 100% безопасная ленивая инициализация. | `🟢 Stable` |
+| **🏝️ Glint** | `1.0.0` | **Fake Dynamic Island**: стильная овальная плашка по центру вверху. Пружинная анимация расширения при уведомлениях с таймером сжатия. | `🟢 Stable` |
+| **🌙 Lumina** | `1.0.0` | **Always-On Display**: мягкое затемнение экрана блокировки с пульсирующими часами сверхтонкого начертания UltraLight. | `🟢 Stable` |
+| **📶 Echo** | `1.0.0` | **Custom Carrier**: кастомизация имени оператора сотовой связи в статус-баре в реальном времени. | `🟢 Stable` |
+| **🔋 Volt** | `1.0.0` | **Battery Tint**: цветной процент заряда батареи (зелёный/жёлтый/красный) без мерцания и перегрузки. | `🟢 Stable` |
 
 ---
 
-## 🛠 Как добавить новый твик в этот репозиторий
+## 🌟 Особенности архитектуры
 
-В репозитории есть готовый скрипт автоматизации:
+- ⚡ **Ленивая инициализация (Zero Boot Impact):** Никаких `UIWindow` и обращений к `[UIScreen mainScreen]` до старта SpringBoard. Телефон загружается мгновенно, без зависаний.
+- 🛡️ **Формат архива GNU (No PAX):** Архивы `.deb` собраны со строгим форматом `tar --format=gnu` без заголовков PAX, что гарантирует 100% совместимость со старым `dpkg` на iOS 12.5.8.
+- 📳 **Тактильный отклик:** Использование системного звукового отклика `AudioServicesPlaySystemSound(1519)` для iPhone 5s.
 
-1. Положите новый `.deb` файл в папку `debs/` (или передайте путь к нему).
-2. Запустите:
-   ```cmd
-   py add_tweak.py путь_к_файлу.deb
+---
+
+## 🚀 Как добавить репозиторий на устройстве
+
+1. Откройте эту страницу в Safari на вашем iPhone:  
+   👉 **[https://abulhketus-collab.github.io/repo/](https://abulhketus-collab.github.io/repo/)**
+2. Нажмите большую светящуюся кнопку **«ДОБАВИТЬ В SILEO»**.
+3. Либо перейдите в Sileo ➔ **«Источники»** ➔ **«+»** ➔ добавьте адрес:
+   ```text
+   https://abulhketus-collab.github.io/repo/
    ```
-   *Или просто запустите файл `update_repo.bat` двойным кликом.*
-3. Скрипт сам пересчитает контрольные суммы MD5/SHA1/SHA256, обновит `Packages` и `Release`, сделает коммит и отправит изменения на GitHub!
 
 ---
 
-## 👤 Создатель
-- Разработчик: **@cocxace**
-- GitHub: [abulhketus-collab](https://github.com/abulhketus-collab)
+<div align="center">
+  <sub>Разработано специально для классических устройств Apple. Made with ❤️ by <b>@cocxace</b></sub>
+</div>
