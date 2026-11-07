@@ -1,35 +1,33 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-static id (*orig_contentsImage)(id, SEL);
-static id custom_contentsImage(UIView *self, SEL _cmd) {
-    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-    float level = [UIDevice currentDevice].batteryLevel * 100.0;
-    
-    UIColor *targetColor;
-    if (level > 40.0) {
-        targetColor = [UIColor colorWithRed:0.2 green:0.85 blue:0.35 alpha:1.0];
-    } else if (level > 20.0) {
-        targetColor = [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0];
-    } else {
-        targetColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:1.0];
+static void (*orig_setTextColor)(id self, SEL _cmd, UIColor *color);
+static void custom_setTextColor(id self, SEL _cmd, UIColor *color) {
+    UIColor *finalColor = color;
+    @try {
+        [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+        float level = [UIDevice currentDevice].batteryLevel * 100.0;
+        if (level > 40.0) {
+            finalColor = [UIColor colorWithRed:0.2 green:0.85 blue:0.35 alpha:1.0];
+        } else if (level > 20.0) {
+            finalColor = [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0];
+        } else {
+            finalColor = [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:1.0];
+        }
+    } @catch (NSException *e) {}
+    if (orig_setTextColor) {
+        orig_setTextColor(self, _cmd, finalColor);
     }
-
-    [UIView transitionWithView:self duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.tintColor = targetColor;
-    } completion:nil];
-
-    return orig_contentsImage ? orig_contentsImage(self, _cmd) : nil;
 }
 
 __attribute__((constructor)) static void initVolt() {
     @autoreleasepool {
         Class cls = objc_getClass("UIStatusBarBatteryPercentItemView");
         if (cls) {
-            Method m = class_getInstanceMethod(cls, sel_registerName("contentsImage"));
+            Method m = class_getInstanceMethod(cls, sel_registerName("setTextColor:"));
             if (m) {
-                orig_contentsImage = (id (*)(id, SEL))method_getImplementation(m);
-                method_setImplementation(m, (IMP)custom_contentsImage);
+                orig_setTextColor = (void (*)(id, SEL, UIColor *))method_getImplementation(m);
+                method_setImplementation(m, (IMP)custom_setTextColor);
             }
         }
     }

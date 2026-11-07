@@ -1,13 +1,18 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-static void (*orig_updateCarrierItems)(id, SEL);
+static void (*orig_updateCarrierItems)(id self, SEL _cmd);
 static void custom_updateCarrierItems(id self, SEL _cmd) {
-    if (orig_updateCarrierItems) orig_updateCarrierItems(self, _cmd);
-    NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.echo.plist"];
-    NSString *customText = prefs[@"carrierText"] ? prefs[@"carrierText"] : @"cocxace ⚡";
+    if (orig_updateCarrierItems) {
+        orig_updateCarrierItems(self, _cmd);
+    }
     @try {
-        [self setValue:customText forKey:@"_overrideServiceString"];
+        NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.echo.plist"];
+        BOOL enabled = prefs[@"enabled"] ? [prefs[@"enabled"] boolValue] : YES;
+        NSString *customText = prefs[@"carrierText"] ? prefs[@"carrierText"] : @"cocxace ⚡";
+        if (enabled && customText.length > 0) {
+            [self setValue:customText forKey:@"_overrideServiceString"];
+        }
     } @catch (NSException *e) {}
 }
 

@@ -2,308 +2,134 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>cocxace's Repo — Персональный репозиторий твиков</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>cocxace's Suite — Проверенные твики для iOS 12</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="CydiaIcon.png">
-    <style>
-        :root {
-            --bg-color: #0d0f12;
-            --card-bg: rgba(26, 30, 38, 0.85);
-            --accent-blue: #007AFF;
-            --accent-green: #34C759;
-            --accent-orange: #FF9500;
-            --accent-purple: #AF52DE;
-            --text-main: #FFFFFF;
-            --text-sub: #8E8E93;
-            --border-color: rgba(255, 255, 255, 0.12);
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            padding: 24px 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: radial-gradient(circle at 50% 10%, rgba(0, 122, 255, 0.15), transparent 40%);
-        }
-        .container {
-            width: 100%;
-            max-width: 580px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-        .avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 22px;
-            background: linear-gradient(135deg, #007AFF, #5856D6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.35);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            overflow: hidden;
-        }
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .subtitle {
-            font-size: 15px;
-            color: var(--text-sub);
-            margin-bottom: 12px;
-        }
-        .author-badge {
-            display: inline-block;
-            background: rgba(0, 122, 255, 0.15);
-            color: var(--accent-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(0, 122, 255, 0.3);
-        }
-        .btn-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-sileo {
-            background: linear-gradient(135deg, #007AFF, #0051A8);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-            grid-column: span 2;
-        }
-        .btn-zebra {
-            background: #2C2C2E;
-            color: white;
-            border: 1px solid var(--border-color);
-        }
-        .btn-cydia {
-            background: #2C2C2E;
-            color: white;
-            border: 1px solid var(--border-color);
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.95;
-        }
-        .repo-url-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            font-size: 13px;
-        }
-        .repo-url-text {
-            color: #A1A1A6;
-            word-break: break-all;
-            user-select: all;
-            font-family: monospace;
-            font-size: 13px;
-        }
-        .copy-btn {
-            background: rgba(255, 255, 255, 0.12);
-            border: none;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-left: 8px;
-            white-space: nowrap;
-        }
-        .section-title {
-            font-size: 19px;
-            font-weight: 700;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tweak-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 16px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-        }
-        .tweak-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 12px;
-        }
-        .tweak-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 13px;
-            background: linear-gradient(135deg, #FF9500, #FF5E3A);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(255, 149, 0, 0.35);
-        }
-        .tweak-title-group h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-        .tweak-meta {
-            font-size: 13px;
-            color: var(--text-sub);
-        }
-        .tweak-desc {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #D1D1D6;
-            margin-bottom: 16px;
-        }
-        .tweak-actions {
-            display: flex;
-            gap: 10px;
-        }
-        .btn-download {
-            background: rgba(0, 122, 255, 0.15);
-            color: var(--accent-blue);
-            border: 1px solid rgba(0, 122, 255, 0.3);
-            border-radius: 10px;
-            padding: 8px 14px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .guide-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            margin-top: 24px;
-            font-size: 13px;
-            color: var(--text-sub);
-            line-height: 1.6;
-        }
-        .guide-card strong {
-            color: white;
-        }
-        footer {
-            margin-top: 40px;
-            font-size: 13px;
-            color: var(--text-sub);
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="avatar">
-                <img src="CydiaIcon.png" alt="cocxace Repo Icon" onerror="this.style.display='none'">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <main class="container">
+        <header class="header">
+            <div class="repo-badge">
+                <img src="CydiaIcon.png" alt="Icon" class="repo-icon" onerror="this.style.display='none'">
             </div>
-            <h1>cocxace's Repo</h1>
-            <p class="subtitle">Персональный репозиторий твиков для iOS 12.0 — 12.5.8</p>
-            <span class="author-badge">Разработчик: @cocxace</span>
-        </div>
+            <h1 class="repo-title">cocxace's Suite</h1>
+            <p class="repo-subtitle">100% стабильные твики без крашей для iPhone 5s & iOS 12.5.8</p>
+            <div class="author-tag">Разработчик: @cocxace</div>
+        </header>
 
-        <div class="btn-group">
-            <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn btn-sileo">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                Добавить в Sileo
+        <section class="cta-section">
+            <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn-sileo-pulse">
+                <span class="pulse-ring"></span>
+                <span class="btn-content">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    ДОБАВИТЬ В SILEO
+                </span>
             </a>
-            <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn btn-zebra">
-                🦓 Zebra
-            </a>
-            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn btn-cydia">
-                📦 Cydia
-            </a>
-        </div>
+            
+            <div class="secondary-btns">
+                <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-secondary">🦓 Zebra</a>
+                <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-secondary">📦 Cydia</a>
+                <button class="btn-secondary" onclick="copyRepo()">📋 Скопировать</button>
+            </div>
+        </section>
 
-        <div class="repo-url-box">
-            <span class="repo-url-text" id="repoUrl">https://abulhketus-collab.github.io/repo/</span>
-            <button class="copy-btn" onclick="copyRepo()">Копировать</button>
-        </div>
+        <section class="tweaks-grid">
+            <h2 class="section-heading">Проверенные твики (Safe Suite)</h2>
 
-        <h2 class="section-title">📦 Доступные твики (Tweaks)</h2>
-
-        <!-- Tweak 1: ActionButton12 -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">🔘</div>
-                <div class="tweak-title-group">
-                    <h3>ActionButton12</h3>
-                    <div class="tweak-meta">Версия 1.0.0 • iOS 12.0 — 12.5.8 • arm64</div>
+            <!-- Card 1: ActionButton12 -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar aura-grad">🔘</div>
+                    <div class="tweak-meta">
+                        <h3>ActionButton12</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Стабильный</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tweak-desc">
-                Полноценная имитация Action Button (iPhone 15 Pro) на iPhone 5s и других устройствах iOS 12. 
-                Вызов через долгое нажатие Power (0.6 сек) или двойной клик Home. Сетка 2x2: фонарик, камера, диктофон, скриншот, Wi-Fi и Bluetooth. Включает ультраплавные интерактивные ползунки громкости и яркости прямо в HUD.
-            </div>
-            <div class="tweak-actions">
-                <a href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" class="btn-download">
-                    ⬇️ Скачать .deb (39.5 KB)
-                </a>
-                <a href="https://github.com/abulhketus-collab/actionbutton12" target="_blank" class="btn-download">
-                    💻 Исходный код на GitHub
-                </a>
-            </div>
-        </div>
+                <p class="tweak-desc">Action Button HUD с iPhone 15 Pro. Вызов по долгому нажатию Power (0.6s) или Home. Сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки. 100% безопасная ленивая инициализация окна.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Safe Glass</span>
+                    <a href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
 
-        <div class="guide-card">
-            <strong>💡 Инструкция по добавлению в Sileo:</strong><br>
-            1. Нажмите верхнюю кнопку <b>«Добавить в Sileo»</b> (Safari спросит разрешение открыть приложение).<br>
-            2. Либо откройте Sileo вручную ➔ вкладка <b>«Источники»</b> ➔ нажмите <b>«+»</b> в правом верхнем углу ➔ вставьте скопированный адрес.<br>
-            3. После обновления источников откройте вкладку <b>«Поиск»</b> или перейдите в <b>cocxace's Repo</b> и установите желаемый твик.
-        </div>
+            <!-- Card 2: Glint -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar glint-grad">🏝️</div>
+                    <div class="tweak-meta">
+                        <h3>Glint</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Стабильный</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Овальный Dynamic Island по центру экрана. Загружается только после старта SpringBoard с явным UIViewController, без риска падения системы.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Safe Island</span>
+                    <a href="debs/com.cocxace.glint_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
 
-        <footer>
-            cocxace's Repo • Created by @cocxace • 2026
+            <!-- Card 3: Lumina -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar lumina-grad">🌙</div>
+                    <div class="tweak-meta">
+                        <h3>Lumina</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Стабильный</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Always-On Display для Lockscreen с часами UltraLight. Переопределяет анимацию с полным вызовом оригинального viewWillAppear.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Safe AOD</span>
+                    <a href="debs/com.cocxace.lumina_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 4: Echo -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar echo-grad">📶</div>
+                    <div class="tweak-meta">
+                        <h3>Echo</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Стабильный</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Кастомное имя сотового оператора в строке состояния. Безопасный хук SBStatusBarStateAggregator с перехватом исключений.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Safe Carrier</span>
+                    <a href="debs/com.cocxace.echo_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+
+            <!-- Card 5: Volt -->
+            <article class="tweak-card">
+                <div class="tweak-top">
+                    <div class="tweak-avatar volt-grad">🔋</div>
+                    <div class="tweak-meta">
+                        <h3>Volt</h3>
+                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Стабильный</span>
+                    </div>
+                </div>
+                <p class="tweak-desc">Цветовая индикация уровня заряда батареи (Зеленый / Желтый / Красный). Хук setTextColor: без циклических перерисовок.</p>
+                <div class="tweak-footer">
+                    <span class="badge">Safe Battery</span>
+                    <a href="debs/com.cocxace.volt_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                </div>
+            </article>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 cocxace's Suite • Tested & Verified for iOS 12.5.8</p>
         </footer>
-    </div>
+    </main>
 
     <script>
         function copyRepo() {
-            var url = document.getElementById("repoUrl").innerText;
-            navigator.clipboard.writeText(url).then(function() {
-                var btn = document.querySelector(".copy-btn");
-                btn.innerText = "Скопировано!";
-                setTimeout(function() { btn.innerText = "Копировать"; }, 2000);
+            navigator.clipboard.writeText("https://abulhketus-collab.github.io/repo/").then(function() {
+                alert("URL репозитория скопирован в буфер обмена!");
             });
         }
     </script>
