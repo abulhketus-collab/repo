@@ -19,6 +19,7 @@
             <h1 class="repo-title">cocxace's Suite</h1>
             <p class="repo-subtitle">100% стабильные твики без крашей для iPhone 5s & iOS 12.5.8</p>
             <div class="author-tag">Разработчик: @cocxace</div>
+            <div class="upd-banner">💫 Обновление v1.1.0: Glint • Aura • Echo • Volt • Lumina</div>
         </header>
 
         <section class="cta-section">
@@ -29,7 +30,13 @@
                     ДОБАВИТЬ В SILEO
                 </span>
             </a>
-            
+
+            <button class="btn-dl-menu" onclick="openDL()">
+                <span class="btn-content">
+                    ⬇️ СКАЧАТЬ ТВИКИ — ОТКРЫТЬ МЕНЮ
+                </span>
+            </button>
+
             <div class="secondary-btns">
                 <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-secondary">🦓 Zebra</a>
                 <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-secondary">📦 Cydia</a>
@@ -52,7 +59,10 @@
                 <p class="tweak-desc">Action Button HUD с iPhone 15 Pro. Вызов по долгому нажатию Power (0.6s) или Home. Сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки. 100% безопасная ленивая инициализация окна.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe Glass</span>
-                    <a href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
 
@@ -64,31 +74,39 @@
                         <h3>Aura</h3>
                         <span class="tweak-ver">v1.1.0 • iOS 12 • arm64 • Стабильный</span>
                     </div>
+                    <span class="new-chip">NEW</span>
                 </div>
                 <p class="tweak-desc">Action Button HUD: долгий тап Power открывает стеклянную панель 🔦 / 📷 / 🎙 / 📸. Приложения через SBUIController, тумблер в prefs, spring-анимация.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe Panel</span>
-                    <a href="debs/com.cocxace.aura_1.1.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.aura_1.1.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
 
             <!-- Card 3: Glint -->
-            <article class="tweak-card">
+            <article class="tweak-card glint-card">
                 <div class="tweak-top">
                     <div class="tweak-avatar glint-grad">🏝️</div>
                     <div class="tweak-meta">
                         <h3>Glint</h3>
                         <span class="tweak-ver">v1.1.0 • iOS 12 • arm64 • Стабильный</span>
                     </div>
+                    <span class="new-chip">NEW</span>
                 </div>
                 <p class="tweak-desc">Dynamic Island как настоящий: раскрывается на уведомлениях (тап — открыть приложение), показывает зарядку ⚡, трек ♪ и фонарик 🔦. Spring-анимации, без риска падения.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe Island</span>
-                    <a href="debs/com.cocxace.glint_1.1.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.glint_1.1.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
 
-            <!-- Card 3: Lumina -->
+            <!-- Card 4: Lumina -->
             <article class="tweak-card">
                 <div class="tweak-top">
                     <div class="tweak-avatar lumina-grad">🌙</div>
@@ -96,15 +114,19 @@
                         <h3>Lumina</h3>
                         <span class="tweak-ver">v1.1.0 • iOS 12 • arm64 • Стабильный</span>
                     </div>
+                    <span class="new-chip">NEW</span>
                 </div>
                 <p class="tweak-desc">Always-On-Display стиль локскрина: живые часы + дата, затемнённый оверлей. В 1.1.0: фикс «осиротевшего» оверлея, дата, opacity и тумблер в prefs, адаптивные размеры.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe AOD</span>
-                    <a href="debs/com.cocxace.lumina_1.1.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.lumina_1.1.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
 
-            <!-- Card 4: Echo -->
+            <!-- Card 5: Echo -->
             <article class="tweak-card">
                 <div class="tweak-top">
                     <div class="tweak-avatar echo-grad">📶</div>
@@ -112,15 +134,19 @@
                         <h3>Echo</h3>
                         <span class="tweak-ver">v1.1.0 • iOS 12 • arm64 • Стабильный</span>
                     </div>
+                    <span class="new-chip">NEW</span>
                 </div>
                 <p class="tweak-desc">Свой текст оператора в статус-баре. В 1.1.0: CFPreferences без перечитывания plist, живой reload по darwin, дефолт создаётся сам.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe Carrier</span>
-                    <a href="debs/com.cocxace.echo_1.1.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.echo_1.1.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
 
-            <!-- Card 5: Volt -->
+            <!-- Card 6: Volt -->
             <article class="tweak-card">
                 <div class="tweak-top">
                     <div class="tweak-avatar volt-grad">🔋</div>
@@ -128,11 +154,15 @@
                         <h3>Volt</h3>
                         <span class="tweak-ver">v1.1.0 • iOS 12 • arm64 • Стабильный</span>
                     </div>
+                    <span class="new-chip">NEW</span>
                 </div>
                 <p class="tweak-desc">Цвет процентов батареи (зелёный/жёлтый/красный). В 1.1.0: настраиваемые пороги и цвета (hex) через prefs.</p>
                 <div class="tweak-footer">
                     <span class="badge">Safe Battery</span>
-                    <a href="debs/com.cocxace.volt_1.1.0_iphoneos-arm.deb" class="btn-dl">Скачать .deb</a>
+                    <div class="foot-right">
+                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
+                        <a href="debs/com.cocxace.volt_1.1.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
+                    </div>
                 </div>
             </article>
         </section>
@@ -142,12 +172,75 @@
         </footer>
     </main>
 
+    <!-- ≡ Download menu modal -->
+    <div class="dl-overlay" id="dlOverlay" onclick="if(event.target===this)closeDL()">
+        <div class="dl-modal" role="dialog" aria-modal="true" aria-label="Меню скачивания">
+            <div class="dl-head">
+                <div>
+                    <h3>Скачать твики</h3>
+                    <p>Прямые .deb ссылки • свежие версии</p>
+                </div>
+                <button class="dl-close" onclick="closeDL()" aria-label="Закрыть">✕</button>
+            </div>
+            <div class="dl-list">
+                <a class="dl-row" href="debs/com.cocxace.glint_1.1.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava glint-grad">🏝️</span>
+                    <span class="dl-info"><b>Glint</b><small>Dynamic Island • v1.1.0</small></span>
+                    <span class="dl-new">NEW</span>
+                    <span class="dl-go">⬇</span>
+                </a>
+                <a class="dl-row" href="debs/com.cocxace.aura_1.1.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava aura-grad">🔘</span>
+                    <span class="dl-info"><b>Aura</b><small>Action Button HUD • v1.1.0</small></span>
+                    <span class="dl-new">NEW</span>
+                    <span class="dl-go">⬇</span>
+                </a>
+                <a class="dl-row" href="debs/com.cocxace.lumina_1.1.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava lumina-grad">🌙</span>
+                    <span class="dl-info"><b>Lumina</b><small>AOD Lockscreen • v1.1.0</small></span>
+                    <span class="dl-new">NEW</span>
+                    <span class="dl-go">⬇</span>
+                </a>
+                <a class="dl-row" href="debs/com.cocxace.echo_1.1.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava echo-grad">📶</span>
+                    <span class="dl-info"><b>Echo</b><small>Carrier Text • v1.1.0</small></span>
+                    <span class="dl-new">NEW</span>
+                    <span class="dl-go">⬇</span>
+                </a>
+                <a class="dl-row" href="debs/com.cocxace.volt_1.1.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava volt-grad">🔋</span>
+                    <span class="dl-info"><b>Volt</b><small>Battery Color • v1.1.0</small></span>
+                    <span class="dl-new">NEW</span>
+                    <span class="dl-go">⬇</span>
+                </a>
+                <a class="dl-row" href="debs/com.cocxace.actionbutton12_1.0.0_iphoneos-arm.deb" download>
+                    <span class="dl-ava aura-grad">🔘</span>
+                    <span class="dl-info"><b>ActionButton12</b><small>Glass HUD • v1.0.0</small></span>
+                    <span class="dl-go">⬇</span>
+                </a>
+            </div>
+            <div class="dl-foot">iPhone 5s • A7 • iOS 12.0 — 12.5.8 • arm64</div>
+        </div>
+    </div>
+
     <script>
         function copyRepo() {
             navigator.clipboard.writeText("https://abulhketus-collab.github.io/repo/").then(function() {
                 alert("URL репозитория скопирован в буфер обмена!");
             });
         }
+        var dlOverlay = document.getElementById("dlOverlay");
+        function openDL() {
+            dlOverlay.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+        function closeDL() {
+            dlOverlay.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") closeDL();
+        });
     </script>
 </body>
 </html>
