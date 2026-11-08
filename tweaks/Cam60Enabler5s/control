@@ -1,0 +1,10 @@
+Package: com.cocxace.cam60enabler5s
+Name: Cam60Enabler5s
+Version: 1.0.2
+Architecture: iphoneos-arm
+Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo
