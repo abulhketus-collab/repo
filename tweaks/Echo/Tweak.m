@@ -1,4 +1,4 @@
-// Echo — custom carrier text for iOS 12 (com.cocxace.echo)
+// Echo вЂ” custom carrier text for iOS 12 (com.cocxace.echo)
 // v1.1.0: CFPreferences instead of plist re-reads, live reload via darwin.
 
 #import <UIKit/UIKit.h>
@@ -16,17 +16,17 @@ static NSString *EchoCarrierText(void) {
         if (raw == NULL) {
             // Placed in case of an absent preference.
             CFPreferencesSetAppValue(CFSTR("enabled"), kCFBooleanTrue, app);
-            CFPreferencesSetAppValue(key, (__bridge CFStringRef) @"cocxace ⚡", app);
+            CFPreferencesSetAppValue(key, (__bridge CFStringRef) @"cocxace вљЎ", app);
             CFPreferencesAppSynchronize(app);
             raw = CFPreferencesCopyAppValue(key, app);
-            if (raw == NULL) return @"cocxace ⚡";
+            if (raw == NULL) return @"cocxace вљЎ";
         }
         NSString *text = (__bridge_transfer NSString *)raw;
-        if (text.length == 0) return @"cocxace ⚡";
+        if (text.length == 0) return @"cocxace вљЎ";
         return text;
     } @catch (NSException *e) {
         NSLog(@"[Tweak Error] Echo prefs: %@", e);
-        return @"cocxace ⚡";
+        return @"cocxace вљЎ";
     }
 }
 
@@ -70,7 +70,7 @@ static void EchoDarwinCallback(CFNotificationCenterRef center, void *observer,
 
 __attribute__((constructor)) static void initEcho() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Echo 1.1.0 loaded");
+        NSLog(@"[CocxaceTweak] Echo 1.2.3 loaded");
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
                                         NULL,
                                         EchoDarwinCallback,
@@ -91,5 +91,12 @@ __attribute__((constructor)) static void initEcho() {
         } else {
             NSLog(@"[Tweak Error] Echo: SBStatusBarStateAggregator not found");
         }
+    }
+}
+
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+__attribute__((destructor)) static void cleanupEcho(void) {
+    @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Echo destructor вЂ” cleaning up");
     }
 }
