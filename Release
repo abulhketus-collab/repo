@@ -7,17 +7,17 @@ Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: Official tweak repository by @cocxace for iOS 12+
 MD5Sum:
- ee3a9c1f34d1999528cb7711cd0b8b69 3481 Packages
- 4d84e3c08ea084507ccd46dbc575be13 1252 Packages.gz
- 195742c8799021ae59e7ec6eb2a3007c 1351 Packages.bz2
- 846b7ff3468dfef0211dbdc75311ad59 1288 Packages.xz
+ ddcdea11dbffa37aa80fff1b96d3b16f 3481 Packages
+ b596b90b2ba4f72e7f821c7d79e35be2 1255 Packages.gz
+ 4f1efe2a0e2d2b62698df4cc64f17670 1359 Packages.bz2
+ 723bfb236ae789025a853655d470305b 1288 Packages.xz
 SHA1:
- 787df9b6792ac89512431f2ed0b6bbea07cf153f 3481 Packages
- 705e2cce995f8080f530e5de368f13190a85ef38 1252 Packages.gz
- fd5d13b47735d2c50c0b43c926bde72c74523e3a 1351 Packages.bz2
- 60664cffcfef234da3f8ffa8e28c2467e9c7062b 1288 Packages.xz
+ baff7cc7f530a52a371bd1c7fffb42b8c4290d13 3481 Packages
+ 5bffacd3f6320fea1bd80bf92fe0406031c95e4e 1255 Packages.gz
+ 93ecc9c56de5228f544a56d658e551a56b40a489 1359 Packages.bz2
+ 7f7fef028912a5ecb350e6950559ba4ddbe974f5 1288 Packages.xz
 SHA256:
- 76a6cfdcea6e6801771d8c3a72c52e8bf67a5afdca4a7c5b00b1e726409aa6a4 3481 Packages
- dc69db6652755f9af8f7051788351139a3db66feff95b81c739bd7376f2ed846 1252 Packages.gz
- 2bda6322d7c27ac29e29a65b0bac7dbbd768315133d44f90240eabc8b7791e79 1351 Packages.bz2
- cc270e913c0c5b6bccd85eecb4218db01af2ebed31e2122ef0eebb37951ddfaf 1288 Packages.xz
+ b210faa219ab0f5bc65a81443a0f0a4239be063d0cfb09d6c053bfaf249cc0ba 3481 Packages
+ 76492bf52a0e6df47caa4ed902b5d30160ed5f61aa7010bf86b0bf277d50b4c5 1255 Packages.gz
+ f0d6f17cbbc7496f97a98c6041f5517d9787b990f7ec009285c24b51c315b290 1359 Packages.bz2
+ 7620772626f7c0f56e6f9098a92ff05184de699543a71aa16221cfbe1e97c175 1288 Packages.xz

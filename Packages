@@ -55,11 +55,11 @@ Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.glint_1.2.0_iphoneos-arm.deb
-Size: 35568
-MD5sum: f1ee24a6aeb8c1c3773c7a0009980036
-SHA1: 6e0db154e13dbcd6a4854c4f0db79094ae43b5d7
-SHA256: b59b05abbb923cc9961cd3f9d8484f6bd85ed9c576f671e57570a9a739a3bdea
+Filename: debs/com.cocxace.glint_1.2.1_iphoneos-arm.deb
+Size: 36870
+MD5sum: 427a82881a258c4f5144f9836f72ab8b
+SHA1: 4ffb8b7c5da49480b678c6835fe4de70b47275c6
+SHA256: f6402e78d1c58ea6e9e8bccbe917dcc06b6a0fd0c622368a8c56ef4ff0eef7d9
 SileoDepiction: depictions/com.cocxace.glint/sileo.json
 
 Package: com.cocxace.lumina
