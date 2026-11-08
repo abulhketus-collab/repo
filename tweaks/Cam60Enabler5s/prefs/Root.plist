@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Cam60Enabler5s</string>
+			<key>footerText</key><string>⚠️ ВНИМАНИЕ: iPhone 5s (A7) не сертифицирован Апплы для 1080p60. Включение может привести к чёрному экрану, зависанию камеры или крэшу mediaserverd.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>enabled</string>
+			<key>label</key><string>Enable 1080p60 (unsafe)</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Respring</string>
+			<key>action</key><string>respring</string>
+		</dict>
+	</array>
+	<key>title</key><string>Cam60Enabler5s</string>
+</dict>
+</plist>
