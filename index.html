@@ -2,270 +2,510 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>cocxace's Suite — Проверенные твики для iOS 12</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="CydiaIcon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cocxace Repo вЂ” iOS 12 Tweaks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --mc-black: #0a0a0a;
+            --mc-dark: #1a1a1a;
+            --mc-gray: #333333;
+            --mc-white: #ffffff;
+            --mc-offwhite: #e0e0e0;
+            --mc-accent: #00d2ff;
+            --mc-shadow: 4px 4px 0px #000000;
+        }
+
+        body {
+            background: var(--mc-black);
+            color: var(--mc-white);
+            font-family: 'Press Start 2P', cursive;
+            overflow-x: hidden;
+        }
+
+        /* ---------- HEADER / ANIMATION ---------- */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 70vh;
+            background: var(--mc-dark);
+            border-bottom: 4px solid var(--mc-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            color: var(--mc-white);
+            text-shadow: var(--mc-shadow);
+            z-index: 10;
+            margin-bottom: 2rem;
+            text-align: center;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ---------- MINECRAFT UI CANVAS ---------- */
+        #mc-canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background: linear-gradient(to bottom, #2a2a2a 0%, #0a0a0a 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        /* ---------- TWEAKS LIST ---------- */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--mc-white);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--mc-shadow);
+            border-bottom: 3px solid var(--mc-white);
+            display: inline-block;
+        }
+
+        .tweak-card {
+            background: var(--mc-dark);
+            border: 3px solid var(--mc-white);
+            border-radius: 0;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .tweak-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px var(--mc-white);
+        }
+
+        .tweak-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--mc-gray);
+            border-bottom: 2px solid var(--mc-white);
+        }
+
+        .tweak-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(45deg, #444, #222);
+            border: 2px solid var(--mc-white);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .tweak-info {
+            flex: 1;
+        }
+
+        .tweak-name {
+            font-size: 1.1rem;
+            color: var(--mc-white);
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .tweak-version {
+            font-size: 0.7rem;
+            color: var(--mc-accent);
+            background: var(--mc-black);
+            padding: 2px 6px;
+            border: 1px solid var(--mc-accent);
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .tweak-desc {
+            font-size: 0.75rem;
+            color: var(--mc-offwhite);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .tweak-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--mc-black);
+            border-top: 2px solid var(--mc-white);
+        }
+
+        .btn {
+            background: var(--mc-white);
+            color: var(--mc-black);
+            border: 2px solid var(--mc-black);
+            padding: 8px 16px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            transition: all 0.1s;
+        }
+
+        .btn:hover {
+            background: var(--mc-accent);
+            color: var(--mc-black);
+            border-color: var(--mc-black);
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: 2px 2px 0px var(--mc-white);
+        }
+
+        .badge {
+            font-size: 0.6rem;
+            color: #00ff00;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 2px 6px;
+            margin-left: 8px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: var(--mc-dark);
+            border-top: 4px solid var(--mc-white);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            color: var(--mc-offwhite);
+            text-shadow: var(--mc-shadow);
+        }
+
+        /* ---------- MOBILE ---------- */
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 1rem;
+            }
+            .tweak-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .tweak-icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
 
-    <main class="container">
-        <header class="header">
-            <div class="repo-badge">
-                <img src="CydiaIcon.png" alt="Icon" class="repo-icon" onerror="this.style.display='none'">
+    <!-- ---------- HERO SECTION WITH ANIMATION ---------- -->
+    <section class="hero">
+        <canvas id="mc-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                С‚РІРёРєРё, РєР°Рє РґРѕР±Р°РІР»СЏС‚СЊ<br>
+                Рё РєР°Рє РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ<span class="blink">_</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- ---------- TWEAKS LIST ---------- -->
+    <div class="container">
+        <h2 class="section-title">РЅР°С€ СЂРµРїРѕР·РёС‚РѕСЂРёР№</h2>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџЏќпёЏ</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РѕСЃС‚СЂРѕРІ РґР»СЏ iOS 12 Р±РµР· С‡С‘Р»РєРё: СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р·Р°СЂСЏРґРєР°, now-playing, С„РѕРЅР°СЂРёРє. Spring-Р°РЅРёРјР°С†РёРё, Р±РµР·РѕРїР°СЃРЅС‹Р№ Р·Р°РїСѓСЃРє.</div>
+                </div>
             </div>
-            <h1 class="repo-title">cocxace's Suite</h1>
-            <p class="repo-subtitle">100% стабильные твики без крашей для iPhone 5s & iOS 12.5.8</p>
-            <div class="author-tag">Разработчик: @cocxace</div>
-            <div class="upd-banner">💫 Обновление v1.2.1: Glint • Aura • Echo • Volt • Lumina</div>
-        </header>
-
-        <section class="cta-section">
-            <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn-sileo-pulse">
-                <span class="pulse-ring"></span>
-                <span class="btn-content">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    ДОБАВИТЬ В SILEO
-                </span>
-            </a>
-
-            <button class="btn-dl-menu" onclick="openDL()">
-                <span class="btn-content">
-                    ⬇️ СКАЧАТЬ ТВИКИ — ОТКРЫТЬ МЕНЮ
-                </span>
-            </button>
-
-            <div class="secondary-btns">
-                <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-secondary">🦓 Zebra</a>
-                <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-secondary">📦 Cydia</a>
-                <button class="btn-secondary" onclick="copyRepo()">📋 Скопировать</button>
+            <div class="tweak-footer">
+                <span class="badge">SAFE ISLAND</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
             </div>
-        </section>
+        </div>
 
-        <section class="tweaks-grid">
-            <h2 class="section-heading">Проверенные твики (Safe Suite)</h2>
-
-            <!-- Card 1: ActionButton12 -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar aura-grad">🔘</div>
-                    <div class="tweak-meta">
-                        <h3>ActionButton12</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">вљЎ</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Action Button HUD: РґР»РёРЅРЅР°СЏ РєРЅРѕРїРєР° РїРёС‚Р°РЅРёСЏ / РґРІРѕР№РЅРѕР№ РєР»РёРє Home в†’ РїР°РЅРµР»СЊ С„РѕРЅР°СЂРёРє, РєР°РјРµСЂР°, РґРёРєС‚РѕС„РѕРЅ, СЃРєСЂРёРЅС€РѕС‚.</div>
                 </div>
-                <p class="tweak-desc">Action Button HUD с iPhone 15 Pro. Вызов по долгому нажатию Power (0.6s) или Home. Сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки. 100% безопасная ленивая инициализация окна.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe Glass</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.actionbutton12_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 2: Aura -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar aura-grad">🔘</div>
-                    <div class="tweak-meta">
-                        <h3>Aura</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Action Button HUD: долгий тап Power открывает стеклянную панель 🔦 / 📷 / 🎙 / 📸. Приложения через SBUIController, тумблер в prefs, spring-анимация.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe Panel</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.aura_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 3: Glint -->
-            <article class="tweak-card glint-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar glint-grad">🏝️</div>
-                    <div class="tweak-meta">
-                        <h3>Glint</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Dynamic Island как настоящий: раскрывается на уведомлениях (тап — открыть приложение), показывает зарядку ⚡, трек ♪ и фонарик 🔦. Spring-анимации, без риска падения.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe Island</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.glint_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 4: Lumina -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar lumina-grad">🌙</div>
-                    <div class="tweak-meta">
-                        <h3>Lumina</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Always-On-Display стиль локскрина: живые часы + дата, затемнённый оверлей. В 1.1.0: фикс «осиротевшего» оверлея, дата, opacity и тумблер в prefs, адаптивные размеры.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe AOD</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.lumina_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 5: Echo -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar echo-grad">📶</div>
-                    <div class="tweak-meta">
-                        <h3>Echo</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Свой текст оператора в статус-баре. В 1.1.0: CFPreferences без перечитывания plist, живой reload по darwin, дефолт создаётся сам.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe Carrier</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.echo_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 6: Volt -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar volt-grad">🔋</div>
-                    <div class="tweak-meta">
-                        <h3>Volt</h3>
-                        <span class="tweak-ver">v1.2.1 • iOS 12 • arm64 • Стабильный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Цвет процентов батареи (зелёный/жёлтый/красный). В 1.1.0: настраиваемые пороги и цвета (hex) через prefs.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Safe Battery</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.volt_1.2.1_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-            <!-- Card 7: Cam60Enabler5s -->
-            <article class="tweak-card">
-                <div class="tweak-top">
-                    <div class="tweak-avatar volt-grad">🎥</div>
-                    <div class="tweak-meta">
-                        <h3>Cam60Enabler5s</h3>
-                        <span class="tweak-ver">v1.0.0 • iOS 12 • arm64 • Экспериментальный</span>
-                    </div>
-                    <span class="new-chip">NEW</span>
-                </div>
-                <p class="tweak-desc">Принудительная запись видео 1080p @ 60 FPS в стандартном приложении Камера на iPhone 5s (A7). Форсирует поддержку 60 FPS в CameraUI и AVFoundation. ⚠️ Экспериментально — возможен чёрный экран или зависание.</p>
-                <div class="tweak-footer">
-                    <span class="badge">Experimental</span>
-                    <div class="foot-right">
-                        <button class="btn-menu" onclick="openDL()">Меню ⌄</button>
-                        <a href="debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb" class="btn-dl" download>Скачать .deb</a>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-        <footer class="footer">
-            <p>© 2026 cocxace's Suite • Tested & Verified for iOS 12.5.8</p>
-        </footer>
-    </main>
-
-    <!-- ≡ Download menu modal -->
-    <div class="dl-overlay" id="dlOverlay" onclick="if(event.target===this)closeDL()">
-        <div class="dl-modal" role="dialog" aria-modal="true" aria-label="Меню скачивания">
-            <div class="dl-head">
-                <div>
-                    <h3>Скачать твики</h3>
-                    <p>Прямые .deb ссылки • свежие версии</p>
-                </div>
-                <button class="dl-close" onclick="closeDL()" aria-label="Закрыть">✕</button>
             </div>
-            <div class="dl-list">
-                <a class="dl-row" href="debs/com.cocxace.glint_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava glint-grad">🏝️</span>
-                    <span class="dl-info"><b>Glint</b><small>Dynamic Island • v1.2.1</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.aura_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava aura-grad">🔘</span>
-                    <span class="dl-info"><b>Aura</b><small>Action Button HUD • v1.2.1</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.lumina_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava lumina-grad">🌙</span>
-                    <span class="dl-info"><b>Lumina</b><small>AOD Lockscreen • v1.2.1</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.echo_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava echo-grad">📶</span>
-                    <span class="dl-info"><b>Echo</b><small>Carrier Text • v1.2.1</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.volt_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava volt-grad">🔋</span>
-                    <span class="dl-info"><b>Volt</b><small>Battery Color • v1.2.1</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.actionbutton12_1.2.1_iphoneos-arm.deb" download>
-                    <span class="dl-ava aura-grad">🔘</span>
-                    <span class="dl-info"><b>ActionButton12</b><small>Glass HUD • v1.0.0</small></span>
-                    <span class="dl-go">⬇</span>
-                </a>
-                <a class="dl-row" href="debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb" download>
-                    <span class="dl-ava volt-grad">🎥</span>
-                    <span class="dl-info"><b>Cam60Enabler5s</b><small>1080p @ 60 FPS • v1.0.0</small></span>
-                    <span class="dl-new">NEW</span>
-                    <span class="dl-go">⬇</span>
-                </a>
+            <div class="tweak-footer">
+                <span class="badge">ACTION BUTTON</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
             </div>
-            <div class="dl-foot">iPhone 5s • A7 • iOS 12.0 — 12.5.8 • arm64</div>
+        </div>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџ“¶</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">РЎРІРѕР№ С‚РµРєСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РІ СЃС‚Р°С‚СѓСЃ-Р±Р°СЂРµ. CFPreferences, live reload С‡РµСЂРµР· darwin, Р±РµР· РєСЂР°С€РµР№.</div>
+                </div>
+            </div>
+            <div class="tweak-footer">
+                <span class="badge">CARRIER</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+            </div>
+        </div>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџ”‹</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Р¦РІРµС‚ РїСЂРѕС†РµРЅС‚РѕРІ Р±Р°С‚Р°СЂРµРё РїРѕ РїРѕСЂРѕРіР°Рј. Р—Р°С‰РёС‚Р° РѕС‚ РґРµР»РµРЅРёСЏ РЅР° РЅРѕР»СЊ, hex-РїР°СЂСЃРёРЅРі С‡РµСЂРµР· NSScanner.</div>
+                </div>
+            </div>
+            <div class="tweak-footer">
+                <span class="badge">BATTERY</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+            </div>
+        </div>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџЊ™</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Always-On Display РЅР° Р»РѕРєСЃРєСЂРёРЅРµ: С‡Р°СЃС‹, РґР°С‚Р°, Р·Р°С‚РµРјРЅРµРЅРёРµ. UIWindow РѕРІРµСЂР»РµР№ Р±РµР· РѕСЃРёСЂРѕС‚РµРІС€РёС… РІСЊСЋ.</div>
+                </div>
+            </div>
+            <div class="tweak-footer">
+                <span class="badge">AOD</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+            </div>
+        </div>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџ“·</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
+                    <div class="tweak-desc">1080p @ 60 FPS РЅР° iPhone 5s (A7). Feature-flag РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІС‹РєР»СЋС‡РµРЅ, С‚РµСЂРјРѕС‚СЂРѕС‚С‚Р»РёРЅРі, С„РѕР»Р±СЌРє РЅР° 30 fps.</div>
+                </div>
+            </div>
+            <div class="tweak-footer">
+                <span class="badge">EXPERIMENTAL</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+            </div>
+        </div>
+
+        <div class="tweak-card">
+            <div class="tweak-header">
+                <div class="tweak-icon">рџ“±</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Р”РІРѕР№РЅРѕРµ РЅР°Р¶Р°С‚РёРµ Home / РґР»РёРЅРЅРѕРµ РЅР°Р¶Р°С‚РёРµ РїРёС‚Р°РЅРёСЏ в†’ HUD СЃ 4 РєРЅРѕРїРєР°РјРё. %group, РґРµСЃС‚СЂСѓРєС‚РѕСЂ, CFPreferences.</div>
+                </div>
+            </div>
+            <div class="tweak-footer">
+                <span class="badge">HUD</span>
+                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+            </div>
         </div>
     </div>
 
+    <!-- ---------- FOOTER ---------- -->
+    <footer>
+        <p>cocxace repo вЂў iOS 12+ вЂў arm64 вЂў @cocxace</p>
+        <p>РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ: <span style="color: var(--mc-accent)">https://abulhketus-collab.github.io/repo/</span></p>
+    </footer>
+
+    <!-- ---------- MINECRAFT ANIMATION SCRIPT ---------- -->
     <script>
-        function copyRepo() {
-            navigator.clipboard.writeText("https://abulhketus-collab.github.io/repo/").then(function() {
-                alert("URL репозитория скопирован в буфер обмена!");
-            });
+        const canvas = document.getElementById('mc-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let animationPhase = 0;
+        let timer = 0;
+
+        function resize() {
+            width = canvas.width = canvas.parentElement.clientWidth;
+            height = canvas.height = canvas.parentElement.clientHeight;
         }
-        var dlOverlay = document.getElementById("dlOverlay");
-        function openDL() {
-            dlOverlay.classList.add("open");
-            document.body.style.overflow = "hidden";
+        window.addEventListener('resize', resize);
+        resize();
+
+        function drawPhone(ctx, x, y, scale) {
+            ctx.fillStyle = '#222';
+            ctx.fillRect(x, y, 60*scale, 110*scale);
+            ctx.strokeStyle = '#000'; ctx.lineWidth = 2*scale;
+            ctx.strokeRect(x, y, 60*scale, 110*scale);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x+4*scale, y+4*scale, 52*scale, 102*scale);
+            ctx.fillStyle = '#fff';
+            ctx.font = '10px monospace';
+            ctx.fillText('12:00', x+8*scale, y+14*scale);
+            ctx.fillStyle = '#444';
+            ctx.beginPath();
+            ctx.arc(x+30*scale, y+100*scale, 8*scale, 0, Math.PI*2);
+            ctx.fill();
+            ctx.stroke();
         }
-        function closeDL() {
-            dlOverlay.classList.remove("open");
-            document.body.style.overflow = "";
+
+        function drawCursor(ctx, x, y) {
+            ctx.fillStyle = '#fff';
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x+16, y+8);
+            ctx.lineTo(x, y+16);
+            ctx.closePath();
+            ctx.fill();
+            ctx.strokeStyle = '#000'; ctx.lineWidth = 1;
+            ctx.stroke();
+            if (animationPhase === 2) {
+                ctx.fillStyle = 'rgba(255,255,255,0.5)';
+                ctx.beginPath();
+                ctx.arc(x, y, 20 + Math.sin(Date.now()/100)*10, 0, Math.PI*2);
+                ctx.fill();
+            }
         }
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") closeDL();
-        });
+
+        function drawSileo(ctx, x, y, scale) {
+            ctx.fillStyle = '#00d2ff';
+            ctx.fillRect(x, y, 40*scale, 40*scale);
+            ctx.strokeStyle = '#000'; ctx.lineWidth = 2*scale;
+            ctx.strokeRect(x, y, 40*scale, 40*scale);
+            ctx.fillStyle = '#fff';
+            ctx.font = '20px monospace';
+            ctx.fillText('S', x+10*scale, y+28*scale);
+        }
+
+        function drawPlus(ctx, x, y, scale) {
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(x-10*scale, y-2*scale, 20*scale, 4*scale);
+            ctx.fillRect(x-2*scale, y-10*scale, 4*scale, 20*scale);
+            ctx.strokeStyle = '#000'; ctx.lineWidth = 1;
+            ctx.strokeRect(x-12*scale, y-12*scale, 24*scale, 24*scale);
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.strokeStyle = '#1a1a1a';
+            ctx.lineWidth = 1;
+            const grid = 40;
+            for (let i = 0; i < width; i += grid) {
+                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+            }
+            for (let j = 0; j < height; j += grid) {
+                ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(width, j); ctx.stroke();
+            }
+
+            timer += 1/60;
+
+            if (animationPhase === 0) {
+                const px = width/2 - 30;
+                const py = height/2 - 55 + Math.sin(timer)*5;
+                drawPhone(ctx, px, py, 1);
+
+                ctx.fillStyle = '#fff';
+                ctx.font = '12px monospace';
+                ctx.fillText('РѕС‚РєСЂРѕР№ sileo', width/2 - 60, height - 60);
+
+                const cx = width/2 + 40 + Math.sin(timer*2)*20;
+                const cy = height/2 + 20;
+                drawCursor(ctx, cx, cy);
+
+                if (timer > 180) {
+                    animationPhase = 1;
+                    timer = 0;
+                }
+            }
+            else if (animationPhase === 1) {
+                const sx = width/2 + 80;
+                const sy = height/2 - 20;
+                drawSileo(ctx, sx, sy, 1);
+
+                const cx = width/2 + 40 + (timer/120)*80;
+                const cy = height/2 - 20 + 10;
+                drawCursor(ctx, cx, cy);
+
+                if (timer > 120) {
+                    animationPhase = 2;
+                    timer = 0;
+                }
+            }
+            else if (animationPhase === 2) {
+                const sx = width/2 + 80;
+                const sy = height/2 - 20;
+                drawSileo(ctx, sx, sy, 1);
+
+                const cx = width/2 + 120;
+                const cy = height/2 - 20 + 10;
+                drawCursor(ctx, cx, cy);
+
+                drawPlus(ctx, cx + 10, cy - 10, 1);
+
+                ctx.fillStyle = '#fff';
+                ctx.font = '10px monospace';
+                ctx.fillText('РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ', cx - 40, cy + 30);
+
+                if (timer > 120) {
+                    animationPhase = 3;
+                    timer = 0;
+                }
+            }
+            else {
+                ctx.fillStyle = '#00ff00';
+                ctx.font = '16px monospace';
+                ctx.fillText('СЂРµРїРѕ РґРѕР±Р°РІР»РµРЅРѕ!', width/2 - 70, height/2);
+
+                ctx.fillStyle = '#00d2ff';
+                ctx.font = '12px monospace';
+                ctx.fillText('https://abulhketus-collab.github.io/repo/', width/2 - 110, height/2 + 30);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
 </html>
