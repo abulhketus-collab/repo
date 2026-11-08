@@ -40,10 +40,10 @@ Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb
-Size: 9114
-MD5sum: 91136f6508484ee4cf14f796ce5131f6
-SHA1: a192692f0016dab149a4738972d6f3a9d7520d9b
-SHA256: cf741cacc345aaa64996bc9a1f82faa96e7a40024d1379b038031acc710f19fc
+Size: 10078
+MD5sum: afb08af74299a48f43a808c2ca7a500e
+SHA1: 677ebae88817799b0ab9a99a3bb50322fc8e4b24
+SHA256: 22d9fd69f56ab1ca3c35413cc0742a967329ad545715e67cbf430e26567e112f
 SileoDepiction: depictions/com.cocxace.cam60enabler5s/sileo.json
 
 Package: com.cocxace.echo
