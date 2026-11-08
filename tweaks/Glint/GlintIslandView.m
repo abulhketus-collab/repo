@@ -435,7 +435,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
     self.lastGlyph = glyph;
     self.lastBundleID = self.tapBundleID;
     self.lastIcon = icon;
-    self.lastWasMusic = NO;
 
     // Compact left slot mirrors the last activity (like the real island).
     self.leftGlyphLabel.text = glyph ?: @"📱";

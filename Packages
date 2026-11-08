@@ -8,10 +8,10 @@ Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Filename: debs/com.cocxace.actionbutton12_1.2.0_iphoneos-arm.deb
-Size: 40158
-MD5sum: eac5ecba74dfec36d3ce63109720887a
-SHA1: 1d06401129a1ad05e7b4a97052c1b00accba6bf1
-SHA256: a7ced31d5a10fdc8422e2e1c8f9fbb1dc3ffa37f8bfcb7907e068adde0106cb1
+Size: 40154
+MD5sum: 8659430123cbdde15988d8351e1c247f
+SHA1: e7e9678fcad7d7615331f8cf7699b02bfb328cb3
+SHA256: 76c1696360684e2819d4b2f1ce389d90a8239bd57eacf6c62210be59242ec396
 SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
 
 Package: com.cocxace.aura
@@ -24,10 +24,10 @@ Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.aura_1.2.0_iphoneos-arm.deb
-Size: 14644
-MD5sum: 106f2128df5913cca5bf549829b2363c
-SHA1: 2cac06efeb106f5532c0a9ba371b248950712794
-SHA256: 4ae40d16544d0cffe693dd6d2f4ec3d7b402267fafdfe338c37ce628daabf20a
+Size: 14640
+MD5sum: c68911ca77279f52b2880043a7744c6e
+SHA1: 44e00643226e04554be32a973e0a44d06905819f
+SHA256: 5553592fdc29a367c7fb0ea2aed63cf975ae4d751b06d89ca7bff0b58e404a15
 SileoDepiction: depictions/com.cocxace.aura/sileo.json
 
 Package: com.cocxace.echo
@@ -40,10 +40,10 @@ Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.echo_1.2.0_iphoneos-arm.deb
-Size: 7740
-MD5sum: a02b6c53ede3418e9c5acee77385b5ee
-SHA1: f76401fac1480c7096c8b10b4d400823318a8b35
-SHA256: 7987266d1c078252986eb0dfc2ab2516e9d1619f1fe33bacfd4e2ebd2efe7d44
+Size: 7738
+MD5sum: 4a107d0f3b6a59e52070951d8fee006a
+SHA1: add14ce56bc8ef09ed37ddb6781fc55abfdd696e
+SHA256: dcf55a53ac95f66dd763f7005772b5fa38aee481d0df612607c2c74eb87b5f63
 SileoDepiction: depictions/com.cocxace.echo/sileo.json
 
 Package: com.cocxace.glint
@@ -57,9 +57,9 @@ Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.glint_1.2.0_iphoneos-arm.deb
 Size: 35568
-MD5sum: bf7b53d67011dc25c98a42c25f2ff973
-SHA1: 27fcfbf5f37acaeafe65f575c9a3a6123126f173
-SHA256: b744709e900b3e4704666d8ced12b95107d6bebc3e5bc7b295c06eca330c0a3d
+MD5sum: f1ee24a6aeb8c1c3773c7a0009980036
+SHA1: 6e0db154e13dbcd6a4854c4f0db79094ae43b5d7
+SHA256: b59b05abbb923cc9961cd3f9d8484f6bd85ed9c576f671e57570a9a739a3bdea
 SileoDepiction: depictions/com.cocxace.glint/sileo.json
 
 Package: com.cocxace.lumina
@@ -72,10 +72,10 @@ Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.lumina_1.2.0_iphoneos-arm.deb
-Size: 11686
-MD5sum: 34803c22222354cdf48e84f9425bf85a
-SHA1: b2adabd2cb717c5fe61a2bc7f92081f27bd75d56
-SHA256: e2a1e990887ec4b8ebaeeb7405464a23a9cd32566d902cc3248fc773f4406d34
+Size: 11688
+MD5sum: 7b06db03cb30329e57c19635e9b51622
+SHA1: 757b88b0f3d6ab80fa9d960080ee84ee9657a372
+SHA256: 30c662cddc3f334169dc25d7f547eb2963700c5b18ec5d6d75777f10e581ff57
 SileoDepiction: depictions/com.cocxace.lumina/sileo.json
 
 Package: com.cocxace.volt
@@ -89,8 +89,8 @@ Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.volt_1.2.0_iphoneos-arm.deb
 Size: 9286
-MD5sum: a1db7696e7e1c38ccb22bf26d607a1b1
-SHA1: 80db148ce233a8f0da3719d6c739c3714e4fd9fa
-SHA256: 046329d99eac83e213c58b1edb058b978ea2b111a568ff9e0aaaa9ecf9b3166d
+MD5sum: 13980ea5b862e383c1b9940b02044b00
+SHA1: eaad91f26e0cb182c53b91f82c6449653d6c9290
+SHA256: 1679dc4664d77df1546f9ae4f8947a9e139cb409bf1eef4b49dbd545bc809254
 SileoDepiction: depictions/com.cocxace.volt/sileo.json
 
