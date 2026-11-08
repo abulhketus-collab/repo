@@ -1,8 +1,8 @@
 Package: com.cocxace.lumina
 Name: Lumina
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Elegant Always-On Display with UltraLight Typography for iOS 12
+Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks

@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.0.0 by @cocxace"
+          "title": "Версия 1.1.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Lumina** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nElegant Always-On Display with UltraLight Typography for iOS 12"
+          "markdown": "**Lumina 1.1.0 — Always-On-Display стиль локскрина.**\n\nЗатемнённый оверлей с живыми часами. Выглядит как AOD на iPhone 5s.\n\nВ 1.1.0:\n\n* фикс «осиротевшего» оверлея: пересоединяется к текущему локскрину\n* дата под часами (можно выключить `showDate`)\n* `opacity` 0.5–0.97, тумблер `enabled` в com.cocxace.lumina\n* адаптивные размеры под любой экран, таймер в NSRunLoopCommonModes"
         },
         {
           "class": "DepictionSpacerView",

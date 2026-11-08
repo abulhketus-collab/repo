@@ -1,33 +1,95 @@
+// Echo — custom carrier text for iOS 12 (com.cocxace.echo)
+// v1.1.0: CFPreferences instead of plist re-reads, live reload via darwin.
+
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import <notify.h>
+#import <CoreFoundation/CoreFoundation.h>
+
+#pragma mark - Preferences
+
+static NSString *EchoCarrierText(void) {
+    @try {
+        CFStringRef key = CFSTR("carrierText");
+        CFStringRef app = CFSTR("com.cocxace.echo");
+        CFTypeRef raw = CFPreferencesCopyAppValue(key, app);
+        if (raw == NULL) {
+            // Placed in case of an absent preference.
+            CFPreferencesSetAppValue(CFSTR("enabled"), kCFBooleanTrue, app);
+            CFPreferencesSetAppValue(key, (__bridge CFStringRef) @"cocxace ⚡", app);
+            CFPreferencesAppSynchronize(app);
+            raw = CFPreferencesCopyAppValue(key, app);
+            if (raw == NULL) return @"cocxace ⚡";
+        }
+        NSString *text = (__bridge_transfer NSString *)raw;
+        if (text.length == 0) return @"cocxace ⚡";
+        return text;
+    } @catch (NSException *e) {
+        NSLog(@"[Tweak Error] Echo prefs: %@", e);
+        return @"cocxace ⚡";
+    }
+}
+
+#pragma mark - Enabled gate
+
+// Loose boolean read: kCFBooleanTrue/False and NSNumber/NSString "1" are supported.
+static BOOL EchoEnabledLoose(void) {
+    @try {
+        id raw = (__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("com.cocxace.echo"));
+        if (!raw) return YES;
+        if ([raw isKindOfClass:[NSNumber class]]) return [raw boolValue];
+        if ([raw isKindOfClass:[NSString class]]) return [(NSString *)raw boolValue];
+        return YES;
+    } @catch (NSException *e) {
+        return YES;
+    }
+}
+
+#pragma mark - Hook
 
 static void (*orig_carrier)(id self, SEL _cmd);
 static void hook_carrier(id self, SEL _cmd) {
     if (orig_carrier) orig_carrier(self, _cmd);
     @try {
-        NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.echo.plist"];
-        BOOL enabled = prefs[@"enabled"] ? [prefs[@"enabled"] boolValue] : YES;
-        NSString *txt = prefs[@"carrierText"] ? prefs[@"carrierText"] : @"cocxace ⚡";
-        if (enabled && txt.length > 0) {
-            if ([self respondsToSelector:@selector(setValue:forKey:)]) {
-                [self setValue:txt forKey:@"_overrideServiceString"];
-            }
+        if (!EchoEnabledLoose()) return;
+        NSString *txt = EchoCarrierText();
+        if (txt.length > 0 && [self respondsToSelector:@selector(setValue:forKey:)]) {
+            [self setValue:txt forKey:@"_overrideServiceString"];
         }
     } @catch (NSException *e) {
         NSLog(@"[Tweak Error] Echo carrier: %@", e);
     }
 }
 
+// Live reload when the user saves preferences.
+static void EchoDarwinCallback(CFNotificationCenterRef center, void *observer,
+                               CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    // CFPreferences caches are invalidated; the next updateCarrierItems call is placed again.
+    CFPreferencesAppSynchronize(CFSTR("com.cocxace.echo"));
+}
+
 __attribute__((constructor)) static void initEcho() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Echo Loaded successfully");
+        NSLog(@"[CocxaceTweak] Echo 1.1.0 loaded");
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                        NULL,
+                                        EchoDarwinCallback,
+                                        CFSTR("com.cocxace.echo/reload"),
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
+
         Class cls = objc_getClass("SBStatusBarStateAggregator");
         if (cls) {
             Method m = class_getInstanceMethod(cls, sel_registerName("_updateCarrierItems"));
             if (m) {
                 orig_carrier = (void (*)(id, SEL))method_getImplementation(m);
                 method_setImplementation(m, (IMP)hook_carrier);
+                NSLog(@"[CocxaceTweak] Echo carrier hook installed");
+            } else {
+                NSLog(@"[Tweak Error] Echo: _updateCarrierItems not found on this firmware");
             }
+        } else {
+            NSLog(@"[Tweak Error] Echo: SBStatusBarStateAggregator not found");
         }
     }
 }

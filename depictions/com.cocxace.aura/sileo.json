@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.0.0 by @cocxace"
+          "title": "Версия 1.1.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Aura** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nPremium Action Button HUD with 2x2 grid and smooth sliders for iOS 12"
+          "markdown": "**Aura 1.1.0 — Action Button HUD.**\n\nДолгий тап боковой кнопки открывает стеклянную панель: 🔦 Фонарик, 📷 Камера, 🎙 Диктофон, 📸 Скриншот.\n\nВ 1.1.0:\n\n* запуск приложений через SBUIController (надёжнее openURL)\n* адаптивная разметка под любой экран\n* тумблер `enabled` в com.cocxace.aura (выключен — кнопка работает как обычно)\n* тело панели и кнопки масштабируются, гэп 10pt, spring-анимация"
         },
         {
           "class": "DepictionSpacerView",

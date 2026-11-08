@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.0.0 by @cocxace"
+          "title": "Версия 1.1.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Echo** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nClean custom carrier string changer for iOS 12 StatusBar"
+          "markdown": "**Echo 1.1.0 — свой текст оператора в статус-баре.**\n\nПереопределяет строку оператора (`cocxace ⚡` по умолчанию).\n\nВ 1.1.0:\n\n* чтение через CFPreferences — не перечитывается plist на каждый тик\n* живой reload по darwin-нотификации `com.cocxace.echo/reload`\n* дефолт `carrierText` создаётся автоматически при первом запуске"
         },
         {
           "class": "DepictionSpacerView",

@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.0.0 by @cocxace"
+          "title": "Версия 1.1.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Volt** — специализированный 60 FPS твик для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip).\n\nDynamic smooth battery percentage with colored tint for iOS 12"
+          "markdown": "**Volt 1.1.0 — цвет процентов батареи.**\n\nЗелёный / жёлтый / красный по уровню заряда.\n\nВ 1.1.0:\n\n* настраиваемые пороги: `highThreshold` (по умолчанию 40), `lowThreshold` (20)\n* настраиваемые цвета: `highColor`, `midColor`, `lowColor` в hex `RRGGBB` или `#RRGGBB`\n* запасной путь, если уровень отрицательный (заряжается в выключенном)"
         },
         {
           "class": "DepictionSpacerView",

@@ -16,81 +16,81 @@ SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
 
 Package: com.cocxace.aura
 Name: Aura
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Action Button HUD with 2x2 grid for iOS 12
+Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.aura_1.0.0_iphoneos-arm.deb
-Size: 10042
-MD5sum: 8bd52a04be6fff0827f6c8fac21911be
-SHA1: 9e748f787d41c6396ff00a58ca2429cba8bbc003
-SHA256: 3c9e5f1fc621637bf770f8cb04186f946e7d8de3fe6bb7643bedf712defced1d
+Filename: debs/com.cocxace.aura_1.1.0_iphoneos-arm.deb
+Size: 10866
+MD5sum: 7d36fb227f863abbb4ed7fdc76ed6cfe
+SHA1: fa92b7a1d84b3b7fdfde92feddbe765c7b3abb7a
+SHA256: 67cf38f426c8f560cce2a8434ff0af25cd1248229135ae5d78b7057bb5bcdb52
 SileoDepiction: depictions/com.cocxace.aura/sileo.json
 
 Package: com.cocxace.echo
 Name: Echo
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Custom Carrier string changer for iOS 12
+Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.echo_1.0.0_iphoneos-arm.deb
-Size: 3976
-MD5sum: 6f7a5c6a727d66617b3904016f879275
-SHA1: f521b49c9270504dd40e269437a6455a543658cd
-SHA256: d738b041777b8731c066a814ffceb772d843855de5b14b81c67a7180ff2e86fb
+Filename: debs/com.cocxace.echo_1.1.0_iphoneos-arm.deb
+Size: 4034
+MD5sum: 3bd79f2ba56cd31f4ea8a123f3f5c24c
+SHA1: 684667f0f5892a06958cd3a901ab58dc61bb3ab9
+SHA256: e775f1f5d28a5305ae8f76ef76c4ae1634b244037aa0c35e8dd1bfbf0bb37f47
 SileoDepiction: depictions/com.cocxace.echo/sileo.json
 
 Package: com.cocxace.glint
 Name: Glint
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Smooth Dynamic Island pill for iOS 12
+Description: Dynamic Island is back: notifications, charging pill, now playing and torch for iOS 12 notchless devices
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.glint_1.0.0_iphoneos-arm.deb
-Size: 7410
-MD5sum: 9c38c84acb9afda93d1b37fe68e3d1d7
-SHA1: fdfe56c78edbe8e8b9dfbf5426c6dc6fe97eab4e
-SHA256: cd6978e55fec4d9cf134756bd33531663823b2555041d8c6a62bfadcd2efc2e2
+Filename: debs/com.cocxace.glint_1.1.0_iphoneos-arm.deb
+Size: 24244
+MD5sum: e09ef440fd19846cbfb4948551dac2d6
+SHA1: 1beae13b29371c4d148bbeb5072bd40687a9eece
+SHA256: 9dca808153e4aa1f103aab5a3ee9ece1750a871e1570336614f21cbd15a81775
 SileoDepiction: depictions/com.cocxace.glint/sileo.json
 
 Package: com.cocxace.lumina
 Name: Lumina
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Always-On Display with UltraLight Typography for iOS 12
+Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.lumina_1.0.0_iphoneos-arm.deb
-Size: 5654
-MD5sum: 285b2116416784dcbd2d412b717f3031
-SHA1: bc11f5c12cfc95a3236e42ba4fa2516aabfa5509
-SHA256: 9be5d2c22c6ada3a1178e03e13db9bd5237c8f24199e70fc1cc24ebbfc9727aa
+Filename: debs/com.cocxace.lumina_1.1.0_iphoneos-arm.deb
+Size: 7440
+MD5sum: f43cb705e6f2c0b226177d7823eafa4a
+SHA1: f1476466997060cc152c1da88df9feeac7a87aa2
+SHA256: 258d3393cd720aae15362d16228aaa6274253bead341db139b806e2ed4388d9a
 SileoDepiction: depictions/com.cocxace.lumina/sileo.json
 
 Package: com.cocxace.volt
 Name: Volt
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Dynamic battery percentage color for iOS 12
+Description: Battery percent color by level with configurable thresholds for iOS 12
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.volt_1.0.0_iphoneos-arm.deb
-Size: 3920
-MD5sum: d8d1b13155fe03dc3fec011233ea31a8
-SHA1: fa4338a3276dfcb3db6478f921b441e92a0a2989
-SHA256: 9144229a55d82de2c6369294513d18d891d178abb7adc3a784b7daf1fec3f6a7
+Filename: debs/com.cocxace.volt_1.1.0_iphoneos-arm.deb
+Size: 5014
+MD5sum: 0f7c8631fa01f8b97a298b1aa7814da1
+SHA1: b933d95985ff1cc133911e1bb38a9100627cf0df
+SHA256: caa3a64291f08b7f62a99c83fcf14dcd049f4bc3eee51afdd9024663a4e7cf33
 SileoDepiction: depictions/com.cocxace.volt/sileo.json
 

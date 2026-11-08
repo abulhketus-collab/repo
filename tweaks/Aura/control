@@ -1,8 +1,8 @@
 Package: com.cocxace.aura
 Name: Aura
-Version: 1.0.0
+Version: 1.1.0
 Architecture: iphoneos-arm
-Description: Premium Action Button HUD with 2x2 grid and smooth sliders for iOS 12
+Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
