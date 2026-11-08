@@ -1,0 +1,34 @@
+{
+  "minVersion": "0.1",
+  "headerImage": "https://raw.githubusercontent.com/abulhketus-collab/repo/main/CydiaIcon.png",
+  "tintColor": "#007AFF",
+  "tabs": [
+    {
+      "tabname": "Описание",
+      "views": [
+        {
+          "class": "DepictionHeaderView",
+          "title": "Cam60Enabler5s"
+        },
+        {
+          "class": "DepictionSubheaderView",
+          "title": "Версия 1.0.0 by @cocxace"
+        },
+        {
+          "class": "DepictionMarkdownView",
+          "markdown": "**Cam60Enabler5s 1.0.0 — 1080p @ 60 FPS в Камере iPhone 5s (A7).**\n\nТвик принудительно включает запись видео в разрешении 1920×1080 при частоте 60 кадров в секунду в стандартном приложении Камера.\n\nЧто делает:\n\n* Форсирует возврат YES для `is60FPSVideoSupported` / `isBack60FPSVideoSupported` в `CAMUserPreferences`\n* Добавляет конфигурацию 1080p60 в `supportedVideoConfigurations` (`CAMCaptureCapabilities`)\n* Перехватывает `AVCaptureDeviceFormat.videoSupportedFrameRateRanges` — для 1080p форматов используется диапазон с maxFrameRate = 60.0\n* Перехватывает `setActiveVideoMinFrameDuration:` / `setActiveVideoMaxFrameDuration:` — жесткая фиксация `CMTimeMake(1, 60)`\n* Логирование ошибок через `NSLog` для отладки (syslog / socat)\n\n⚠️ **Важное предупреждение:** iPhone 5s (Apple A7) аппаратно не сертифицирован Apple для 1080p60. ISP и H.264-энкодер A7 стабильно держат 1080p30 / 720p120. Принудительный хук может привести к чёрному экрану видоискателя, зависанию камеры, дублированным кадрам (30 fps в контейнере 60) или крэшу mediaserverd. Установка на свой страх и риск.\n\nКомпитация: iPhone 5s (A7), iOS 12.0–12.5.7, arm64.\n\nСборка: Windhawk clang-20 + iPhoneOS12.4 SDK.\n\nУстановка: загрузите .deb через Sileo/Zebra/Filza, затем `killall -9 Camera` и респринг.\n\nВерификация: `ffprobe -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of csv=p=0 video.MOV` → ожидается `1920,1080,60/1`."
+        },
+        {
+          "class": "DepictionSpacerView",
+          "spacing": 16
+        },
+        {
+          "class": "DepictionTableButtonView",
+          "title": "Разработчик: @cocxace",
+          "action": "https://github.com/abulhketus-collab",
+          "openExternal": true
+        }
+      ]
+    }
+  ]
+}

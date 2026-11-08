@@ -49,6 +49,34 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
     return out;
 }
 
+// Returns a system SF Symbol image (iOS 13+, guarded)
+static UIImage *GlintSymbolImage(NSString *symbolName, CGFloat size, UIColor *color) {
+    if (!symbolName) return nil;
+    UIImage *img = [UIImage imageNamed:symbolName];
+    return img;
+}
+
+// Returns a colored circle badge image (for flashlight lamp etc.)
+static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *borderColor) {
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(diameter, diameter), NO, 0.0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGRect rect = CGRectMake(0, 0, diameter, diameter);
+    if (borderColor) {
+        CGContextSetStrokeColorWithColor(ctx, borderColor.CGColor);
+        CGContextSetLineWidth(ctx, 1.0);
+        CGContextAddEllipseInRect(ctx, rect);
+        CGContextDrawPath(ctx, kCGPathStroke);
+    }
+    if (fillColor) {
+        CGContextSetFillColorWithColor(ctx, fillColor.CGColor);
+        CGContextAddEllipseInRect(ctx, rect);
+        CGContextFillPath(ctx);
+    }
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
+
 @interface GlintWaveView : UIView
 @property (nonatomic, strong) NSArray<UIView *> *bars;
 - (void)startAnimating;
@@ -175,8 +203,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
         GlintPillMetrics(&pw, &ph, NULL, NULL, &py);
 
         self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, W, 70)];
-        // NOTE: UIWindowLevelNormal + high offset so the window receives touches
-        // but stays above SpringBoard content. UIWindowLevelStatusBar can block touches on iOS 12.
         self.window.windowLevel = UIWindowLevelNormal + 1500.0;
         self.window.backgroundColor = [UIColor clearColor];
         self.window.userInteractionEnabled = YES;
@@ -206,7 +232,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
         [self.pill addSubview:self.iconBadge];
 
         self.iconImageView = [[UIImageView alloc] initWithFrame:self.iconBadge.bounds];
-        self.iconImageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
         self.iconImageView.clipsToBounds = YES;
         [self.iconBadge addSubview:self.iconImageView];
 
@@ -393,7 +419,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
     } else {
         self.iconImageView.image = nil;
         self.iconImageView.alpha = 0.0;
-        self.iconGlyphLabel.text = glyph ?: @"📱";
+        self.iconGlyphLabel.text = glyph ?: @"";
     }
 
     self.lastTitle = cleanTitle;
@@ -403,7 +429,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
     self.lastIcon = icon;
     self.lastWasMusic = NO;
 
-    self.leftGlyphLabel.text = glyph ?: @"📱";
+    self.leftGlyphLabel.text = glyph ?: @"";
     self.leftGlyphLabel.alpha = 1.0;
 
     AudioServicesPlaySystemSound(1519);
@@ -433,7 +459,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
                   title:(NSString *)title
                 message:(NSString *)message {
     self.lastAppName = [appName copy] ?: @"Application";
-    [self presentEventWithGlyph:(glyph.length > 0 ? glyph : @"📱")
+    [self presentEventWithGlyph:(glyph.length > 0 ? glyph : @"")
                            icon:icon
                           title:title
                         message:message
@@ -443,7 +469,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
 
 - (void)showChargingAtLevel:(NSInteger)level {
     if (level < 0 || level > 100) level = 99;
-    [self presentEventWithGlyph:@"⚡"
+    [self presentEventWithGlyph:@""
                            icon:nil
                           title:[NSString stringWithFormat:@"⚡ Charging %ld%%", (long)level]
                         message:nil
@@ -454,9 +480,10 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
 - (void)setChargingSlotLevel:(NSInteger)level orNil:(BOOL)clear {
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
-            if (clear && self.leftGlyphLabel.text && [self.leftGlyphLabel.text isEqualToString:@"⚡"])
+            if (clear && self.leftGlyphLabel.text && [self.leftGlyphLabel.text isEqualToString:@""])
                 self.leftGlyphLabel.text = nil;
             if (!clear) {
+                // Show lightning bolt in left slot
                 self.leftGlyphLabel.text = @"⚡";
                 if (!self.expanded) self.leftGlyphLabel.alpha = 1.0;
             }
@@ -465,12 +492,28 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
 }
 
 - (void)showTorchOn:(BOOL)on {
-    [self presentEventWithGlyph:@"🔦"
-                           icon:nil
-                          title:on ? @"Flashlight On" : @"Flashlight Off"
-                        message:nil
-                        tapOpen:nil
-                          delay:2.2];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            if (on) {
+                // Yellow filled circle badge = flashlight lamp
+                UIImage *badgeImg = GlintBadgeCircle(30.0, [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0], [UIColor whiteColor]);
+                self.iconImageView.image = badgeImg;
+                self.iconImageView.alpha = 1.0;
+                self.iconGlyphLabel.text = @"";
+                self.iconBadge.alpha = 1.0;
+                self.titleLabel.text = @"Flashlight On";
+                self.messageLabel.text = @"";
+                self.leftGlyphLabel.text = @"🔦";
+                self.leftGlyphLabel.alpha = 1.0;
+            } else {
+                self.iconBadge.alpha = 0.0;
+                self.leftGlyphLabel.text = @"";
+                self.leftGlyphLabel.alpha = 0.0;
+            }
+            [self applyLayoutAnimated:YES];
+            AudioServicesPlaySystemSound(1519);
+        } @catch (NSException *e) { NSLog(@"[Glint] torch error: %@", e); }
+    });
 }
 
 - (void)showNowPlayingTrack:(NSString *)track artist:(NSString *)artist {
@@ -481,7 +524,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
             NSString *body = artist.length ? [@"♪ " stringByAppendingString:artist] : nil;
             self.lastTrack = [track copy] ?: @"Now Playing";
             self.lastArtist = [artist copy];
-            [self presentEventWithGlyph:@"🎧"
+            [self presentEventWithGlyph:@""
                                    icon:nil
                                   title:(track.length ? track : @"Now Playing")
                                 message:body
@@ -494,7 +537,7 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
 }
 
 - (void)showBootGreeting {
-    [self presentEventWithGlyph:@"🏝"
+    [self presentEventWithGlyph:@""
                            icon:nil
                           title:@"Glint 1.2.1"
                         message:@"Dynamic Island online"
@@ -539,13 +582,13 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
             if (isMusic) {
                 title = self.lastTrack ?: @"Now Playing";
                 body = self.lastArtist.length ? [@"♪ " stringByAppendingString:self.lastArtist] : nil;
-                glyph = @"🎧";
+                glyph = @"";
                 tapBid = @"com.apple.mobilemusic";
                 icon = nil;
             } else {
                 title = self.lastTitle ?: @"Glint";
                 body = self.lastBody;
-                glyph = self.lastGlyph ?: @"📱";
+                glyph = self.lastGlyph ?: @"";
                 tapBid = self.lastBundleID;
                 icon = self.lastIcon;
             }
@@ -627,7 +670,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
 
 - (void)openAppWithIdentifier:(NSString *)bundleID {
     @try {
-        // 1. SBUIController (SpringBoard private API)
         Class cls = NSClassFromString(@"SBUIController");
         if (cls) {
             id ui = [cls performSelector:@selector(sharedInstance)];
@@ -644,7 +686,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
                 }
             }
         }
-        // 2. LSApplicationWorkspace fallback
         Class ws = NSClassFromString(@"LSApplicationWorkspace");
         if (ws) {
             id w = [ws performSelector:@selector(defaultWorkspace)];
@@ -653,7 +694,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
                 return;
             }
         }
-        // 3. URL scheme fallback for known apps
         if ([bundleID isEqualToString:@"com.apple.camera"]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"camera:"]];
         } else if ([bundleID isEqualToString:@"com.apple.mobilemusic"]) {

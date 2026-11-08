@@ -30,6 +30,22 @@ SHA1: 44e00643226e04554be32a973e0a44d06905819f
 SHA256: 5553592fdc29a367c7fb0ea2aed63cf975ae4d751b06d89ca7bff0b58e404a15
 SileoDepiction: depictions/com.cocxace.aura/sileo.json
 
+Package: com.cocxace.cam60enabler5s
+Name: Cam60Enabler5s
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb
+Size: 5480
+MD5sum: f9c4dff68172c1e36e69a015c267c7da
+SHA1: b763b4f42897521c65f3dd2cece24c26024922fa
+SHA256: 226835fa4400402975d56ff57bc8319225c61471ce846d3404727c9c3b389f20
+SileoDepiction: depictions/com.cocxace.cam60enabler5s/sileo.json
+
 Package: com.cocxace.echo
 Name: Echo
 Version: 1.2.0
@@ -55,11 +71,11 @@ Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Filename: debs/com.cocxace.glint_1.2.1_iphoneos-arm.deb
-Size: 36870
-MD5sum: 427a82881a258c4f5144f9836f72ab8b
-SHA1: 4ffb8b7c5da49480b678c6835fe4de70b47275c6
-SHA256: f6402e78d1c58ea6e9e8bccbe917dcc06b6a0fd0c622368a8c56ef4ff0eef7d9
+Filename: debs/com.cocxace.glint_1.2.2_iphoneos-arm.deb
+Size: 37742
+MD5sum: aa8237653f1b55405547873c58a8da88
+SHA1: e595f5f6028665b963eb99ad0ab9f40b3b022c45
+SHA256: 396f2a967bfcce9e1b634ea6ab366b8f922fb19e8e2d3b91b06c395bcdfb95a8
 SileoDepiction: depictions/com.cocxace.glint/sileo.json
 
 Package: com.cocxace.lumina
