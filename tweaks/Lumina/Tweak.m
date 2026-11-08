@@ -1,3 +1,7 @@
+// Lumina вЂ” Always-On-Display styled lock screen for iOS 12 (com.cocxace.lumina)
+// v1.2.2: UIWindow-based overlay (no orphaned views), CFPreferences,
+// live reload via darwin notification, destroy on respring / disable.
+
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import <notify.h>
@@ -7,7 +11,9 @@
 
 #import "LuminaPrefs.h"
 
-#define LuminaLog(fmt, ...)     do { if ([LuminaPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Lumina] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+#define LuminaLog(fmt, ...) \
+    do { if ([LuminaPrefs sharedPrefs].debugEnabled) \
+        os_log(OS_LOG_DEFAULT, "[Lumina] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
 
 #pragma mark - AOD window
 
@@ -22,25 +28,30 @@ static NSTimer *aodTimer = nil;
 @end
 
 @implementation LuminaTimerStub
+
 + (instancetype)sharedStub {
     static LuminaTimerStub *stub = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ stub = [[LuminaTimerStub alloc] init]; });
+    dispatch_once(&onceToken, ^{
+        stub = [[LuminaTimerStub alloc] init];
+    });
     return stub;
 }
+
 - (void)theTick {
     dispatch_async(dispatch_get_main_queue(), ^{
-        LuminaUpdateFace();
+        [LuminaUpdateFace];
     });
 }
+
 @end
 
 static void LuminaUpdateFace(void) {
     @try {
-        if (!aodClock || !aodDate) return;
         NSDateFormatter *clock = [[NSDateFormatter alloc] init];
         [clock setDateFormat:@"HH:mm"];
         aodClock.text = [clock stringFromDate:[NSDate date]];
+
         NSDateFormatter *date = [[NSDateFormatter alloc] init];
         [date setDateFormat:@"EEE, d MMM"];
         aodDate.text = [date stringFromDate:[NSDate date]];
@@ -55,9 +66,10 @@ static void LuminaFade(double alpha, double duration) {
     }];
 }
 
-static void showAOD(void) {
+- (void)showAOD {
     if (aodWindow) return;
     if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) return;
+
     aodWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     aodWindow.windowLevel = 2000.f;
     aodWindow.backgroundColor = [UIColor blackColor];
@@ -66,31 +78,37 @@ static void showAOD(void) {
     aodWindow.rootViewController = [[UIViewController alloc] init];
     aodWindow.hidden = NO;
     [aodWindow makeKeyAndVisible];
+
     CGFloat W = [UIScreen mainScreen].bounds.size.width;
     CGFloat H = [UIScreen mainScreen].bounds.size.height;
+
     aodClock = [[UILabel alloc] initWithFrame:CGRectMake(0, H * 0.30, W, 90)];
     aodClock.textColor = [UIColor whiteColor];
     aodClock.font = [UIFont systemFontOfSize:62.0 weight:UIFontWeightUltraLight];
     aodClock.textAlignment = NSTextAlignmentCenter;
     aodClock.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [aodWindow addSubview:aodClock];
+
     aodDate = [[UILabel alloc] initWithFrame:CGRectMake(0, H * 0.30 + 96.0, W, 24)];
     aodDate.textColor = [UIColor colorWithWhite:1.0 alpha:0.75];
     aodDate.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightSemibold];
     aodDate.textAlignment = NSTextAlignmentCenter;
     aodDate.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [aodWindow addSubview:aodDate];
-    LuminaUpdateFace();
+
+    [LuminaUpdateFace];
+
     aodTimer = [NSTimer timerWithTimeInterval:1.0
                                       target:[LuminaTimerStub sharedStub]
                                     selector:@selector(theTick)
                                     userInfo:nil
                                      repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:aodTimer forMode:NSRunLoopCommonModes];
+
     LuminaFade([LuminaPrefs floatForKey:@"opacity" defaultValue:0.90f], 0.5);
 }
 
-static void hideAOD(void) {
+- (void)hideAOD {
     if (!aodWindow) return;
     [aodTimer invalidate];
     aodTimer = nil;
@@ -101,8 +119,8 @@ static void hideAOD(void) {
     aodDate = nil;
 }
 
-static void destroyAOD(void) {
-    hideAOD();
+- (void)destroy {
+    [self hideAOD];
     LuminaLog(@"destroy");
 }
 
@@ -116,7 +134,7 @@ static void hook_viewWillAppear(id self, SEL _cmd, BOOL animated) {
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) return;
-            showAOD();
+            [self showAOD];
         } @catch (NSException *e) {
             NSLog(@"[Tweak Error] Lumina appear: %@", e);
         }
@@ -127,7 +145,7 @@ static void hook_viewWillDisappear(id self, SEL _cmd, BOOL animated) {
     if (orig_viewWillDisappear) ((void (*)(id, SEL, BOOL))orig_viewWillDisappear)(self, _cmd, animated);
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
-            hideAOD();
+            [self hideAOD];
         } @catch (NSException *e) {}
     });
 }
@@ -139,11 +157,11 @@ static void LuminaDarwinCallback(CFNotificationCenterRef center, void *observer,
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) {
-                hideAOD();
+                [self hideAOD];
                 return;
             }
             if (aodWindow && aodWindow.alpha > 0.0) {
-                LuminaUpdateFace();
+                [LuminaUpdateFace];
                 LuminaFade([LuminaPrefs floatForKey:@"opacity" defaultValue:0.90f], 0.3);
             }
         } @catch (NSException *e) {}
@@ -152,14 +170,17 @@ static void LuminaDarwinCallback(CFNotificationCenterRef center, void *observer,
 
 __attribute__((constructor)) static void initLumina() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Lumina 1.2.2 loaded");
+        NSLog(@"[CocxaceTweak] Lumina 1.2.3 loaded");
+
         [LuminaPrefs registerDefaults];
+
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
                                         NULL,
                                         LuminaDarwinCallback,
                                         CFSTR("com.cocxace.lumina/reload"),
                                         NULL,
                                         CFNotificationSuspensionBehaviorDeliverImmediately);
+
         Class cls = objc_getClass("SBLockScreenViewControllerBase");
         if (cls) {
             Method m1 = class_getInstanceMethod(cls, sel_registerName("viewWillAppear:"));
@@ -176,5 +197,17 @@ __attribute__((constructor)) static void initLumina() {
         } else {
             NSLog(@"[Tweak Error] Lumina: SBLockScreenViewControllerBase not found");
         }
+    }
+}
+
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ: С‡РёСЃС‚РёРј AOD РѕРєРЅРѕ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+__attribute__((destructor)) static void cleanupLumina(void) {
+    @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Lumina destructor вЂ” cleaning up AOD window");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @try {
+                hideAOD();
+            } @catch (NSException *e) {}
+        });
     }
 }
