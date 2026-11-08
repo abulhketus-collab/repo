@@ -1,9 +1,10 @@
 Package: com.cocxace.lumina
 Name: Lumina
-Version: 1.2.0
+Version: 1.2.2
 Architecture: iphoneos-arm
 Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo
