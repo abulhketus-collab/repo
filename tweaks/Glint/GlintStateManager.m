@@ -6,7 +6,14 @@
 NSString *const GlintStateDidChangeNotification = @"GlintStateDidChangeNotification";
 
 static const char *kGlintLog = "GlintStateManager";
-#define GlintSMLog(...)     do { if ([GlintPrefs debugEnabled])         os_log(OS_LOG_DEFAULT, "[GlintSM] %s: " __VA_ARGS__, __PRETTY_FUNCTION__); } while(0)
+
+#define GlintSMLog(...) \
+    do { if ([GlintPrefs debugEnabled]) \
+        os_log(OS_LOG_DEFAULT, "[GlintSM] %s: " __VA_ARGS__, __PRETTY_FUNCTION__); } while(0)
+
+// Р”РµРґСѓРїР»РёРєР°С†РёСЏ СѓРІРµРґРѕРјР»РµРЅРёР№: РѕРґРЅРѕ Рё С‚Рѕ Р¶Рµ РїСЂРёР»РѕР¶РµРЅРёРµ РЅРµ СЃРїР°РјРёС‚ С‡Р°С‰Рµ 1 СЂР°Р·Р° РІ 2 СЃРµРє
+static NSString *gLastNotifKey = nil;
+static NSTimeInterval gLastNotifAt = 0;
 
 @implementation GlintStateManager {
     NSMutableOrderedSet<GlintState *> *_states;
@@ -16,7 +23,9 @@ static const char *kGlintLog = "GlintStateManager";
 + (instancetype)sharedManager {
     static GlintStateManager *s;
     static dispatch_once_t once;
-    dispatch_once(&once, ^{ s = [[self alloc] init]; });
+    dispatch_once(&once, ^{
+        s = [[self alloc] init];
+    });
     return s;
 }
 
@@ -30,10 +39,12 @@ static const char *kGlintLog = "GlintStateManager";
 
 - (void)setupIfEnabled {
     if (![GlintPrefs boolForKey:@"enableGlint" defaultValue:YES]) return;
+    GlintSMLog(@"setupIfEnabled");
     [[GlintWindow sharedWindow] updatePosition];
 }
 
 - (void)tearDown {
+    GlintSMLog(@"tearDown");
     [self removeAllStates];
     [[GlintWindow sharedWindow] destroy];
 }
@@ -88,13 +99,23 @@ static const char *kGlintLog = "GlintStateManager";
         NSString *body = [bulletin valueForKey:@"message"] ?: [bulletin valueForKey:@"body"];
         NSString *sectionID = [bulletin valueForKey:@"sectionID"];
         if (!sectionID || sectionID.length == 0) sectionID = [bulletin valueForKey:@"bulletinID"];
+
+        // Р”РµРґСѓРїР»РёРєР°С†РёСЏ: РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РѕРґРЅРѕ Рё С‚Рѕ Р¶Рµ СѓРІРµРґРѕРјР»РµРЅРёРµ РѕС‚ С‚РѕРіРѕ Р¶Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ С‡Р°С‰Рµ СЂР°Р·Р° РІ 2 СЃРµРєСѓРЅРґС‹
+        NSString *dedupKey = [NSString stringWithFormat:@"notif:%@", sectionID ?: @"unknown"];
+        NSTimeInterval now = CACurrentMediaTime();
+        if ([dedupKey isEqualToString:gLastNotifKey] && (now - gLastNotifAt) < 2.0) {
+            return;
+        }
+        gLastNotifKey = dedupKey;
+        gLastNotifAt = now;
+
         GlintState *s = [[GlintState alloc] initWithType:GlintStateNotification
-                                                       key:[NSString stringWithFormat:@"notif:%@", sectionID ?: @"unknown"]
+                                                       key:dedupKey
                                                     priority:GlintStateNotification];
         s.title = title ?: @"Notification";
         s.subtitle = body;
         s.bundleID = sectionID;
-        s.timestamp = CACurrentMediaTime();
+        s.timestamp = now;
         s.icon = [self iconForBundleID:sectionID];
         [self addState:s];
     } @catch (NSException *e) {
@@ -111,7 +132,8 @@ static const char *kGlintLog = "GlintStateManager";
     Class uiImage = NSClassFromString(@"UIImage");
     if ([uiImage respondsToSelector:@selector(_applicationIconImageForBundleIdentifier:scale:)]) {
         UIImage *img = [uiImage performSelector:@selector(_applicationIconImageForBundleIdentifier:scale:)
-                                  withObject:bundleID withObject:@(UIScreen.mainScreen.scale)];
+                                  withObject:bundleID
+                                  withObject:@(UIScreen.mainScreen.scale)];
         if (img) return img;
     }
     return nil;
@@ -124,45 +146,81 @@ static const char *kGlintLog = "GlintStateManager";
     id workspace = [ws performSelector:@selector(defaultWorkspace)];
     SEL sel = @selector(openApplicationWithBundleID:);
     if ([workspace respondsToSelector:sel]) {
-        @try { [workspace performSelector:sel withObject:bundleID]; return YES; }
-        @catch (NSException *e) { GlintSMLog(@"open app failed: %@", e); }
+        @try {
+            [workspace performSelector:sel withObject:bundleID];
+            return YES;
+        } @catch (NSException *e) {
+            GlintSMLog(@"open app failed: %@", e);
+        }
     }
     return NO;
 }
 
 - (void)updateMusicState {
-    if (![GlintPrefs boolForKey:@"glintShowMusic" defaultValue:YES]) { [self removeStatesOfType:GlintStateMusic]; return; }
+    if (![GlintPrefs boolForKey:@"glintShowMusic" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
     NSDictionary *info = [GlintMediaObserver currentNowPlayingInfo];
-    if (!info) { [self removeStatesOfType:GlintStateMusic]; return; }
+    if (!info) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
     NSString *title = info[(NSString *)kMRMediaRemoteNowPlayingInfoTitle];
     NSString *artist = info[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
     NSDictionary *client = info[(NSString *)kMRMediaRemoteNowPlayingInfoClientPropertiesData];
     NSString *clientBundle = client ? client[(NSString *)kMRMediaRemoteNowPlayingInfoClientBundleID] : @"";
-    if (!title || title.length == 0) { [self removeStatesOfType:GlintStateMusic]; return; }
+    if (!title || title.length == 0) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
     GlintState *s = [[GlintState alloc] initWithType:GlintStateMusic
                                                    key:[NSString stringWithFormat:@"music:%@", clientBundle]
                                                 priority:GlintStateMusic];
-    s.title = title; s.subtitle = artist ?: @""; s.bundleID = clientBundle;
-    s.timestamp = CACurrentMediaTime(); s.icon = [self iconForBundleID:clientBundle];
+    s.title = title;
+    s.subtitle = artist ?: @"";
+    s.bundleID = clientBundle;
+    s.timestamp = CACurrentMediaTime();
+    s.icon = [self iconForBundleID:clientBundle];
     [self addState:s];
 }
 
 - (void)updatePowerState {
-    if (![GlintPrefs boolForKey:@"glintShowCharging" defaultValue:YES]) { [self removeStatesOfType:GlintStateCharging]; return; }
-    if (![GlintPowerObserver isCharging]) { [self removeStatesOfType:GlintStateCharging]; return; }
+    if (![GlintPrefs boolForKey:@"glintShowCharging" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateCharging];
+        return;
+    }
+    if (![GlintPowerObserver isCharging]) {
+        [self removeStatesOfType:GlintStateCharging];
+        return;
+    }
     CGFloat capacity = [GlintPowerObserver currentCapacity];
-    GlintState *s = [[GlintState alloc] initWithType:GlintStateCharging key:@"charging" priority:GlintStateCharging];
-    s.title = @"Charging"; s.subtitle = [NSString stringWithFormat:@"%.0f%%", capacity];
-    s.persistent = YES; s.icon = [UIImage imageNamed:@"bolt"];
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateCharging
+                                                 key:@"charging"
+                                              priority:GlintStateCharging];
+    s.title = @"Charging";
+    s.subtitle = [NSString stringWithFormat:@"%.0f%%", capacity];
+    s.persistent = YES;
+    s.icon = [UIImage imageNamed:@"bolt"];
     [self addState:s];
 }
 
 - (void)updateTorchState {
-    if (![GlintPrefs boolForKey:@"glintShowTorch" defaultValue:YES]) { [self removeStatesOfType:GlintStateTorch]; return; }
-    if (![GlintTorchObserver isTorchOn]) { [self removeStatesOfType:GlintStateTorch]; return; }
-    GlintState *s = [[GlintState alloc] initWithType:GlintStateTorch key:@"torch" priority:GlintStateTorch];
-    s.title = @"Flashlight"; s.subtitle = @"On";
-    s.persistent = YES; s.icon = [UIImage imageNamed:@"flashlight.on"];
+    if (![GlintPrefs boolForKey:@"glintShowTorch" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateTorch];
+        return;
+    }
+    if (![GlintTorchObserver isTorchOn]) {
+        [self removeStatesOfType:GlintStateTorch];
+        return;
+    }
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTorch
+                                                 key:@"torch"
+                                              priority:GlintStateTorch];
+    s.title = @"Flashlight";
+    s.subtitle = @"On";
+    s.persistent = YES;
+    s.icon = [UIImage imageNamed:@"flashlight.on"];
     [self addState:s];
 }
 
