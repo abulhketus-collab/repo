@@ -19,6 +19,7 @@ static void _glintMediaCallback(void) {
 }
 
 + (void)uninstall {
+    // РџСѓР±Р»РёС‡РЅРѕРіРѕ API РѕС‚РїРёСЃРєРё Сѓ MediaRemote РЅР° iOS 12 РЅРµС‚ вЂ” РїРѕР»Р°РіР°РµРјСЃСЏ РЅР° respring / destructor
 }
 
 + (NSDictionary *)currentNowPlayingInfo {
