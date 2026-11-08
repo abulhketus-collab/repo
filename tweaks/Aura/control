@@ -1,9 +1,10 @@
 Package: com.cocxace.aura
 Name: Aura
-Version: 1.2.0
+Version: 1.2.2
 Architecture: iphoneos-arm
 Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo
