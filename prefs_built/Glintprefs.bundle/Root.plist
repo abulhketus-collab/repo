@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Остров</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Включить Glint (пилюля как Dynamic Island)</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>1</integer>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>islandSize</string>
+			<key>label</key>
+			<string>Размер пилюли</string>
+			<key>validTitles</key>
+			<array>
+				<string>Small (96pt)</string>
+				<string>Normal (118pt)</string>
+				<string>Large (140pt)</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Как настоящий Dynamic Island: тап по уведомлению открывает приложение, долгий тап раскрывает карточку.</string>
+			<key>label</key>
+			<string>Живые активности</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>showNotifications</string>
+			<key>label</key>
+			<string>Уведомления (раскрытие + иконка)</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>showCharging</string>
+			<key>label</key>
+			<string>Зарядка (⚡-слот и баннер)</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>showMedia</string>
+			<key>label</key>
+			<string>Музыка (эквалайзер-волна)</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>showTorch</string>
+			<key>label</key>
+			<string>Фонарик</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.glint/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.glint</string>
+			<key>key</key>
+			<string>showGreeting</string>
+			<key>label</key>
+			<string>Приветствие после респринга</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Glint 1.2.0 by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Glint</string>
+</dict>
+</plist>

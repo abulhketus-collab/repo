@@ -1,6 +1,6 @@
 Package: com.cocxace.volt
 Name: Volt
-Version: 1.1.0
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Battery percent color by level with configurable thresholds for iOS 12
 Maintainer: cocxace <@cocxace>

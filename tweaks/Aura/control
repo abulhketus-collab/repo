@@ -1,6 +1,6 @@
 Package: com.cocxace.aura
 Name: Aura
-Version: 1.1.0
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
 Maintainer: cocxace <@cocxace>

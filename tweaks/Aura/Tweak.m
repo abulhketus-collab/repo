@@ -27,6 +27,22 @@ static BOOL AuraEnabled(void) {
     }
 }
 
+// Haptics toggle from the Settings pane (default: on).
+static BOOL AuraHaptics(void) {
+    @try {
+        NSDictionary *prefs =
+            [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.aura.plist"];
+        if (!prefs) return YES;
+        return (prefs[@"haptics"] != nil) ? [prefs[@"haptics"] boolValue] : YES;
+    } @catch (NSException *e) {
+        return YES;
+    }
+}
+
+static void AuraTapBuzz(void) {
+    if (AuraHaptics()) AudioServicesPlaySystemSound(1519);
+}
+
 #pragma mark - Actions
 
 typedef NS_ENUM(NSUInteger, AuraAction) {
@@ -146,7 +162,7 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
 }
 
 - (void)actionTapped:(UIButton *)btn {
-    AudioServicesPlaySystemSound(1519);
+    AuraTapBuzz();
     @try {
         switch (btn.tag) {
             case AuraActionTorch:       AuraTorchToggle();    break;
@@ -194,7 +210,7 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
             if (!self.window.hidden) {
                 [((AuraVC *)self.window.rootViewController) dismissPanel];
             } else {
-                AudioServicesPlaySystemSound(1519);
+                AuraTapBuzz();
                 AuraVC *vc = (AuraVC *)self.window.rootViewController;
                 vc.panel.transform = CGAffineTransformMakeScale(0.7, 0.7);
                 vc.view.alpha = 0.0;

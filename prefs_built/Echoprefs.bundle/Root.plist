@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Текст оператора</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Включить замену текста</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string>cocxace ⚡</string>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>carrierText</string>
+			<key>label</key>
+			<string>Текст в статус-баре</string>
+			<key>validTitles</key>
+			<array>
+				<string>cocxace ⚡ (default)</string>
+				<string>iPhone</string>
+				<string>iLLUMI</string>
+				<string>⚡ cocxace</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>cocxace ⚡</string>
+				<string>iPhone</string>
+				<string>iLLUMI</string>
+				<string>⚡ cocxace</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Изменения применяются сразу по darwin-уведомлению (новая строка появится после следующего обновления статус-бара).</string>
+			<key>label</key>
+			<string>Применение</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Echo 1.2.0 by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Echo</string>
+</dict>
+</plist>

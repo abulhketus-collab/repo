@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Always-On Display</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Включить затемнение локскрина</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>3</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>opacityChoice</string>
+			<key>label</key>
+			<string>Прозрачность оверлея</string>
+			<key>validTitles</key>
+			<array>
+				<string>50%</string>
+				<string>65%</string>
+				<string>80%</string>
+				<string>90%</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>showDate</string>
+			<key>label</key>
+			<string>Дата под часами</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Lumina 1.2.0 by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Lumina</string>
+</dict>
+</plist>

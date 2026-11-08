@@ -1,6 +1,6 @@
 Package: com.cocxace.glint
 Name: Glint
-Version: 1.1.0
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Dynamic Island is back: notifications, charging pill, now playing and torch for iOS 12 notchless devices
 Maintainer: cocxace <@cocxace>

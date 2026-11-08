@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.1.0 by @cocxace"
+          "title": "Версия 1.2.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Lumina 1.1.0 — Always-On-Display стиль локскрина.**\n\nЗатемнённый оверлей с живыми часами. Выглядит как AOD на iPhone 5s.\n\nВ 1.1.0:\n\n* фикс «осиротевшего» оверлея: пересоединяется к текущему локскрину\n* дата под часами (можно выключить `showDate`)\n* `opacity` 0.5–0.97, тумблер `enabled` в com.cocxace.lumina\n* адаптивные размеры под любой экран, таймер в NSRunLoopCommonModes"
+          "markdown": "**Lumina 1.2.0 — Always-On-Display стиль локскрина.**\n\nЗатемнённый оверлей с живыми часами. Выглядит как AOD на iPhone 5s.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Lumina (enabled, дата, прозрачность)\n* фикс «осиротевшего» оверлея: пересоединяется к текущему локскрину\n* прозрачность пресетами 50/65/80/90% (`opacityChoice`), legacy `opacity` работает\n* адаптивные размеры под любой экран, таймер в NSRunLoopCommonModes"
         },
         {
           "class": "DepictionSpacerView",

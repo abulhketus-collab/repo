@@ -1,49 +1,57 @@
 // Lumina — Always-On-Display styled lock screen for iOS 12 (com.cocxace.lumina)
-// v1.1.0: dynamic screen layout, stale overlay re-attach fix, date line, prefs.
+// v1.2.0: opacity presets + showDate + enabled from the Settings pane,
+// live reload via darwin notification, stale overlay re-attach fix.
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
+#import <notify.h>
 #import <QuartzCore/QuartzCore.h>
 
 #pragma mark - Preferences
 
-static NSDictionary *LuminaPrefs(void) {
-    static NSDictionary *cache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        cache = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.lumina.plist"] ?: @{};
-    });
-    return cache;
+static NSDictionary *LuminaPrefs = nil;
+
+static void LuminaReloadPrefs(void) {
+    LuminaPrefs = [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.lumina.plist"] ?: @{};
 }
 
 static BOOL LuminaEnabled(void) {
-    id value = LuminaPrefs()[@"enabled"];
+    id value = LuminaPrefs[@"enabled"];
     if ([value isKindOfClass:[NSNumber class]]) return [value boolValue];
     return YES;
 }
 
+// Legacy numeric opacity still wins when present; otherwise opacityChoice.
 static double LuminaOpacity(void) {
-    id value = LuminaPrefs()[@"opacity"];
-    double opacity = [value isKindOfClass:[NSNumber class]] ? [value doubleValue] : 0.88;
-    if (opacity < 0.5) opacity = 0.5;
-    if (opacity > 0.97) opacity = 0.97;
-    return opacity;
+    id value = LuminaPrefs[@"opacity"];
+    if ([value isKindOfClass:[NSNumber class]]) {
+        double opacity = [value doubleValue];
+        if (opacity < 0.5) opacity = 0.5;
+        if (opacity > 0.97) opacity = 0.97;
+        return opacity;
+    }
+
+    NSInteger choice = 3; // default: 90%
+    id pick = LuminaPrefs[@"opacityChoice"];
+    if ([pick isKindOfClass:[NSNumber class]]) choice = [pick integerValue];
+
+    switch (choice) {
+        case 0: return 0.50;
+        case 1: return 0.65;
+        case 2: return 0.80;
+        case 3: default: return 0.90;
+    }
 }
 
 static BOOL LuminaShowDate(void) {
-    id value = LuminaPrefs()[@"showDate"];
+    id value = LuminaPrefs[@"showDate"];
     if ([value isKindOfClass:[NSNumber class]]) return [value boolValue];
     return YES;
 }
 
-static void LuminaUpdateFace(void); // forward decl (timer stub calls it)
-
 #pragma mark - AOD view
 
-static UIView *aodView = nil;
-static UILabel *aodClock = nil;
-static UILabel *aodDate = nil;
-static NSTimer *aodTimer = nil;
+static void LuminaUpdateFace(void);
 
 @interface LuminaTimerStub : NSObject
 + (instancetype)sharedStub;
@@ -68,6 +76,11 @@ static NSTimer *aodTimer = nil;
 }
 
 @end
+
+static UIView *aodView = nil;
+static UILabel *aodClock = nil;
+static UILabel *aodDate = nil;
+static NSTimer *aodTimer = nil;
 
 static void LuminaAttachIfNeeded(UIViewController *self) {
     @try {
@@ -146,8 +159,7 @@ static void hook_viewWillAppear(UIViewController *self, SEL _cmd, BOOL animated)
                                                 userInfo:nil
                                                  repeats:YES];
                 [[NSRunLoop mainRunLoop] addTimer:aodTimer forMode:NSRunLoopCommonModes];
-            }
-            LuminaFade(LuminaOpacity(), 0.5);
+            }            LuminaFade(LuminaOpacity(), 0.5);
         } @catch (NSException *e) {
             NSLog(@"[Tweak Error] Lumina appear: %@", e);
         }
@@ -167,9 +179,37 @@ static void hook_viewWillDisappear(UIViewController *self, SEL _cmd, BOOL animat
     });
 }
 
+#pragma mark - Prefs reload
+
+static void LuminaDarwinCallback(CFNotificationCenterRef center, void *observer,
+                                 CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            LuminaReloadPrefs();
+            if (!LuminaEnabled()) {
+                if (aodView) [aodView removeFromSuperview];
+                return;
+            }
+            if (aodView && aodView.superview && aodView.alpha > 0.0) {
+                LuminaUpdateFace();
+                LuminaFade(LuminaOpacity(), 0.3);
+            }
+        } @catch (NSException *e) {}
+    });
+}
+
 __attribute__((constructor)) static void initLumina() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Lumina 1.1.0 loaded");
+        NSLog(@"[CocxaceTweak] Lumina 1.2.0 loaded");
+        LuminaReloadPrefs();
+
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                        NULL,
+                                        LuminaDarwinCallback,
+                                        CFSTR("com.cocxace.lumina/reload"),
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
+
         Class cls = objc_getClass("SBLockScreenViewControllerBase");
         if (cls) {
             Method m1 = class_getInstanceMethod(cls, sel_registerName("viewWillAppear:"));

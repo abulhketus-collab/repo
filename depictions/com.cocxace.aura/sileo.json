@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.1.0 by @cocxace"
+          "title": "Версия 1.2.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Aura 1.1.0 — Action Button HUD.**\n\nДолгий тап боковой кнопки открывает стеклянную панель: 🔦 Фонарик, 📷 Камера, 🎙 Диктофон, 📸 Скриншот.\n\nВ 1.1.0:\n\n* запуск приложений через SBUIController (надёжнее openURL)\n* адаптивная разметка под любой экран\n* тумблер `enabled` в com.cocxace.aura (выключен — кнопка работает как обычно)\n* тело панели и кнопки масштабируются, гэп 10pt, spring-анимация"
+          "markdown": "**Aura 1.2.0 — Action Button HUD.**\n\nДолгий тап боковой кнопки открывает стеклянную панель: 🔦 Фонарик, 📷 Камера, 🎙 Диктофон, 📸 Скриншот.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Aura (enabled, вибрация haptics)\n* запуск приложений через SBUIController (надёжнее openURL)\n* адаптивная разметка под любой экран, spring-анимация"
         },
         {
           "class": "DepictionSpacerView",

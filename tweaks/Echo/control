@@ -1,6 +1,6 @@
 Package: com.cocxace.echo
 Name: Echo
-Version: 1.1.0
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
 Maintainer: cocxace <@cocxace>

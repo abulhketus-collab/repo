@@ -1,10 +1,10 @@
 // Glint — Dynamic Island for iOS 12 notchless devices (com.cocxace.glint)
-// The island performs like the real one:
-//   • expands on incoming notifications (tap → open app)
-//   • shows a charging pill when plugged in
-//   • shows the now playing track and keeps a ♪ reminder in the pill
-//   • shows torch on/off
-// Everything reactor runs on the main thread and is exception-guarded.
+// v1.2.0: behaves like the real island (researched on Apple HIG):
+//   • idle pill always visible, tap → related app, long-press → details card
+//   • notifications auto-expand + glyph stays in the compact left slot
+//   • charging banner + persistent ⚡ slot; now playing waveform bars
+//   • size presets + feature switches from Settings (live reload)
+// Everything runs on the main thread and is exception-guarded.
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
@@ -45,6 +45,65 @@ extern id objc_msgSend(id self, SEL op, ...);
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *message;
 @end
+
+#pragma mark - Preferences (CFPreferences + darwin live reload)
+
+typedef struct {
+    BOOL enabled;
+    NSInteger islandSize;       // 0 small / 1 normal / 2 large
+    BOOL showNotifications;
+    BOOL showCharging;
+    BOOL showMedia;
+    BOOL showTorch;
+    BOOL showGreeting;
+} GlintPrefs;
+
+static GlintPrefs gPrefs = { YES, 1, YES, YES, YES, YES, YES };
+
+static void GlintLoadPrefsOnMain(void) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            GlintPrefs p;
+            p.enabled = YES; p.islandSize = 1;
+            p.showNotifications = YES; p.showCharging = YES;
+            p.showMedia = YES; p.showTorch = YES; p.showGreeting = YES;
+
+            id raw = (__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("com.cocxace.glint"));
+            if (raw) {
+                if ([raw isKindOfClass:[NSNumber class]]) p.enabled = [raw boolValue];
+                if ([raw isKindOfClass:[NSString class]]) p.enabled = [(NSString *)raw boolValue];
+            }
+
+            id size = (__bridge id)CFPreferencesCopyAppValue(CFSTR("islandSize"), CFSTR("com.cocxace.glint"));
+            if ([size isKindOfClass:[NSNumber class]]) p.islandSize = [size integerValue];
+            if (p.islandSize < 0) p.islandSize = 0;
+            if (p.islandSize > 2) p.islandSize = 2;
+
+            static NSString *keys[] = { @"showNotifications", @"showCharging", @"showMedia", @"showTorch", @"showGreeting" };
+            BOOL *targets[] = { &p.showNotifications, &p.showCharging, &p.showMedia, &p.showTorch, &p.showGreeting };
+            for (int i = 0; i < 5; i++) {
+                id v = (__bridge id)CFPreferencesCopyAppValue((__bridge CFStringRef)keys[i], CFSTR("com.cocxace.glint"));
+                if (v) {
+                    if ([v isKindOfClass:[NSNumber class]]) *targets[i] = [v boolValue];
+                    if ([v isKindOfClass:[NSString class]]) *targets[i] = [(NSString *)v boolValue];
+                    CFRelease((__bridge CFTypeRef)v);
+                }
+            }
+            if (raw) CFRelease((__bridge CFTypeRef)raw);
+            if (size) CFRelease((__bridge CFTypeRef)size);
+
+            gPrefs = p;
+
+            GlintIsland *island = [GlintIsland shared];
+            if (island.isSetup) {
+                [island applySizePreset:gPrefs.islandSize];
+                [island setIslandHidden:!gPrefs.enabled];
+            }
+        } @catch (NSException *e) {
+            NSLog(@"[Glint] prefs load error: %@", e);
+        }
+    });
+}
 
 #pragma mark - Helpers
 
@@ -150,10 +209,16 @@ static void GlintHandleBulletin(id bulletin) {
     if (!bulletin) return;
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
+            if (!gPrefs.enabled || !gPrefs.showNotifications) return;
             GlintIsland *island = [GlintIsland shared];
             if (!island.isSetup) return;
 
             NSString *sectionID = GlintStringOf(bulletin, @"sectionID") ?: @"";
+            BOOL chargingBulletin =
+                [sectionID containsString:@"battery"] ||
+                [sectionID containsString:@"power"];
+            if (chargingBulletin && gPrefs.showCharging) return;   // charging has its own slot
+
             NSString *bulletinID = GlintStringOf(bulletin, @"bulletinID") ?: @"";
             NSString *title = GlintStringOf(bulletin, @"title");
             NSString *message = GlintStringOf(bulletin, @"message");
@@ -216,7 +281,7 @@ static NSString *gLastTrack = nil;
 static void GlintMediaTick(void) {
     @try {
         GlintIsland *island = [GlintIsland shared];
-        if (!island.isSetup) return;
+        if (!island.isSetup || !gPrefs.enabled) return;
 
         Class cls = NSClassFromString(@"SBMediaController");
         if (!cls) return;
@@ -228,7 +293,7 @@ static void GlintMediaTick(void) {
 
         BOOL active = (track.length > 0);
         if (active != island.isNowPlayingActive) {
-            [island setNowPlayingActive:active];
+            [island setNowPlayingActive:active && gPrefs.showMedia];
         }
 
         if (!active) {
@@ -240,19 +305,9 @@ static void GlintMediaTick(void) {
         if (changed) {
             gLastTrack = [track copy];
 
-            id app = GlintCallIfResponds(media, @"nowPlayingApplication");
-            NSString *bid = GlintStringOf(app, @"bundleIdentifier");
-            UIImage *icon = bid.length ? GlintAppIcon(bid) : nil;
-            NSString *appName = bid.length ? GlintStringOf(app, @"displayName") : nil;
-
-            [island showEventForApp:(appName.length ? appName : @"Now Playing")
-                             bundle:bid.length ? bid : nil
-                              glyph:bid.length ? GlintGlyphForBundleID(bid) : @"🎧"
-                               icon:icon
-                              title:track
-                            message:(artist.length
-                                         ? [@"♪ " stringByAppendingString:artist]
-                                         : nil)];
+            if (gPrefs.showMedia) {
+                [island showNowPlayingTrack:track artist:artist];
+            }
         }
     } @catch (NSException *e) {
         NSLog(@"[Glint] media error: %@", e);
@@ -339,7 +394,7 @@ static BOOL gLastTorchOn = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             GlintIsland *island = [GlintIsland shared];
-            if (!island.isSetup) return;
+            if (!island.isSetup || !gPrefs.enabled || !gPrefs.showTorch) return;
             BOOL on = (self->_device && self->_device.torchMode == AVCaptureTorchModeOn);
             if (on == gLastTorchOn) return;
             gLastTorchOn = on;
@@ -429,7 +484,18 @@ static void GlintChargeTick(BOOL showPill) {
         BOOL firstTick = !gFirstChargeTickDone;
         gFirstChargeTickDone = YES;
 
-        if (!island.isSetup) return;
+        if (!island.isSetup || !gPrefs.enabled) return;
+
+        if (plugged && gPrefs.showCharging) {
+            [island setChargingSlotLevel:level orNil:NO];
+        } else if (island.isSetup) {
+            [island setChargingSlotLevel:0 orNil:YES];
+        }
+
+        if (!gPrefs.showCharging) {
+            gChargingNow = charging;
+            return;
+        }
 
         if (charging) {
             // Show the pill when charging starts, or as reminder once at boot.
@@ -447,6 +513,10 @@ static void GlintChargeTick(BOOL showPill) {
 }
 
 static void GlintRegisterChargeWatch(void) {
+    static BOOL registered = NO;
+    if (registered) return;
+    registered = YES;
+
     uint32_t token = 0;
     notify_register_dispatch("com.apple.iokit.powerSource",
                              &token,
@@ -466,11 +536,16 @@ static void GlintBootOnMain(void) {
         @try {
             GlintIsland *island = [GlintIsland shared];
             [island setup];
+            [island applySizePreset:gPrefs.islandSize];
 
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)),
-                           dispatch_get_main_queue(), ^{
-                [[GlintIsland shared] showBootGreeting];
-            });
+            if (!gPrefs.enabled) {
+                [island setIslandHidden:YES];
+            } else if (gPrefs.showGreeting) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)),
+                               dispatch_get_main_queue(), ^{
+                    [[GlintIsland shared] showBootGreeting];
+                });
+            }
 
             [[GlintPump sharedPump] start];
 
@@ -489,6 +564,28 @@ static void GlintBootOnMain(void) {
     });
 }
 
+// Reads prefs preemptively so the boot pipeline picks up the correct layout.
+static void GlintLoadPrefsNow(void) {
+    GlintLoadPrefsOnMain();
+}
+
+#pragma mark - Preferences reload listener
+
+static void GlintDarwinCallback(CFNotificationCenterRef center, void *observer,
+                                CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    CFPreferencesAppSynchronize(CFSTR("com.cocxace.glint"));
+    GlintLoadPrefsOnMain();
+}
+
+static void GlintInstallPrefsObserver(void) {
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                    NULL,
+                                    GlintDarwinCallback,
+                                    CFSTR("com.cocxace.glint/reload"),
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+}
+
 static void (*orig_appDidFinishLaunching)(id self, SEL _cmd, id app);
 static void hook_appDidFinishLaunching(id self, SEL _cmd, id app) {
     if (orig_appDidFinishLaunching) {
@@ -503,6 +600,9 @@ static void hook_appDidFinishLaunching(id self, SEL _cmd, id app) {
 __attribute__((constructor)) static void initGlint(void) {
     @autoreleasepool {
         NSLog(@"[Glint] loaded — Dynamic Island core for iOS 12");
+
+        GlintInstallPrefsObserver();
+        GlintLoadPrefsNow();
 
         Class sb = objc_getClass("SpringBoard");
         if (sb) {

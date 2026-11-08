@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.1.0 by @cocxace"
+          "title": "Версия 1.2.0 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Volt 1.1.0 — цвет процентов батареи.**\n\nЗелёный / жёлтый / красный по уровню заряда.\n\nВ 1.1.0:\n\n* настраиваемые пороги: `highThreshold` (по умолчанию 40), `lowThreshold` (20)\n* настраиваемые цвета: `highColor`, `midColor`, `lowColor` в hex `RRGGBB` или `#RRGGBB`\n* запасной путь, если уровень отрицательный (заряжается в выключенном)"
+          "markdown": "**Volt 1.2.0 — цвет процентов батареи.**\n\nЗелёный / жёлтый / красный по уровню заряда.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Volt\n* выбор цвета для каждой зоны (HIGH/MID/LOW) из 9 вариантов;\n* пороги HIGH/MID/LOW настраиваются в списках (30–50% / 10–25%);\n* legacy hex-ключи `highColor`/`midColor`/`lowColor` (`RRGGBB`) тоже работают;\n* живой reload по `com.cocxace.volt/reload`"
         },
         {
           "class": "DepictionSpacerView",
