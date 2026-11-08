@@ -1,3 +1,7 @@
+// Volt вЂ” battery percent color for iOS 12 (com.cocxace.volt)
+// v1.2.2: CFPreferences instead of plist re-reads, live reload via darwin,
+// division-by-zero guard at 0% / 100%, hex parse via NSScanner.
+
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import <notify.h>
@@ -6,7 +10,11 @@
 
 #import "VoltPrefs.h"
 
-#define VoltLog(fmt, ...)     do { if ([VoltPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Volt] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+#define VoltLog(fmt, ...) \
+    do { if ([VoltPrefs sharedPrefs].debugEnabled) \
+        os_log(OS_LOG_DEFAULT, "[Volt] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+#pragma mark - Preferences
 
 static float VoltNumber(NSString *key, float fallback) {
     CFTypeRef val = CFPreferencesCopyAppValue((CFStringRef)key, CFSTR("com.cocxace.volt"));
@@ -36,15 +44,15 @@ typedef NS_ENUM(NSUInteger, VoltZone) {
 
 static UIColor *VoltColorForChoice(NSInteger choice) {
     switch (choice) {
-        case 1: return [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0];
-        case 2: return [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:1.0];
-        case 3: return [UIColor colorWithRed:0.16 green:0.72 blue:0.8 alpha:1.0];
-        case 4: return [UIColor colorWithRed:1.0 green:0.45 blue:0.1 alpha:1.0];
-        case 5: return [UIColor colorWithRed:0.68 green:0.35 blue:0.9 alpha:1.0];
-        case 6: return [UIColor colorWithRed:0.2 green:0.55 blue:1.0 alpha:1.0];
-        case 7: return [UIColor colorWithRed:1.0 green:0.35 blue:0.7 alpha:1.0];
-        case 8: return [UIColor whiteColor];
-        case 0: default: return [UIColor colorWithRed:0.2 green:0.85 blue:0.35 alpha:1.0];
+        case 1: return [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0];    // Yellow
+        case 2: return [UIColor colorWithRed:1.0 green:0.25 blue:0.25 alpha:1.0];   // Red
+        case 3: return [UIColor colorWithRed:0.16 green:0.72 blue:0.8 alpha:1.0];   // Teal
+        case 4: return [UIColor colorWithRed:1.0 green:0.45 blue:0.1 alpha:1.0];    // Orange
+        case 5: return [UIColor colorWithRed:0.68 green:0.35 blue:0.9 alpha:1.0];   // Purple
+        case 6: return [UIColor colorWithRed:0.2 green:0.55 blue:1.0 alpha:1.0];    // Blue
+        case 7: return [UIColor colorWithRed:1.0 green:0.35 blue:0.7 alpha:1.0];    // Pink
+        case 8: return [UIColor whiteColor];                                       // White
+        case 0: default: return [UIColor colorWithRed:0.2 green:0.85 blue:0.35 alpha:1.0]; // Green
     }
 }
 
@@ -83,7 +91,7 @@ static float VoltPercent(void) {
     @try {
         UIDevice *device = [UIDevice currentDevice];
         [device setBatteryMonitoringEnabled:YES];
-        float rawLevel = device.batteryLevel;
+        float rawLevel = device.batteryLevel; // 0.0..1.0 or -1 when unknown
         if (rawLevel < 0.0) return -1.0;
         return rawLevel * 100.0;
     } @catch (NSException *e) {
@@ -91,11 +99,16 @@ static float VoltPercent(void) {
     }
 }
 
+#pragma mark - Darwin reload
+
 static void VoltDarwinCallback(CFNotificationCenterRef center, void *observer,
                                CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-    @try {}
-    @catch (NSException *e) {}
+    @try {
+        // CFPreferences cache is invalidated automatically on Darwin notification
+    } @catch (NSException *e) {}
 }
+
+#pragma mark - Hook
 
 static void (*orig_setCol)(id self, SEL _cmd, UIColor *color);
 static void hook_setCol(id self, SEL _cmd, UIColor *color) {
@@ -105,6 +118,7 @@ static void hook_setCol(id self, SEL _cmd, UIColor *color) {
             float highAt = VoltNumber(@"highThreshold", 40.0);
             float lowAt = VoltNumber(@"lowThreshold", 20.0);
             if (lowAt > highAt) lowAt = highAt;
+
             UIColor *finalColor;
             if (level > highAt) {
                 finalColor = VoltZoneColor(VoltZoneHigh, [UIColor colorWithRed:0.2 green:0.85 blue:0.35 alpha:1.0]);
@@ -123,13 +137,15 @@ static void hook_setCol(id self, SEL _cmd, UIColor *color) {
 
 __attribute__((constructor)) static void initVolt() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Volt 1.2.2 loaded");
+        NSLog(@"[CocxaceTweak] Volt 1.2.3 loaded");
+
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
                                         NULL,
                                         VoltDarwinCallback,
                                         CFSTR("com.cocxace.volt/reload"),
                                         NULL,
                                         CFNotificationSuspensionBehaviorDeliverImmediately);
+
         Class cls = objc_getClass("UIStatusBarBatteryPercentItemView");
         if (cls) {
             Method m = class_getInstanceMethod(cls, sel_registerName("setTextColor:"));
@@ -143,5 +159,12 @@ __attribute__((constructor)) static void initVolt() {
         } else {
             NSLog(@"[Tweak Error] Volt: UIStatusBarBatteryPercentItemView not found");
         }
+    }
+}
+
+// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+__attribute__((destructor)) static void cleanupVolt(void) {
+    @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Volt destructor вЂ” cleaning up");
     }
 }
