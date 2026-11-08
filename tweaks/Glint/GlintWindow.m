@@ -221,14 +221,14 @@ static GlintWindow *_sharedWindow = nil;
         _minimalDotView.hidden = YES;
     }
 
-    // Р Р°СЃРїРѕР»РѕР¶РёС‚СЊ РІРѕР»РЅС‹ СЃРїСЂР°РІР° РІ СЂР°СЃС€РёСЂРµРЅРЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё
+    // Р Р°СЃРїРѕР»РѕР¶РёС‚СЊ РІРѕР»РЅС‹ СЃРїСЂР°РІР° РІ С‚РµРєСѓС‰РµРј bounds РѕРєРЅР°
     if (isMusic && state.type == GlintStateMusic) {
-        CGRect exp = [self expandedFrame];
-        CGFloat startX = exp.size.width - 40.f;
+        CGRect rect = self.bounds;
+        CGFloat startX = rect.size.width - 40.f;
         CGFloat step = 6.f;
         for (NSInteger i = 0; i < _waveLayers.count; i++) {
             CALayer *wave = _waveLayers[i];
-            wave.frame = CGRectMake(startX + i * step, (exp.size.height - wave.frame.size.height) / 2.f, wave.frame.size.width, wave.frame.size.height);
+            wave.frame = CGRectMake(startX + i * step, (rect.size.height - wave.frame.size.height) / 2.f, wave.frame.size.width, wave.frame.size.height);
             if (!wave.animationForKey:@"waveScale") {
                 CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
                 anim.fromValue = @(0.5f);
