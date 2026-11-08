@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>General</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>enabled</string>
+			<key>label</key><string>Enabled</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableTorch</string>
+			<key>label</key><string>Disable Flashlight</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableCamera</string>
+			<key>label</key><string>Disable Camera</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableVoiceMemos</string>
+			<key>label</key><string>Disable Voice Memos</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableScreenshot</string>
+			<key>label</key><string>Disable Screenshot</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableWiFi</string>
+			<key>label</key><string>Disable Wi-Fi</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>disableBluetooth</string>
+			<key>label</key><string>Disable Bluetooth</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Controls</string>
+			<key>footerText</key><string>Display smooth interactive volume and brightness sliders below the HUD grid.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>showSliders</string>
+			<key>label</key><string>Volume &amp; Brightness</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Trigger</string>
+			<key>footerText</key><string>Long press Power (0.6s) or double click Home button to invoke Action Button HUD.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>0</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>trigger</string>
+			<key>label</key><string>Trigger Method</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Power (Long Press 0.6s)</string>
+				<string>Home (Double Tap)</string>
+				<string>Both (Power &amp; Home)</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>HUD Actions (2x2 Grid)</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>0</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>action1</string>
+			<key>label</key><string>Top Left (Slot 1)</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Flashlight</string>
+				<string>Camera</string>
+				<string>Voice Memos</string>
+				<string>Screenshot</string>
+				<string>Wi-Fi</string>
+				<string>Bluetooth</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>1</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>action2</string>
+			<key>label</key><string>Top Right (Slot 2)</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Flashlight</string>
+				<string>Camera</string>
+				<string>Voice Memos</string>
+				<string>Screenshot</string>
+				<string>Wi-Fi</string>
+				<string>Bluetooth</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>2</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>action3</string>
+			<key>label</key><string>Bottom Left (Slot 3)</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Flashlight</string>
+				<string>Camera</string>
+				<string>Voice Memos</string>
+				<string>Screenshot</string>
+				<string>Wi-Fi</string>
+				<string>Bluetooth</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>3</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>action4</string>
+			<key>label</key><string>Bottom Right (Slot 4)</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Flashlight</string>
+				<string>Camera</string>
+				<string>Voice Memos</string>
+				<string>Screenshot</string>
+				<string>Wi-Fi</string>
+				<string>Bluetooth</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>haptics</string>
+			<key>label</key><string>Haptics</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>actionbutton12Debug</string>
+			<key>label</key><string>Debug Logging</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Respring</string>
+			<key>action</key><string>respring</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>footerAlignment</key><integer>1</integer>
+			<key>footerText</key><string>ActionButton12 by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key><string>ActionButton12</string>
+</dict>
+</plist>
