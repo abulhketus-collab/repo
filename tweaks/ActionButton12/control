@@ -1,0 +1,10 @@
+Package: com.cocxace.actionbutton12
+Name: ActionButton12
+Version: 1.2.3
+Architecture: iphoneos-arm
+Description: Action Button HUD for iOS 12: long-press Power / double-tap Home panel with torch, camera, voice memos, screenshot, Wi-Fi, Bluetooth
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo
