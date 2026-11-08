@@ -166,20 +166,19 @@ static NSTimeInterval gLastNotifAt = 0;
         [self removeStatesOfType:GlintStateMusic];
         return;
     }
-    NSString *title = info[(NSString *)kMRMediaRemoteNowPlayingInfoTitle];
-    NSString *artist = info[(NSString *)kMRMediaRemoteNowPlayingInfoArtist];
-    NSDictionary *client = info[(NSString *)kMRMediaRemoteNowPlayingInfoClientPropertiesData];
-    NSString *clientBundle = client ? client[(NSString *)kMRMediaRemoteNowPlayingInfoClientBundleID] : @"";
+    NSString *title = info[@"title"];
+    NSString *artist = info[@"artist"];
+    NSString *clientBundle = info[@"bundleID"];
     if (!title || title.length == 0) {
         [self removeStatesOfType:GlintStateMusic];
         return;
     }
     GlintState *s = [[GlintState alloc] initWithType:GlintStateMusic
-                                                   key:[NSString stringWithFormat:@"music:%@", clientBundle]
+                                                   key:[NSString stringWithFormat:@"music:%@", clientBundle ?: @"unknown"]
                                                 priority:GlintStateMusic];
     s.title = title;
     s.subtitle = artist ?: @"";
-    s.bundleID = clientBundle;
+    s.bundleID = clientBundle ?: @"";
     s.timestamp = CACurrentMediaTime();
     s.icon = [self iconForBundleID:clientBundle];
     [self addState:s];
