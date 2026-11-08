@@ -1,56 +1,63 @@
-// Aura — Action Button HUD for iOS 12 (com.cocxace.aura)
-// Long-press of the side/power button opens a glass panel with 4 actions.
-// v1.1.0: dynamic screen layout, app launching via SBUIController, preferences.
-
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <os/log.h>
 
-#pragma mark - Local interfaces (runtime-guarded)
+#import "AuraPrefs.h"
+
+#define AuraLog(fmt, ...)     do { if ([AuraPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Aura] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+typedef NS_ENUM(NSInteger, AB12Action) {
+    AB12ActionFlashlight = 0,
+    AB12ActionCamera = 1,
+    AB12ActionVoiceMemos = 2,
+    AB12ActionScreenshot = 3
+};
 
 @interface SBUIController : NSObject
 + (instancetype)sharedInstance;
 - (void)launchApplicationWithIdentifier:(NSString *)bundleID suspended:(BOOL)suspended;
 @end
 
-#pragma mark - Preferences
+@interface SBLockScreenManager : NSObject
++ (instancetype)sharedInstance;
+- (BOOL)isUILocked;
+- (BOOL)isPasscodeLockVisible;
+@end
 
 static BOOL AuraEnabled(void) {
-    @try {
-        NSDictionary *prefs =
-            [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.aura.plist"];
-        if (!prefs) return YES;
-        return (prefs[@"enabled"] != nil) ? [prefs[@"enabled"] boolValue] : YES;
-    } @catch (NSException *e) {
-        return YES;
-    }
+    return [AuraPrefs boolForKey:@"enabled" defaultValue:YES];
 }
 
-// Haptics toggle from the Settings pane (default: on).
 static BOOL AuraHaptics(void) {
-    @try {
-        NSDictionary *prefs =
-            [NSDictionary dictionaryWithContentsOfFile:@"/var/mobile/Library/Preferences/com.cocxace.aura.plist"];
-        if (!prefs) return YES;
-        return (prefs[@"haptics"] != nil) ? [prefs[@"haptics"] boolValue] : YES;
-    } @catch (NSException *e) {
-        return YES;
+    return [AuraPrefs boolForKey:@"haptics" defaultValue:YES];
+}
+
+static BOOL AuraActionDisabled(AB12Action action) {
+    switch (action) {
+        case AB12ActionFlashlight:   return [AuraPrefs boolForKey:@"disableTorch" defaultValue:NO];
+        case AB12ActionCamera:       return [AuraPrefs boolForKey:@"disableCamera" defaultValue:NO];
+        case AB12ActionVoiceMemos:   return [AuraPrefs boolForKey:@"disableVoiceMemos" defaultValue:NO];
+        case AB12ActionScreenshot:   return [AuraPrefs boolForKey:@"disableScreenshot" defaultValue:NO];
+        default: return NO;
     }
 }
 
 static void AuraTapBuzz(void) {
-    if (AuraHaptics()) AudioServicesPlaySystemSound(1519);
+    if (AuraHaptics()) AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
-#pragma mark - Actions
-
-typedef NS_ENUM(NSUInteger, AuraAction) {
-    AuraActionTorch = 100,
-    AuraActionCamera = 101,
-    AuraActionVoiceMemos = 102,
-    AuraActionScreenshot = 103,
-};
+static BOOL AuraShouldSuppressHUD(void) {
+    Class lsmCls = NSClassFromString(@"SBLockScreenManager");
+    if (lsmCls) {
+        id lsm = [lsmCls performSelector:@selector(sharedInstance)];
+        if (lsm && [lsm respondsToSelector:@selector(isUILocked)] && [lsm isUILocked]) return YES;
+        if (lsm && [lsm respondsToSelector:@selector(isPasscodeLockVisible)] && [lsm isPasscodeLockVisible]) return YES;
+    }
+    return NO;
+}
 
 static void AuraTorchToggle(void) {
     @try {
@@ -59,8 +66,8 @@ static void AuraTorchToggle(void) {
         NSError *error = nil;
         if ([device lockForConfiguration:&error]) {
             device.torchMode = (device.torchMode == AVCaptureTorchModeOn)
-                                   ? AVCaptureTorchModeOff
-                                   : AVCaptureTorchModeOn;
+                               ? AVCaptureTorchModeOff
+                               : AVCaptureTorchModeOn;
             [device unlockForConfiguration];
         }
     } @catch (NSException *e) {
@@ -83,7 +90,6 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
                 return;
             }
         }
-        // Fallback (SpringBoard passes openURL on to the system anyway).
         NSURL *url = [NSURL URLWithString:fallbackURL];
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     } @catch (NSException *e) {
@@ -91,50 +97,39 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
     }
 }
 
-#pragma mark - Panel VC
-
 @interface AuraVC : UIViewController
 @property (nonatomic, strong) UIView *panel;
 @property (nonatomic, strong) UIVisualEffectView *blurView;
 @end
 
 @implementation AuraVC
-
 - (BOOL)shouldAutorotate { return YES; }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations { return UIInterfaceOrientationMaskAll; }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
-
     UITapGestureRecognizer *tap =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPanel)];
     [self.view addGestureRecognizer:tap];
-
-    // Dynamic screen bounds (no legacy hardcoded 320x568).
     CGFloat W = [UIScreen mainScreen].bounds.size.width;
     CGFloat H = [UIScreen mainScreen].bounds.size.height;
     CGFloat size = MIN(MIN(W, H) - 60.0, 200.0);
-
     self.panel = [[UIView alloc] initWithFrame:CGRectMake((W - size) / 2.0, (H - size) / 2.0, size, size)];
     self.panel.layer.cornerRadius = 20.0;
     self.panel.clipsToBounds = YES;
     self.panel.layer.borderWidth = 1.0;
     self.panel.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.18].CGColor;
-
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
     self.blurView.frame = self.panel.bounds;
     self.blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.panel addSubview:self.blurView];
-
-    NSArray *icons = @[ @[ @"🔦", @(AuraActionTorch) ],
-                        @[ @"📷", @(AuraActionCamera) ],
-                        @[ @"🎙️", @(AuraActionVoiceMemos) ],
-                        @[ @"📸", @(AuraActionScreenshot) ] ];
-
+    NSArray *icons = @[ @"U0001F526", @(AB12ActionFlashlight),
+                        @"U0001F4F7", @(AB12ActionCamera),
+                        @"U0001F399", @(AB12ActionVoiceMemos),
+                        @"U0001F4F8", @(AB12ActionScreenshot) ];
     CGFloat cell = (size - 40.0) / 2.0;
-    CGFloat gap  = 10.0;
+    CGFloat gap = 10.0;
     for (int i = 0; i < 4; i++) {
         int r = i / 2;
         int c = i % 2;
@@ -151,7 +146,6 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
     }
     [self.view addSubview:self.panel];
 }
-
 - (void)dismissPanel {
     [UIView animateWithDuration:0.2 animations:^{
         self.panel.transform = CGAffineTransformMakeScale(0.8, 0.8);
@@ -160,15 +154,14 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
         self.view.window.hidden = YES;
     }];
 }
-
 - (void)actionTapped:(UIButton *)btn {
     AuraTapBuzz();
     @try {
         switch (btn.tag) {
-            case AuraActionTorch:       AuraTorchToggle();    break;
-            case AuraActionCamera:      AuraLaunchApp(@"com.apple.camera", @"camera:");           break;
-            case AuraActionVoiceMemos:  AuraLaunchApp(@"com.apple.VoiceMemos", @"voicememos:");   break;
-            case AuraActionScreenshot:  AuraScreenshot();     break;
+            case AB12ActionFlashlight:   AuraTorchToggle(); break;
+            case AB12ActionCamera:       AuraLaunchApp(@"com.apple.camera", @"camera:"); break;
+            case AB12ActionVoiceMemos:   AuraLaunchApp(@"com.apple.VoiceMemos", @"voicememos:"); break;
+            case AB12ActionScreenshot:   AuraScreenshot(); break;
             default: break;
         }
     } @catch (NSException *e) {
@@ -176,10 +169,7 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
     }
     [self dismissPanel];
 }
-
 @end
-
-#pragma mark - Manager
 
 @interface AuraManager : NSObject
 + (instancetype)shared;
@@ -188,17 +178,19 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
 @end
 
 @implementation AuraManager
-
 + (instancetype)shared {
     static AuraManager *sharedManager = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedManager = [[AuraManager alloc] init];
-    });
+    dispatch_once(&onceToken, ^{ sharedManager = [[AuraManager alloc] init]; });
     return sharedManager;
 }
-
 - (void)toggleHUD {
+    Class lsmCls = NSClassFromString(@"SBLockScreenManager");
+    if (lsmCls) {
+        id lsm = [lsmCls performSelector:@selector(sharedInstance)];
+        if (lsm && [lsm respondsToSelector:@selector(isUILocked)] && [lsm isUILocked]) return;
+        if (lsm && [lsm respondsToSelector:@selector(isPasscodeLockVisible)] && [lsm isPasscodeLockVisible]) return;
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             if (!self.window) {
@@ -218,10 +210,10 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
                 [self.window makeKeyAndVisible];
                 [UIView animateWithDuration:0.35
                                       delay:0.0
-                     usingSpringWithDamping:0.7
-                      initialSpringVelocity:0.8
-                                    options:UIViewAnimationOptionCurveEaseInOut
-                                 animations:^{
+                             usingSpringWithDamping:0.7
+                              initialSpringVelocity:0.8
+                                        options:UIViewAnimationOptionCurveEaseInOut
+                                     animations:^{
                     vc.panel.transform = CGAffineTransformIdentity;
                     vc.view.alpha = 1.0;
                 } completion:nil];
@@ -231,14 +223,11 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
         }
     });
 }
-
 @end
-
-#pragma mark - Hook
 
 static void (*orig_longPress)(id self, SEL _cmd, id btn);
 static void hook_longPress(id self, SEL _cmd, id btn) {
-    if (AuraEnabled()) {
+    if (AuraEnabled() && !AuraShouldSuppressHUD()) {
         [[AuraManager shared] toggleHUD];
         return;
     }
@@ -247,7 +236,7 @@ static void hook_longPress(id self, SEL _cmd, id btn) {
 
 __attribute__((constructor)) static void initAura() {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Aura 1.1.0 loaded");
+        NSLog(@"[CocxaceTweak] Aura 1.2.2 loaded");
         Class sb = objc_getClass("SpringBoard");
         if (sb) {
             Method m = class_getInstanceMethod(sb, sel_registerName("_hardwareButtonLongPressed:"));
