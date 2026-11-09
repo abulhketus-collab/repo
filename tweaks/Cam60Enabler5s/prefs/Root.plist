@@ -7,20 +7,158 @@
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
 			<key>label</key><string>Cam60Enabler5s</string>
-			<key>footerText</key><string>⚠️ ВНИМАНИЕ: iPhone 5s (A7) не сертифицирован Апплы для 1080p60. Включение может привести к чёрному экрану, зависанию камеры или крэшу mediaserverd.</string>
+			<key>footerText</key><string>With the tweak: the Camera app exposes 1080p 60 fps recording on iPhone 5s. Without it: stock 1080p 30 fps only. If anything fails, the tweak disables itself and the stock camera keeps working — no Safe Mode.</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSSwitchCell</string>
 			<key>default</key><false/>
 			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
 			<key>key</key><string>enabled</string>
-			<key>label</key><string>Enable 1080p60 (unsafe)</string>
+			<key>label</key><string>1080p @ 60 FPS</string>
+			<key>footerText</key><string>Off by default so you can feel the difference yourself. Uses a warm-up from 30 to 60 fps and falls back to 30 fps on any error.</string>
 			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Profile Preset</string>
+			<key>footerText</key><string>A preset applies a ready-made set of all options below at once. Choose Custom to keep your own values.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>-1</integer>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>profile</string>
+			<key>label</key><string>Preset</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Max Quality (1080p60 + slow-mo, 80 Mb/s)</string>
+				<string>Balance (1080p60, 50 Mb/s)</string>
+				<string>Battery Save (30 fps, 30 Mb/s)</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>-1</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Recording Modes</string>
+			<key>footerText</key><string>Compatibility is honest: features the A7 chip physically cannot deliver are clearly marked and safely ignored instead of crashing the camera.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>slowmo</string>
+			<key>label</key><string>Slow-Mo 720p120</string>
+			<key>footerText</key><string>A7 officially sustains 720p at 120 fps — the most realistic slow-motion win on iPhone 5s.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>f4k60</string>
+			<key>label</key><string>4K @ 60 FPS — NOT ON 5s</string>
+			<key>footerText</key><string>4K60 needs an A9 chip or newer. On iPhone 5s this switch is accepted but safely ignored to protect mediaserverd.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>proraw</string>
+			<key>label</key><string>ProRAW — NOT ON 5s</string>
+			<key>footerText</key><string>ProRAW needs A12 or newer plus a newer iOS API. Safely ignored on iOS 12 / A7.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>cine</string>
+			<key>label</key><string>Cinematic Mode — NOT ON 5s</string>
+			<key>footerText</key><string>Cinematic mode ships with iPhone 13 and newer. Safely ignored here.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Quality</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>default</key><real>50</real>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>bitrate</string>
+			<key>label</key><string>Video Bitrate (Mb/s)</string>
+			<key>min</key><real>20</real>
+			<key>max</key><real>80</real>
+			<key>interval</key><real>5</real>
+			<key>footerText</key><string>Higher = sharper video, more heat and battery drain. 50 Mb/s is a good balance for A7.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>default</key><real>85</real>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>quality</string>
+			<key>label</key><string>Encoder Quality (%)</string>
+			<key>min</key><real>60</real>
+			<key>max</key><real>100</real>
+			<key>interval</key><real>5</real>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Safety</string>
+			<key>footerText</key><string>Both guards are on by default. They are the reason the stock camera never breaks and the phone never enters Safe Mode because of this tweak.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>thermal</string>
+			<key>label</key><string>Thermal Protection</string>
+			<key>footerText</key><string>Drops back to 30 fps automatically when the phone gets seriously hot.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>autodis</string>
+			<key>label</key><string>Auto-Disable on Error</string>
+			<key>footerText</key><string>If the camera pipeline rejects the 60 fps config, the tweak switches itself off and writes that to Settings — the stock camera keeps working.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Reset</string>
+			<key>footerText</key><string>Reset restores every option above to the safe v1.0.3 defaults (60 fps off, thermal and auto-disable on).</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Reset All Settings</string>
+			<key>action</key><string>resetDefaults</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSButtonCell</string>
 			<key>label</key><string>Respring</string>
 			<key>action</key><string>respring</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>footerAlignment</key><integer>1</integer>
+			<key>footerText</key><string>Cam60Enabler5s 1.0.3 by @cocxace — profiles, slow-mo, bitrate control, self-protection.</string>
 		</dict>
 	</array>
 	<key>title</key><string>Cam60Enabler5s</string>
