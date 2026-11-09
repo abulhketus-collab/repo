@@ -13,7 +13,21 @@
 html{overflow-x:hidden;scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;padding:30px 12px 40px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;z-index:1;display:flex;justify-content:center;align-items:stretch;flex-wrap:wrap;padding:66px 12px 40px;max-width:1240px;margin:0 auto}
+.sidepanel{width:266px;background:#101010;border:3px solid #ffffff;box-shadow:6px 6px 0 #000000;margin:0 14px;padding:16px 14px;max-height:860px;overflow:auto;align-self:stretch}
+.sp-title{font-family:'Press Start 2P',monospace;font-size:.72rem;color:#ffffff;text-shadow:2px 2px 0 #000;letter-spacing:1px;border-bottom:3px solid #ffffff;padding-bottom:10px;margin-bottom:14px;line-height:1.5}
+.sp-item{border:2px solid #2c2c2c;background:#151515;padding:10px;margin-bottom:10px}
+.sp-item.hot{border-color:#ffffff}
+.sp-top{display:flex;align-items:center;font-family:'Press Start 2P',monospace;font-size:.5rem;color:#ffffff;line-height:1.6}
+.sp-b{font-family:'Press Start 2P',monospace;font-size:.42rem;padding:2px 5px;margin-left:auto;white-space:nowrap}
+.sp-b.new{background:#ffffff;color:#000}
+.sp-b.up{background:#00d2ff;color:#000}
+.sp-v{color:#00d2ff}
+.sp-d{font-family:'Press Start 2P',monospace;font-size:.4rem;color:#6d6d6d;margin-top:4px}
+.sp-c{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;font-size:.68rem;color:#c9c9c9;line-height:1.5;margin-top:7px}
+@media(max-width:1140px){.hero{flex-direction:column;align-items:center;padding-top:76px}.sidepanel{width:100%;max-width:448px;max-height:none;margin:14px 0 0}}
 .phone{position:relative;z-index:1;width:100%;max-width:420px;height:88dvh;max-height:820px;min-height:540px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
 @media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
 .track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
@@ -72,80 +86,308 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@supports not (gap: 1px){.dots .dot{margin:0 5px}.row .btn{margin:0 4px}.ctrl .dots{margin-bottom:10px}.feat,.step{padding:20px 14px}.urlbox .cb{margin-left:10px}.bp svg,.bs svg{margin-right:6px}}
 
-/* ---------- MINECRAFT TWEAKS SECTION ---------- */
+/* ---------- MINECRAFT TWEAKS ---------- */
 .mc{position:relative;z-index:1;border-top:4px solid #ffffff;background:#0a0a0a;padding:3.2rem 1.2rem 2.6rem}
 .mcwrap{max-width:1000px;margin:0 auto}
 .mc h2{font-family:'Press Start 2P',monospace;font-size:clamp(1rem,3.6vw,1.45rem);color:#ffffff;text-shadow:4px 4px 0 #000;letter-spacing:1px;line-height:1.6;display:inline-block;border-bottom:4px solid #ffffff;padding-bottom:10px}
 .mc .sub{font-family:'Press Start 2P',monospace;font-size:.58rem;color:#8a8a8a;margin-top:14px;line-height:1.8}
-.stack{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
-.card{background:#141414;border:3px solid #ffffff;box-shadow:6px 6px 0 #000000;padding:1.1rem 1.2rem;display:flex;align-items:center;gap:1.1rem;transition:transform .12s,box-shadow .12s,border-color .12s}
+.stack{margin-top:2rem}
+.card{background:#141414;border:3px solid #ffffff;box-shadow:6px 6px 0 #000000;padding:1.1rem 1.2rem;margin-bottom:1.25rem;display:flex;align-items:center;transition:transform .12s,box-shadow .12s,border-color .12s}
 .card:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 #000000;border-color:#00d2ff}
-.ico{width:60px;height:60px;background:#1f1f1f;border:3px solid #ffffff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0}
+.ico{width:60px;height:60px;background:#1f1f1f;border:3px solid #ffffff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;margin-right:1.1rem}
 .info{flex:1;min-width:0}
 .name{font-family:'Press Start 2P',monospace;font-size:.78rem;color:#ffffff;text-shadow:2px 2px 0 #000;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ver{font-family:'Press Start 2P',monospace;font-size:.5rem;color:#000000;background:#ffffff;padding:3px 6px;border:2px solid #000000;margin-left:8px;vertical-align:middle;text-shadow:none}
 .desc{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;font-size:.74rem;color:#c9c9c9;line-height:1.55;margin-top:8px}
-.dl{display:inline-block;margin-top:12px;font-family:'Press Start 2P',monospace;font-size:.55rem;color:#000000;background:#ffffff;border:3px solid #000000;box-shadow:4px 4px 0 #000000;padding:10px 16px;text-decoration:none;text-shadow:none;transition:background .1s,transform .1s,box-shadow .1s}
+.acts{margin-top:12px}
+.dl{display:inline-block;font-family:'Press Start 2P',monospace;font-size:.55rem;color:#000000;background:#ffffff;border:3px solid #000000;box-shadow:4px 4px 0 #000000;padding:10px 16px;text-decoration:none;text-shadow:none;transition:background .1s,transform .1s,box-shadow .1s}
 .dl:hover{background:#00d2ff}
 .dl:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000000}
-@media(max-width:640px){.card{flex-direction:column;align-items:flex-start;gap:.8rem}.info{width:100%}}
+.gear{display:inline-block;font-family:'Press Start 2P',monospace;font-size:.55rem;color:#ffffff;background:transparent;border:3px solid #ffffff;box-shadow:4px 4px 0 #000000;padding:10px 16px;text-decoration:none;margin-left:10px;cursor:pointer;transition:background .1s,color .1s,transform .1s}
+.gear:hover{background:#ffffff;color:#000}
+.gear:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+@media(max-width:640px){.card{flex-direction:column;align-items:flex-start}.ico{margin:0 0 .8rem}.info{width:100%}}
 footer{position:relative;z-index:1;background:#141414;border-top:4px solid #ffffff;padding:1.8rem 1.2rem;text-align:center;font-family:'Press Start 2P',monospace;font-size:.6rem;color:#e0e0e0;line-height:2.2;text-shadow:2px 2px 0 #000}
 footer .repo-link{color:#00d2ff;text-decoration:none;border-bottom:2px solid #00d2ff;word-break:break-all}
 footer .repo-link:hover{color:#ffffff;border-color:#ffffff}
 </style>
+<style>
+/* ---------- DYNAMIC ISLAND WIDGET ---------- */
+.di{position:fixed;top:12px;left:50%;z-index:500;width:250px;max-width:calc(100% - 20px);background:#000;border:1px solid #1c1c1c;border-radius:24px;transform:translateX(-50%);transition:width .45s cubic-bezier(.32,1.25,.5,1),border-radius .45s cubic-bezier(.32,1.25,.5,1);box-shadow:0 8px 30px rgba(0,0,0,.55);font-family:var(--font);-webkit-user-select:none;user-select:none;touch-action:pan-y}
+.di.open{width:348px;border-radius:30px}
+.di-glow{position:absolute;inset:-3px;border-radius:inherit;pointer-events:none;opacity:var(--gs,.55);box-shadow:0 0 22px var(--g1,#00d2ff),0 0 55px var(--g1,#00d2ff),inset 0 0 14px var(--g2,#7a5cff);transition:opacity .3s}
+.di-glow.rb{animation:diHue linear var(--gspd,6s) infinite}
+@keyframes diHue{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.di-glow.bk{animation:diBlink 2s steps(1) infinite}
+@keyframes diBlink{0%,49%{opacity:var(--gs,.55)}50%,100%{opacity:0}}
+.di-inner{position:relative;display:flex;align-items:center;padding:10px 14px;transform-origin:50% 50%}
+.di-seg{display:none;align-items:center;font-size:12px;color:#e8e8e8;white-space:nowrap;letter-spacing:-.1px;margin-right:11px}
+.di-seg.on{display:flex}
+.di-seg b{font-weight:600;font-variant-numeric:tabular-nums;margin-left:4px}
+.di-badge{display:none;margin-left:auto;min-width:17px;height:17px;border-radius:9px;background:#ff3b30;color:#fff;font-size:10.5px;font-weight:700;text-align:center;line-height:17px;padding:0 4px}
+.di-badge.on{display:block}
+.di-prog{position:relative;display:none;width:64px;height:6px;background:#222;border-radius:3px;overflow:hidden;margin-right:8px}
+.di-prog.on{display:block}
+.di-prog i{position:absolute;inset:0 auto 0 0;width:0;background:#fff}
+.di.expand-hide .di-seg{opacity:0;transition:opacity .2s}
+/* expanded content */
+.di-expand{position:relative;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s cubic-bezier(.32,1.25,.5,1),opacity .3s;padding:0 14px}
+.di.open .di-expand{max-height:640px;opacity:1;padding-bottom:14px}
+.dx-card{background:#0d0d0d;border:1px solid #1f1f1f;border-radius:14px;padding:12px;margin-bottom:10px}
+.dx-big{font-size:34px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums;text-align:center;color:#fff}
+.dx-date{font-size:11px;color:var(--dim);text-align:center;margin-top:2px}
+.dx-h{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.dx-rowbtns{display:flex;margin:0 -4px}
+.dx-rowbtns button,.mbtn{flex:1;margin:0 4px;padding:9px 6px;border:1px solid #2a2a2a;border-radius:9px;background:#121212;color:#ddd;font-family:var(--font);font-size:11.5px;font-weight:500;cursor:pointer;transition:background .15s,transform .1s}
+.dx-rowbtns button:active,.mbtn:active{transform:scale(.96);background:#1c1c1c;color:#fff}
+.mbtn.prim{background:#fff;color:#000;border-color:#000;font-weight:600}
+.tm-bar{height:4px;background:#1e1e1e;border-radius:2px;margin-top:10px;overflow:hidden}
+.tm-bar i{display:block;height:100%;width:0;background:#fff;border-radius:2px}
+.mus-title{font-size:12.5px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:8px}
+.mus-sub{font-size:10.5px;color:var(--dim);margin-top:1px}
+#eqCanvas{width:100%;height:64px;display:block;background:#08080a;border-radius:8px;margin-top:10px}
+.volrow{display:flex;align-items:center;margin-top:10px}
+.volrow input{-webkit-appearance:none;appearance:none;flex:1;height:4px;background:#2a2a2a;border-radius:2px;outline:none}
+.volrow input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;cursor:pointer}
+.wx-line{font-size:12.5px;color:#e8e8e8}
+.wx-line b{font-weight:600}
+.nt-item{font-size:11.5px;color:#d8d8d8;padding:7px 2px;border-bottom:1px solid #1a1a1a;line-height:1.4}
+.nt-item:last-child{border-bottom:none}
+.nt-item b{color:#fff}
+/* themes */
+.di.theme-neon{background:#050508;border-color:rgba(0,210,255,.5)}
+.di.theme-neon .dx-card{background:#080810;border-color:#123}
+.di.theme-glass{background:rgba(10,10,12,.82)}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.di.theme-glass{-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}}
+.di.theme-minimal{background:#0c0c0c;border-color:#000;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.di.theme-minimal .di-glow{opacity:0}
+/* island toast */
+.itoast{position:fixed;top:64px;left:50%;transform:translateX(-50%) translateY(-8px);background:#fff;color:#000;padding:9px 16px;border-radius:10px;font-family:var(--font);font-size:12.5px;font-weight:600;z-index:600;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 8px 24px rgba(0,0,0,.5);max-width:80%;text-align:center}
+.itoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* pixel rain easter egg */
+#rain{position:fixed;inset:0;z-index:850;pointer-events:none;display:none}
+
+/* ---------- SPLASH ---------- */
+#splash{position:fixed;inset:0;z-index:900;background:#050505;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .55s ease}
+#splash.hide{opacity:0;pointer-events:none}
+.spl-island{background:#000;border:1px solid #242424;border-radius:40px;padding:44px 64px;text-align:center;box-shadow:0 0 70px rgba(0,210,255,.16),0 0 22px rgba(122,92,255,.14);animation:splIn .7s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes splIn{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+.spl-island .spl-name{font-family:'Press Start 2P',monospace;font-size:clamp(22px,7vw,38px);color:#fff;letter-spacing:2px}
+.spl-island .spl-cam{width:12px;height:12px;border-radius:50%;background:#0a0a14;border:1px solid #1c1c2a;margin:0 auto 18px}
+.spl-sub{margin-top:22px;font-family:'Press Start 2P',monospace;font-size:.55rem;color:#8a8a8a;letter-spacing:2px;line-height:2;animation:splIn .7s .25s cubic-bezier(.3,1.4,.5,1) both}
+
+/* ---------- SETTINGS MODALS ---------- */
+.omodal{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:16px}
+.omodal.open{display:flex}
+.osheet{background:#121212;border:2px solid #ffffff;box-shadow:10px 10px 0 #000;width:420px;max-width:100%;max-height:86vh;display:flex;flex-direction:column;font-family:var(--font)}
+.ohead{display:flex;align-items:center;padding:14px 16px;border-bottom:2px solid #ffffff}
+.ohead .ot{font-family:'Press Start 2P',monospace;font-size:.68rem;color:#fff;text-shadow:2px 2px 0 #000;line-height:1.5}
+.oclose{margin-left:auto;width:30px;height:30px;border:2px solid #fff;background:#000;color:#fff;font-size:14px;font-weight:700;cursor:pointer;line-height:1}
+.oclose:hover{background:#ff3b30;border-color:#ff3b30}
+.obody{padding:6px 16px 16px;overflow:auto}
+.osrch{width:100%;padding:9px 12px;margin:10px 0 4px;background:#0a0a0a;border:1px solid #2c2c2c;border-radius:9px;color:#eee;font-family:var(--font);font-size:12.5px;outline:none}
+.osrch:focus{border-color:#00d2ff}
+.osec{font-family:'Press Start 2P',monospace;font-size:.5rem;color:#00d2ff;letter-spacing:1.5px;margin:16px 0 6px;text-transform:uppercase}
+.orow{display:flex;align-items:center;padding:9px 2px;border-bottom:1px solid #1e1e1e}
+.orow .ol{flex:1;min-width:0;padding-right:10px}
+.orow .olt{font-size:12.5px;font-weight:600;color:#fff;line-height:1.3}
+.orow .odsc{font-size:10.5px;color:#9a9a9a;line-height:1.4;margin-top:2px}
+.orow .otip{font-size:10px;color:#6d6d6d;line-height:1.35;margin-top:2px;font-style:italic}
+/* switch */
+.osw{position:relative;width:46px;height:26px;flex-shrink:0;cursor:pointer}
+.osw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.osw i{position:absolute;inset:0;background:#2e2e2e;border-radius:13px;transition:background .2s}
+.osw i:before{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.osw input:checked + i{background:#34c759}
+.osw input:checked + i:before{transform:translateX(20px)}
+/* slider */
+.oslider{display:flex;align-items:center;width:150px;flex-shrink:0}
+.oslider input{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:#2e2e2e;border-radius:2px;outline:none}
+.oslider input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:17px;height:17px;border-radius:50%;background:#fff;cursor:pointer}
+.oslider .ov{width:52px;text-align:right;font-size:11px;color:#00d2ff;font-variant-numeric:tabular-nums;flex-shrink:0}
+/* color + text */
+.oclr{display:flex;align-items:center;flex-shrink:0}
+.oclr input[type=color]{width:34px;height:30px;border:1px solid #333;background:#0a0a0a;padding:2px;cursor:pointer}
+.oclr input[type=text]{width:76px;padding:6px 8px;margin-left:6px;background:#0a0a0a;border:1px solid #2c2c2c;border-radius:7px;color:#eee;font-family:ui-monospace,monospace;font-size:11px;outline:none}
+.otext{width:170px;padding:7px 10px;background:#0a0a0a;border:1px solid #2c2c2c;border-radius:8px;color:#eee;font-family:var(--font);font-size:12.5px;outline:none;flex-shrink:0}
+.osel{padding:7px 8px;background:#0a0a0a;border:1px solid #2c2c2c;border-radius:8px;color:#eee;font-family:var(--font);font-size:12.5px;flex-shrink:0;outline:none}
+.obadge{font-family:'Press Start 2P',monospace;font-size:.38rem;padding:3px 5px;margin-left:6px;vertical-align:middle}
+.obadge.no{background:#3a3a3a;color:#ffb0b0;border:1px solid #ff6b6b}
+.obadge.ok{background:#103a10;color:#7dff7d;border:1px solid #2fd12f}
+.presetrow{display:flex;margin:4px -4px 8px}
+.presetrow .mbtn{font-size:10.5px}
+.statusline{font-size:11px;color:#9fe89f;padding:7px 9px;background:#0c180c;border:1px solid #1f3a1f;border-radius:8px;margin-top:6px;line-height:1.5}
+.warnline{font-size:11px;color:#ffcf7d;padding:7px 9px;background:#1a1408;border:1px solid #4a3a1f;border-radius:8px;margin-top:6px;line-height:1.5}
+/* compare slider */
+.cmp{position:relative;height:150px;border:2px solid #fff;margin-top:10px;overflow:hidden}
+.cmp .c-a,.cmp .c-b{position:absolute;inset:0}
+.cmp .c-a{background:repeating-linear-gradient(90deg,#2e2e2e 0 3px,#242424 3px 6px);filter:blur(1.6px) brightness(.72)}
+.cmp .c-b{background:linear-gradient(160deg,#3a3a3a,#161616)}
+.cmp .c-b:after{content:'60 FPS · SHARP';position:absolute;top:8px;left:8px;font-family:'Press Start 2P',monospace;font-size:.42rem;color:#7dff7d}
+.cmp .c-a:before{content:'30 FPS · MOTION BLUR';position:absolute;top:8px;left:8px;font-family:'Press Start 2P',monospace;font-size:.42rem;color:#ffb0b0;z-index:2}
+.cmp input{position:absolute;inset:0;width:100%;height:100%;-webkit-appearance:none;appearance:none;background:transparent;margin:0;cursor:ew-resize}
+.cmp input::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:6px;height:150px;background:#00d2ff;cursor:ew-resize}
+@media(max-width:480px){.orow{flex-wrap:wrap}.orow .ol{width:100%}.oslider{width:100%;margin-top:8px}.oclr,.otext,.osel{margin-top:8px}}
+</style>
 </head>
 <body>
+<!-- ---------- SPLASH ---------- -->
+<div id="splash">
+  <div class="spl-island">
+    <div class="spl-cam"></div>
+    <div class="spl-name">Glint</div>
+  </div>
+  <div class="spl-sub">tweaks repo<br>made for 5s</div>
+</div>
 
-<!-- ---------- ANIMATION (USER CODE) ---------- -->
+<!-- ---------- DYNAMIC ISLAND ---------- -->
+<div class="di theme-classic" id="di">
+  <div class="di-glow" id="diGlow"></div>
+  <div class="di-inner" id="diInner">
+    <span class="di-seg" id="segClock"><span id="diClockIco">🕘</span><b id="diTime">--:--</b></span>
+    <span class="di-seg" id="segTimer">⏱<b id="diTimer">00:00</b></span>
+    <span class="di-seg" id="segMusic">🎵</span>
+    <span class="di-seg" id="segBatt">⚡<b id="diBatt">--%</b></span>
+    <span class="di-seg" id="segNet"><span id="diNetIco">📶</span></span>
+    <span class="di-prog" id="segProg"><i id="diProgFill"></i></span>
+    <b class="di-badge" id="diBadge">0</b>
+  </div>
+  <div class="di-expand" id="diExpand">
+    <div class="dx-card" id="dxClock">
+      <div class="dx-big" id="diBigTime">--:--:--</div>
+      <div class="dx-date" id="diDate"></div>
+    </div>
+    <div class="dx-card" id="dxTimer">
+      <div class="dx-h">Timer</div>
+      <div class="dx-rowbtns">
+        <button id="tm1">1 min</button><button id="tm5">5 min</button><button id="tm10">10 min</button>
+      </div>
+      <div class="dx-rowbtns" style="margin-top:8px">
+        <button class="mbtn prim" id="tmBtn">Start</button><button id="tmRst">Reset</button>
+      </div>
+      <div class="tm-bar"><i id="tmBar"></i></div>
+    </div>
+    <div class="dx-card" id="dxMusic">
+      <div class="dx-h">Now Playing</div>
+      <div class="mus-title" id="musTitle">Glint Beat</div>
+      <div class="mus-sub" id="musSub">cocxace · demo loop</div>
+      <canvas id="eqCanvas" width="290" height="64"></canvas>
+      <div class="dx-rowbtns" style="margin-top:10px">
+        <button class="mbtn prim" id="musBtn">▶ Play</button>
+        <button id="musFileBtn">Load file…</button>
+      </div>
+      <input type="file" id="musFile" accept="audio/*" style="display:none">
+      <div class="volrow"><span style="font-size:12px;margin-right:8px">🔊</span><input type="range" id="musVol" min="0" max="100" value="70"><span id="musVolV" style="width:34px;text-align:right;font-size:11px;color:#00d2ff;margin-left:8px">70%</span></div>
+    </div>
+    <div class="dx-card" id="dxBatt">
+      <div class="dx-h">Battery</div>
+      <div class="wx-line" id="battLine">Charging info is not exposed by this browser — use the demo button.</div>
+      <div class="dx-rowbtns" style="margin-top:10px">
+        <button id="simChg">🔌 Simulate charging</button>
+      </div>
+    </div>
+    <div class="dx-card" id="dxWx">
+      <div class="dx-h">Weather</div>
+      <div class="wx-line" id="wxLine">Tap to load weather for your location.</div>
+      <div class="dx-rowbtns" style="margin-top:10px">
+        <button id="wxBtn">📍 Load weather</button>
+      </div>
+    </div>
+    <div class="dx-card" id="dxNt">
+      <div class="dx-h" style="display:flex;align-items:center">Notifications<button id="ntClear" style="margin-left:auto;font-size:10px;color:#00d2ff;background:none;border:none;cursor:pointer">clear all</button></div>
+      <div id="ntList"><div class="nt-item" style="color:#666">No notifications yet</div></div>
+    </div>
+    <div class="dx-card" style="text-align:center">
+      <div style="font-size:10px;color:#666;line-height:1.6">tap — collapse · long-press — island settings<br>swipe down — open · swipe up — close</div>
+    </div>
+  </div>
+</div>
+<div class="itoast" id="itoast"></div>
+<canvas id="rain"></canvas>
+
+<!-- ---------- ISLAND SETTINGS MODAL ---------- -->
+<div class="omodal" id="diSet">
+  <div class="osheet">
+    <div class="ohead"><span class="ot">GLINT · ISLAND SETTINGS</span><button class="oclose" data-close="diSet">✕</button></div>
+    <div class="obody">
+      <input type="text" class="osrch" id="setSearch" placeholder="Search options…">
+      <div id="setRows"></div>
+      <div style="height:10px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- TWEAK SETTINGS MODAL ---------- -->
+<div class="omodal" id="twSet">
+  <div class="osheet">
+    <div class="ohead"><span class="ot" id="twTitle">SETTINGS</span><button class="oclose" data-close="twSet">✕</button></div>
+    <div class="obody"><div id="twRows"></div><div style="height:10px"></div></div>
+  </div>
+</div>
+
+<!-- ---------- HERO ---------- -->
 <header class="hero">
-<div class="phone">
-<div class="track"><div class="fill" id="fill"></div></div>
-<div class="scenes" id="wrap">
-<section class="scene active">
-  <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-  <h1 class="title">Glint</h1>
-  <p class="subtitle">Dynamic Island для iOS.<br>Пружинная анимация · таймер сжатия.</p>
-</section>
-<section class="scene">
-  <div class="features">
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island для iOS</div><div class="fnum">01</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">Пружинная анимация расширения</div><div class="fnum">02</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Автосжатие по таймеру</div><div class="fnum">03</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">Стабильная работа · v1.0.0</div><div class="fnum">04</div></div>
+
+  <aside class="sidepanel" id="changelogPanel">
+    <div class="sp-title">CHANGELOG</div>
+    <div id="changelogList"></div>
+  </aside>
+
+  <div class="phone">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="scenes" id="wrap">
+      <section class="scene active">
+        <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h1 class="title">Glint</h1>
+        <p class="subtitle">Dynamic Island для iOS.<br>Пружинная анимация · таймер сжатия.</p>
+      </section>
+      <section class="scene">
+        <div class="features">
+          <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island для iOS</div><div class="fnum">01</div></div>
+          <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">Пружинная анимация расширения</div><div class="fnum">02</div></div>
+          <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Автосжатие по таймеру</div><div class="fnum">03</div></div>
+          <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">Стабильная работа · v1.0.0</div><div class="fnum">04</div></div>
+        </div>
+      </section>
+      <section class="scene">
+        <div class="steps">
+          <div class="step"><div class="sn">01</div><div class="sc"><div class="st">Открой Sileo</div><div class="sd">Запусти менеджер пакетов на устройстве</div></div></div>
+          <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Добавь репозиторий</div><div class="sd">Sources → + → вставь URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+          <div class="step"><div class="sn">03</div><div class="sc"><div class="st">Найди Glint</div><div class="sd">Введи название в поиске Sileo</div></div></div>
+          <div class="step"><div class="sn">04</div><div class="sc"><div class="st">Нажми Install</div><div class="sd">Подтверди установку и дождись завершения</div></div></div>
+        </div>
+      </section>
+      <section class="scene">
+        <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h2 class="ftitle">Готово к установке</h2>
+        <p class="fsub">Добавь репозиторий и установи Glint за пару минут</p>
+        <div class="urlbox" id="uBox" role="button" tabindex="0">
+          <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+          <div class="cb"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+        </div>
+        <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Установить</a>
+        <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать ссылку</button>
+      </section>
+    </div>
+    <div class="ctrl">
+      <div class="dots" id="dots">
+        <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
+        <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
+      </div>
+      <div class="row">
+        <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Пауза</span></button>
+        <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Заново</button>
+      </div>
+    </div>
   </div>
-</section>
-<section class="scene">
-  <div class="steps">
-    <div class="step"><div class="sn">01</div><div class="sc"><div class="st">Открой Sileo</div><div class="sd">Запусти менеджер пакетов на устройстве</div></div></div>
-    <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Добавь репозиторий</div><div class="sd">Sources → + → вставь URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
-    <div class="step"><div class="sn">03</div><div class="sc"><div class="st">Найди Glint</div><div class="sd">Введи название в поиске Sileo</div></div></div>
-    <div class="step"><div class="sn">04</div><div class="sc"><div class="st">Нажми Install</div><div class="sd">Подтверди установку и дождись завершения</div></div></div>
-  </div>
-</section>
-<section class="scene">
-  <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-  <h2 class="ftitle">Готово к установке</h2>
-  <p class="fsub">Добавь репозиторий и установи Glint за пару минут</p>
-  <div class="urlbox" id="uBox" role="button" tabindex="0">
-    <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
-    <div class="cb"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-  </div>
-  <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Установить</a>
-  <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать ссылку</button>
-</section>
-</div>
-<div class="ctrl">
-  <div class="dots" id="dots">
-    <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
-    <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
-  </div>
-  <div class="row">
-    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Пауза</span></button>
-    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Заново</button>
-  </div>
-</div>
-</div>
+
+  <aside class="sidepanel" id="changesPanel">
+    <div class="sp-title">WHAT'S NEW IN TWEEKS</div>
+    <div id="changesList"></div>
+  </aside>
+
 </header>
 <div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Скопировано</span></div>
 
@@ -153,72 +395,64 @@ footer .repo-link:hover{color:#ffffff;border-color:#ffffff}
 <main class="mc">
   <div class="mcwrap">
     <h2>ТВИКИ РЕПОЗИТОРИЯ</h2>
-    <p class="sub">iOS 12 · arm64 · добавь репо в Sileo и ставь в один тап</p>
-    <div class="stack">
-
+    <p class="sub">iOS 12 · arm64 · у каждого твика есть настройки — нажми ⚙ SETTINGS</p>
+    <div class="stack" id="tweakCards">
       <div class="card">
         <div class="ico">🏝️</div>
         <div class="info">
           <div class="name">Glint<span class="ver">v1.2.2</span></div>
           <div class="desc">Динамический остров для iOS 12 без чёлки: уведомления, пилюля зарядки, now-playing, фонарик. Пружинные анимации, безопасный запуск.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.glint_1.2.2_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.glint_1.2.2_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="glint">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">⚡</div>
         <div class="info">
           <div class="name">Aura<span class="ver">v1.2.0</span></div>
           <div class="desc">Action Button HUD: панель с фонариком, камерой, диктофоном и скриншотом. Долгое нажатие питания / двойной клик Home.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.aura_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.aura_1.2.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="aura">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">📶</div>
         <div class="info">
           <div class="name">Echo<span class="ver">v1.2.0</span></div>
           <div class="desc">Текст оператора в статус-баре. CFPreferences + darwin reload — изменения применяются без реслинга SpringBoard.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.echo_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.echo_1.2.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="echo">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">🔋</div>
         <div class="info">
           <div class="name">Volt<span class="ver">v1.2.0</span></div>
           <div class="desc">Цвет процентов батареи по уровням: зелёный / жёлтый / красный. Пороги настраиваются в настройках твика.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.volt_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.volt_1.2.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="volt">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">🌙</div>
         <div class="info">
           <div class="name">Lumina<span class="ver">v1.2.0</span></div>
           <div class="desc">Always-On Display на локскрине: затемнённый оверлей с живыми часами и датой. Окно аккуратно закрывается после разблокировки.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.lumina_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.lumina_1.2.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="lumina">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">📷</div>
         <div class="info">
           <div class="name">Cam60Enabler5s<span class="ver">v1.0.0</span></div>
           <div class="desc">1080p @ 60 FPS на iPhone 5s (A7). Фолбэк на 30 fps при неудаче, защита от перегрева.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="cam60">⚙ settings</button></div>
         </div>
       </div>
-
       <div class="card">
         <div class="ico">📱</div>
         <div class="info">
           <div class="name">ActionButton12<span class="ver">v1.2.0</span></div>
           <div class="desc">HUD по двойному нажатию Home или долгому нажатию питания: фонарик, камера, диктофон, скриншот, Wi-Fi, Bluetooth.</div>
-          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.actionbutton12_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+          <div class="acts"><a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.actionbutton12_1.2.0_iphoneos-arm.deb">скачать .deb</a><button class="gear" data-tweak="ab12">⚙ settings</button></div>
         </div>
       </div>
-
     </div>
   </div>
 </main>
@@ -228,7 +462,7 @@ footer .repo-link:hover{color:#ffffff;border-color:#ffffff}
   <p>добавить в Sileo/Cydia:<br><a class="repo-link" href="https://abulhketus-collab.github.io/repo/">https://abulhketus-collab.github.io/repo/</a></p>
 </footer>
 
-<!-- ---------- ANIMATION SCRIPT (USER CODE) ---------- -->
+<!-- ---------- ANIMATION SCRIPT (USER CODE, UNTOUCHED) ---------- -->
 <script>
 (function(){
 var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
@@ -293,6 +527,843 @@ cB.addEventListener('click',function(e){e.stopPropagation();cp()});
 function init(){render();ui();start()}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
+</script>
+
+<!-- ---------- GLINT ISLAND ENGINE ---------- -->
+<script>
+(function(){
+'use strict';
+/* ===== storage ===== */
+function sget(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function sset(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function $(id){return document.getElementById(id)}
+
+/* ===== island config ===== */
+var DEF={clock:1,clock24:1,seconds:1,timer:1,music:1,eq:1,beat:1,vol:1,batt:1,chargeAnim:1,net:1,weather:1,notif:1,glow:1,g1:'#00d2ff',g2:'#7a5cff',gstrength:55,gspeed:50,rainbow:0,blink:0,theme:'classic'};
+var cfg={};for(var k0 in DEF){cfg[k0]=sget('di_'+k0,DEF[k0])}
+function csave(k){sset('di_'+k,cfg[k])}
+
+var di=$('di'),diInner=$('diInner'),diGlow=$('diGlow');
+function applyIsland(){
+  diGlow.style.display=cfg.glow?'block':'none';
+  diGlow.style.setProperty('--g1',cfg.g1);
+  diGlow.style.setProperty('--g2',cfg.g2);
+  diGlow.style.setProperty('--gs',(cfg.gstrength/100).toFixed(2));
+  diGlow.style.setProperty('--gspd',(11-cfg.gspeed/10).toFixed(1)+'s');
+  diGlow.className='di-glow'+(cfg.rainbow?' rb':'')+(cfg.blink?' bk':'');
+  di.className='di theme-'+cfg.theme+(di.classList.contains('open')?' open':'');
+  segUpdate();
+}
+function segUpdate(){
+  $('segClock').className='di-seg'+(cfg.clock?' on':'');
+  $('segTimer').className='di-seg'+(cfg.timer&&tm.run?' on':'');
+  $('segMusic').className='di-seg'+(cfg.music&&mus.playing?' on':'');
+  $('segBatt').className='di-seg'+(cfg.batt?' on':'');
+  $('segNet').className='di-seg'+(cfg.net?' on':'');
+  $('dxTimer').style.display=cfg.timer?'block':'none';
+  $('dxMusic').style.display=cfg.music?'block':'none';
+  $('dxWx').style.display=cfg.weather?'block':'none';
+  $('dxBatt').style.display=cfg.batt?'block':'none';
+  $('dxNt').style.display=cfg.notif?'block':'none';
+  $('dxClock').style.display=cfg.clock?'block':'none';
+  $('musVol').parentNode.style.display=cfg.vol?'flex':'none';
+}
+
+/* ===== toasts + notifications ===== */
+var ito=$('itoast'),itoT=null;
+function itoast(msg){ito.textContent=msg;ito.classList.add('show');if(itoT)clearTimeout(itoT);itoT=setTimeout(function(){ito.classList.remove('show')},2000)}
+var nts=[],badge=$('diBadge'),ntList=$('ntList');
+function notify(title,body){
+  if(!cfg.notif)return;
+  nts.unshift({t:title,b:body,n:Date.now()});
+  if(nts.length>8)nts.pop();
+  badge.textContent=nts.length;badge.className='di-badge on';
+  var h='';for(var i=0;i<nts.length;i++){h+='<div class="nt-item"><b>'+esc(nts[i].t)+'</b><br>'+esc(nts[i].b)+'</div>'}
+  ntList.innerHTML=h;
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+$('ntClear').addEventListener('click',function(){nts=[];badge.className='di-badge';ntList.innerHTML='<div class="nt-item" style="color:#666">No notifications yet</div>'});
+
+/* ===== audio core ===== */
+var AC=window.AudioContext||window.webkitAudioContext;
+var ac=null,master=null,analyser=null,freq=null;
+function ensureAC(){
+  if(!AC)return false;
+  if(!ac){ac=new AC();master=ac.createGain();analyser=ac.createAnalyser();analyser.fftSize=64;freq=new Uint8Array(analyser.frequencyBinCount);master.connect(analyser);analyser.connect(ac.destination)}
+  if(ac.state==='suspended')ac.resume();
+  return true;
+}
+function beep(){
+  if(!ensureAC())return;
+  for(var i=0;i<3;i++){
+    (function(n){
+      var o=ac.createOscillator(),g=ac.createGain();
+      o.frequency.value=n===2?1320:880;o.type='sine';
+      g.gain.setValueAtTime(0.001,ac.currentTime+n*0.25);
+      g.gain.exponentialRampToValueAtTime(0.4,ac.currentTime+n*0.25+0.02);
+      g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+n*0.25+0.22);
+      o.connect(g);g.connect(master);o.start(ac.currentTime+n*0.25);o.stop(ac.currentTime+n*0.25+0.25);
+    })(i);
+  }
+}
+
+/* ===== timer ===== */
+var tm={left:0,total:0,run:false,int:null};
+var tmBtn=$('tmBtn');
+function tmFmt(s){var m=Math.floor(s/60),ss=s%60;return two(m)+':'+two(ss)}
+function two(n){return (n<10?'0':'')+n}
+function tmPaint(){
+  $('diTimer').textContent=tmFmt(tm.left);
+  $('diBigTime').textContent=tmFmt(tm.left);
+  tmBtn.textContent=tm.run?'Pause':(tm.left>0?'Resume':'Start');
+  if(tm.total>0)$('tmBar').style.width=(100-100*tm.left/tm.total)+'%';
+  segUpdate();
+}
+function tmStart(sec){
+  if(!ensureAC())return;
+  tm.total=sec;tm.left=sec;tm.run=true;
+  if(tm.int)clearInterval(tm.int);
+  tm.int=setInterval(function(){
+    if(!tm.run)return;
+    tm.left--;
+    if(tm.left<=0){tm.left=0;tm.run=false;clearInterval(tm.int);tm.int=null;beep();itoast('⏱ Timer done!');notify('Timer','Countdown finished');if(!di.classList.contains('open'))toggleIsland(true)}
+    tmPaint();
+  },1000);
+  tmPaint();
+}
+tmBtn.addEventListener('click',function(){
+  if(tm.run){tm.run=false;tmPaint()}
+  else if(tm.left>0){tm.run=true;if(!tm.int)tmStartContinue()}
+  else tmStart(60);
+});
+function tmStartContinue(){
+  tm.run=true;
+  tm.int=setInterval(function(){
+    if(!tm.run)return;
+    tm.left--;
+    if(tm.left<=0){tm.left=0;tm.run=false;clearInterval(tm.int);tm.int=null;beep();itoast('⏱ Timer done!');notify('Timer','Countdown finished')}
+    tmPaint();
+  },1000);
+}
+$('tmRst').addEventListener('click',function(){tm.run=false;tm.left=0;tm.total=0;if(tm.int)clearInterval(tm.int);tm.int=null;$('tmBar').style.width='0';tmPaint()});
+$('tm1').addEventListener('click',function(){tmStart(60)});
+$('tm5').addEventListener('click',function(){tmStart(300)});
+$('tm10').addEventListener('click',function(){tmStart(600)});
+
+/* ===== music: demo synth loop + file playback ===== */
+var mus={playing:false,int:null,step:0,el:null,src:null};
+var musBtn=$('musBtn');
+function kick(t){
+  var o=ac.createOscillator(),g=ac.createGain();
+  o.type='sine';o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(45,t+0.12);
+  g.gain.setValueAtTime(0.9,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.2);
+  o.connect(g);g.connect(master);o.start(t);o.stop(t+0.22);
+}
+function hat(t){
+  var b=ac.createBufferSource(),g=ac.createGain(),hp=ac.createBiquadFilter();
+  var len=ac.sampleRate*0.04,buf=ac.createBuffer(1,len,ac.sampleRate),d=buf.getChannelData(0);
+  for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*(1-i/len);
+  b.buffer=buf;hp.type='highpass';hp.frequency.value=6000;
+  g.gain.setValueAtTime(0.22,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.05);
+  b.connect(hp);hp.connect(g);g.connect(master);b.start(t);
+}
+function bass(t,f){
+  var o=ac.createOscillator(),g=ac.createGain();
+  o.type='square';o.frequency.value=f;
+  g.gain.setValueAtTime(0.12,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.22);
+  o.connect(g);g.connect(master);o.start(t);o.stop(t+0.24);
+}
+var BASSLINE=[55,55,65.4,49];
+function scheduleStep(){
+  if(!mus.playing)return;
+  var t=ac.currentTime+0.05,s=mus.step%16;
+  if(s%4===0)kick(t);
+  if(s%2===1)hat(t);
+  if(s%8===0)bass(t,BASSLINE[Math.floor(s/8)]);
+  if(s===12)bass(t,BASSLINE[3]*2);
+  mus.step++;
+}
+function musStop(){
+  mus.playing=false;
+  if(mus.int){clearInterval(mus.int);mus.int=null}
+  if(mus.el){mus.el.pause()}
+  musBtn.textContent='▶ Play';segUpdate();
+}
+function musStart(){
+  if(!ensureAC()){itoast('Web Audio not supported');return}
+  if(mus.el){mus.el.currentTime=0;mus.el.play()}
+  mus.step=0;mus.playing=true;
+  if(mus.int)clearInterval(mus.int);
+  mus.int=setInterval(scheduleStep,60000/124/2);
+  scheduleStep();
+  musBtn.textContent='⏸ Pause';segUpdate();
+}
+musBtn.addEventListener('click',function(){mus.playing?musStop():musStart()});
+$('musFile').addEventListener('change',function(e){
+  var f=e.target.files&&e.target.files[0];
+  if(!f)return;
+  if(!ensureAC()){itoast('Web Audio not supported');return}
+  if(!mus.el){
+    mus.el=new Audio();mus.el.loop=true;
+    try{mus.src=ac.createMediaElementSource(mus.el);mus.src.connect(master)}catch(err){}
+  }
+  mus.el.src=URL.createObjectURL(f);
+  $('musTitle').textContent=f.name.replace(/\.[^.]+$/,'');
+  $('musSub').textContent='local file · '+Math.round(f.size/1024)+' KB';
+  notify('Music','Loaded: '+f.name);
+  if(mus.playing)musStop();
+  musStart();
+  itoast('♪ Playing: '+f.name);
+});
+$('musVol').addEventListener('input',function(){
+  var v=this.value/100;
+  $('musVolV').textContent=this.value+'%';
+  if(master)master.gain.value=v;
+  sset('di_volLevel',this.value);
+});
+var savedVol=sget('di_volLevel',70);
+$('musVol').value=savedVol;$('musVolV').textContent=savedVol+'%';
+
+/* ===== equalizer + beat pulse loop ===== */
+var eqC=$('eqCanvas'),eqX=eqC.getContext('2d');
+function loop(){
+  var playingNow=mus.playing&&analyser;
+  if(playingNow)analyser.getByteFrequencyData(freq);
+  if(cfg.eq||cfg.beat){
+    if(playingNow){
+      var bars=24,bw=eqC.width/bars;
+      eqX.clearRect(0,0,eqC.width,eqC.height);
+      for(var i=0;i<bars;i++){
+        var v=freq[Math.floor(i*freq.length/bars/2)]/255;
+        var h=Math.max(2,v*eqC.height);
+        eqX.fillStyle=cfg.rainbow?'hsl('+((Date.now()/8+i*14)%360)+',90%,60%)':'#ffffff';
+        eqX.fillRect(i*bw+1,eqC.height-h,bw-2,h);
+      }
+      if(cfg.beat){
+        var low=0;for(var j=0;j<6;j++)low+=freq[j];low=low/(6*255);
+        var sc=1+low*0.045;
+        diInner.style.transform='scale('+sc.toFixed(3)+')';
+      }
+    } else if(!mus.playing){
+      eqX.clearRect(0,0,eqC.width,eqC.height);
+      if(diInner.style.transform)diInner.style.transform='scale(1)';
+    }
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+/* ===== battery (real API if available, else working demo mode) ===== */
+var demoCharge=false,demoLevel=64;
+function battPaint(){
+  var pct,chg;
+  if(window.__realBatt){pct=Math.round(window.__realBatt.level*100);chg=window.__realBatt.charging}
+  else{pct=demoLevel;chg=demoCharge}
+  $('diBatt').textContent=pct+'%';
+  $('diClockIco').textContent=chg?'⚡':'🕘';
+  $('battLine').innerHTML=(window.__realBatt?'Real battery via Battery API. ':'Browser does not expose battery — demo mode. ')+'Level: <b>'+pct+'%</b> · '+(chg?'<b>charging</b>':'on battery');
+  if(cfg.chargeAnim&&chg&&!window.__wasChg){diGlow.style.setProperty('--gs',(cfg.gstrength/100).toFixed(2));itoast('⚡ Charging started')}
+  window.__wasChg=chg;
+  segUpdate();
+}
+if(navigator.getBattery){
+  navigator.getBattery().then(function(b){
+    window.__realBatt=b;
+    b.addEventListener('levelchange',battPaint);
+    b.addEventListener('chargingchange',battPaint);
+    battPaint();
+  }).catch(function(){battPaint()});
+}else battPaint();
+$('simChg').addEventListener('click',function(){
+  demoCharge=!demoCharge;
+  demoLevel=demoCharge?(demoLevel<20?80:demoLevel):64;
+  this.textContent=demoCharge?'🔌 Stop charging demo':'🔌 Simulate charging';
+  battPaint();
+  itoast(demoCharge?'⚡ Charging (demo)':'Battery (demo)');
+  notify('Battery',demoCharge?'Charging demo ON':'Charging demo OFF');
+});
+
+/* ===== network ===== */
+function netPaint(){
+  var on=navigator.onLine;
+  $('diNetIco').textContent=on?'📶':'✈';
+  segUpdate();
+}
+window.addEventListener('online',function(){netPaint();itoast('📶 Back online');notify('Network','Connection restored')});
+window.addEventListener('offline',function(){netPaint();itoast('✈ Offline');notify('Network','Connection lost')});
+netPaint();
+
+/* ===== weather (open-meteo, no key) ===== */
+var WCODE={0:['Clear sky','☀️'],1:['Mostly clear','🌤'],2:['Partly cloudy','⛅'],3:['Overcast','☁️'],45:['Fog','🌫'],48:['Fog','🌫'],51:['Light drizzle','🌦'],53:['Drizzle','🌦'],55:['Drizzle','🌦'],61:['Light rain','🌧'],63:['Rain','🌧'],65:['Heavy rain','🌧'],71:['Light snow','🌨'],73:['Snow','🌨'],75:['Heavy snow','❄️'],80:['Showers','🌦'],81:['Showers','🌦'],82:['Heavy showers','⛈'],95:['Thunderstorm','⛈'],96:['Thunderstorm','⛈'],99:['Thunderstorm','⛈']};
+function loadWeather(lat,lon,label){
+  $('wxLine').textContent='Loading…';
+  fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true').then(function(r){return r.json()}).then(function(j){
+    var cw=j&&j.current_weather;
+    if(!cw)throw new Error('no data');
+    var wc=WCODE[cw.weathercode]||['Weather','🌡'];
+    $('wxLine').innerHTML=wc[1]+' <b>'+Math.round(cw.temperature)+'°C</b> · wind '+Math.round(cw.windspeed)+' km/h<br><span style="color:#8a8a8a;font-size:10.5px">'+esc(label)+' · '+wc[0]+'</span>';
+    notify('Weather',label+': '+Math.round(cw.temperature)+'°C');
+  }).catch(function(){
+    $('wxLine').innerHTML='🌡 <b>18°C</b> · demo fallback<br><span style="color:#8a8a8a;font-size:10.5px">Weather service unreachable</span>';
+  });
+}
+$('wxBtn').addEventListener('click',function(){
+  if(navigator.geolocation){
+    $('wxLine').textContent='Getting location…';
+    navigator.geolocation.getCurrentPosition(
+      function(p){loadWeather(p.coords.latitude.toFixed(3),p.coords.longitude.toFixed(3),'Your location')},
+      function(){loadWeather(55.75,37.62,'Moscow (fallback — location denied)')},
+      {timeout:6000}
+    );
+  } else loadWeather(55.75,37.62,'Moscow (fallback — no geolocation)');
+});
+
+/* ===== download progress in island ===== */
+var dlLinks=document.querySelectorAll('a.dl');
+for(var dl=0;dl<dlLinks.length;dl++){
+  (function(a){
+    a.addEventListener('click',function(e){
+      if(!window.fetch||!window.ReadableStream){return}
+      e.preventDefault();
+      var url=a.href,seg=$('segProg');
+      seg.className='di-prog on';
+      notify('Download','Started: '+a.previousSibling?a.previousSibling.textContent:'file');
+      fetch(url).then(function(r){
+        if(!r.ok)throw new Error(r.status);
+        var reader=r.body.getReader(),len=+r.headers.get('Content-Length')||0,recv=0,chunks=[];
+        function pump(){
+          return reader.read().then(function(res){
+            if(res.done){
+              var blob=new Blob(chunks);
+              var u=URL.createObjectURL(blob);
+              var tmp=document.createElement('a');
+              tmp.href=u;tmp.download=url.split('/').pop();
+              document.body.appendChild(tmp);tmp.click();document.body.removeChild(tmp);
+              setTimeout(function(){URL.revokeObjectURL(u)},4000);
+              seg.className='di-prog';
+              itoast('✓ Download complete');
+              notify('Download','Saved: '+url.split('/').pop());
+              return;
+            }
+            chunks.push(res.value);recv+=res.value.length;
+            var p=len?Math.round(100*recv/len):0;
+            $('diProgFill').style.width=p+'%';
+            return pump();
+          });
+        }
+        return pump();
+      }).catch(function(){
+        seg.className='di-prog';
+        window.open(url,'_blank');
+      });
+    });
+  })(dlLinks[dl]);
+}
+
+/* ===== island gestures: tap, long-press, swipe ===== */
+var open=false,lpT=null,moved=false,sx=0,sy=0,swiping=false,axs=null;
+function toggleIsland(force){
+  open=(typeof force==='boolean')?force:!open;
+  if(open){di.classList.add('open');di.classList.add('expand-hide');setTimeout(function(){di.classList.remove('expand-hide')},250)}
+  else di.classList.remove('open');
+}
+di.addEventListener('click',function(){
+  if(moved)return;
+  toggleIsland();
+});
+di.addEventListener('touchstart',function(e){
+  sx=e.touches[0].clientX;sy=e.touches[0].clientY;moved=false;swiping=true;axs=null;
+  lpT=setTimeout(function(){if(!moved){lpT=null;openIslandSettings()}},600);
+},{passive:true});
+di.addEventListener('touchmove',function(e){
+  if(!swiping)return;
+  var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;
+  if(Math.abs(dx)>12||Math.abs(dy)>12){moved=true;if(lpT){clearTimeout(lpT);lpT=null}}
+  if(axs===null&&(Math.abs(dx)>14||Math.abs(dy)>14))axs=Math.abs(dx)>Math.abs(dy)?'x':'y';
+},{passive:true});
+di.addEventListener('touchend',function(e){
+  if(lpT){clearTimeout(lpT);lpT=null}
+  if(!swiping)return;swiping=false;
+  if(axs==='y'){
+    var dy=e.changedTouches[0].clientY-sy;
+    if(dy>40)toggleIsland(true);
+    else if(dy<-40)toggleIsland(false);
+  }
+},{passive:true});
+di.addEventListener('mousedown',function(e){
+  if(e.button!==0)return;
+  sx=e.clientX;sy=e.clientY;moved=false;
+  lpT=setTimeout(function(){if(!moved){lpT=null;openIslandSettings()}},600);
+});
+window.addEventListener('mousemove',function(e){
+  if(lpT===null&&!moved){} 
+  if((lpT||lpT===null)&&!moved){
+    var dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.abs(dx)>6||Math.abs(dy)>6){moved=true;if(lpT){clearTimeout(lpT);lpT=null}}
+  }
+});
+window.addEventListener('mouseup',function(){if(lpT){clearTimeout(lpT);lpT=null}});
+
+/* ===== easter egg: 5 quick taps on the clock icon ===== */
+var eggT=[],rainC=$('rain'),rainX=rainC.getContext('2d'),rainAnim=null;
+$('diClockIco').style.cursor='pointer';
+$('diClockIco').addEventListener('click',function(e){
+  e.stopPropagation();
+  var now=Date.now();
+  eggT.push(now);
+  eggT=eggT.filter(function(t){return now-t<1400});
+  if(eggT.length>=5){
+    eggT=[];
+    pixelRain();
+  }
+});
+function pixelRain(){
+  rainC.width=window.innerWidth;rainC.height=window.innerHeight;
+  rainC.style.display='block';
+  var P=[],N=140;
+  for(var i=0;i<N;i++)P.push({x:Math.random()*rainC.width,y:-20-Math.random()*rainC.height,v:2+Math.random()*4,s:6+Math.random()*10,c:'hsl('+Math.floor(Math.random()*360)+',85%,60%)'});
+  var t0=Date.now();
+  (function frame(){
+    rainX.clearRect(0,0,rainC.width,rainC.height);
+    for(var i=0;i<N;i++){
+      var p=P[i];p.y+=p.v;p.x+=Math.sin((Date.now()/300)+i)*1.2;
+      rainX.fillStyle=p.c;rainX.fillRect(p.x,p.y,p.s,p.s);
+      rainX.strokeStyle='rgba(0,0,0,.6)';rainX.strokeRect(p.x,p.y,p.s,p.s);
+    }
+    if(Date.now()-t0<3200)rainAnim=requestAnimationFrame(frame);
+    else{rainC.style.display='none';if(rainAnim){cancelAnimationFrame(rainAnim);rainAnim=null}}
+  })();
+  itoast('🏆 You found the secret!');
+  notify('🏆 Easter egg','Pixel rain unlocked!');
+}
+
+/* ===== clock paint ===== */
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function paintClock(){
+  var d=new Date(),h=d.getHours(),ap='';
+  if(!cfg.clock24){ap=h>=12?' PM':' AM';h=h%12;if(h===0)h=12}
+  var t=two(h)+':'+two(d.getMinutes());
+  if(cfg.seconds)t+=':'+two(d.getSeconds());
+  $('diTime').textContent=t;
+  $('diBigTime').textContent=t+(ap||'');
+  $('diDate').textContent=MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' '+ap;
+}
+setInterval(paintClock,1000);
+paintClock();
+
+/* ===== splash ===== */
+function hideSplash(){
+  var sp=$('splash');
+  sp.classList.add('hide');
+  setTimeout(function(){sp.style.display='none'},600);
+}
+setTimeout(hideSplash,1700);
+/* ===== generic settings row builder ===== */
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+function buildRows(box,schema,get,set){
+  box.innerHTML='';
+  var rows=[];
+  for(var i=0;i<schema.length;i++){
+    var it=schema[i];
+    if(it.sec){box.appendChild(el('div','osec',it.sec));rows.push({node:el('div'),txt:it.sec});box.lastChild.setAttribute('data-search',it.sec.toLowerCase());continue}
+    var row=el('div','orow');
+    var lab=el('div','ol');
+    var titleHtml=esc(it.label);
+    if(it.badge)titleHtml+='<span class="obadge no">'+it.badge+'</span>';
+    if(it.badgeOk)titleHtml+='<span class="obadge ok">'+it.badgeOk+'</span>';
+    lab.appendChild(el('div','olt',titleHtml));
+    if(it.dsc)lab.appendChild(el('div','odsc',esc(it.dsc)));
+    if(it.tip)lab.appendChild(el('div','otip','Tip: '+esc(it.tip)));
+    row.appendChild(lab);
+    var ctrl=null;
+    if(it.type==='sw'){
+      ctrl=el('label','osw');
+      var inp=document.createElement('input');inp.type='checkbox';inp.checked=!!get(it.id);
+      var kn=el('i');
+      ctrl.appendChild(inp);ctrl.appendChild(kn);
+      inp.addEventListener('change',function(id,inp2){return function(){set(id,inp2.checked)}}(it.id,inp));
+      ctrl._sync=function(inp2){return function(v){inp2.checked=!!v}}(inp);
+    } else if(it.type==='sl'){
+      ctrl=el('div','oslider');
+      var sl=document.createElement('input');sl.type='range';sl.min=it.min;sl.max=it.max;sl.step=it.step||1;sl.value=get(it.id);
+      var ov=el('span','ov',get(it.id)+(it.unit||''));
+      sl.addEventListener('input',function(id,sl2,ov2,un){return function(){ov2.textContent=sl2.value+(un||'');set(id,+sl2.value)}}(it.id,sl,ov,it.unit));
+      ctrl.appendChild(sl);ctrl.appendChild(ov);
+      ctrl._sync=function(sl2,ov2,un){return function(v){sl2.value=v;ov2.textContent=v+(un||'')}}(sl,ov,it.unit);
+    } else if(it.type==='color'){
+      ctrl=el('div','oclr');
+      var cp=document.createElement('input');cp.type='color';cp.value=get(it.id);
+      var ct=document.createElement('input');ct.type='text';ct.value=get(it.id);
+      function hexok(s){return /^#[0-9a-fA-F]{6}$/.test(s)}
+      cp.addEventListener('input',function(ct2,inp2){return function(){ct2.value=inp2.value;set(it.id,inp2.value)}}(ct,cp));
+      ct.addEventListener('change',function(cp2,inp2){return function(){if(hexok(inp2.value)){cp2.value=inp2.value;set(it.id,inp2.value)}}}(cp,ct));
+      ctrl.appendChild(cp);ctrl.appendChild(ct);
+      ctrl._sync=function(cp2,ct2){return function(v){cp2.value=v;ct2.value=v}}(cp,ct);
+    } else if(it.type==='text'){
+      ctrl=document.createElement('input');ctrl.type='text';ctrl.className='otext';ctrl.placeholder=it.ph||'';ctrl.value=get(it.id)||'';
+      ctrl.addEventListener('change',function(inp2){return function(){set(it.id,inp2.value)}}(ctrl));
+      ctrl._sync=function(inp2){return function(v){inp2.value=v}}(ctrl);
+    } else if(it.type==='sel'){
+      ctrl=document.createElement('select');ctrl.className='osel';
+      for(var o=0;o<it.opts.length;o++){var op=document.createElement('option');op.value=it.opts[o];op.textContent=it.opts[o];ctrl.appendChild(op)}
+      ctrl.value=get(it.id);
+      ctrl.addEventListener('change',function(inp2){return function(){set(it.id,inp2.value)}}(ctrl));
+      ctrl._sync=function(inp2){return function(v){inp2.value=v}}(ctrl);
+    } else if(it.type==='presets'){
+      ctrl=el('div','presetrow');
+      for(var p=0;p<it.opts.length;p++){
+        (function(pr){
+          var b=el('button','mbtn',pr.name);
+          b.addEventListener('click',function(){
+            for(var kk in pr.vals){set(kk,pr.vals[kk])}
+            syncAll();
+            itoast('Preset: '+pr.name);
+          });
+          ctrl.appendChild(b);
+        })(it.opts[p]);
+      }
+    } else if(it.type==='reset'){
+      ctrl=el('button','mbtn','Reset to default');
+      ctrl.style.flex='1';ctrl.style.marginLeft='10px';
+      ctrl.addEventListener('click',function(){
+        for(var kk in schema._defaults){set(kk,schema._defaults[kk])}
+        syncAll();
+        itoast('Settings reset');
+      });
+    } else if(it.type==='status'){
+      ctrl=el('div','statusline','…');
+      ctrl._status=true;ctrl._id=it.id;
+    } else if(it.type==='cmp'){
+      ctrl=el('div','cmp');
+      var ca=el('div','c-a'),cb=el('div','c-b');
+      var rng=document.createElement('input');rng.type='range';rng.min=0;rng.max=100;rng.value=50;
+      cb.style.clipPath='inset(0 0 0 50%)';cb.style.webkitClipPath='inset(0 0 0 50%)';
+      rng.addEventListener('input',function(cb2,rng2){return function(){var v=rng2.value+'%';cb2.style.clipPath='inset(0 0 0 '+v+')';cb2.style.webkitClipPath='inset(0 0 0 '+v+')'}}(cb,rng));
+      ctrl.appendChild(ca);ctrl.appendChild(cb);ctrl.appendChild(rng);
+      itoast&&null;
+    } else if(it.type==='check'){
+      ctrl=el('button','mbtn prim','Check my device');
+      ctrl.style.flex='1';ctrl.style.marginLeft='10px';
+      ctrl.addEventListener('click',function(){
+        var ua=navigator.userAgent,m=ua.match(/iPhone OS (\d+)_(\d+)/);
+        var out=document.getElementById('camCheckOut');
+        if(!m){
+          out.innerHTML='This browser does not report iOS. Target device: <b>iPhone 5s (A7, iOS 12)</b>.<br>On 5s: 1080p60 ✓ · 720p120 slow-mo ✓ · 4K60 ✗ · ProRAW ✗ · Cinematic ✗';
+          return;
+        }
+        var ver=+m[1];
+        var lines=[];
+        lines.push('Detected: iPhone, iOS '+m[1]+'.'+m[2]);
+        if(ver<=12){lines.push('1080p60: available with Cam60Enabler5s ✓');lines.push('Slow-mo 720p120: available ✓');lines.push('4K60: not available on this chip ✗');lines.push('ProRAW: needs A12 or newer ✗');lines.push('Cinematic: needs iPhone 13 or newer ✗')}
+        else{lines.push('This device is newer than iOS 12 — use stock camera features')}
+        out.innerHTML=esc(lines[0])+'<br>'+lines.slice(1).map(esc).join('<br>');
+      });
+    }
+    row.appendChild(ctrl);
+    row.setAttribute('data-search',(it.label+' '+(it.dsc||'')).toLowerCase());
+    box.appendChild(row);
+    rows.push({it:it,row:row,ctrl:ctrl});
+  }
+  function syncAll(){
+    for(var i2=0;i2<rows.length;i2++){
+      var r=rows[i2];
+      if(!r.it||!r.ctrl||!r.ctrl._sync)continue;
+      r.ctrl._sync(get(r.it.id));
+      if(r.ctrl._status!==undefined&&r.ctrl._status&&typeof schema._status==='function')r.ctrl.innerHTML=schema._status();
+    }
+    if(typeof schema._onChange==='function')schema._onChange();
+  }
+  schema._syncAll=syncAll;
+  /* search */
+  var srch=box.parentElement.querySelector('.osrch');
+  if(srch&&!srch._bound){
+    srch._bound=true;
+    srch.addEventListener('input',function(){
+      var q=srch.value.toLowerCase();
+      var rr=box.querySelectorAll('.orow');
+      for(var i3=0;i3<rr.length;i3++){
+        var hit=!q||rr[i3].getAttribute('data-search').indexOf(q)>-1;
+        rr[i3].style.display=hit?'flex':'none';
+      }
+    });
+  }
+  syncAll();
+}
+
+/* ===== island settings ===== */
+var ISL_SCHEMA=[
+  {sec:'Modules'},
+  {id:'clock',type:'sw',label:'Clock',dsc:'Clock segment inside the island'},
+  {id:'seconds',type:'sw',label:'Seconds',dsc:'Show seconds in the clock'},
+  {id:'clock24',type:'sw',label:'24-hour format',dsc:'Switch 24h / 12h clock'},
+  {id:'timer',type:'sw',label:'Timer',dsc:'Countdown with presets and sound alert'},
+  {id:'music',type:'sw',label:'Music',dsc:'Now playing card with equalizer'},
+  {id:'eq',type:'sw',label:'Equalizer',dsc:'Live FFT spectrum bars'},
+  {id:'beat',type:'sw',label:'Beat pulse',dsc:'Island pulses to the bass of the track'},
+  {id:'vol',type:'sw',label:'Volume slider',dsc:'Volume control for the demo track'},
+  {id:'batt',type:'sw',label:'Battery',dsc:'Battery percent and charging indicator'},
+  {id:'chargeAnim',type:'sw',label:'Charging flash',dsc:'Toast when charging starts'},
+  {id:'net',type:'sw',label:'Network',dsc:'Wi-Fi / offline indicator'},
+  {id:'weather',type:'sw',label:'Weather',dsc:'Weather card, open API without a key'},
+  {id:'notif',type:'sw',label:'Notifications',dsc:'Badge counter and notification stack'},
+  {sec:'Glow'},
+  {id:'glow',type:'sw',label:'Glow enabled',dsc:'Colored glow around the island'},
+  {id:'g1',type:'color',label:'Glow color 1',dsc:'Primary outer glow'},
+  {id:'g2',type:'color',label:'Glow color 2',dsc:'Inner glow tint'},
+  {id:'gstrength',type:'sl',min:0,max:100,unit:'%',label:'Glow strength',dsc:'How strong the glow shines'},
+  {id:'gspeed',type:'sl',min:10,max:100,unit:'',label:'Glow speed',dsc:'Higher = faster color cycle in rainbow mode'},
+  {id:'rainbow',type:'sw',label:'Rainbow mode',dsc:'Glow colors cycle continuously'},
+  {id:'blink',type:'sw',label:'Blink 1s on / 1s off',dsc:'Glow blinks every second'},
+  {sec:'Theme'},
+  {id:'theme',type:'sel',opts:['classic','neon','glass','minimal'],label:'Island theme',dsc:'Visual style, applies instantly'},
+  {sec:'Presets'},
+  {type:'presets',opts:[
+    {name:'Default',vals:{clock:1,seconds:1,clock24:1,timer:1,music:1,eq:1,beat:1,vol:1,batt:1,net:1,weather:1,notif:1,glow:1,g1:'#00d2ff',g2:'#7a5cff',gstrength:55,gspeed:50,rainbow:0,blink:0,theme:'classic'}},
+    {name:'Minimal',vals:{music:0,weather:0,notif:0,batt:0,glow:0,timer:1,clock:1}},
+    {name:'Party',vals:{glow:1,rainbow:1,blink:0,gstrength:90,gspeed:80,beat:1,eq:1,music:1}}
+  ]},
+  {type:'reset'}
+];
+ISL_SCHEMA._defaults={};
+(function(){for(var k in DEF)ISL_SCHEMA._defaults[k]=DEF[k]})();
+function openIslandSettings(){
+  buildRows($('setRows'),ISL_SCHEMA,
+    function(id){return cfg[id]},
+    function(id,v){cfg[id]=v;csave(id);applyIsland()}
+  );
+  $('diSet').classList.add('open');
+}
+
+/* ===== changelog + what's new ===== */
+var CHANGELOG=[
+  {key:'glint',name:'Glint',icon:'🏝️',vers:[
+    {v:'1.2.2',d:'Nov 8, 2026',b:'UPDATED',c:['Now playing reads SBMediaController, MediaRemote fallback','Equalizer waves rendered in the charging pill','One-shot notification expansion — no double triggers','Destructor cleanup on unload']},
+    {v:'1.2.1',d:'Nov 5, 2026',b:'UPDATED',c:['Torch pill with brightness slider','Corner radius options','Lazy init — no UI in %ctor']},
+    {v:'1.2.0',d:'Nov 1, 2026',b:'UPDATED',c:['Charging pill with pulse animation','Notification stack with spring expand','New prefs bundle']},
+    {v:'1.0.0',d:'Oct 20, 2026',b:'NEW',c:['First release: Dynamic Island for notchless iOS 12']}
+  ]},
+  {key:'ab12',name:'ActionButton12',icon:'📱',vers:[
+    {v:'1.2.0',d:'Nov 8, 2026',b:'UPDATED',c:['Rebuilt as single Tweak.xm with %group','Double-tap Home hooks','Destructor removes HUD window on unload','Six-button HUD: torch, camera, voice, screenshot, Wi-Fi, Bluetooth']},
+    {v:'1.0.0',d:'Oct 12, 2026',b:'NEW',c:['First release: Action Button HUD for iOS 12']}
+  ]},
+  {key:'aura',name:'Aura',icon:'⚡',vers:[
+    {v:'1.2.0',d:'Nov 7, 2026',b:'UPDATED',c:['Wi-Fi and Bluetooth toggles added','Haptic feedback on open','Long-press Power and double-tap Home triggers']},
+    {v:'1.0.0',d:'Oct 10, 2026',b:'NEW',c:['First release: premium Action Button HUD']}
+  ]},
+  {key:'echo',name:'Echo',icon:'📶',vers:[
+    {v:'1.2.0',d:'Nov 6, 2026',b:'UPDATED',c:['Darwin notification live reload — no respring needed','Custom text color','Position presets left / center / right']},
+    {v:'1.0.0',d:'Oct 8, 2026',b:'NEW',c:['First release: carrier text override']}
+  ]},
+  {key:'volt',name:'Volt',icon:'🔋',vers:[
+    {v:'1.2.0',d:'Nov 6, 2026',b:'UPDATED',c:['Configurable thresholds with sliders','Hex color pickers via NSScanner','Division-by-zero guard']},
+    {v:'1.0.0',d:'Oct 5, 2026',b:'NEW',c:['First release: battery percent colors']}
+  ]},
+  {key:'lumina',name:'Lumina',icon:'🌙',vers:[
+    {v:'1.2.0',d:'Nov 5, 2026',b:'UPDATED',c:['UIWindow overlay — no orphan views after unlock','Dim level slider','Live clock and date']},
+    {v:'1.0.0',d:'Oct 3, 2026',b:'NEW',c:['First release: Always-On Display for iOS 12']}
+  ]},
+  {key:'cam60',name:'Cam60Enabler5s',icon:'📷',vers:[
+    {v:'1.0.0',d:'Nov 4, 2026',b:'UPDATED',c:['Feature flag OFF by default — enable in Settings','Thermal fallback to 30 fps','Crash guard: auto-disable on error, never Safe Mode']},
+    {v:'0.9',d:'Sep 28, 2026',b:'NEW',c:['First build: 1080p60 on iPhone 5s']}
+  ]}
+];
+function renderChangelog(){
+  var h='';
+  for(var i=0;i<CHANGELOG.length;i++){
+    var t=CHANGELOG[i];
+    for(var j=0;j<t.vers.length;j++){
+      var v=t.vers[j];
+      h+='<div class="sp-item'+(j===0?' hot':'')+'"><div class="sp-top">'+t.icon+' '+t.name+'<span class="sp-b '+(v.b==='NEW'?'new':'up')+'">'+v.b+'</span></div>';
+      h+='<div class="sp-d" style="margin-top:5px"><span class="sp-v">v'+v.v+'</span> · '+v.d+'</div><div class="sp-c">'+v.c.map(esc).join('<br>')+'</div></div>';
+    }
+  }
+  $('changelogList').innerHTML=h;
+}
+function renderWhatsNew(){
+  var h='';
+  for(var i=0;i<CHANGELOG.length;i++){
+    var t=CHANGELOG[i],v=t.vers[0];
+    h+='<div class="sp-item hot"><div class="sp-top">'+t.icon+' '+t.name+'<span class="sp-b '+(v.b==='NEW'?'new':'up')+'">'+v.b+'</span></div>';
+    h+='<div class="sp-d" style="margin-top:5px"><span class="sp-v">v'+v.v+'</span> · '+v.d+'</div><div class="sp-c">'+v.c.map(esc).join('<br>')+'</div></div>';
+  }
+  $('changesList').innerHTML=h;
+}
+
+/* ===== tweak settings schemas ===== */
+function tws(key){return function(id){var o=sget('tws_'+key,{});return o[id]}}
+function twset(key){return function(id,v){var o=sget('tws_'+key,{});o[id]=v;sset('tws_'+key,o);}}
+function twDefaults(key,defs){return function(){var o=sget('tws_'+key,{});sset('tws_'+key,defs)}}
+var TW={
+  glint:{title:'GLINT · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable Glint',dsc:'Master switch for the Dynamic Island',tip:'Off = stock status bar, no island'},
+    {sec:'Modules'},
+    {id:'notifications',type:'sw',label:'Notifications',dsc:'Banners expand in the island',tip:'One-shot expansion, auto-compress after timeout'},
+    {id:'charging',type:'sw',label:'Charging pill',dsc:'Show charging pill with pulse'},
+    {id:'nowplaying',type:'sw',label:'Now Playing',dsc:'Track info + equalizer waves'},
+    {id:'torch',type:'sw',label:'Torch pill',dsc:'Torch toggle pill with brightness'},
+    {sec:'Appearance'},
+    {id:'glowColor',type:'color',label:'Glow color',dsc:'Island border glow color'},
+    {id:'radius',type:'sl',min:8,max:24,unit:'px',label:'Corner radius',dsc:'Roundness of the island'},
+    {id:'speed',type:'sl',min:1,max:10,unit:'',label:'Animation speed',dsc:'Spring animation speed, higher = faster'},
+    {sec:'Behavior'},
+    {id:'timeout',type:'sl',min:2,max:10,unit:' s',label:'Auto-hide timeout',dsc:'Seconds before the island compresses'},
+    {sec:'Presets'},
+    {type:'presets',opts:[
+      {name:'Default',vals:{enable:1,notifications:1,charging:1,nowplaying:1,torch:1,glowColor:'#00d2ff',radius:18,speed:6,timeout:5}},
+      {name:'Minimal',vals:{notifications:1,charging:0,nowplaying:0,torch:0,radius:14,speed:7}},
+      {name:'Full',vals:{enable:1,notifications:1,charging:1,nowplaying:1,torch:1,radius:22,speed:5}}
+    ]},
+    {type:'reset'}
+  ],defaults:{enable:1,notifications:1,charging:1,nowplaying:1,torch:1,glowColor:'#00d2ff',radius:18,speed:6,timeout:5}},
+  aura:{title:'AURA · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable Aura',dsc:'Master switch for the HUD panel'},
+    {sec:'HUD Buttons'},
+    {id:'torch',type:'sw',label:'Torch',dsc:'Flashlight toggle button'},
+    {id:'camera',type:'sw',label:'Camera',dsc:'Open Camera app'},
+    {id:'voice',type:'sw',label:'Voice Memos',dsc:'Open Voice Memos recorder'},
+    {id:'screenshot',type:'sw',label:'Screenshot',dsc:'Capture the screen'},
+    {id:'wifi',type:'sw',label:'Wi-Fi',dsc:'Toggle Wi-Fi'},
+    {id:'bt',type:'sw',label:'Bluetooth',dsc:'Toggle Bluetooth'},
+    {sec:'Triggers'},
+    {id:'longPress',type:'sw',label:'Long-press Power',dsc:'Open HUD by holding the power button'},
+    {id:'doubleTap',type:'sw',label:'Double-tap Home',dsc:'Open HUD by double-clicking the Home button'},
+    {sec:'Presets'},
+    {type:'presets',opts:[
+      {name:'All buttons',vals:{enable:1,torch:1,camera:1,voice:1,screenshot:1,wifi:1,bt:1,longPress:1,doubleTap:1}},
+      {name:'Quick tools',vals:{torch:1,camera:1,screenshot:1,voice:0,wifi:0,bt:0}}
+    ]},
+    {type:'reset'}
+  ],defaults:{enable:1,torch:1,camera:1,voice:1,screenshot:1,wifi:1,bt:1,longPress:1,doubleTap:1}},
+  echo:{title:'ECHO · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable Echo',dsc:'Show custom text in the status bar'},
+    {id:'text',type:'text',label:'Carrier text',dsc:'Text shown instead of carrier name',ph:'cocxace'},
+    {sec:'Appearance'},
+    {id:'pos',type:'sel',opts:['center','left','right'],label:'Position',dsc:'Where the text sits in the status bar'},
+    {id:'color',type:'color',label:'Text color',dsc:'Color of the carrier text'},
+    {sec:'Behavior'},
+    {id:'hideWifi',type:'sw',label:'Hide on Wi-Fi',dsc:'Hide custom text while on Wi-Fi',tip:'Live reload via Darwin notifications — no respring'},
+    {type:'reset'}
+  ],defaults:{enable:1,text:'cocxace',pos:'center',color:'#ffffff',hideWifi:0}},
+  volt:{title:'VOLT · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable Volt',dsc:'Color the battery percent by level'},
+    {sec:'Colors'},
+    {id:'cNormal',type:'color',label:'Normal color',dsc:'Battery percent color above low threshold'},
+    {id:'cLow',type:'color',label:'Low color',dsc:'Color between low and critical thresholds'},
+    {id:'cCrit',type:'color',label:'Critical color',dsc:'Color below critical threshold'},
+    {sec:'Thresholds'},
+    {id:'lowT',type:'sl',min:5,max:60,unit:'%',label:'Low threshold',dsc:'Below this the percent turns yellow'},
+    {id:'critT',type:'sl',min:1,max:40,unit:'%',label:'Critical threshold',dsc:'Below this the percent turns red'},
+    {sec:'Presets'},
+    {type:'presets',opts:[
+      {name:'Classic',vals:{enable:1,cNormal:'#7dff7d',cLow:'#ffe07d',cCrit:'#ff7d7d',lowT:40,critT:20}},
+      {name:'Stealth',vals:{enable:1,cNormal:'#ffffff',cLow:'#c9c9c9',cCrit:'#ff3b30',lowT:30,critT:15}}
+    ]},
+    {type:'reset'}
+  ],defaults:{enable:1,cNormal:'#7dff7d',cLow:'#ffe07d',cCrit:'#ff7d7d',lowT:40,critT:20}},
+  lumina:{title:'LUMINA · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable Lumina',dsc:'Always-On Display on the lock screen',tip:'Off = stock black lock screen'},
+    {sec:'Content'},
+    {id:'clock',type:'sw',label:'Live clock',dsc:'Show clock with seconds'},
+    {id:'date',type:'sw',label:'Date',dsc:'Show current date'},
+    {id:'h24',type:'sw',label:'24-hour format',dsc:'Clock format'},
+    {sec:'Appearance'},
+    {id:'dim',type:'sl',min:10,max:90,unit:'%',label:'Dim level',dsc:'Overlay darkness, higher = dimmer'},
+    {type:'reset'}
+  ],defaults:{enable:1,clock:1,date:1,h24:1,dim:60}},
+  cam60:{title:'CAM60ENABLER5S · SETTINGS',schema:[
+    {sec:'Recording'},
+    {id:'f1080p60',type:'sw',label:'1080p 60 FPS',badgeOk:'ON 5s',dsc:'Force Full HD 60 fps in the stock Camera app',tip:'Default off. Fallback to 30 fps on any error'},
+    {id:'slowmo',type:'sw',label:'Slow-mo 720p 120 FPS',badgeOk:'ON 5s',dsc:'Slow motion mode on A7'},
+    {id:'f4k60',type:'sw',label:'4K 60 FPS',badge:'NOT ON 5s',dsc:'Needs A9 chip or newer. Stays off on iPhone 5s',tip:'Kept honest: no crash, just will not engage'},
+    {id:'proraw',type:'sw',label:'ProRAW',badge:'NOT ON 5s',dsc:'Needs A12 or newer and iOS 12 ProRAW API'},
+    {id:'cine',type:'sw',label:'Cinematic mode',badge:'NOT ON 5s',dsc:'Needs iPhone 13 or newer'},
+    {sec:'Quality'},
+    {id:'bitrate',type:'sl',min:20,max:80,step:5,unit:' Mb/s',label:'Video bitrate',dsc:'Higher = better quality, more heat'},
+    {id:'quality',type:'sl',min:60,max:100,unit:'%',label:'Encoder quality',dsc:'Encoder quality target'},
+    {sec:'Safety'},
+    {id:'thermal',type:'sw',label:'Thermal protection',dsc:'Drop to 30 fps when the phone gets hot',tip:'Protects the stock camera from crashes'},
+    {id:'autodis',type:'sw',label:'Auto-disable on error',dsc:'Turn the tweak off if the camera errors out — never Safe Mode'},
+    {sec:'Presets'},
+    {type:'presets',opts:[
+      {name:'Max quality',vals:{f1080p60:1,slowmo:1,bitrate:80,quality:100,thermal:1,autodis:1}},
+      {name:'Balance',vals:{f1080p60:1,slowmo:0,bitrate:50,quality:85,thermal:1,autodis:1}},
+      {name:'Battery save',vals:{f1080p60:0,slowmo:0,bitrate:30,quality:70,thermal:1,autodis:1}}
+    ]},
+    {id:'check',type:'check',label:'Device check',dsc:'Detects iOS from the browser and lists what is available'},
+    {type:'cmp',label:'Compare 30 vs 60 FPS',dsc:'Drag the divider'},
+    {type:'status',label:'Status'},
+    {type:'reset'}
+  ],
+  defaults:{f1080p60:0,slowmo:0,f4k60:0,proraw:0,cine:0,bitrate:50,quality:85,thermal:1,autodis:1},
+  _status:function(){
+    var o=sget('tws_cam60',{});
+    function on(x){return o[x]?'ON':'OFF'}
+    return '<b>Tweak:</b> '+(o.f1080p60||o.slowmo?'active ('+on('f1080p60')+' 1080p60, '+on('slowmo')+' slow-mo)':'idle — stock camera')+
+      '<br><b>Stock camera:</b> untouched, fallback 30 fps armed'+
+      '<br><b>Safe Mode:</b> not detected ✓';
+  }},
+  ab12:{title:'ACTIONBUTTON12 · SETTINGS',schema:[
+    {sec:'General'},
+    {id:'enable',type:'sw',label:'Enable ActionButton12',dsc:'Master switch for the HUD'},
+    {sec:'Triggers'},
+    {id:'doubleTap',type:'sw',label:'Double-tap Home',dsc:'Open HUD with double Home click'},
+    {id:'longPress',type:'sw',label:'Long-press Power',dsc:'Open HUD by holding power'},
+    {sec:'HUD Buttons'},
+    {id:'torch',type:'sw',label:'Torch',dsc:'Flashlight toggle'},
+    {id:'camera',type:'sw',label:'Camera',dsc:'Open Camera'},
+    {id:'voice',type:'sw',label:'Voice Memos',dsc:'Open recorder'},
+    {id:'screenshot',type:'sw',label:'Screenshot',dsc:'Capture screen'},
+    {id:'wifi',type:'sw',label:'Wi-Fi',dsc:'Toggle Wi-Fi'},
+    {id:'bt',type:'sw',label:'Bluetooth',dsc:'Toggle Bluetooth'},
+    {sec:'Presets'},
+    {type:'presets',opts:[
+      {name:'Default',vals:{enable:1,doubleTap:1,longPress:1,torch:1,camera:1,voice:1,screenshot:1,wifi:1,bt:1}},
+      {name:'Tools only',vals:{torch:1,camera:1,screenshot:1,voice:0,wifi:0,bt:0}}
+    ]},
+    {type:'reset'}
+  ],defaults:{enable:1,doubleTap:1,longPress:1,torch:1,camera:1,voice:1,screenshot:1,wifi:1,bt:1}}
+};
+function openTweak(key){
+  var t=TW[key];
+  if(!t)return;
+  $('twTitle').textContent=t.title;
+  t.schema._defaults=t.defaults;
+  if(t.schema._status)buildRows($('twRows'),t.schema,tws(key),twset(key));
+  else buildRows($('twRows'),t.schema,tws(key),twset(key));
+  if(key==='cam60'){
+    /* keep status line fresh on any change */
+    var oldSet=twset('cam60');
+  }
+  $('twSet').classList.add('open');
+}
+
+/* ===== modal plumbing ===== */
+var closeBtns=document.querySelectorAll('.oclose');
+for(var cb2=0;cb2<closeBtns.length;cb2++){
+  closeBtns[cb2].addEventListener('click',function(){
+    this.closest('.omodal').classList.remove('open');
+  });
+}
+document.querySelector('#diSet').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+document.querySelector('#twSet').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open')});
+var gears=document.querySelectorAll('.gear');
+for(var g=0;g<gears.length;g++){
+  gears[g].addEventListener('click',function(){openTweak(this.getAttribute('data-tweak'))});
+}
+
+/* ===== init ===== */
+applyIsland();
+paintClock();
+renderChangelog();
+renderWhatsNew();
+segUpdate();
+setTimeout(function(){notify('Glint','Repo loaded — long-press the island for settings')},2600);
+})();
+</script>
 </script>
 </body>
 </html>
