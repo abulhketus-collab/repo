@@ -3,633 +3,342 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>@cocxace Repository — iOS 12 Jailbreak Suite & Dynamic Island</title>
-  <meta name="description" content="Official APT Repository by @cocxace for iOS 12.0 - 12.5.8 (iPhone 5s / A7). Glint Dynamic Island, Camera60Enabler5s, ActionButton12, Aura, Lumina, Echo, Volt.">
+  <title>cocxace Repo — Pure Minecraft Monochrome (iOS 12)</title>
+  <meta name="description" content="Pure monochrome Minecraft-style jailbreak repository for iOS 12.0 - 12.5.8 (iPhone 5s / A7). Glint Dynamic Island, Camera60Enabler5s, Aura, ActionButton12.">
   <link rel="icon" type="image/png" href="CydiaIcon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Ambient Light Blobs -->
-  <div class="ambient-blobs">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">URL COPIED!</div>
 
-  <!-- Splash Screen with Floating Glint Capsule -->
-  <div class="splash-overlay" id="splashScreen">
-    <div class="splash-island">
-      <span class="splash-icon">🏝️</span>
-      <div class="splash-brand">
-        <span class="splash-title">Glint</span>
-        <span class="splash-sub">by Glint • tweaks repo</span>
+  <!-- SINGLE VERTICAL STACK CONTAINER -->
+  <main class="stack-container">
+
+    <!-- 1. TOP HEADER -->
+    <header class="top-header">
+      <div class="hero-logo">@COCXACE REPO</div>
+      <div class="px-title" style="font-size:0.56rem;">ARM64 • IOS 12.0 — 12.5.8</div>
+      <div class="header-meta">
+        <span class="px-tag">A7 OPTIMIZED</span>
+        <span class="px-tag">PURE GNU TAR</span>
+        <span class="px-tag">ZERO SAFE-MODE</span>
+        <span class="px-tag">v1.2.3 LIVE</span>
       </div>
-    </div>
-  </div>
+    </header>
 
-  <!-- Toast Notification Container -->
-  <div class="toast-msg" id="toastMsg">Repo URL Copied!</div>
-
-  <!-- Main 3-Column Responsive Container -->
-  <div class="app-container">
-
-    <!-- ==============================================
-         LEFT COLUMN: Changelog, Safety & Quick Install
-         ============================================== -->
-    <aside class="side-panel">
-      <div class="glass-panel">
-        <div class="panel-header">
-          <span class="panel-title">📜 Repository Log</span>
-          <span class="panel-badge">v1.2.3 LIVE</span>
-        </div>
-
-        <div class="timeline-list">
-          <div class="timeline-item active">
-            <div class="timeline-top">
-              <span class="timeline-ver">Release v1.2.3</span>
-              <span class="timeline-badge current">Current</span>
-            </div>
-            <div class="timeline-date">Nov 10, 2026 • Verified Build</div>
-            <div class="timeline-desc">
-              • <strong>Glint 1.2.3:</strong> Dynamic Island timer MM:SS, Safari audio visualizer, 1s edge glow & rainbow.<br>
-              • <strong>Cam60 1.2.3:</strong> 1080p60 enabler + Camera Settings integration.<br>
-              • <strong>Strict GNU Tar:</strong> 100% PAX-free archive format (fixed corrupted tarfile).<br>
-              • <strong>Zero Safe-Mode:</strong> 100% main thread UI & lazy window architecture.
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-top">
-              <span class="timeline-ver">Release v1.2.0</span>
-              <span class="timeline-badge prev">Prev</span>
-            </div>
-            <div class="timeline-date">Nov 8, 2026</div>
-            <div class="timeline-desc">
-              • PreferenceLoader bundles for Settings app.<br>
-              • SBUIController direct app workspace launch.<br>
-              • Sound & haptic triggers calibrated.
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-top">
-              <span class="timeline-ver">Release v1.0.0</span>
-              <span class="timeline-badge prev">Initial</span>
-            </div>
-            <div class="timeline-date">Nov 7, 2026</div>
-            <div class="timeline-desc">
-              • Initial arm64 release for iPhone 5s & iOS 12.5.8.<br>
-              • ActionButton12, Aura, Lumina, Echo, Volt suite.
-            </div>
-          </div>
-        </div>
-
-        <!-- 1-2-3 Filza Guide -->
-        <div class="guide-box">
-          <h4>📥 Manual Filza Install (1-2-3)</h4>
-          <ol>
-            <li>Tap <strong>"Download .deb"</strong> on any tweak.</li>
-            <li>In Safari, tap <em>Open in "Filza"</em>.</li>
-            <li>Tap the .deb in Filza → <strong>Install</strong> → Respring!</li>
-          </ol>
-        </div>
-
-        <!-- Safety Assurance Card -->
-        <div class="guide-box" style="margin-top:14px; border-color:rgba(52,199,89,0.3); background:rgba(52,199,89,0.04);">
-          <h4 style="color:#34c759;">🛡️ Safe Mode Guarantee</h4>
-          <p style="font-size:0.73rem; color:var(--text-secondary); line-height:1.45;">
-            Every hook is shielded in <code>@try/@catch</code>. UI elements are 100% lazy and bound strictly to the Main Thread, preventing SpringBoard watchdogs.
-          </p>
-        </div>
+    <!-- 2. DYNAMIC ISLAND SIMULATOR -->
+    <section class="island-box">
+      <div class="island-statusbar">
+        <span id="simClock" title="Click to toggle 12/24h">09:41:00 AM</span>
+        <span>21°C • 100% ⚡</span>
       </div>
-    </aside>
 
-    <!-- ==============================================
-         CENTER COLUMN: Showcase, Island & Tweaks
-         ============================================== -->
-    <main class="main-column">
+      <div class="island-wrap">
+        <div class="dynamic-island state-compact" id="liveIsland" title="Click to toggle / Long-press for Sparkles">
+          <!-- Compact View -->
+          <div id="islandCompactView" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+            <div style="font-family:var(--pixel-font); font-size:0.5rem; color:#ffffff; display:flex; align-items:center; gap:6px;">
+              <span id="islandModeIcon">🏝️</span>
+              <span id="islandModeText">GLINT</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:5px;">
+              <div class="pixel-eq" id="pixelEq">
+                <div class="pixel-eq-bar" style="height:6px;"></div>
+                <div class="pixel-eq-bar" style="height:12px;"></div>
+                <div class="pixel-eq-bar" style="height:15px;"></div>
+                <div class="pixel-eq-bar" style="height:8px;"></div>
+              </div>
+              <span id="islandSecIcon" style="font-size:0.6rem;">🎧</span>
+            </div>
+          </div>
 
-      <!-- Header Profile Section -->
-      <div class="center-header">
-        <div class="hero-avatar">
-          <img src="CydiaIcon.png" alt="cocxace repo icon" onerror="this.innerText='⚡'">
-        </div>
-        <h1 class="hero-title">@cocxace's Suite</h1>
-        <p class="hero-sub">Original 60 FPS tweaks crafted for iPhone 5s (A7 chip) & iOS 12.0 – 12.5.8</p>
-        <div class="hero-chips">
-          <span class="chip">📱 iPhone 5s / A7</span>
-          <span class="chip">⚙️ iOS 12.5.8 Rootful</span>
-          <span class="chip">📦 Sileo • Zebra • Cydia</span>
-          <span class="chip">🛡️ Zero Safe-Mode</span>
+          <!-- Expanded Card View -->
+          <div id="islandExpandedView" style="display:none; width:100%;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px dashed #333; padding-bottom:6px; margin-bottom:8px;">
+              <div style="font-family:var(--pixel-font); font-size:0.48rem; color:#fff;">NOW PLAYING</div>
+              <button class="px-btn-sm" id="btnCloseIsland" style="padding:2px 6px;">✕</button>
+            </div>
+            <div style="font-size:0.75rem; color:#ccc;">Track: Starlight Beat (Safari)</div>
+            <div style="font-size:0.68rem; color:#888;">Artist: @cocxace • 60 FPS Sync</div>
+            <div style="display:flex; justify-content:space-around; margin-top:8px;">
+              <button class="px-btn-sm" onclick="showToast('⏮ PREV')">⏮</button>
+              <button class="px-btn-sm" onclick="showToast('⏸ PAUSE')">⏸</button>
+              <button class="px-btn-sm" onclick="showToast('⏭ NEXT')">⏭</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- INTERACTIVE DYNAMIC ISLAND SIMULATOR -->
-      <section class="simulator-box">
-        <div class="sim-statusbar">
-          <span class="sim-sb-time" id="simClock" title="Click to toggle 12/24h">09:41:00 AM</span>
-          <div class="sim-sb-icons">
-            <span id="weatherBadge" style="font-size:0.75rem;">☀️ 21°C</span>
-            <span class="sim-network-dot" id="networkDot" title="Online Status"></span>
-            <span id="batteryPercent" style="font-size:0.72rem;">100% ⚡</span>
-          </div>
+      <!-- Island Mode Pickers -->
+      <div class="sim-controls">
+        <button class="px-btn-sm active" onclick="setIslandState('music')">🎵 MUSIC EQ</button>
+        <button class="px-btn-sm" onclick="setIslandState('timer')">⏱️ TIMER</button>
+        <button class="px-btn-sm" onclick="setIslandState('charging')">⚡ CHARGING</button>
+        <button class="px-btn-sm" onclick="setIslandState('compact')">🏝️ CAPSULE</button>
+      </div>
+    </section>
+
+    <!-- 3. USER PHONE WALKTHROUGH (HDJDJW.HTML CAROUSEL) -->
+    <section class="phone-box">
+      <div class="phone-track"><div class="phone-fill" id="uFill"></div></div>
+      <div class="scenes-wrap" id="uWrap">
+
+        <!-- Scene 0 -->
+        <div class="user-scene active">
+          <div class="u-logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+          <h2 class="u-title">GLINT</h2>
+          <p class="u-subtitle">Dynamic Island for iOS 12.<br>Spring physics · Timer · Music equalizer.</p>
         </div>
 
-        <div class="island-wrap">
-          <!-- Dynamic Island Capsule -->
-          <div class="dynamic-island state-compact" id="liveIsland" title="Click to expand / Long press for Easter Egg">
-            <!-- Compact View -->
-            <div class="island-compact-content" id="islandCompactView">
-              <div class="island-compact-left">
-                <span id="islandModeIcon">🏝️</span>
-                <span id="islandModeText">Glint</span>
-              </div>
-              <div class="island-compact-right">
-                <div class="eq-bars" id="islandEqBars">
-                  <div class="eq-bar" style="height: 6px;"></div>
-                  <div class="eq-bar" style="height: 12px;"></div>
-                  <div class="eq-bar" style="height: 15px;"></div>
-                  <div class="eq-bar" style="height: 8px;"></div>
-                </div>
-                <span id="islandSecondaryIcon" style="font-size:0.8rem;">🎧</span>
-              </div>
-            </div>
-
-            <!-- Expanded Card View (Hidden by default) -->
-            <div id="islandExpandedView" style="display:none; width:100%;">
-              <div class="island-card-top">
-                <div class="card-art" id="islandCardArt">🎵</div>
-                <div class="card-details">
-                  <div class="card-title" id="islandCardTitle">Starlight Beat</div>
-                  <div class="card-artist" id="islandCardArtist">cocxace • Safari Audio</div>
-                </div>
-                <div class="eq-bars">
-                  <div class="eq-bar" style="height: 8px;"></div>
-                  <div class="eq-bar" style="height: 14px;"></div>
-                  <div class="eq-bar" style="height: 16px;"></div>
-                  <div class="eq-bar" style="height: 10px;"></div>
-                </div>
-              </div>
-              <div class="island-card-actions">
-                <button class="island-action-btn" id="btnActionPrev" title="Previous">⏮️</button>
-                <button class="island-action-btn" id="btnActionPlay" title="Play/Pause">⏸️</button>
-                <button class="island-action-btn" id="btnActionNext" title="Next">⏭️</button>
-                <button class="island-action-btn" id="btnActionClose" title="Collapse">✕</button>
-              </div>
-            </div>
-          </div>
+        <!-- Scene 1 -->
+        <div class="user-scene">
+          <div class="u-feat"><div class="u-fi">01</div><div class="u-ft">Dynamic Island for iOS 12</div><div class="u-fnum">[OK]</div></div>
+          <div class="u-feat"><div class="u-fi">02</div><div class="u-ft">Spring expansion animation</div><div class="u-fnum">[OK]</div></div>
+          <div class="u-feat"><div class="u-fi">03</div><div class="u-ft">Live countdown timer MM:SS</div><div class="u-fnum">[OK]</div></div>
+          <div class="u-feat"><div class="u-fi">04</div><div class="u-ft">Zero Safe Mode · Pure GNU deb</div><div class="u-fnum">[OK]</div></div>
         </div>
 
-        <!-- Mode Selectors -->
-        <div class="sim-controls">
-          <button class="sim-pill active" onclick="setIslandState('music')">🎵 Music & Equalizer</button>
-          <button class="sim-pill" onclick="setIslandState('timer')">⏱️ Timer</button>
-          <button class="sim-pill" onclick="setIslandState('charging')">⚡ Charging</button>
-          <button class="sim-pill" onclick="setIslandState('compact')">🏝️ Idle Capsule</button>
-          <button class="sim-pill" onclick="triggerEasterEgg()">✨ Surprise</button>
-        </div>
-      </section>
-
-      <!-- USER'S INTERACTIVE 4-SCENE PHONE WALKTHROUGH (HDJDJW.HTML) -->
-      <section class="user-phone-container">
-        <div class="phone-track"><div class="phone-fill" id="uFill"></div></div>
-        <div class="scenes-wrap" id="uWrap">
-
-          <!-- Scene 0: Glint Overview -->
-          <div class="user-scene active">
-            <div class="u-logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-            <h2 class="u-title">Glint</h2>
-            <p class="u-subtitle">Dynamic Island for iOS 12.<br>Spring physics · collapse timer · music visualizer.</p>
-          </div>
-
-          <!-- Scene 1: Features -->
-          <div class="user-scene">
-            <div class="u-features">
-              <div class="u-feat"><div class="u-fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="u-ft">Dynamic Island for iOS 12</div><div class="u-fnum">01</div></div>
-              <div class="u-feat"><div class="u-fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="u-ft">Spring expansion animation</div><div class="u-fnum">02</div></div>
-              <div class="u-feat"><div class="u-fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="u-ft">Auto-collapse on timer</div><div class="u-fnum">03</div></div>
-              <div class="u-feat"><div class="u-fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="u-ft">Zero Safe Mode · Rock solid</div><div class="u-fnum">04</div></div>
-            </div>
-          </div>
-
-          <!-- Scene 2: Steps -->
-          <div class="user-scene">
-            <div class="u-steps">
-              <div class="u-step"><div class="u-sn">01</div><div class="u-sc"><div class="u-st">Open Sileo</div><div class="u-sd">Launch package manager on your device</div></div></div>
-              <div class="u-step"><div class="u-sn">02</div><div class="u-sc"><div class="u-st">Add Repository</div><div class="u-sd">Sources → + → paste repo URL</div><span class="u-su">https://abulhketus-collab.github.io/repo/</span></div></div>
-              <div class="u-step"><div class="u-sn">03</div><div class="u-sc"><div class="u-st">Search for Glint</div><div class="u-sd">Type Glint or Cam60 in package search</div></div></div>
-              <div class="u-step"><div class="u-sn">04</div><div class="u-sc"><div class="u-st">Tap Install</div><div class="u-sd">Confirm installation and respring SpringBoard</div></div></div>
-            </div>
-          </div>
-
-          <!-- Scene 3: Ready to Install -->
-          <div class="user-scene">
-            <div class="u-chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-            <h2 class="u-ftitle">Ready to Install</h2>
-            <p class="u-fsub">Add repository to Sileo, Zebra or Cydia and install Glint</p>
-            <div class="u-urlbox" id="uBox" role="button" tabindex="0">
-              <span class="u-urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
-              <div class="u-cb"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-            </div>
-            <a class="u-bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Install Repo</a>
-            <button class="u-bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy URL</button>
-          </div>
-
+        <!-- Scene 2 -->
+        <div class="user-scene">
+          <div class="u-step"><div class="u-sn">01</div><div class="u-sc"><div class="u-st">OPEN SILEO</div><div class="u-sd">Launch package manager on your device</div></div></div>
+          <div class="u-step"><div class="u-sn">02</div><div class="u-sc"><div class="u-st">ADD REPO</div><div class="u-sd">Sources → + → paste repository URL</div><span class="u-su">https://abulhketus-collab.github.io/repo/</span></div></div>
+          <div class="u-step"><div class="u-sn">03</div><div class="u-sc"><div class="u-st">FIND GLINT</div><div class="u-sd">Search Glint in package search tab</div></div></div>
+          <div class="u-step"><div class="u-sn">04</div><div class="u-sc"><div class="u-st">INSTALL</div><div class="u-sd">Tap Install & confirm respring</div></div></div>
         </div>
 
-        <!-- Phone Carousel Controls -->
-        <div class="u-ctrl">
-          <div class="u-dots" id="uDots">
-            <button class="u-dot active" data-s="0"></button>
-            <button class="u-dot" data-s="1"></button>
-            <button class="u-dot" data-s="2"></button>
-            <button class="u-dot" data-s="3"></button>
+        <!-- Scene 3 -->
+        <div class="user-scene">
+          <div class="u-chk">✓ READY</div>
+          <div class="px-title" style="font-size:0.68rem; margin-bottom:6px;">ADD REPO TO DEVICE</div>
+          <div class="u-urlbox" id="uBox" role="button" tabindex="0">
+            <span id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+            <span style="font-family:var(--pixel-font); font-size:0.42rem;">[COPY]</span>
           </div>
-          <div class="u-row">
-            <button class="u-btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Pause</span></button>
-            <button class="u-btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Restart</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Package Manager Installation Buttons -->
-      <section class="cta-box">
-        <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn-sileo-glow" id="btnSileo">
-          <span>⚡</span>
-          <span>ADD TO SILEO REPOSITORY</span>
-        </a>
-
-        <div class="secondary-btns">
-          <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-sub">🦓 Zebra</a>
-          <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-sub">📦 Cydia</a>
-          <button class="btn-sub" onclick="copyRepoUrl()">📋 Copy URL</button>
-        </div>
-      </section>
-
-      <!-- TWEAKS SHOWCASE -->
-      <section class="tweaks-grid">
-        <div class="tweaks-section-title">
-          <span>Verified Tweak Suite (60 FPS)</span>
-          <span class="tweaks-count">7 Packages Ready</span>
-        </div>
-
-        <!-- 1. Glint -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-glint">🏝️</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Glint</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Dynamic Island • Timer • Safari Music • Edge Lighting</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Complete Dynamic Island recreation for iOS 12. Displays countdown timers beside the status clock, Safari music with live equalizer & beat reactive movement, customizable edge glow (solid, rainbow cycle, or 1s breathing blink), and battery charging states.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">⏱️ Live Timer</span>
-            <span class="feat-tag">🎵 Safari Equalizer</span>
-            <span class="feat-tag">🌈 Rainbow & Blink Edge</span>
-            <span class="feat-tag">🔋 Fast Charging</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Zero Safe Mode</span>
-            <a href="debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Glint')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- 2. Cam60Enabler5s -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-cam60">📷</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Camera60Enabler5s</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">1080p 60 FPS Camera Unlock • A7 Metal Optimization</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Forces 1080p 60 FPS recording mode inside the stock Camera app for iPhone 5s. Injects configuration directly into iOS Settings with custom quality presets ("Max Quality", "Balanced", "Battery Saver") and hardware safety guards.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">🎬 1080p @ 60 FPS</span>
-            <span class="feat-tag">⚙️ iOS Settings Pane</span>
-            <span class="feat-tag">⚡ A7 Dual-Core Tuned</span>
-            <span class="feat-tag">🛡️ Crash Safeguard</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • 60 FPS Verified</span>
-            <a href="debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Camera60Enabler5s')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Interactive Camera 60 FPS Simulator Section -->
-        <div class="cam-hub">
-          <div class="cam-hub-top">
-            <span class="cam-hub-title">⚡ Camera60 Interactive Studio</span>
-            <span style="font-size:0.72rem; color:#34c759; font-weight:600;">Status: Active</span>
-          </div>
-          <div class="fps-slider-box">
-            <div style="font-size:0.74rem; color:#fff; font-weight:600; margin-bottom:6px;">Live Smoothness Visualizer</div>
-            <div class="fps-vis-wrap">
-              <div class="fps-moving-object fps-60" id="fpsDemoObject"></div>
-            </div>
-            <div class="fps-controls-row">
-              <button class="cam-preset-btn active" id="btnToggle60" onclick="setFpsDemo(60)">Preview 60 FPS (Silky Smooth)</button>
-              <button class="cam-preset-btn" id="btnToggle30" onclick="setFpsDemo(30)">Stock 30 FPS</button>
-            </div>
-          </div>
-
-          <div style="font-size:0.74rem; color:var(--text-secondary); margin-bottom:8px;">Camera Tuning Presets:</div>
-          <div class="cam-presets-row">
-            <button class="cam-preset-btn active" onclick="applyCameraPreset('max')">Max Quality (1080p60)</button>
-            <button class="cam-preset-btn" onclick="applyCameraPreset('balanced')">Balanced (1080p60 Dynamic)</button>
-            <button class="cam-preset-btn" onclick="applyCameraPreset('battery')">Battery Saver (720p60)</button>
-            <button class="cam-preset-btn" onclick="applyCameraPreset('reset')">Reset Defaults</button>
-          </div>
-        </div>
-
-        <!-- 3. Aura -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-aura">✨</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Aura</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Spring Physics Action Button HUD • Dark Glass</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Apple-style Action Button interface with fluid spring physics (damping: 0.7). Features dark glass blur, 2x2 action grid, and direct app workspace activation via SBUIController.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">🌀 Spring Damping 0.7</span>
-            <span class="feat-tag">🌫️ UIBlurEffectDark</span>
-            <span class="feat-tag">⚡ Zero-Latency Trigger</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Safe Mode Clean</span>
-            <a href="debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Aura')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- 4. ActionButton12 -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-ab12">🔘</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">ActionButton12</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Action Button + Sliders • Power Key Trigger</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            The foundational Action Button HUD. Triggers on long-press Power (0.6s) or Home button. Provides Flashlight, Camera, Voice Memos, Screenshot, and real-time Brightness & Volume control sliders.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">🎚️ Interactive Sliders</span>
-            <span class="feat-tag">🔘 2x2 Fast Actions</span>
-            <span class="feat-tag">🛡️ Lazy Window Init</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Safe Mode Clean</span>
-            <a href="debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'ActionButton12')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- 5. Lumina -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-lumina">🌙</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Lumina</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Always-On Display • UltraLight Typography</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Elegant ambient Always-On Display clock with smooth alpha transition into the lockscreen. Uses under 0.1% CPU to preserve iPhone 5s battery life.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">🕐 UltraLight Font</span>
-            <span class="feat-tag">🔋 Low Power Draw</span>
-            <span class="feat-tag">✨ Alpha Transitions</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Safe Mode Clean</span>
-            <a href="debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Lumina')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- 6. Echo -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-echo">📡</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Echo</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Custom StatusBar Carrier Text</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Replaces the carrier label in the iOS 12 status bar with custom text or emoji. Integrates with Darwin notifications for instant updates without respring.
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">✏️ Custom Text</span>
-            <span class="feat-tag">⚡ Instant Apply</span>
-            <span class="feat-tag">📱 iOS 12 Native</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Safe Mode Clean</span>
-            <a href="debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Echo')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- 7. Volt -->
-        <article class="tweak-card">
-          <div class="tweak-card-top">
-            <div class="tweak-icon-box tweak-icon-volt">🔋</div>
-            <div class="tweak-info">
-              <div class="tweak-name-row">
-                <span class="tweak-name">Volt</span>
-                <span class="tweak-version">v1.2.3</span>
-              </div>
-              <div class="tweak-arch">Color-Tinted Battery Percent</div>
-            </div>
-          </div>
-          <p class="tweak-desc">
-            Adds a precise numerical battery percentage to the iOS 12 status bar with dynamic color gradient tinting (Green > Yellow > Red).
-          </p>
-          <div class="tweak-features">
-            <span class="feat-tag">🎨 Dynamic Color Gradation</span>
-            <span class="feat-tag">⚡ Fast Readouts</span>
-            <span class="feat-tag">🛡️ Substrate Safe</span>
-          </div>
-          <div class="tweak-bottom">
-            <span class="tweak-safe-tag">✓ Pure GNU Archive • Safe Mode Clean</span>
-            <a href="debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn-dl-deb" onclick="handleDebDownload(event, 'Volt')">
-              <span>Download .deb</span>
-            </a>
-          </div>
-        </article>
-
-      </section>
-
-    </main>
-
-    <!-- ==============================================
-         RIGHT COLUMN: Interactive Studio & Hardware Guard
-         ============================================== -->
-    <aside class="side-panel">
-      <div class="glass-panel">
-        <div class="panel-header">
-          <span class="panel-title">🎛️ Live Studio Controls</span>
-          <span class="panel-badge">Interactive</span>
-        </div>
-
-        <!-- Glint Glow Color -->
-        <div class="ctrl-group">
-          <div class="ctrl-label">
-            <span>Dynamic Island Glow Color</span>
-            <span class="ctrl-val" id="lblGlowColor">#007aff</span>
-          </div>
-          <div class="color-picker-row">
-            <div class="color-circle selected" style="background:#007aff;" onclick="setGlowColor('#007aff')"></div>
-            <div class="color-circle" style="background:#af52de;" onclick="setGlowColor('#af52de')"></div>
-            <div class="color-circle" style="background:#34c759;" onclick="setGlowColor('#34c759')"></div>
-            <div class="color-circle" style="background:#ff9500;" onclick="setGlowColor('#ff9500')"></div>
-            <div class="color-circle" style="background:#ff2d55;" onclick="setGlowColor('#ff2d55')"></div>
-            <input type="color" class="native-color-pick" id="nativeColorPicker" value="#007aff" onchange="setGlowColor(this.value)">
-          </div>
-        </div>
-
-        <!-- Rainbow Mode Toggle -->
-        <div class="ctrl-group">
-          <div class="toggle-row">
-            <span>🌈 Rainbow Mode</span>
-            <label class="ios-switch">
-              <input type="checkbox" id="chkRainbow" onchange="toggleRainbowMode(this.checked)">
-              <span class="slider-round"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- 1s Breathing Blink Mode -->
-        <div class="ctrl-group">
-          <div class="toggle-row">
-            <span>✨ 1s Breathing Blink</span>
-            <label class="ios-switch">
-              <input type="checkbox" id="chkBlink" onchange="toggleBlinkMode(this.checked)">
-              <span class="slider-round"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Glow Intensity Slider -->
-        <div class="ctrl-group">
-          <div class="ctrl-label">
-            <span>Glow Intensity</span>
-            <span class="ctrl-val" id="lblGlowRadius">16px</span>
-          </div>
-          <input type="range" class="custom-range" min="4" max="36" value="16" oninput="setGlowRadius(this.value)">
-        </div>
-
-        <!-- Beat Reactivity Toggle -->
-        <div class="ctrl-group">
-          <div class="toggle-row">
-            <span>🥁 Beat Reactive Pulse</span>
-            <label class="ios-switch">
-              <input type="checkbox" id="chkBeatPulse" checked onchange="toggleBeatPulse(this.checked)">
-              <span class="slider-round"></span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Timer Audio Bell Test -->
-        <div class="ctrl-group" style="margin-top:14px;">
-          <button class="btn-sub" style="width:100%;" onclick="playTimerBell()">🔔 Test Timer Audio Bell</button>
-        </div>
-
-        <!-- Hardware & Safe Mode Inspection -->
-        <div class="guide-box" style="margin-top:20px; background:rgba(255,255,255,0.02); border-color:rgba(255,255,255,0.08);">
-          <h4 style="color:#fff; margin-bottom:10px;">📊 iPhone 5s Hardware Guard</h4>
-          <div class="hw-item">
-            <span>SoC Architecture:</span>
-            <strong>Apple A7 (arm64)</strong>
-          </div>
-          <div class="hw-item">
-            <span>RAM Safety Budget:</span>
-            <strong>&lt; 14 MB (1GB safe)</strong>
-          </div>
-          <div class="hw-item">
-            <span>UI Threading:</span>
-            <strong>100% Main Queue</strong>
-          </div>
-          <div class="hw-item">
-            <span>Tar Package Spec:</span>
-            <strong>Pure GNU (0 PAX)</strong>
-          </div>
-          <div class="hw-item">
-            <span>SpringBoard Watchdog:</span>
-            <strong>Shield Active</strong>
-          </div>
+          <a class="btn-pixel-big" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/">
+            ⚡ ADD TO SILEO
+          </a>
+          <button class="btn-pixel-sub" id="cBtn" style="margin-top:8px; width:100%;">
+            📋 COPY REPOSITORY URL
+          </button>
         </div>
 
       </div>
-    </aside>
 
-  </div>
+      <!-- Controls -->
+      <div class="u-ctrl">
+        <div class="u-dots" id="uDots">
+          <div class="u-dot active" data-s="0"></div>
+          <div class="u-dot" data-s="1"></div>
+          <div class="u-dot" data-s="2"></div>
+          <div class="u-dot" data-s="3"></div>
+        </div>
+        <div class="u-row">
+          <button class="btn-pixel-sub" id="pBtn" style="flex:1;">PAUSE</button>
+          <button class="btn-pixel-sub" id="rBtn" style="flex:1;">RESTART</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PACKAGE MANAGERS CTA BUTTONS -->
+    <section>
+      <a href="sileo://source/https://abulhketus-collab.github.io/repo/" class="btn-pixel-big" style="margin-bottom:8px;">
+        👉 ADD REPOSITORY TO SILEO
+      </a>
+      <div class="sub-btns-grid">
+        <a href="zbra://sources/add/https://abulhketus-collab.github.io/repo/" class="btn-pixel-sub">ZEBRA</a>
+        <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://abulhketus-collab.github.io/repo/" class="btn-pixel-sub">CYDIA</a>
+        <button class="btn-pixel-sub" onclick="copyRepoUrl()">COPY</button>
+      </div>
+    </section>
+
+    <!-- 5. CAMERA 60 FPS INTERACTIVE HUB -->
+    <section class="pixel-card highlight">
+      <div class="px-title" style="margin-bottom:8px;">📷 CAMERA60ENABLER5S STUDIO</div>
+      <div class="px-sub" style="margin-bottom:10px;">Hardware unlock: 1080p 60 FPS on iPhone 5s stock camera app.</div>
+      
+      <div class="cam-vis-box">
+        <div style="font-family:var(--pixel-font); font-size:0.44rem; color:#888; margin-bottom:6px;">SMOOTHNESS BENCHMARK</div>
+        <div class="cam-track">
+          <div class="cam-block fps-60" id="camBlock"></div>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button class="px-btn-sm active" id="btnFps60" style="flex:1;" onclick="setFpsDemo(60)">60 FPS (SMOOTH)</button>
+          <button class="px-btn-sm" id="btnFps30" style="flex:1;" onclick="setFpsDemo(30)">30 FPS (STOCK)</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <span>1080p 60 FPS Force:</span>
+        <span class="pixel-switch active">ENABLED</span>
+      </div>
+      <div class="setting-row">
+        <span>4K Mode:</span>
+        <span class="pixel-switch">LOCKED (A7 MAX 1080P)</span>
+      </div>
+      <div class="setting-row">
+        <span>Crash Safeguard (@try/@catch):</span>
+        <span class="pixel-switch active">ACTIVE</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:10px;">
+        <button class="px-btn-sm active" onclick="showToast('MAX 1080P60 APPLIED')">MAX QUALITY</button>
+        <button class="px-btn-sm" onclick="showToast('BALANCED PROFILE APPLIED')">BALANCED</button>
+      </div>
+    </section>
+
+    <!-- 6. ALL 7 TWEAKS (SINGLE VERTICAL STACK) -->
+    <section>
+      <div class="px-title" style="margin-bottom:12px; font-size:0.75rem;">📦 VERIFIED TWEAKS (v1.2.3)</div>
+
+      <!-- Tweak 1: Glint -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">🏝️ GLINT</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">True Dynamic Island for iOS 12.5.8. Timer MM:SS beside clock, Safari music with live equalizer, 1s edge glow & rainbow mode, charging indicator.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ PURE GNU • 0 PAX</span>
+          <a href="debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Glint')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 2: Camera60Enabler5s -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">📷 CAMERA60ENABLER5S</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Unlocks 1080p 60 FPS recording in Camera app on iPhone 5s. Injects settings bundle directly into iOS Settings with quality presets.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ 60 FPS VERIFIED</span>
+          <a href="debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Camera60Enabler5s')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 3: Aura -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">✨ AURA</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Action Button HUD with Apple spring physics (damping: 0.7). Dark glass blur, 2x2 grid, direct app workspace launch via SBUIController.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ ZERO SAFE-MODE</span>
+          <a href="debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Aura')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 4: ActionButton12 -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">🔘 ACTIONBUTTON12</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Action Button HUD with volume & brightness sliders. Long-press Power (0.6s) trigger, 100% lazy UIWindow instantiation.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ PURE GNU • 0 PAX</span>
+          <a href="debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'ActionButton12')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 5: Lumina -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">🌙 LUMINA</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Always-On Display lockscreen with UltraLight clock and smooth alpha cross-dissolve transition. Sub-0.1% CPU battery consumption.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ BATTERY OPTIMIZED</span>
+          <a href="debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Lumina')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 6: Echo -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">📡 ECHO</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Custom carrier string in iOS 12 status bar. Darwin notification instant update without respring.</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ INSTANT APPLY</span>
+          <a href="debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Echo')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+
+      <!-- Tweak 7: Volt -->
+      <article class="tweak-item">
+        <div class="tweak-top-row">
+          <span class="tweak-title">🔋 VOLT</span>
+          <span class="tweak-ver">v1.2.3</span>
+        </div>
+        <p class="tweak-desc">Numerical battery percentage in iOS 12 status bar with dynamic color gradient tinting (Green > Yellow > Red).</p>
+        <div class="tweak-meta-row">
+          <span class="tweak-status-txt">✓ A7 TESTED</span>
+          <a href="debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn-pixel-sub" onclick="handleDebDownload(event, 'Volt')">DOWNLOAD .DEB</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 7. ISLAND LIGHTING & CONTROLS STUDIO -->
+    <section class="pixel-card">
+      <div class="px-title" style="margin-bottom:8px;">🎛️ ISLAND LIGHTING STUDIO</div>
+      
+      <div class="setting-row">
+        <span>🌈 Rainbow Cycle:</span>
+        <button class="pixel-switch" id="btnToggleRainbow" onclick="toggleRainbowMode()">OFF</button>
+      </div>
+
+      <div class="setting-row">
+        <span>✨ 1s Breathing Blink:</span>
+        <button class="pixel-switch" id="btnToggleBlink" onclick="toggleBlinkMode()">OFF</button>
+      </div>
+
+      <div class="setting-row">
+        <span>🥁 Beat Pulse Sync:</span>
+        <button class="pixel-switch active" id="btnToggleBeat" onclick="toggleBeatPulse()">ON</button>
+      </div>
+
+      <div style="margin-top:10px;">
+        <button class="btn-pixel-sub" style="width:100%;" onclick="playTimerBell()">🔔 TEST AUDIO CHIME BELL</button>
+      </div>
+    </section>
+
+    <!-- 8. FILZA 1-2-3 MANUAL INSTALLATION -->
+    <section class="pixel-card">
+      <div class="px-title" style="margin-bottom:6px;">📥 FILZA 1-2-3 GUIDE</div>
+      <div style="font-size:0.75rem; color:#aaa; line-height:1.6;">
+        1. Download any .deb file above in Safari.<br>
+        2. Tap "Open in Filza".<br>
+        3. Tap the package → Install (code 0) → Respring!
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="text-align:center; padding:20px 0; font-family:var(--pixel-font); font-size:0.42rem; color:#666;">
+      DEVELOPED BY @COCXACE • 2026<br>
+      NO AI SLOP • PURE RETRO MINECRAFT MONO
+    </footer>
+
+  </main>
 
   <!-- Strictly iOS 12 Safari Compatible JavaScript (No ?., No ??, No Array.at) -->
   <script>
-    // State variables
     var currentIslandMode = 'music';
     var isExpanded = false;
     var timerSeconds = 300;
     var timerInterval = null;
     var audioCtx = null;
     var beatPulseEnabled = true;
+    var rainbowActive = false;
+    var blinkActive = false;
     var use24hTime = false;
 
-    // 1. Splash Screen Fade
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        var splash = document.getElementById('splashScreen');
-        if (splash) {
-          splash.className += ' hidden';
-          setTimeout(function() {
-            splash.style.display = 'none';
-          }, 600);
-        }
-      }, 1400);
-    });
-
-    // 2. Real-time Clock (12h / 24h toggle)
+    // 1. Clock
     function updateClock() {
       var d = new Date();
       var h = d.getHours();
@@ -645,9 +354,7 @@
       var strM = (m < 10 ? '0' : '') + m;
       var strS = (s < 10 ? '0' : '') + s;
       var el = document.getElementById('simClock');
-      if (el) {
-        el.textContent = strH + ':' + strM + ':' + strS + ampm;
-      }
+      if (el) el.textContent = strH + ':' + strM + ':' + strS + ampm;
     }
     setInterval(updateClock, 1000);
     updateClock();
@@ -657,11 +364,11 @@
       clockEl.addEventListener('click', function() {
         use24hTime = !use24hTime;
         updateClock();
-        showToast(use24hTime ? 'Clock: 24-hour mode' : 'Clock: 12-hour AM/PM mode');
+        showToast(use24hTime ? 'CLOCK: 24-HOUR' : 'CLOCK: 12-HOUR');
       });
     }
 
-    // 3. Island State Controller
+    // 2. Island Controller
     function setIslandState(state) {
       currentIslandMode = state;
       var island = document.getElementById('liveIsland');
@@ -669,21 +376,18 @@
       var expandedView = document.getElementById('islandExpandedView');
       var icon = document.getElementById('islandModeIcon');
       var text = document.getElementById('islandModeText');
-      var secIcon = document.getElementById('islandSecondaryIcon');
+      var secIcon = document.getElementById('islandSecIcon');
 
-      // Update pills
-      var pills = document.querySelectorAll('.sim-pill');
-      for (var i = 0; i < pills.length; i++) {
-        pills[i].className = 'sim-pill';
-      }
+      var pills = document.querySelectorAll('.sim-controls .px-btn-sm');
+      for (var i = 0; i < pills.length; i++) pills[i].className = 'px-btn-sm';
 
       if (state === 'compact') {
         island.className = 'dynamic-island state-compact' + getGlowClasses();
         compactView.style.display = 'flex';
         expandedView.style.display = 'none';
         icon.textContent = '🏝️';
-        text.textContent = 'Glint';
-        secIcon.textContent = '✨';
+        text.textContent = 'GLINT';
+        secIcon.textContent = '⚡';
         stopTimer();
       } else if (state === 'timer') {
         island.className = 'dynamic-island state-timer' + getGlowClasses();
@@ -698,7 +402,7 @@
         compactView.style.display = 'flex';
         expandedView.style.display = 'none';
         icon.textContent = '🎵';
-        text.textContent = 'Starlight';
+        text.textContent = 'STARLIGHT';
         secIcon.textContent = '🎧';
         stopTimer();
       } else if (state === 'charging') {
@@ -709,20 +413,17 @@
         text.textContent = '100%';
         secIcon.textContent = '🔋';
         stopTimer();
-        showToast('Charging Sound & Green Pulse Activated');
+        showToast('CHARGING: 100% FAST PULSE');
       }
     }
 
     function getGlowClasses() {
       var cls = '';
-      var chkRainbow = document.getElementById('chkRainbow');
-      var chkBlink = document.getElementById('chkBlink');
-      if (chkRainbow && chkRainbow.checked) cls += ' rainbow-mode';
-      if (chkBlink && chkBlink.checked) cls += ' breathing-mode';
+      if (rainbowActive) cls += ' rainbow-mode';
+      if (blinkActive) cls += ' breathing-mode';
       return cls;
     }
 
-    // Toggle Compact / Expanded on click
     var islandEl = document.getElementById('liveIsland');
     if (islandEl) {
       islandEl.addEventListener('click', function(e) {
@@ -740,18 +441,18 @@
       });
     }
 
-    var btnClose = document.getElementById('btnActionClose');
-    if (btnClose) {
-      btnClose.addEventListener('click', function(e) {
+    var btnCloseIsland = document.getElementById('btnCloseIsland');
+    if (btnCloseIsland) {
+      btnCloseIsland.addEventListener('click', function(e) {
         e.stopPropagation();
         isExpanded = false;
         setIslandState(currentIslandMode);
       });
     }
 
-    // 4. Equalizer Animation & Beat Pulse
+    // 3. Pixel Equalizer & Beat Pulse
     function animateEq() {
-      var bars = document.querySelectorAll('.eq-bar');
+      var bars = document.querySelectorAll('.pixel-eq-bar');
       for (var i = 0; i < bars.length; i++) {
         var h = Math.floor(Math.random() * 14) + 4;
         bars[i].style.height = h + 'px';
@@ -761,223 +462,114 @@
         if (island && !isExpanded) {
           island.className = 'dynamic-island state-' + currentIslandMode + getGlowClasses() + ' beat-pulse';
           setTimeout(function() {
-            if (island) {
-              island.className = 'dynamic-island state-' + currentIslandMode + getGlowClasses();
-            }
+            if (island) island.className = 'dynamic-island state-' + currentIslandMode + getGlowClasses();
           }, 140);
         }
       }
     }
     setInterval(animateEq, 160);
 
-    // 5. Timer System
+    // 4. Timer
     function formatTimerTime(sec) {
       var m = Math.floor(sec / 60);
       var s = sec % 60;
       return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
     }
-
     function startTimer() {
       if (timerInterval) clearInterval(timerInterval);
       timerInterval = setInterval(function() {
         if (timerSeconds > 0) {
           timerSeconds--;
           var text = document.getElementById('islandModeText');
-          if (text && currentIslandMode === 'timer') {
-            text.textContent = formatTimerTime(timerSeconds);
-          }
+          if (text && currentIslandMode === 'timer') text.textContent = formatTimerTime(timerSeconds);
         } else {
           clearInterval(timerInterval);
           playTimerBell();
-          showToast('⏱️ Timer Complete! Glint Alert Fired.');
+          showToast('⏱️ TIMER FINISHED!');
         }
       }, 1000);
     }
-
     function stopTimer() {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-      }
+      if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
     }
 
-    // 6. Web Audio API Timer Bell
+    // 5. Audio Bell
     function playTimerBell() {
       try {
         var AudioContextClass = window.AudioContext || window.webkitAudioContext;
         if (!AudioContextClass) return;
         if (!audioCtx) audioCtx = new AudioContextClass();
         if (audioCtx.state === 'suspended') audioCtx.resume();
-
         var osc = audioCtx.createOscillator();
         var gain = audioCtx.createGain();
-        osc.type = 'sine';
+        osc.type = 'square'; // retro 8-bit sound
         osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.6);
-
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
-
+        osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.6);
-        showToast('🔔 Chime Bell Played');
-      } catch (err) {
-        console.log('Audio error:', err);
+        osc.stop(audioCtx.currentTime + 0.4);
+        showToast('🔔 CHIME BELL PLAYED');
+      } catch (e) {
+        console.log(e);
       }
     }
 
-    // 7. Edge Lighting Studio Controls
-    function setGlowColor(hex) {
-      document.documentElement.style.setProperty('--island-glow-color', hex);
-      var lbl = document.getElementById('lblGlowColor');
-      if (lbl) lbl.textContent = hex;
-      var np = document.getElementById('nativeColorPicker');
-      if (np) np.value = hex;
-
-      var circles = document.querySelectorAll('.color-circle');
-      for (var i = 0; i < circles.length; i++) {
-        circles[i].className = 'color-circle';
+    // 6. Toggles
+    function toggleRainbowMode() {
+      rainbowActive = !rainbowActive;
+      var btn = document.getElementById('btnToggleRainbow');
+      if (btn) {
+        btn.textContent = rainbowActive ? 'ON' : 'OFF';
+        btn.className = rainbowActive ? 'pixel-switch active' : 'pixel-switch';
       }
-      showToast('Glow color updated: ' + hex);
+      setIslandState(currentIslandMode);
+      showToast(rainbowActive ? 'RAINBOW MODE ON' : 'RAINBOW MODE OFF');
     }
 
-    function toggleRainbowMode(enabled) {
-      var island = document.getElementById('liveIsland');
-      if (island) {
-        if (enabled) {
-          island.className += ' rainbow-mode';
-          showToast('🌈 Rainbow Edge Lighting Enabled');
-        } else {
-          island.className = island.className.replace(' rainbow-mode', '');
-          showToast('Rainbow Mode Disabled');
-        }
+    function toggleBlinkMode() {
+      blinkActive = !blinkActive;
+      var btn = document.getElementById('btnToggleBlink');
+      if (btn) {
+        btn.textContent = blinkActive ? 'ON' : 'OFF';
+        btn.className = blinkActive ? 'pixel-switch active' : 'pixel-switch';
       }
+      setIslandState(currentIslandMode);
+      showToast(blinkActive ? '1S BREATHING GLOW ON' : 'BREATHING GLOW OFF');
     }
 
-    function toggleBlinkMode(enabled) {
-      var island = document.getElementById('liveIsland');
-      if (island) {
-        if (enabled) {
-          island.className += ' breathing-mode';
-          showToast('✨ 1-Second Breathing Glow Enabled');
-        } else {
-          island.className = island.className.replace(' breathing-mode', '');
-          showToast('Breathing Mode Disabled');
-        }
+    function toggleBeatPulse() {
+      beatPulseEnabled = !beatPulseEnabled;
+      var btn = document.getElementById('btnToggleBeat');
+      if (btn) {
+        btn.textContent = beatPulseEnabled ? 'ON' : 'OFF';
+        btn.className = beatPulseEnabled ? 'pixel-switch active' : 'pixel-switch';
       }
+      showToast(beatPulseEnabled ? 'BEAT PULSE ON' : 'BEAT PULSE OFF');
     }
 
-    function setGlowRadius(val) {
-      document.documentElement.style.setProperty('--glow-radius', val + 'px');
-      var lbl = document.getElementById('lblGlowRadius');
-      if (lbl) lbl.textContent = val + 'px';
-    }
-
-    function toggleBeatPulse(enabled) {
-      beatPulseEnabled = enabled;
-      showToast(enabled ? 'Beat reactive pulse ON' : 'Beat reactive pulse OFF');
-    }
-
-    // 8. Camera 60 FPS Visualizer
+    // 7. Camera Visualizer
     function setFpsDemo(fps) {
-      var obj = document.getElementById('fpsDemoObject');
-      var b60 = document.getElementById('btnToggle60');
-      var b30 = document.getElementById('btnToggle30');
-      if (!obj) return;
+      var block = document.getElementById('camBlock');
+      var b60 = document.getElementById('btnFps60');
+      var b30 = document.getElementById('btnFps30');
+      if (!block) return;
       if (fps === 60) {
-        obj.className = 'fps-moving-object fps-60';
-        b60.className = 'cam-preset-btn active';
-        b30.className = 'cam-preset-btn';
-        showToast('Camera60: 60 FPS Silky Smooth Preview');
+        block.className = 'cam-block fps-60';
+        b60.className = 'px-btn-sm active';
+        b30.className = 'px-btn-sm';
+        showToast('60 FPS PREVIEW ACTIVE');
       } else {
-        obj.className = 'fps-moving-object fps-30';
-        b60.className = 'cam-preset-btn';
-        b30.className = 'cam-preset-btn active';
-        showToast('Camera: Stock 30 FPS Preview');
+        block.className = 'cam-block fps-30';
+        b60.className = 'px-btn-sm';
+        b30.className = 'px-btn-sm active';
+        showToast('30 FPS STOCK PREVIEW');
       }
     }
 
-    function applyCameraPreset(preset) {
-      var buttons = document.querySelectorAll('.cam-presets-row .cam-preset-btn');
-      for (var i = 0; i < buttons.length; i++) {
-        buttons[i].className = 'cam-preset-btn';
-      }
-      if (event && event.target) event.target.className = 'cam-preset-btn active';
-
-      if (preset === 'max') {
-        showToast('Applied: 1080p 60 FPS Max Quality Profile');
-      } else if (preset === 'balanced') {
-        showToast('Applied: Balanced Dynamic Bitrate Profile');
-      } else if (preset === 'battery') {
-        showToast('Applied: Battery Saver 720p 60 FPS Profile');
-      } else {
-        showToast('Reset Camera settings to Factory Defaults');
-      }
-    }
-
-    // 9. Easter Egg Particle Burst
-    function triggerEasterEgg() {
-      var island = document.getElementById('liveIsland');
-      if (!island) return;
-      var rect = island.getBoundingClientRect();
-      var colors = ['#007aff', '#ff9500', '#34c759', '#ff2d55', '#af52de', '#ffcc00'];
-
-      for (var i = 0; i < 30; i++) {
-        var p = document.createElement('div');
-        p.className = 'confetti-particle';
-        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        p.style.left = (rect.left + rect.width / 2 + (Math.random() * 80 - 40)) + 'px';
-        p.style.top = (rect.top + rect.height / 2) + 'px';
-        document.body.appendChild(p);
-
-        setTimeout((function(el) {
-          return function() {
-            if (el && el.parentNode) el.parentNode.removeChild(el);
-          };
-        })(p), 1300);
-      }
-      showToast('🎉 Easter Egg: Glint Sparkle Mode Activated!');
-    }
-
-    var longPressTimer = null;
-    if (islandEl) {
-      islandEl.addEventListener('touchstart', function() {
-        longPressTimer = setTimeout(triggerEasterEgg, 700);
-      });
-      islandEl.addEventListener('touchend', function() {
-        if (longPressTimer) clearTimeout(longPressTimer);
-      });
-    }
-
-    // 10. Direct .deb Download Progress Simulator
-    function handleDebDownload(e, tweakName) {
-      showToast('📦 Downloading ' + tweakName + ' (Pure GNU Tar, 0 PAX)...');
-      setTimeout(function() {
-        showToast('✅ Verified: Corrupted filesystem tarfile error resolved!');
-      }, 1500);
-    }
-
-    // 11. Clipboard Copy
-    function copyRepoUrl() {
-      var repoUrl = 'https://abulhketus-collab.github.io/repo/';
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(repoUrl).then(function() {
-          showToast('📋 Repository URL copied to clipboard!');
-        });
-      } else {
-        var input = document.createElement('input');
-        input.value = repoUrl;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        document.body.removeChild(input);
-        showToast('📋 Repository URL copied to clipboard!');
-      }
-    }
-
-    // 12. Toast Feedback Utility
+    // 8. Toast
     var toastTimeout = null;
     function showToast(msg) {
       var toast = document.getElementById('toastMsg');
@@ -987,11 +579,32 @@
       if (toastTimeout) clearTimeout(toastTimeout);
       toastTimeout = setTimeout(function() {
         toast.className = 'toast-msg';
-      }, 2600);
+      }, 2200);
+    }
+
+    function copyRepoUrl() {
+      var repoUrl = 'https://abulhketus-collab.github.io/repo/';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(repoUrl).then(function() {
+          showToast('URL COPIED!');
+        });
+      } else {
+        var input = document.createElement('input');
+        input.value = repoUrl;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast('URL COPIED!');
+      }
+    }
+
+    function handleDebDownload(e, name) {
+      showToast('DOWNLOADING ' + name + ' (PURE GNU TAR)...');
     }
 
     // ==============================================
-    // 13. USER PHONE WALKTHROUGH ENGINE (HDJDJW.HTML)
+    // 9. USER PHONE WALKTHROUGH ENGINE (HDJDJW.HTML)
     // ==============================================
     (function(){
       var D = [4, 5, 7, 4], T = 20;
@@ -1000,13 +613,9 @@
       var fl = document.getElementById('uFill');
       var w = document.getElementById('uWrap');
       var pB = document.getElementById('pBtn');
-      var pT = document.getElementById('pTxt');
-      var pI = document.getElementById('pIco');
       var rB = document.getElementById('rBtn');
       var uB = document.getElementById('uBox');
-      var uT = document.getElementById('uTxt');
       var cB = document.getElementById('cBtn');
-      var iB = document.getElementById('iBtn');
       var cur = 0, el = 0, pz = false, fin = false, lt = 0, tk = null;
 
       function render(){
@@ -1040,21 +649,12 @@
         lt = 0;
         tk = setInterval(tick, 100);
       }
-
       function stop(){
         if (tk) { clearInterval(tk); tk = null; }
       }
-
       function ui(){
-        if (pz) {
-          if (pT) pT.textContent = 'Resume';
-          if (pI) pI.innerHTML = '<path d="M8 5v14l11-7z"/>';
-        } else {
-          if (pT) pT.textContent = 'Pause';
-          if (pI) pI.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
-        }
+        if (pB) pB.textContent = pz ? 'RESUME' : 'PAUSE';
       }
-
       function go(i){
         if (i < 0 || i > 3) return;
         var o = 0;
@@ -1063,13 +663,12 @@
         render(); ui();
         if (!tk) start();
       }
-
       function reset(){
         stop(); cur = 0; el = 0; pz = false; fin = false; lt = 0;
         render(); ui(); start();
       }
 
-      // Swipe / Drag Gestures
+      // Gestures
       var sx = 0, sy = 0, sw = 0, ax = null;
       function st(x, y){ sx = x; sy = y; sw = 1; ax = null; }
       function mv(x, y){
@@ -1083,9 +682,7 @@
         if (!sw) return;
         sw = 0;
         var dx = x - sx;
-        if (ax === 'x' && Math.abs(dx) > 50) {
-          go(dx < 0 ? cur + 1 : cur - 1);
-        }
+        if (ax === 'x' && Math.abs(dx) > 50) go(dx < 0 ? cur + 1 : cur - 1);
         ax = null;
       }
 
@@ -1093,20 +690,6 @@
         w.addEventListener('touchstart', function(e){ st(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
         w.addEventListener('touchmove', function(e){ mv(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
         w.addEventListener('touchend', function(e){ en(e.changedTouches[0].clientX, e.changedTouches[0].clientY); }, { passive: true });
-
-        var md = 0;
-        w.addEventListener('mousedown', function(e){ if (e.button !== 0) return; md = 1; st(e.clientX, e.clientY); });
-        w.addEventListener('mousemove', function(e){ if (md) mv(e.clientX, e.clientY); });
-        window.addEventListener('mouseup', function(e){ if (!md) return; md = 0; en(e.clientX, e.clientY); });
-      }
-
-      function cp(){
-        var u = uT ? uT.textContent.trim() : 'https://abulhketus-collab.github.io/repo/';
-        copyRepoUrl();
-        if (uB) {
-          uB.className += ' copied';
-          setTimeout(function(){ uB.className = uB.className.replace(' copied', ''); }, 1500);
-        }
       }
 
       if (pB) {
@@ -1121,27 +704,17 @@
           }
         });
       }
-
       if (rB) rB.addEventListener('click', reset);
 
       for (var d = 0; d < 4; d++) {
-        (function(b){
-          if (b) {
-            b.addEventListener('click', function(){
-              var i = parseInt(b.getAttribute('data-s'), 10);
-              if (!isNaN(i)) go(i);
-            });
-          }
-        })(dt[d]);
+        (function(b, idx){
+          if (b) b.addEventListener('click', function(){ go(idx); });
+        })(dt[d], d);
       }
 
-      if (uB) {
-        uB.addEventListener('click', cp);
-        uB.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cp(); } });
-      }
-      if (cB) cB.addEventListener('click', cp);
+      if (uB) uB.addEventListener('click', copyRepoUrl);
+      if (cB) cB.addEventListener('click', copyRepoUrl);
 
-      // Start engine
       start();
     })();
   </script>
