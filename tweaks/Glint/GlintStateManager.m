@@ -1,6 +1,7 @@
 #import "GlintStateManager.h"
 #import "GlintPrefs.h"
 #import "GlintWindow.h"
+#import "GlintTimerModule.h"
 #import <os/log.h>
 
 NSString *const GlintStateDidChangeNotification = @"GlintStateDidChangeNotification";
@@ -11,7 +12,7 @@ static const char *kGlintLog = "GlintStateManager";
     do { if ([GlintPrefs debugEnabled]) \
         os_log(OS_LOG_DEFAULT, "[GlintSM] %s: " __VA_ARGS__, __PRETTY_FUNCTION__); } while(0)
 
-// Р”РµРґСѓРїР»РёРєР°С†РёСЏ СѓРІРµРґРѕРјР»РµРЅРёР№: РѕРґРЅРѕ Рё С‚Рѕ Р¶Рµ РїСЂРёР»РѕР¶РµРЅРёРµ РЅРµ СЃРїР°РјРёС‚ С‡Р°С‰Рµ 1 СЂР°Р·Р° РІ 2 СЃРµРє
+// Дедупликация уведомлений: одно и то же приложение не спамит чаще 1 раза в 2 сек
 static NSString *gLastNotifKey = nil;
 static NSTimeInterval gLastNotifAt = 0;
 
@@ -100,7 +101,7 @@ static NSTimeInterval gLastNotifAt = 0;
         NSString *sectionID = [bulletin valueForKey:@"sectionID"];
         if (!sectionID || sectionID.length == 0) sectionID = [bulletin valueForKey:@"bulletinID"];
 
-        // Р”РµРґСѓРїР»РёРєР°С†РёСЏ: РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ РѕРґРЅРѕ Рё С‚Рѕ Р¶Рµ СѓРІРµРґРѕРјР»РµРЅРёРµ РѕС‚ С‚РѕРіРѕ Р¶Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ С‡Р°С‰Рµ СЂР°Р·Р° РІ 2 СЃРµРєСѓРЅРґС‹
+        // Дедупликация: не показывать одно и то же уведомление от того же приложения чаще раза в 2 секунды
         NSString *dedupKey = [NSString stringWithFormat:@"notif:%@", sectionID ?: @"unknown"];
         NSTimeInterval now = CACurrentMediaTime();
         if ([dedupKey isEqualToString:gLastNotifKey] && (now - gLastNotifAt) < 2.0) {
@@ -180,8 +181,57 @@ static NSTimeInterval gLastNotifAt = 0;
     s.subtitle = artist ?: @"";
     s.bundleID = clientBundle ?: @"";
     s.timestamp = CACurrentMediaTime();
-    s.icon = [self iconForBundleID:clientBundle];
+    // v1.2.3: album artwork from MediaRemote (works for Safari web audio too),
+    // falling back to the app icon
+    if ([GlintPrefs boolForKey:@"glintShowArtwork" defaultValue:YES]) {
+        UIImage *art = nil;
+        id rawArt = info[@"artwork"];
+        if ([rawArt isKindOfClass:[UIImage class]]) art = rawArt;
+        s.icon = art ?: [self iconForBundleID:clientBundle];
+    } else {
+        s.icon = [self iconForBundleID:clientBundle];
+    }
     [self addState:s];
+}
+
+// v1.2.3: mirror the native Clock countdown in the island (timer near the clock)
+- (void)updateTimerState {
+    if (![GlintPrefs boolForKey:@"glintShowTimer" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateTimer];
+        return;
+    }
+    NSInteger remaining = [GlintTimerModule remainingSeconds];
+    if (remaining <= 0) {
+        [self removeStatesOfType:GlintStateTimer];
+        return;
+    }
+    NSInteger mm = remaining / 60;
+    NSInteger ss = remaining % 60;
+    NSString *clock = [NSString stringWithFormat:@"%02ld:%02ld", (long)mm, (long)ss];
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTimer
+                                                    key:@"timer"
+                                                priority:GlintStateTimer];
+    s.title = [NSString stringWithFormat:@"⏱ %@", clock];
+    s.subtitle = @"Countdown running";
+    s.persistent = YES;
+    s.timestamp = CACurrentMediaTime();
+    [self addState:s];
+}
+
+- (void)timerDidFinish {
+    if (![GlintPrefs boolForKey:@"glintShowTimer" defaultValue:YES]) return;
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTimer
+                                                    key:@"timer-finished"
+                                                priority:GlintStateTimer];
+    s.title = @"⏱ Timer Finished";
+    s.subtitle = @"Time is up";
+    s.persistent = NO;
+    s.timestamp = CACurrentMediaTime();
+    [self addState:s];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+        [[GlintStateManager sharedManager] removeStateWithKey:@"timer-finished"];
+    });
 }
 
 - (void)updatePowerState {
@@ -239,6 +289,7 @@ static NSTimeInterval gLastNotifAt = 0;
     [self removeStatesOfType:GlintStateMusic];
     [self removeStatesOfType:GlintStateCharging];
     [self removeStatesOfType:GlintStateTorch];
+    [self removeStatesOfType:GlintStateTimer];
 }
 
 @end
