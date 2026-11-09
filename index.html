@@ -3,88 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>cocxace Repo — iOS 12 Tweaks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>Glint</title>
 <style>
-* {margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html { overflow-y: auto; }
-body {
-    font-family: 'Press Start 2P', cursive;
-    background: #0a0a0a;
-    color: #f0f0f0;
-    overflow-y: auto;
-    -webkit-font-smoothing: antialiased;
-}
-body::before {
-    content:'';
-    position:fixed;
-    inset:0;
-    z-index:0;
-    pointer-events:none;
-    opacity:.025;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0a0a0a;--line:#262626;--txt:#f0f0f0;--dim:#8a8a8a;--dim2:#5c5c5c;--glass:rgba(255,255,255,.04);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--txt);display:flex;justify-content:center;align-items:center;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
+@media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
+.track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--txt)}
+.scenes{position:relative;flex:1;margin-top:26px;overflow:hidden}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;text-align:left;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .55s,transform .55s,visibility 0s linear .55s;pointer-events:none}
+.scene.active{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .55s,transform .55s,visibility 0s}
+.logo{width:64px;height:64px;border:1px solid var(--txt);border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:32px;animation:brd 4s ease-in-out infinite}
+@keyframes brd{0%,100%{border-color:var(--txt);opacity:1}50%{border-color:var(--dim);opacity:.7}}
+.logo svg{width:30px;height:30px;stroke:var(--txt);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:clamp(34px,10vw,46px);font-weight:700;letter-spacing:-1.8px;line-height:1;margin-bottom:16px}
+.subtitle{font-size:15px;color:var(--dim);line-height:1.45;max-width:280px}
+.features,.steps{display:flex;flex-direction:column;width:100%}
+.feat,.step{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-10px);transition:opacity .45s,transform .45s}
+.feat:first-child,.step:first-child{border-top:1px solid var(--line)}
+.scene.active .feat,.scene.active .step{opacity:1;transform:none}
+.scene.active :nth-child(1){transition-delay:.1s}
+.scene.active :nth-child(2){transition-delay:.3s}
+.scene.active :nth-child(3){transition-delay:.5s}
+.scene.active :nth-child(4){transition-delay:.7s}
+.fi{width:20px;flex-shrink:0;display:flex;justify-content:center}
+.fi svg{width:18px;height:18px;stroke:var(--dim);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft{font-size:15px;font-weight:500;line-height:1.35;letter-spacing:-.1px}
+.fnum{font-size:12px;color:var(--dim2);font-variant-numeric:tabular-nums;margin-left:auto;flex-shrink:0}
+.step{align-items:flex-start;padding:18px 0;transform:translateY(10px)}
+.sn{font-size:12px;font-weight:600;color:var(--dim2);font-variant-numeric:tabular-nums;padding-top:2px;width:16px;flex-shrink:0}
+.sc{flex:1;min-width:0}
+.st{font-size:15px;font-weight:600;letter-spacing:-.1px;margin-bottom:3px;line-height:1.3}
+.sd{font-size:13px;color:var(--dim);line-height:1.4}
+.su{display:inline-block;margin-top:8px;font-size:11.5px;font-family:ui-monospace,'SF Mono',Menlo,monospace;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:var(--dim);word-break:break-all;line-height:1.3}
+.chk{width:52px;height:52px;border:1px solid var(--txt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px;animation:pop .6s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+.chk svg{width:22px;height:22px;stroke:var(--txt);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ftitle{font-size:clamp(26px,7.5vw,34px);font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:10px}
+.fsub{font-size:14px;color:var(--dim);line-height:1.45;margin-bottom:30px;max-width:280px}
+.urlbox{width:100%;padding:14px 16px;background:var(--glass);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .25s,background .25s}
+.urlbox:active,.urlbox.copied{border-color:var(--dim);background:rgba(255,255,255,.06)}
+.urlt{flex:1;font-size:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;color:var(--dim);word-break:break-all;line-height:1.4}
+.cb{flex-shrink:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.cb:active{transform:scale(.9);background:rgba(255,255,255,.08)}
+.cb svg{width:13px;height:13px;stroke:var(--dim);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bp{width:100%;padding:17px 24px;border:1px solid var(--txt);border-radius:12px;background:var(--txt);color:var(--bg);font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,background .2s;text-decoration:none;letter-spacing:-.1px}
+.bp:active{transform:scale(.98);background:#d8d8d8}
+.bp svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bs{margin-top:8px;width:100%;padding:15px 24px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--dim);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,color .2s,transform .15s}
+.bs:active{transform:scale(.98);background:rgba(255,255,255,.05);color:var(--txt)}
+.bs svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ctrl{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:22px;flex-shrink:0}
+.dots{display:flex;gap:10px;align-items:center}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--dim2);border:none;cursor:pointer;padding:0;transition:all .35s}
+.dot.active{width:22px;height:2px;border-radius:1px;background:var(--txt)}
+.row{display:flex;gap:8px;width:100%}
+.btn{flex:1;padding:12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--dim);font-family:var(--font);font-size:12px;font-weight:500;letter-spacing:.2px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,color .2s,transform .15s}
+.btn:active{transform:scale(.97);background:rgba(255,255,255,.05);color:var(--txt)}
+.btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- HERO / ANIMATION ---------- */
-.hero {
+/* ---------- TWEAKS LIST BELOW ANIMATION ---------- */
+#tweaks {
     position: relative;
-    width: 100%;
-    height: 70vh;
-    min-height: 480px;
-    background: #1a1a1a;
-    border-bottom: 4px solid #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-#mc-canvas {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: 1;
-    background: linear-gradient(to bottom, #2a2a2a 0%, #0a0a0a 100%);
+    width: 100%;
+    background: #0a0a0a;
+    border-top: 4px solid #ffffff;
+    padding: 2rem 1rem;
 }
-.hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 0 1rem;
-    max-width: 900px;
-}
-.hero-title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(16px, 5vw, 22px);
-    color: #ffffff;
-    text-shadow: 4px 4px 0px #000000;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-    white-space: pre-line;
-    letter-spacing: 1px;
-}
-.blink { animation: blink 1s infinite; }
-@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-.hero-hint {
-    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
-    font-size:0.7rem;
-    color:#00d2ff;
-    text-shadow:2px 2px 0px #000000;
-    margin-top:1rem;
-    display:block;
-}
-
-/* ---------- TWEAKS LIST (STACKED) ---------- */
-.container {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-.section-title {
+#tweaks h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 1.3rem;
     color: #ffffff;
@@ -94,81 +88,97 @@ body::before {
     display: inline-block;
     letter-spacing: 1px;
 }
-.tweak-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.tweak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 .tweak-card {
     background: #1a1a1a;
     border: 3px solid #ffffff;
     border-radius: 0;
-    padding: 1rem;
+    margin-bottom: 0;
+    overflow: hidden;
     transition: transform 0.15s, box-shadow 0.15s;
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
 }
 .tweak-card:hover {
     transform: translateY(-4px);
     box-shadow: 8px 8px 0px #ffffff;
     border-color: #00d2ff;
 }
+.tweak-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #333333;
+    border-bottom: 2px solid #ffffff;
+}
 .tweak-icon {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     background: linear-gradient(45deg,#444,#222);
     border: 2px solid #ffffff;
+    margin-right: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     flex-shrink: 0;
 }
-.tweak-info { flex: 1; min-width: 0; }
+.tweak-info {
+    flex: 1;
+    min-width: 0;
+}
 .tweak-name {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #ffffff;
     text-shadow: 2px 2px 0px #000000;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .tweak-version {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.55rem;
+    font-size: 0.65rem;
     color: #00d2ff;
     background: #000000;
-    padding: 1px 5px;
+    padding: 2px 6px;
     border: 1px solid #00d2ff;
-    margin-left: 6px;
+    margin-left: 8px;
     vertical-align: middle;
 }
 .tweak-desc {
     font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     color: #e0e0e0;
-    line-height: 1.3;
+    margin-top: 4px;
+    line-height: 1.35;
 }
 .tweak-footer {
     display: flex;
-    justify-content: flex-end;
-    padding-top: 0.6rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #000000;
+    border-top: 2px solid #ffffff;
 }
 .tweak-card .btn {
     background: #ffffff;
     color: #000000;
     border: 2px solid #000000;
-    padding: 6px 12px;
+    padding: 10px 18px;
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.55rem;
-    text-align: center;
-    text-decoration: none;
+    font-size: 0.65rem;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     text-shadow: none;
     transition: all 0.1s;
+    white-space: nowrap;
 }
 .tweak-card .btn:hover {
     background: #00d2ff;
@@ -182,15 +192,14 @@ body::before {
 }
 .tweak-card .badge {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     color: #00ff00;
     background: rgba(0,255,0,0.1);
     border: 1px solid #00ff00;
-    padding: 1px 5px;
-    margin-left: 6px;
-    text-shadow: 2px 2px 0px #000000;
+    padding: 2px 6px;
+    margin-left: 8px;
+    text-shadow: var(--mc-shadow-sm);
 }
-/* ---------- FOOTER ---------- */
 footer {
     background: #1a1a1a;
     border-top: 4px solid #ffffff;
@@ -201,7 +210,9 @@ footer {
     color: #e0e0e0;
     text-shadow: 2px 2px 0px #000000;
 }
-footer p { margin-bottom: 0.5rem; }
+footer p {
+    margin-bottom: 0.5rem;
+}
 footer .repo-link {
     color: #00d2ff;
     text-decoration: none;
@@ -211,17 +222,11 @@ footer .repo-link:hover {
     color: #ffffff;
     border-color: #ffffff;
 }
-@media (max-width: 700px) {
-    .hero-title { font-size: 1rem; }
-    .tweak-card { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
-    .tweak-icon { margin-right: 0; margin-bottom: 0.5rem; }
-    .tweak-footer { justify-content: flex-start; }
-}
 </style>
 </head>
 <body>
 
-<!-- ---------- HERO / ANIMATION ---------- -->
+<!-- ---------- HERO / ANIMATION (USER CODE) ---------- -->
 <section class="hero">
     <canvas id="mc-canvas"></canvas>
     <div class="hero-content">
@@ -236,72 +241,93 @@ footer .repo-link:hover {
 <!-- ---------- TWEAKS LIST ---------- -->
 <div class="container">
     <h2 class="section-title">наш репозиторий</h2>
-    <div class="tweak-list">
+    <div class="tweak-grid">
+        <!-- Glint -->
         <div class="tweak-card">
-            <div class="tweak-icon">🏝️</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Динамический остров для iOS 12 без чёлки: уведомления, зарядка, now-playing, фонарик в пилюле. Spring-анимации, безопасный запуск.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">🏝️</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Динамический остров для iOS 12 без чёлки: уведомления, зарядка, now-playing, фонарик в пилюле. Spring-анимации, безопасный запуск.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- Aura -->
         <div class="tweak-card">
-            <div class="tweak-icon">⚡</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Action Button HUD: длинная кнопка питания, двойной клик Home.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">⚡</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Action Button HUD: длинная кнопка питания или двойной клик Home открывает панель с фонариком, камерой, диктофоном, скриншотом, Wi-Fi и Bluetooth.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- Echo -->
         <div class="tweak-card">
-            <div class="tweak-icon">📶</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Текст оператора в статус-баре.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">📶</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Текст оператора в статус-баре. CFPreferences вместо plist, live reload через darwin-уведомления, без перезагрузки SpringBoard.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- Volt -->
         <div class="tweak-card">
-            <div class="tweak-icon">🔋</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Цвет процентов батареи по порогам.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">🔋</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Цвет процентов батареи по порогам (зелёный/жёлтый/красный). Защита от деления на ноль, hex-парсинг через NSScanner, дефолтные пороги 40% и 20%.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- Lumina -->
         <div class="tweak-card">
-            <div class="tweak-icon">🌙</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Always-On Display на локскрине.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">🌙</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Always-On Display на локскрине: живые часы и дата, затемнённый оверлей. UIWindow вместо вью-контроллера, нет осиротевших вью после разблокировки.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- Cam60Enabler5s -->
         <div class="tweak-card">
-            <div class="tweak-icon">📷</div>
-            <div class="tweak-info">
-                <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
-                <div class="tweak-desc">1080p @ 60 FPS на iPhone 5s (A7).</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">📷</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
+                    <div class="tweak-desc">Принудительный 1080p @ 60 FPS на iPhone 5s (A7). Feature-flag по умолчанию выключен, термотроттлинг, фолбэк на 30 fps при неудаче.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
+        <!-- ActionButton12 -->
         <div class="tweak-card">
-            <div class="tweak-icon">📱</div>
-            <div class="tweak-info">
-                <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
-                <div class="tweak-desc">Action Button HUD для iOS 12.</div>
+            <div class="tweak-header">
+                <div class="tweak-icon">📱</div>
+                <div class="tweak-info">
+                    <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
+                    <div class="tweak-desc">Двойное нажатие Home или длинное нажатие питания открывает HUD с 4 кнопками. %group, деструктор окна, CFPreferences, без дубликатов хуков.</div>
+                </div>
             </div>
             <div class="tweak-footer">
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
@@ -313,133 +339,74 @@ footer .repo-link:hover {
 <!-- ---------- FOOTER ---------- -->
 <footer>
     <p>cocxace repo • iOS 12+ • arm64 • @cocxace</p>
-    <p>добавить репо в Sileo/Cydia: <a class="repo-link" href="https://abulhketus-collab.github.io/repo/">https://abulhketus-collab.github.io/repo/</a></p>
+    <p>добавить репо в Sileo/Cydia: <span class="repo-link">https://abulhketus-collab.github.io/repo/</span></p>
 </footer>
 
+<!-- ---------- ANIMATION SCRIPT (USER CODE) ---------- -->
 <script>
 (function(){
-var canvas = document.getElementById('mc-canvas');
-var ctx = canvas.getContext('2d');
-var width, height;
-var animationPhase = 0; // 0: телефон, 1: движение к Sileo, 2: клик "+", 3: успех
-var timer = 0;
+var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
+fl=document.getElementById('fill'),w=document.getElementById('wrap'),
+pB=document.getElementById('pBtn'),pT=document.getElementById('pTxt'),pI=document.getElementById('pIco'),
+rB=document.getElementById('rBtn'),to=document.getElementById('toast'),uB=document.getElementById('uBox'),
+uT=document.getElementById('uTxt'),cB=document.getElementById('cBtn'),iB=document.getElementById('iBtn'),
+cur=0,el=0,pz=false,fin=false,lt=0,tk=null;
 
-function resize(){
-    width = canvas.width = canvas.parentElement.clientWidth;
-    height = canvas.height = canvas.parentElement.clientHeight;
+function render(){
+  var idx=3,acc=0;
+  for(var i=0;i<4;i++){acc+=D[i]*1000;if(el<acc){idx=i;break}}
+  cur=idx;
+  for(var k=0;k<4;k++){sc[k].classList.toggle('active',k===idx);dt[k].classList.toggle('active',k===idx)}
+  fl.style.width=Math.min(100,el/T*100)+'%';
 }
-window.addEventListener('resize', resize);
-resize();
+function tick(){
+  var n=performance.now();
+  if(!lt)lt=n;
+  var d=Math.min(500,Math.max(0,n-lt));lt=n;
+  if(!pz&&!fin){el+=d;if(el>=T*1000){el=T*1000;fin=true}render()}
+}
+function start(){if(tk)clearInterval(tk);lt=0;tk=setInterval(tick,100)}
+function stop(){if(tk){clearInterval(tk);tk=null}}
+function ui(){pz?(pT.textContent='Далее',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='Пауза',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
+function go(i){
+  if(i<0||i>3)return;
+  var o=0;for(var k=0;k<i;k++)o+=D[k]*1000;
+  el=o;fin=false;pz=false;lt=0;render();ui();if(!tk)start();
+}
+function reset(){stop();cur=0;el=0;pz=false;fin=false;lt=0;render();ui();start()}
 
-function drawPhone(ctx, x, y, scale){
-    ctx.fillStyle = '#222222';
-    ctx.fillRect(x, y, 60*scale, 110*scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 2*scale;
-    ctx.strokeRect(x, y, 60*scale, 110*scale);
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(x+4*scale, y+4*scale, 52*scale, 102*scale);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '10px monospace';
-    ctx.fillText('12:00', x+8*scale, y+14*scale);
-    ctx.fillStyle = '#444444';
-    ctx.beginPath();
-    ctx.arc(x+30*scale, y+100*scale, 8*scale, 0, Math.PI*2);
-    ctx.fill();
-    ctx.stroke();
+var sx=0,sy=0,sw=0,ax=null;
+function st(x,y){sx=x;sy=y;sw=1;ax=null}
+function mv(x,y){if(!sw)return;var dx=x-sx,dy=y-sy;if(ax===null&&(Math.abs(dx)>10||Math.abs(dy)>10))ax=Math.abs(dx)>Math.abs(dy)?'x':'y'}
+function en(x,y){if(!sw)return;sw=0;var dx=x-sx;if(ax==='x'&&Math.abs(dx)>50)go(dx<0?cur+1:cur-1);ax=null}
+w.addEventListener('touchstart',function(e){st(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchmove',function(e){mv(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchend',function(e){en(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
+var md=0;
+w.addEventListener('mousedown',function(e){if(e.button!==0)return;md=1;st(e.clientX,e.clientY)});
+w.addEventListener('mousemove',function(e){if(md)mv(e.clientX,e.clientY)});
+window.addEventListener('mouseup',function(e){if(!md)return;md=0;en(e.clientX,e.clientY)});
+
+var tt=null;
+function toast(){to.classList.add('show');if(tt)clearTimeout(tt);tt=setTimeout(function(){to.classList.remove('show')},1600)}
+function cp(){
+  var u=uT.textContent.trim();
+  function done(){toast();uB.classList.add('copied');setTimeout(function(){uB.classList.remove('copied')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done).catch(function(){fb(u,done)});
+  else fb(u,done);
 }
-function drawCursor(ctx, x, y){
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x+16, y+8);
-    ctx.lineTo(x, y+16);
-    ctx.closePath();
-    ctx.fill();
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    if (animationPhase === 2) {
-        ctx.fillStyle = 'rgba(255,255,255,0.5)';
-        ctx.beginPath();
-        ctx.arc(x, y, 20 + Math.sin(Date.now()/100)*10, 0, Math.PI*2);
-        ctx.fill();
-    }
-}
-function drawSileo(ctx, x, y, scale){
-    ctx.fillStyle = '#00d2ff';
-    ctx.fillRect(x, y, 40*scale, 40*scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 2*scale;
-    ctx.strokeRect(x, y, 40*scale, 40*scale);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '20px monospace';
-    ctx.fillText('S', x+10*scale, y+28*scale);
-}
-function drawPlus(ctx, x, y, scale){
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(x-10*scale, y-2*scale, 20*scale, 4*scale);
-    ctx.fillRect(x-2*scale, y-10*scale, 4*scale, 20*scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(x-12*scale, y-12*scale, 24*scale, 24*scale);
-}
-function drawGrid(ctx, w, h, step){
-    ctx.strokeStyle = '#1a1a1a';
-    ctx.lineWidth = 1;
-    for (var i=0; i<w; i+=step){
-        ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke();
-    }
-    for (var j=0; j<h; j+=step){
-        ctx.beginPath(); ctx.moveTo(0,j); ctx.lineTo(w,j); ctx.stroke();
-    }
-}
-function animate(){
-    ctx.clearRect(0, 0, width, height);
-    drawGrid(ctx, width, height, 40);
-    timer += 1/60;
-    if (animationPhase === 0){
-        var px = width/2 - 30;
-        var py = height/2 - 55 + Math.sin(timer)*5;
-        drawPhone(ctx, px, py, 1);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '12px monospace';
-        ctx.fillText('открой Sileo', width/2 - 60, height - 60);
-        var cx = width/2 + 40 + Math.sin(timer*2)*20;
-        var cy = height/2 + 20;
-        drawCursor(ctx, cx, cy);
-        if (timer > 180){ animationPhase = 1; timer = 0; }
-    } else if (animationPhase === 1){
-        var sx = width/2 + 80;
-        var sy = height/2 - 20;
-        drawSileo(ctx, sx, sy, 1);
-        var cx = width/2 + 40 + (timer/120)*80;
-        var cy = height/2 - 20 + 10;
-        drawCursor(ctx, cx, cy);
-        if (timer > 120){ animationPhase = 2; timer = 0; }
-    } else if (animationPhase === 2){
-        var sx = width/2 + 80;
-        var sy = height/2 - 20;
-        drawSileo(ctx, sx, sy, 1);
-        var cx = width/2 + 120;
-        var cy = height/2 - 20 + 10;
-        drawCursor(ctx, cx, cy);
-        drawPlus(ctx, cx + 10, cy - 10, 1);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '10px monospace';
-        ctx.fillText('добавить репо', cx - 40, cy + 30);
-        if (timer > 120){ animationPhase = 3; timer = 0; }
-    } else {
-        ctx.fillStyle = '#00ff00';
-        ctx.font = '16px monospace';
-        ctx.fillText('репо добавлено!', width/2 - 70, height/2);
-        ctx.fillStyle = '#00d2ff';
-        ctx.font = '12px monospace';
-        ctx.fillText('https://abulhketus-collab.github.io/repo/', width/2 - 110, height/2 + 30);
-    }
-    requestAnimationFrame(animate);
-}
-animate();
+function fb(t,d){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');d()}catch(e){}document.body.removeChild(a)}
+
+pB.addEventListener('click',function(){if(pz){if(fin){reset();return}pz=false;lt=0;ui();if(!tk)start()}else{if(fin)return;pz=true;ui()}});
+rB.addEventListener('click',reset);
+for(var d=0;d<4;d++){(function(b){b.addEventListener('click',function(){var i=parseInt(b.getAttribute('data-s'),10);if(!isNaN(i))go(i)})})(dt[d])}
+uB.addEventListener('click',cp);
+uB.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cp()}});
+cB.addEventListener('click',function(e){e.stopPropagation();cp()});
+
+function init(){render();ui();start()}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
 </script>
 </body>
 </html>
