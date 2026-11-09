@@ -8,13 +8,51 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Малярка батареи</string>
+			<string>Volt — Battery Percent Colors</string>
+			<key>footerText</key>
+			<string>With the tweak: the battery percent changes color by charge level (green / yellow / red by default). Without it: the stock white percent.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Цвет высокого заряда (&gt; порог 1)</string>
+			<string>Preset</string>
+			<key>footerText</key>
+			<string>A preset applies colors and thresholds at once. Custom keeps your own values below.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.volt/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>-1</integer>
+			<key>defaults</key>
+			<string>com.cocxace.volt</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>preset</string>
+			<key>label</key>
+			<string>Color Scheme</string>
+			<key>validTitles</key>
+			<array>
+				<string>Classic (Green / Yellow / Red)</string>
+				<string>Night Stealth (White / Blue / Red)</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>-1</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>High Charge Color (above threshold 1)</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -30,7 +68,7 @@
 			<key>key</key>
 			<string>highColorChoice</string>
 			<key>label</key>
-			<string>Цвет HIGH</string>
+			<string>HIGH Color</string>
 			<key>validTitles</key>
 			<array>
 				<string>Green (Classic)</string>
@@ -70,7 +108,7 @@
 			<key>key</key>
 			<string>highThreshold</string>
 			<key>label</key>
-			<string>Порог HIGH %</string>
+			<string>HIGH Threshold %</string>
 			<key>validTitles</key>
 			<array>
 				<string>30%</string>
@@ -88,7 +126,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Цвет среднего заряда</string>
+			<string>Mid Charge Color</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -104,7 +142,7 @@
 			<key>key</key>
 			<string>midColorChoice</string>
 			<key>label</key>
-			<string>Цвет MID</string>
+			<string>MID Color</string>
 			<key>validTitles</key>
 			<array>
 				<string>Green (Classic)</string>
@@ -134,7 +172,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Цвет низкого заряда</string>
+			<string>Low Charge Color</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -150,7 +188,7 @@
 			<key>key</key>
 			<string>lowColorChoice</string>
 			<key>label</key>
-			<string>Цвет LOW</string>
+			<string>LOW Color</string>
 			<key>validTitles</key>
 			<array>
 				<string>Green (Classic)</string>
@@ -190,7 +228,7 @@
 			<key>key</key>
 			<string>lowThreshold</string>
 			<key>label</key>
-			<string>Порог LOW %</string>
+			<string>LOW Threshold %</string>
 			<key>validTitles</key>
 			<array>
 				<string>10%</string>
@@ -205,6 +243,28 @@
 				<integer>20</integer>
 				<integer>25</integer>
 			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: colors and thresholds return to defaults and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.volt/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.volt</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -224,7 +284,7 @@
 			<key>footerAlignment</key>
 			<integer>1</integer>
 			<key>footerText</key>
-			<string>Volt 1.2.0 by @cocxace</string>
+			<string>Volt by @cocxace</string>
 		</dict>
 	</array>
 	<key>title</key>
