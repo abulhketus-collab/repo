@@ -6,9 +6,12 @@
 //   • notifications: auto-expand banner + collapse, app glyph stays in the left
 //     half of the compact pill (like the leading Live Activity slot)
 //   • now playing: animated waveform bars in the right half (trailing slot)
+//   • live timer: countdown timer with ⏱ icon near the clock
+//   • glow engine: rainbow cycle, 1s breathing blink, custom backlight
+//   • beat pulse: breathing scale on the pill during music
 //   • tap → open the related app; long-press → full expanded card
 // All methods must be called on the main thread (they dispatch there themselves).
-// Version 1.2.0: size presets + live reload + persistent charging slot.
+// Version 1.2.3: live timer + glow engine + beat pulse + full settings pane.
 
 @interface GlintIsland : NSObject
 
@@ -53,6 +56,14 @@
 // Waveform bars inside the collapsed pill while audio plays.
 - (void)setNowPlayingActive:(BOOL)active;
 - (BOOL)isNowPlayingActive;
+
+// Live timer countdown near the clock.
+- (void)showTimerCountdown:(NSInteger)remainingSeconds;
+- (void)showTimerDone;
+- (void)clearTimerCountdown;
+
+// Glow engine & cosmetic pulse reloader.
+- (void)applyGlowPrefs;
 
 // Fallback tap when there is nothing to open: subtle heartbeat pulse.
 - (void)playIdleTapPulse;

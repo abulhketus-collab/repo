@@ -148,10 +148,10 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
     self.blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.panel addSubview:self.blurView];
 
-    NSArray *icons = @[ @[ @"рџ”¦", @(AuraActionTorch) ],
-                        @[ @"рџ“·", @(AuraActionCamera) ],
-                        @[ @"рџЋ™пёЏ", @(AuraActionVoiceMemos) ],
-                        @[ @"рџ“ё", @(AuraActionScreenshot) ] ];
+    NSArray *icons = @[ @[ @"\U0001F526", @(AuraActionTorch) ],
+                        @[ @"\U0001F4F7", @(AuraActionCamera) ],
+                        @[ @"\U0001F399", @(AuraActionVoiceMemos) ],
+                        @[ @"\U0001F4F8", @(AuraActionScreenshot) ] ];
 
     CGFloat cell = (size - 40.0) / 2.0;
     CGFloat gap  = 10.0;
@@ -203,7 +203,9 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
 
 @interface AuraManager : NSObject
 + (instancetype)shared;
++ (instancetype)sharedManager;
 - (void)toggleHUD;
+- (void)destroy;
 @property (nonatomic, strong) UIWindow *window;
 @end
 
@@ -216,6 +218,10 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
         sharedManager = [[AuraManager alloc] init];
     });
     return sharedManager;
+}
+
++ (instancetype)sharedManager {
+    return [self shared];
 }
 
 - (void)toggleHUD {

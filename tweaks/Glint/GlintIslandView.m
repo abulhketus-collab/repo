@@ -1,5 +1,6 @@
 #import "GlintIslandView.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <CoreFoundation/CoreFoundation.h>
 
 @interface SBUIController : NSObject
 + (instancetype)sharedInstance;
@@ -49,14 +50,6 @@ static NSString *GlintClean(NSString *raw, NSInteger maxGraphemes) {
     return out;
 }
 
-// Returns a system SF Symbol image (iOS 13+, guarded)
-static UIImage *GlintSymbolImage(NSString *symbolName, CGFloat size, UIColor *color) {
-    if (!symbolName) return nil;
-    UIImage *img = [UIImage imageNamed:symbolName];
-    return img;
-}
-
-// Returns a colored circle badge image (for flashlight lamp etc.)
 static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *borderColor) {
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(diameter, diameter), NO, 0.0);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -139,6 +132,7 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 @interface GlintIsland ()
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UIView *pill;
+@property (nonatomic, strong) CAShapeLayer *glowRing;
 @property (nonatomic, strong) UIView *iconBadge;
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *iconGlyphLabel;
@@ -159,6 +153,10 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 @property (nonatomic, assign) BOOL lastWasMusic;
 @property (nonatomic, copy) NSString *lastTrack;
 @property (nonatomic, copy) NSString *lastArtist;
+
+// Timer state
+@property (nonatomic, assign) BOOL timerActive;
+@property (nonatomic, assign) NSInteger timerRemaining;
 @end
 
 #pragma mark - Touch pass-through
@@ -215,6 +213,12 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
         touchView.userInteractionEnabled = YES;
         host.view = touchView;
 
+        self.glowRing = [CAShapeLayer layer];
+        self.glowRing.fillColor = [UIColor clearColor].CGColor;
+        self.glowRing.lineWidth = 2.0;
+        self.glowRing.hidden = YES;
+        [touchView.layer addSublayer:self.glowRing];
+
         self.pill = [[UIView alloc] initWithFrame:CGRectMake((W - pw) / 2.0, py, pw, ph)];
         self.pill.backgroundColor = [UIColor blackColor];
         self.pill.layer.cornerRadius = ph / 2.0;
@@ -262,8 +266,8 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
         self.messageLabel.alpha = 0.0;
         [self.pill addSubview:self.messageLabel];
 
-        self.leftGlyphLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, pw / 2.0 - 10.0, ph)];
-        self.leftGlyphLabel.font = [UIFont systemFontOfSize:12.0];
+        self.leftGlyphLabel = [[UILabel alloc] initWithFrame:CGRectMake(8.0, 0.0, pw - 30.0, ph)];
+        self.leftGlyphLabel.font = [UIFont systemFontOfSize:11.5 weight:UIFontWeightMedium];
         self.leftGlyphLabel.textColor = [UIColor whiteColor];
         self.leftGlyphLabel.textAlignment = NSTextAlignmentLeft;
         self.leftGlyphLabel.userInteractionEnabled = NO;
@@ -295,6 +299,8 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
             self.pill.transform = CGAffineTransformIdentity;
             self.pill.alpha = 1.0;
         } completion:nil];
+
+        [self applyGlowPrefs];
     } @catch (NSException *e) {
         NSLog(@"[Glint] setup error: %@", e);
     }
@@ -311,6 +317,7 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
             if (self.window) {
                 [UIView animateWithDuration:0.25 animations:^{
                     self.pill.alpha = hidden ? 0.0 : 1.0;
+                    if (self.glowRing) self.glowRing.opacity = hidden ? 0.0 : 1.0;
                 } completion:^(BOOL finished) {
                     if (!self.expanded) self.window.hidden = hidden;
                     else { self.window.hidden = NO; self.pill.alpha = 1.0; }
@@ -322,8 +329,114 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 
 - (void)waveSetActive:(BOOL)active {
     self.wave.alpha = (self.expanded || !active) ? 0.0 : 1.0;
-    if (active) [self.wave startAnimating];
-    else [self.wave stopAnimating];
+    if (active) {
+        [self.wave startAnimating];
+        [self startBeatPulse];
+    } else {
+        [self.wave stopAnimating];
+        [self stopBeatPulse];
+    }
+}
+
+#pragma mark - Beat Pulse & Glow Engine
+
+- (void)startBeatPulse {
+    CFTypeRef bp = CFPreferencesCopyAppValue(CFSTR("glintBeatPulse"), CFSTR("com.cocxace.glint"));
+    BOOL enabled = YES;
+    if (bp) {
+        if (CFGetTypeID(bp) == CFBooleanGetTypeID()) enabled = CFBooleanGetValue((CFBooleanRef)bp);
+        CFRelease(bp);
+    }
+    if (!enabled || !self.pill) return;
+    if ([self.pill.layer animationForKey:@"glintBeatPulse"]) return;
+
+    CAKeyframeAnimation *beat = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    beat.values = @[ @1.0f, @1.025f, @1.0f ];
+    beat.keyTimes = @[ @0.0f, @0.5f, @1.0f ];
+    beat.duration = 0.5f;
+    beat.repeatCount = HUGE_VALF;
+    beat.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [self.pill.layer addAnimation:beat forKey:@"glintBeatPulse"];
+}
+
+- (void)stopBeatPulse {
+    if (self.pill) [self.pill.layer removeAnimationForKey:@"glintBeatPulse"];
+}
+
+- (void)applyGlowPrefs {
+    if (!self.pill || !self.glowRing) return;
+    @try {
+        CFTypeRef ge = CFPreferencesCopyAppValue(CFSTR("glintGlowEnabled"), CFSTR("com.cocxace.glint"));
+        BOOL glowOn = YES;
+        if (ge) { if (CFGetTypeID(ge) == CFBooleanGetTypeID()) glowOn = CFBooleanGetValue((CFBooleanRef)ge); CFRelease(ge); }
+
+        CFTypeRef gr = CFPreferencesCopyAppValue(CFSTR("glintGlowRainbow"), CFSTR("com.cocxace.glint"));
+        BOOL rainbow = NO;
+        if (gr) { if (CFGetTypeID(gr) == CFBooleanGetTypeID()) rainbow = CFBooleanGetValue((CFBooleanRef)gr); CFRelease(gr); }
+
+        CFTypeRef gb = CFPreferencesCopyAppValue(CFSTR("glintGlowBlink"), CFSTR("com.cocxace.glint"));
+        BOOL blink = NO;
+        if (gb) { if (CFGetTypeID(gb) == CFBooleanGetTypeID()) blink = CFBooleanGetValue((CFBooleanRef)gb); CFRelease(gb); }
+
+        CGFloat hue = 190.0;
+        CFTypeRef gh = CFPreferencesCopyAppValue(CFSTR("glintGlowHue"), CFSTR("com.cocxace.glint"));
+        if (gh) {
+            if (CFGetTypeID(gh) == CFNumberGetTypeID()) CFNumberGetValue((CFNumberRef)gh, kCFNumberCGFloatType, &hue);
+            CFRelease(gh);
+        }
+
+        [self.pill.layer removeAnimationForKey:@"glintGlowRainbow"];
+        [self.pill.layer removeAnimationForKey:@"glintGlowBlink"];
+        [self.glowRing removeAnimationForKey:@"glintGlowRainbow"];
+        [self.glowRing removeAnimationForKey:@"glintGlowBlink"];
+
+        if (!glowOn) {
+            self.glowRing.hidden = YES;
+            self.pill.layer.shadowOpacity = 0.0;
+            return;
+        }
+
+        UIColor *glowColor = [UIColor colorWithHue:(hue / 360.0) saturation:0.85 brightness:1.0 alpha:1.0];
+        self.glowRing.strokeColor = glowColor.CGColor;
+        self.glowRing.lineWidth = 1.5;
+        self.glowRing.hidden = NO;
+
+        self.pill.layer.shadowColor = glowColor.CGColor;
+        self.pill.layer.shadowRadius = 10.0;
+        self.pill.layer.shadowOpacity = 0.65;
+        self.pill.layer.shadowOffset = CGSizeZero;
+
+        if (rainbow) {
+            NSMutableArray *stops = [NSMutableArray arrayWithCapacity:13];
+            for (NSInteger i = 0; i <= 12; i++) {
+                UIColor *c = [UIColor colorWithHue:(i % 12) / 12.0 saturation:0.9 brightness:1.0 alpha:1.0];
+                [stops addObject:(id)c.CGColor];
+            }
+            CAKeyframeAnimation *shAnim = [CAKeyframeAnimation animationWithKeyPath:@"shadowColor"];
+            shAnim.values = stops;
+            shAnim.duration = 6.0;
+            shAnim.repeatCount = HUGE_VALF;
+            shAnim.calculationMode = kCAAnimationLinear;
+            [self.pill.layer addAnimation:shAnim forKey:@"glintGlowRainbow"];
+
+            CAKeyframeAnimation *ringAnim = [CAKeyframeAnimation animationWithKeyPath:@"strokeColor"];
+            ringAnim.values = stops;
+            ringAnim.duration = 6.0;
+            ringAnim.repeatCount = HUGE_VALF;
+            ringAnim.calculationMode = kCAAnimationLinear;
+            [self.glowRing addAnimation:ringAnim forKey:@"glintGlowRainbow"];
+        }
+
+        if (blink) {
+            CAKeyframeAnimation *blinkAnim = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+            blinkAnim.values = @[ @1.0f, @0.0f ];
+            blinkAnim.keyTimes = @[ @0.0f, @0.5f ];
+            blinkAnim.duration = 2.0;
+            blinkAnim.repeatCount = HUGE_VALF;
+            blinkAnim.calculationMode = kCAAnimationDiscrete;
+            [self.glowRing addAnimation:blinkAnim forKey:@"glintGlowBlink"];
+        }
+    } @catch (NSException *e) {}
 }
 
 #pragma mark - Layout
@@ -339,13 +452,13 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
     GlintPillMetrics(&pw, &ph, &expW, &expH, &py);
 
     CGFloat pillW = exp ? expW : pw;
-    CGFloat pillH = exp ? pillH = expH : ph;
+    CGFloat pillH = exp ? expH : ph;
     CGFloat pillY = exp ? 4.0 : py;
 
     self.iconBadge.frame = CGRectMake(7.0, (pillH - 30.0) / 2.0, 30.0, 30.0);
     self.titleLabel.frame = CGRectMake(46.0, 8.0, expW - 56.0, 16.0);
     self.messageLabel.frame = CGRectMake(46.0, 25.0, expW - 56.0, 14.0);
-    self.leftGlyphLabel.frame = CGRectMake(10.0, 0.0, pw / 2.0 - 10.0, ph);
+    self.leftGlyphLabel.frame = CGRectMake(8.0, 0.0, pw - 30.0, ph);
     self.wave.frame = CGRectMake(pw - 26.0, 0.0, 18.0, ph);
 
     self.iconBadge.alpha = exp ? 1.0 : 0.0;
@@ -355,9 +468,17 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 
     self.pill.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.16].CGColor;
 
+    CGRect targetFrame = CGRectMake((W - pillW) / 2.0, pillY, pillW, pillH);
     void (^block)(void) = ^{
-        self.pill.frame = CGRectMake((W - pillW) / 2.0, pillY, pillW, pillH);
+        self.pill.frame = targetFrame;
         self.pill.layer.cornerRadius = pillH / 2.0;
+
+        if (self.glowRing) {
+            CGRect ringFrame = CGRectInset(targetFrame, -1.0, -1.0);
+            self.glowRing.frame = ringFrame;
+            self.glowRing.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, ringFrame.size.width, ringFrame.size.height)
+                                                            cornerRadius:ringFrame.size.height / 2.0].CGPath;
+        }
     };
 
     if (animated) {
@@ -365,11 +486,11 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
                               delay:0.0
              usingSpringWithDamping:0.72
               initialSpringVelocity:0.45
-                            options:UIViewAnimationOptionCurveEaseOut |
-                                    UIViewAnimationOptionBeginFromCurrentState |
-                                    UIViewAnimationOptionAllowUserInteraction
-                         animations:block
-                         completion:nil];
+                             options:UIViewAnimationOptionCurveEaseOut |
+                                     UIViewAnimationOptionBeginFromCurrentState |
+                                     UIViewAnimationOptionAllowUserInteraction
+                          animations:block
+                          completion:nil];
     } else {
         block();
     }
@@ -448,7 +569,13 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
     self.expanded = NO;
     self.eventGen++;
     self.tapBundleID = nil;
-    self.messageLabel.hidden = NO;
+    if (self.timerActive && self.timerRemaining > 0) {
+        NSInteger rem = self.timerRemaining;
+        self.leftGlyphLabel.text = [NSString stringWithFormat:@"⏱ %02ld:%02ld", (long)(rem / 60), (long)(rem % 60)];
+        self.leftGlyphLabel.alpha = 1.0;
+    } else if (!self.leftGlyphLabel.text.length) {
+        self.leftGlyphLabel.alpha = 0.0;
+    }
     [self applyLayoutAnimated:YES];
 }
 
@@ -458,36 +585,38 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
                    icon:(UIImage *)icon
                   title:(NSString *)title
                 message:(NSString *)message {
-    self.lastAppName = [appName copy] ?: @"Application";
-    [self presentEventWithGlyph:(glyph.length > 0 ? glyph : @"")
+    self.lastAppName = appName;
+    [self presentEventWithGlyph:glyph
                            icon:icon
                           title:title
                         message:message
                         tapOpen:bundleID
-                          delay:4.0];
+                          delay:3.5];
 }
 
-- (void)showChargingAtLevel:(NSInteger)level {
-    if (level < 0 || level > 100) level = 99;
-    [self presentEventWithGlyph:@""
+- (void)showChargingAtLevel:(NSInteger)levelPercent {
+    NSString *t = [NSString stringWithFormat:@"Charging %ld%%", (long)levelPercent];
+    [self presentEventWithGlyph:@"⚡"
                            icon:nil
-                          title:[NSString stringWithFormat:@"⚡ Charging %ld%%", (long)level]
-                        message:nil
+                          title:t
+                        message:@"Connected to Power"
                         tapOpen:nil
-                          delay:2.6];
+                          delay:2.8];
 }
 
-- (void)setChargingSlotLevel:(NSInteger)level orNil:(BOOL)clear {
+- (void)setChargingSlotLevel:(NSInteger)levelPercent orNil:(BOOL)clear {
     dispatch_async(dispatch_get_main_queue(), ^{
-        @try {
-            if (clear && self.leftGlyphLabel.text && [self.leftGlyphLabel.text isEqualToString:@""])
-                self.leftGlyphLabel.text = nil;
-            if (!clear) {
-                // Show lightning bolt in left slot
-                self.leftGlyphLabel.text = @"⚡";
-                if (!self.expanded) self.leftGlyphLabel.alpha = 1.0;
+        if (clear) {
+            if (!self.timerActive) {
+                self.leftGlyphLabel.text = @"";
+                self.leftGlyphLabel.alpha = 0.0;
             }
-        } @catch (NSException *e) {}
+        } else {
+            if (!self.timerActive) {
+                self.leftGlyphLabel.text = [NSString stringWithFormat:@"⚡ %ld%%", (long)levelPercent];
+                self.leftGlyphLabel.alpha = 1.0;
+            }
+        }
     });
 }
 
@@ -495,8 +624,7 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
             if (on) {
-                // Yellow filled circle badge = flashlight lamp
-                UIImage *badgeImg = GlintBadgeCircle(30.0, [UIColor colorWithRed:1.0 green:0.82 blue:0.1 alpha:1.0], [UIColor whiteColor]);
+                UIImage *badgeImg = GlintBadgeCircle(30.0, [UIColor colorWithRed:1.0 green:0.84 blue:0.0 alpha:1.0], [UIColor whiteColor]);
                 self.iconImageView.image = badgeImg;
                 self.iconImageView.alpha = 1.0;
                 self.iconGlyphLabel.text = @"";
@@ -507,8 +635,10 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
                 self.leftGlyphLabel.alpha = 1.0;
             } else {
                 self.iconBadge.alpha = 0.0;
-                self.leftGlyphLabel.text = @"";
-                self.leftGlyphLabel.alpha = 0.0;
+                if (!self.timerActive) {
+                    self.leftGlyphLabel.text = @"";
+                    self.leftGlyphLabel.alpha = 0.0;
+                }
             }
             [self applyLayoutAnimated:YES];
             AudioServicesPlaySystemSound(1519);
@@ -539,7 +669,7 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 - (void)showBootGreeting {
     [self presentEventWithGlyph:@""
                            icon:nil
-                          title:@"Glint 1.2.1"
+                          title:@"Glint 1.2.3"
                         message:@"Dynamic Island online"
                         tapOpen:nil
                           delay:3.2];
@@ -549,6 +679,45 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
     dispatch_async(dispatch_get_main_queue(), ^{
         self.nowPlayingFlag = active;
         if (!self.expanded) [self applyLayoutAnimated:YES];
+    });
+}
+
+- (void)showTimerCountdown:(NSInteger)remainingSeconds {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.timerActive = YES;
+        self.timerRemaining = remainingSeconds;
+        NSInteger mm = remainingSeconds / 60;
+        NSInteger ss = remainingSeconds % 60;
+        NSString *str = [NSString stringWithFormat:@"⏱ %02ld:%02ld", (long)mm, (long)ss];
+        if (!self.expanded) {
+            self.leftGlyphLabel.text = str;
+            self.leftGlyphLabel.alpha = 1.0;
+        }
+    });
+}
+
+- (void)showTimerDone {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.timerActive = NO;
+        self.timerRemaining = 0;
+        AudioServicesPlaySystemSound(1005);
+        [self presentEventWithGlyph:@"⏱"
+                               icon:nil
+                              title:@"Timer Finished"
+                            message:@"Time is up"
+                            tapOpen:@"com.apple.mobiletimer"
+                              delay:4.0];
+    });
+}
+
+- (void)clearTimerCountdown {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.timerActive) {
+            self.timerActive = NO;
+            self.timerRemaining = 0;
+            self.leftGlyphLabel.text = @"";
+            self.leftGlyphLabel.alpha = 0.0;
+        }
     });
 }
 
@@ -579,7 +748,14 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
             if (self.expanded) return;
             NSString *title, *body, *glyph, *tapBid;
             UIImage *icon;
-            if (isMusic) {
+            if (self.timerActive && self.timerRemaining > 0) {
+                NSInteger rem = self.timerRemaining;
+                title = [NSString stringWithFormat:@"Timer: %02ld:%02ld", (long)(rem / 60), (long)(rem % 60)];
+                body = @"Clock Countdown Running";
+                glyph = @"⏱";
+                tapBid = @"com.apple.mobiletimer";
+                icon = nil;
+            } else if (isMusic) {
                 title = self.lastTrack ?: @"Now Playing";
                 body = self.lastArtist.length ? [@"♪ " stringByAppendingString:self.lastArtist] : nil;
                 glyph = @"";
@@ -633,6 +809,15 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
         self.tapBundleID = nil;
         BOOL wasExpanded = self.expanded;
 
+        if (self.timerActive) {
+            [self collapse];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)),
+                           dispatch_get_main_queue(), ^{
+                [self openAppWithIdentifier:@"com.apple.mobiletimer"];
+            });
+            return;
+        }
+
         if (bid.length > 0) {
             [self collapse];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)),
@@ -656,7 +841,9 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
 - (void)pillLongPressed:(UILongPressGestureRecognizer *)sender {
     if (sender.state != UIGestureRecognizerStateBegan) return;
     @try {
-        if (self.nowPlayingFlag && !self.lastTitle.length) {
+        if (self.timerActive) {
+            [self expandDetails:NO];
+        } else if (self.nowPlayingFlag && !self.lastTitle.length) {
             [self expandDetails:YES];
         } else if (self.lastTitle.length > 0) {
             [self expandDetails:self.lastWasMusic];
@@ -698,6 +885,8 @@ static UIImage *GlintBadgeCircle(CGFloat diameter, UIColor *fillColor, UIColor *
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"camera:"]];
         } else if ([bundleID isEqualToString:@"com.apple.mobilemusic"]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"music:"]];
+        } else if ([bundleID isEqualToString:@"com.apple.mobiletimer"]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"clock-timer:"]];
         } else if ([bundleID isEqualToString:@"com.apple.VoiceMemos"]) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"voicememos:"]];
         } else if ([bundleID isEqualToString:@"com.apple.mobilesms"]) {

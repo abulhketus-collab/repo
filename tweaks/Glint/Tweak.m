@@ -322,10 +322,97 @@ static void GlintMediaTick(void) {
     }
 }
 
+#pragma mark - Timer deep search
+
+static void TimerDeepSearch(id node, NSDate **endDate, CGFloat *secondsLeft, BOOL *paused) {
+    if (!node) return;
+    @try {
+        if ([node isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary *)node;
+            for (NSString *key in dict) {
+                NSString *lk = key.lowercaseString;
+                id val = dict[key];
+                if ([val isKindOfClass:[NSNumber class]] &&
+                    ([lk containsString:@"secondsremaining"] || [lk containsString:@"timeleft"] || [lk containsString:@"remainingtime"])) {
+                    CGFloat v = [(NSNumber *)val doubleValue];
+                    if (v > 0 && v < 86400.0 && *secondsLeft < 0) *secondsLeft = v;
+                }
+                if ([val isKindOfClass:[NSDate class]] &&
+                    ([lk containsString:@"enddate"] || [lk containsString:@"firedate"] || [lk containsString:@"targetdate"] || [lk containsString:@"countdowndate"])) {
+                    NSTimeInterval delta = [(NSDate *)val timeIntervalSinceNow];
+                    if (delta > 0 && delta < 86400.0 && !*endDate) *endDate = val;
+                }
+                if ([val isKindOfClass:[NSNumber class]] &&
+                    ([lk isEqualToString:@"paused"] || [lk isEqualToString:@"ispaused"])) {
+                    if ([(NSNumber *)val boolValue]) *paused = YES;
+                }
+                TimerDeepSearch(val, endDate, secondsLeft, paused);
+            }
+        } else if ([node isKindOfClass:[NSArray class]]) {
+            for (id item in (NSArray *)node) {
+                TimerDeepSearch(item, endDate, secondsLeft, paused);
+            }
+        }
+    } @catch (NSException *e) {}
+}
+
+static NSInteger GlintGetTimerRemaining(void) {
+    @try {
+        NSArray *candidateKeys = @[@"timerState", @"timer", @"timers", @"countdown", @"countdownTimer", @"state"];
+        for (NSString *ck in candidateKeys) {
+            CFTypeRef raw = CFPreferencesCopyAppValue((CFStringRef)ck, CFSTR("com.apple.mobiletimerd"));
+            if (!raw) continue;
+            NSDictionary *dict = nil;
+            if (CFGetTypeID(raw) == CFDictionaryGetTypeID()) {
+                dict = [(__bridge NSDictionary *)raw copy];
+            } else if (CFGetTypeID(raw) == CFArrayGetTypeID()) {
+                dict = @{@"wrapped": (__bridge NSArray *)raw};
+            }
+            CFRelease(raw);
+            if (dict) {
+                NSDate *endDate = nil;
+                CGFloat secondsLeft = -1.0;
+                BOOL paused = NO;
+                TimerDeepSearch(dict, &endDate, &secondsLeft, &paused);
+                if (endDate && !paused) {
+                    CGFloat delta = (CGFloat)[endDate timeIntervalSinceNow];
+                    if (delta > 0 && delta < 86400.0) return (NSInteger)delta;
+                }
+                if (secondsLeft > 0 && !paused) return (NSInteger)secondsLeft;
+            }
+        }
+    } @catch (NSException *e) {}
+    return -1;
+}
+
+static BOOL gTimerWasActive = NO;
+
+static void GlintTimerTick(void) {
+    @try {
+        GlintIsland *island = [GlintIsland shared];
+        if (!island.isSetup || !gPrefs.enabled) return;
+
+        NSInteger remaining = GlintGetTimerRemaining();
+        if (remaining > 0) {
+            gTimerWasActive = YES;
+            [island showTimerCountdown:remaining];
+        } else {
+            if (gTimerWasActive && remaining == 0) {
+                gTimerWasActive = NO;
+                [island showTimerDone];
+            } else if (gTimerWasActive && remaining < 0) {
+                gTimerWasActive = NO;
+                [island clearTimerCountdown];
+            }
+        }
+    } @catch (NSException *e) {}
+}
+
 @interface GlintPump : NSObject
 - (void)start;
 - (void)tick:(NSTimer *)timer;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) NSInteger tickCount;
 @end
 
 @implementation GlintPump
@@ -339,11 +426,18 @@ static void GlintMediaTick(void) {
     if (self.timer) return;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.timer) return;
-        self.timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+        self.tickCount = 0;
+        self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     });
 }
-- (void)tick:(NSTimer *)timer { GlintMediaTick(); }
+- (void)tick:(NSTimer *)timer {
+    self.tickCount++;
+    GlintTimerTick();
+    if (self.tickCount % 2 == 0) {
+        GlintMediaTick();
+    }
+}
 @end
 
 #pragma mark - Torch
@@ -471,7 +565,7 @@ static void GlintRegisterChargeWatch(void) {
     static BOOL reg = NO;
     if (reg) return;
     reg = YES;
-    uint32_t token = 0;
+    int token = 0;
     notify_register_dispatch("com.apple.iokit.powerSource", &token, dispatch_get_main_queue(),
                              ^(int note) { GlintChargeTick(YES); });
 }
@@ -517,6 +611,9 @@ static void GlintBootOnMain(void) {
 static void GlintDarwinCallback(CFNotificationCenterRef c, void *o, CFStringRef n, const void *obj, CFDictionaryRef u) {
     CFPreferencesAppSynchronize(CFSTR("com.cocxace.glint"));
     GlintLoadPrefsOnMain();
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintIsland shared] applyGlowPrefs];
+    });
 }
 
 static void GlintInstallPrefsObserver(void) {

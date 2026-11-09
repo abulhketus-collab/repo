@@ -1,12 +1,9 @@
 #import "LuminaPrefs.h"
+#import <CoreGraphics/CoreGraphics.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import <os/log.h>
 
 #define LUMINA_APP_ID CFSTR("com.cocxace.lumina")
 #define LUMINA_RELOAD_NOTIFICATION CFSTR("com.cocxace.lumina/reload")
-
-static const char *kLuminaLog = "Lumina";
-#define LuminaLog(fmt, ...)     do { if ([LuminaPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Lumina] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
 
 @implementation LuminaPrefs {
     BOOL _debugEnabled;
@@ -20,12 +17,8 @@ static const char *kLuminaLog = "Lumina";
 }
 
 + (void)registerDefaults {
-    NSMutableDictionary *defs = [NSMutableDictionary dictionary];
-    [defs setObject:@(YES) forKey:@"enabled"];
-    [defs setObject:@(0.90) forKey:@"opacity"];
-    [defs setObject:@(YES) forKey:@"showDate"];
-    [defs setObject:@(NO) forKey:@"luminaDebug"];
-    CFPreferencesSetAppValues((CFDictionaryRef)defs, LUMINA_APP_ID);
+    CFPreferencesSetAppValue(CFSTR("enabled"), kCFBooleanTrue, LUMINA_APP_ID);
+    CFPreferencesSetAppValue(CFSTR("showDate"), kCFBooleanTrue, LUMINA_APP_ID);
     CFPreferencesAppSynchronize(LUMINA_APP_ID);
 }
 
@@ -50,6 +43,6 @@ static const char *kLuminaLog = "Lumina";
                                          LUMINA_RELOAD_NOTIFICATION, NULL, NULL, true);
 }
 
-+ (BOOL)debugEnabled { return _debugEnabled; }
++ (BOOL)debugEnabled { return [self sharedPrefs]->_debugEnabled; }
 
 @end

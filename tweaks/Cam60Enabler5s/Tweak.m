@@ -54,25 +54,26 @@ static BOOL   gC60WantProRAW = NO;     // requested but hardware-gated off
 static BOOL   gC60WantCine = NO;       // requested but hardware-gated off
 
 static void C60ApplyProfile(NSInteger profile) {
-    // Expand a named profile into effective settings (Custom = keep raw keys)
+    // Категория F: профиль настраивает только битрейт/качество/термал.
+    // gC60Enabled остаётся из prefs — профиль не перебивает мастер-выключатель.
     switch (profile) {
         case 0:  // Max Quality
-            gC60Enabled = YES; gC60SlowMo = YES;
+            gC60SlowMo = YES;
             gC60Bitrate = 80.0; gC60Quality = 1.00;
             gC60Thermal = YES; gC60AutoDisable = YES;
             break;
         case 1:  // Balance
-            gC60Enabled = YES; gC60SlowMo = NO;
+            gC60SlowMo = NO;
             gC60Bitrate = 50.0; gC60Quality = 0.85;
             gC60Thermal = YES; gC60AutoDisable = YES;
             break;
         case 2:  // Battery Save
-            gC60Enabled = NO; gC60SlowMo = NO;
+            gC60SlowMo = NO;
             gC60Bitrate = 30.0; gC60Quality = 0.70;
             gC60Thermal = YES; gC60AutoDisable = YES;
             break;
         default:
-            break; // Custom
+            break; // Custom — не трогаем gC60Enabled
     }
 }
 
@@ -122,14 +123,14 @@ static BOOL C60BoolPref(CFStringRef key, BOOL defval) {
 
 static void C60LoadPrefs(void) {
     @try {
-        gC60Enabled      = C60BoolPref(CFSTR("enabled"), NO);
+        gC60Enabled      = C60BoolPref(CFSTR("enabled"), YES);
         gC60SlowMo       = C60BoolPref(CFSTR("slowmo"), NO);
         gC60Thermal      = C60BoolPref(CFSTR("thermal"), YES);
         gC60AutoDisable  = C60BoolPref(CFSTR("autodis"), YES);
         gC60Want4K60     = C60BoolPref(CFSTR("f4k60"), NO);
         gC60WantProRAW   = C60BoolPref(CFSTR("proraw"), NO);
         gC60WantCine     = C60BoolPref(CFSTR("cine"), NO);
-        gC60Bitrate      = C60DoublePref(CFSTR("bitrate"), 50.0);
+        gC60Bitrate      = C60DoublePref(CFSTR("bitrate"), 25.0); // было 50.0 — A7 не тянет 50 Mbps на 1080p60
         gC60Quality      = C60DoublePref(CFSTR("quality"), 85.0) / 100.0;
         gC60Quality      = MIN(1.0, MAX(0.6, gC60Quality));
 
@@ -194,6 +195,8 @@ static BOOL C60IsThermalThrottled(void) {
     gC60ThermalThrottled = NO;
     return NO;
 }
+
+static void C60Disable60FPS(void);
 
 // -----------------------------------------------------------------------------
 // Fallback timer: проверяем, что minFrameDuration действительно стал 1/60
@@ -263,23 +266,47 @@ static void C60HookMethod(Class cls, SEL sel, IMP newImp, IMP *oldImp) {
 // -----------------------------------------------------------------------------
 static BOOL (*orig_is60FPS)(id, SEL);
 static BOOL hook_is60FPS(id self, SEL _cmd) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_is60FPS(self, _cmd);
-    C60_LOG(@"is60FPSVideoSupported -> YES (forced)");
-    return YES;
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        if (orig_is60FPS) return orig_is60FPS(self, _cmd);
+        return NO;
+    }
+    @try {
+        C60_LOG(@"is60FPSVideoSupported -> YES (forced)");
+        return YES;
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_is60FPS exception: %@", e);
+        return orig_is60FPS ? orig_is60FPS(self, _cmd) : NO;
+    }
 }
 
 static BOOL (*orig_isBack60FPS)(id, SEL);
 static BOOL hook_isBack60FPS(id self, SEL _cmd) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_isBack60FPS(self, _cmd);
-    C60_LOG(@"isBack60FPSVideoSupported -> YES (forced)");
-    return YES;
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        if (orig_isBack60FPS) return orig_isBack60FPS(self, _cmd);
+        return NO;
+    }
+    @try {
+        C60_LOG(@"isBack60FPSVideoSupported -> YES (forced)");
+        return YES;
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_isBack60FPS exception: %@", e);
+        return orig_isBack60FPS ? orig_isBack60FPS(self, _cmd) : NO;
+    }
 }
 
 static BOOL (*orig_supports60Cfg)(id, SEL);
 static BOOL hook_supports60Cfg(id self, SEL _cmd) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_supports60Cfg(self, _cmd);
-    C60_LOG(@"supportsVideoConfiguration60FPS -> YES (forced)");
-    return YES;
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        if (orig_supports60Cfg) return orig_supports60Cfg(self, _cmd);
+        return NO;
+    }
+    @try {
+        C60_LOG(@"supportsVideoConfiguration60FPS -> YES (forced)");
+        return YES;
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_supports60Cfg exception: %@", e);
+        return orig_supports60Cfg ? orig_supports60Cfg(self, _cmd) : NO;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -291,35 +318,11 @@ static NSArray *hook_supportedVideoConfigs(id self, SEL _cmd) {
     NSArray *original = orig_supportedVideoConfigs(self, _cmd);
     C60_LOG(@"supportedVideoConfigurations original count: %lu", (unsigned long)original.count);
 
-    NSMutableArray *result = [original mutableCopy];
-    Class cfgClass = NSClassFromString(@"CAMVideoConfiguration");
-    if (cfgClass) {
-        id cfg = [[cfgClass alloc] init];
-        if (cfg) {
-            SEL setSize = NSSelectorFromString(@"setVideoSize:");
-            SEL setRate = NSSelectorFromString(@"setFrameRate:");
-            if ([cfg respondsToSelector:setSize])
-                ((void (*)(id, SEL, CGSize))objc_msgSend)(cfg, setSize, CGSizeMake(1920.0, 1080.0));
-            if ([cfg respondsToSelector:setRate])
-                ((void (*)(id, SEL, id))objc_msgSend)(cfg, setRate, @(60.0));
-            [result addObject:cfg];
-            C60_LOG(@"Added forced 1080p60 configuration");
-
-            // v1.0.3: slow motion 720p120 — A7 officially sustains 720p120
-            if (gC60SlowMo) {
-                id slow = [[cfgClass alloc] init];
-                if (slow) {
-                    if ([slow respondsToSelector:setSize])
-                        ((void (*)(id, SEL, CGSize))objc_msgSend)(slow, setSize, CGSizeMake(1280.0, 720.0));
-                    if ([slow respondsToSelector:setRate])
-                        ((void (*)(id, SEL, id))objc_msgSend)(slow, setRate, @(120.0));
-                    [result addObject:slow];
-                    C60_LOG(@"Added 720p120 slow-motion configuration");
-                }
-            }
-        }
-    }
-    return [result copy];
+    // Категория E: НЕ модифицируем supportedVideoConfigurations — иначе CameraUI
+    // покажет новый пункт в меню режимов (визуальное изменение UI). Возвращаем
+    // оригинальный массив без изменений.
+    C60_LOG(@"supportedVideoConfigurations: original count preserved (no UI changes)");
+    return original;
 }
 
 // -----------------------------------------------------------------------------
@@ -327,9 +330,16 @@ static NSArray *hook_supportedVideoConfigs(id self, SEL _cmd) {
 // -----------------------------------------------------------------------------
 static BOOL (*orig_canSetVidCfg)(id, SEL, id);
 static BOOL hook_canSetVidCfg(id self, SEL _cmd, id cfg) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_canSetVidCfg(self, _cmd, cfg);
-    C60_LOG(@"canSetVideoConfiguration -> YES (forced)");
-    return YES;
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        return orig_canSetVidCfg ? orig_canSetVidCfg(self, _cmd, cfg) : NO;
+    }
+    @try {
+        C60_LOG(@"canSetVideoConfiguration -> YES (forced)");
+        return YES;
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_canSetVidCfg exception: %@", e);
+        return orig_canSetVidCfg ? orig_canSetVidCfg(self, _cmd, cfg) : NO;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -337,13 +347,47 @@ static BOOL hook_canSetVidCfg(id self, SEL _cmd, id cfg) {
 // -----------------------------------------------------------------------------
 static NSArray *(*orig_frameRateRanges)(id, SEL);
 static NSArray *hook_frameRateRanges(id self, SEL _cmd) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_frameRateRanges(self, _cmd);
-    NSArray *original = orig_frameRateRanges(self, _cmd);
-    CMVideoDimensions dims = CMVideoFormatDescriptionGetDimensions(((AVCaptureDeviceFormat *)self).formatDescription);
-    if (dims.width == 1920 && dims.height == 1080) {
-        C60_LOG(@"1080p format detected — frame rate ranges enforced via min/max duration hooks");
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        return orig_frameRateRanges ? orig_frameRateRanges(self, _cmd) : nil;
     }
-    return original;
+    @try {
+        NSArray *original = orig_frameRateRanges ? orig_frameRateRanges(self, _cmd) : nil;
+        CMVideoDimensions dims = CMVideoFormatDescriptionGetDimensions(((AVCaptureDeviceFormat *)self).formatDescription);
+        if (dims.width == 1920 && dims.height == 1080) {
+            C60_LOG(@"1080p format detected — 60fps enforced via min/max duration hooks");
+        }
+        return original;
+    } @catch (NSException *e) {
+        C60_LOG(@"frameRateRanges exception: %@", e);
+        return orig_frameRateRanges ? orig_frameRateRanges(self, _cmd) : nil;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// AVCaptureDevice.activeFormat — форсируем 1080p60 формат (BUG-CAM60-001)
+// -----------------------------------------------------------------------------
+static AVCaptureDeviceFormat *(*orig_activeFormat)(id, SEL);
+static AVCaptureDeviceFormat *hook_activeFormat(id self, SEL _cmd) {
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        return orig_activeFormat ? orig_activeFormat(self, _cmd) : nil;
+    }
+    AVCaptureDeviceFormat *current = orig_activeFormat ? orig_activeFormat(self, _cmd) : nil;
+    if (!current) return nil;
+
+    NSNumber *posNum = [(id)self performSelector:@selector(position)];
+    if (!posNum || [posNum intValue] != 1) return current;
+
+    CMVideoDimensions dims = CMVideoFormatDescriptionGetDimensions(current.formatDescription);
+    if (dims.width == 1920 && dims.height == 1080) {
+        NSArray *ranges = current.videoSupportedFrameRateRanges;
+        for (AVFrameRateRange *range in ranges) {
+            if (range.maxFrameRate >= 60.0 && range.minFrameRate <= 60.0) {
+                C60_LOG(@"activeFormat: 1080p60 format confirmed");
+                return current;
+            }
+        }
+    }
+    return current;
 }
 
 // -----------------------------------------------------------------------------
@@ -351,37 +395,39 @@ static NSArray *hook_frameRateRanges(id self, SEL _cmd) {
 // -----------------------------------------------------------------------------
 static void (*orig_setMinDur)(id, SEL, CMTime);
 static void hook_setMinDur(id self, SEL _cmd, CMTime dur) {
-    if (!gC60Enabled || C60IsThermalThrottled()) { orig_setMinDur(self, _cmd, dur); return; }
-    C60_LOG(@"setActiveVideoMinFrameDuration: %f", CMTimeGetSeconds(dur));
-    if (CMTimeCompare(dur, CMTimeMake(1, 30)) < 0) {
-        C60_LOG(@"Forcing minFrameDuration to 1/60");
-        orig_setMinDur(self, _cmd, CMTimeMake(1, 60));
-        return;
+    if (!gC60Enabled || C60IsThermalThrottled()) { orig_setMinDur ? orig_setMinDur(self, _cmd, dur) : 0; return; }
+    C60_LOG(@"setActiveVideoMinFrameDuration: %f -> forcing 60fps", CMTimeGetSeconds(dur));
+    if (gC60SlowMo) {
+        orig_setMinDur ? orig_setMinDur(self, _cmd, CMTimeMake(1, 120)) : 0;
+    } else {
+        orig_setMinDur ? orig_setMinDur(self, _cmd, CMTimeMake(1, 60)) : 0;
     }
-    orig_setMinDur(self, _cmd, dur);
 }
 
 static void (*orig_setMaxDur)(id, SEL, CMTime);
 static void hook_setMaxDur(id self, SEL _cmd, CMTime dur) {
-    if (!gC60Enabled || C60IsThermalThrottled()) { orig_setMaxDur(self, _cmd, dur); return; }
-    C60_LOG(@"setActiveVideoMaxFrameDuration: %f", CMTimeGetSeconds(dur));
-    if (CMTimeCompare(dur, CMTimeMake(1, 30)) < 0) {
-        C60_LOG(@"Forcing maxFrameDuration to 1/60");
-        orig_setMaxDur(self, _cmd, CMTimeMake(1, 60));
-        return;
+    if (!gC60Enabled || C60IsThermalThrottled()) { orig_setMaxDur ? orig_setMaxDur(self, _cmd, dur) : 0; return; }
+    C60_LOG(@"setActiveVideoMaxFrameDuration: %f -> forcing 60fps", CMTimeGetSeconds(dur));
+    if (gC60SlowMo) {
+        orig_setMaxDur ? orig_setMaxDur(self, _cmd, CMTimeMake(1, 120)) : 0;
+    } else {
+        orig_setMaxDur ? orig_setMaxDur(self, _cmd, CMTimeMake(1, 60)) : 0;
     }
-    orig_setMaxDur(self, _cmd, dur);
 }
 
 static BOOL (*orig_lockForCfg)(id, SEL, void **);
 static NSInteger gC60LockFailures = 0;
 static BOOL hook_lockForCfg(id self, SEL _cmd, void **errorPtr) {
-    BOOL success = orig_lockForCfg(self, _cmd, errorPtr);
+    BOOL success = NO;
+    @try {
+        success = orig_lockForCfg ? orig_lockForCfg(self, _cmd, errorPtr) : NO;
+    } @catch (NSException *e) {
+        C60_LOG(@"lockForConfiguration exception: %@", e);
+        success = NO;
+    }
     if (!success) {
         gC60LockFailures++;
         C60_LOG(@"lockForConfiguration FAILED (count %ld)", (long)gC60LockFailures);
-        // v1.0.3: repeated lock failures mean the pipeline rejects our config —
-        // fall back to stock instead of letting the camera app hang or crash
         if (gC60LockFailures >= 3) {
             C60Disable60FPS();
             C60WriteBackDisabled();
@@ -397,9 +443,25 @@ static BOOL hook_lockForCfg(id self, SEL _cmd, void **errorPtr) {
 // -----------------------------------------------------------------------------
 static BOOL (*orig_canSetPreset)(id, SEL, id);
 static BOOL hook_canSetPreset(id self, SEL _cmd, id preset) {
-    if (!gC60Enabled || C60IsThermalThrottled()) return orig_canSetPreset(self, _cmd, preset);
-    C60_LOG(@"canSetSessionPreset: %@", preset);
-    return YES;
+    if (!gC60Enabled || C60IsThermalThrottled()) {
+        return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+    }
+    @try {
+        C60_LOG(@"canSetSessionPreset: %@", preset);
+        // Категория E: не ломаем фото-пресеты — только видео-пресеты разрешаем.
+        if ([preset isKindOfClass:[NSString class]]) {
+            if ([preset isEqualToString:AVCaptureSessionPresetPhoto] ||
+                [preset isEqualToString:AVCaptureSessionPresetHigh] ||
+                [preset isEqualToString:AVCaptureSessionPresetMedium] ||
+                [preset isEqualToString:AVCaptureSessionPresetLow]) {
+                return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+            }
+        }
+        return YES;
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_canSetPreset exception: %@", e);
+        return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -408,7 +470,7 @@ static BOOL hook_canSetPreset(id self, SEL _cmd, id preset) {
 static void (*orig_setVidSettings)(id, SEL, id);
 static void hook_setVidSettings(id self, SEL _cmd, id settings) {
     if (!gC60Enabled || C60IsThermalThrottled() || gC60Bitrate <= 0) {
-        orig_setVidSettings(self, _cmd, settings);
+        orig_setVidSettings ? orig_setVidSettings(self, _cmd, settings) : 0;
         return;
     }
     @try {
@@ -421,13 +483,13 @@ static void hook_setVidSettings(id self, SEL _cmd, id settings) {
             compression[AVVideoQualityKey] = @(gC60Quality);
             patched[AVVideoCompressionPropertiesKey] = [compression copy];
             C60_LOG(@"setVideoSettings patched: bitrate=%.0f Mb/s quality=%.2f", gC60Bitrate, gC60Quality);
-            orig_setVidSettings(self, _cmd, [patched copy]);
+            orig_setVidSettings ? orig_setVidSettings(self, _cmd, [patched copy]) : 0;
             return;
         }
     } @catch (NSException *e) {
         C60_LOG(@"bitrate injection failed, stock settings kept: %@", e);
     }
-    orig_setVidSettings(self, _cmd, settings);
+    orig_setVidSettings ? orig_setVidSettings(self, _cmd, settings) : 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -451,8 +513,6 @@ __attribute__((constructor)) static void Cam60Enabler5sInit(void) {
                                         CFSTR("com.cocxace.cam60enabler5s/reload"),
                                         NULL,
                                         CFNotificationSuspensionBehaviorDeliverImmediately);
-
-        if (!gC60Enabled) return;
 
         // Hook CAMUserPreferences
         Class camPrefs = NSClassFromString(@"CAMUserPreferences");
@@ -494,6 +554,7 @@ __attribute__((constructor)) static void Cam60Enabler5sInit(void) {
             C60HookMethod(avDevice, @selector(setActiveVideoMinFrameDuration:), (IMP)hook_setMinDur, (IMP *)&orig_setMinDur);
             C60HookMethod(avDevice, @selector(setActiveVideoMaxFrameDuration:), (IMP)hook_setMaxDur, (IMP *)&orig_setMaxDur);
             C60HookMethod(avDevice, @selector(lockForConfiguration:), (IMP)hook_lockForCfg, (IMP *)&orig_lockForCfg);
+            C60HookMethod(avDevice, @selector(activeFormat), (IMP)hook_activeFormat, (IMP *)&orig_activeFormat);
         } else {
             C60_LOG(@"AVCaptureDevice not found");
         }
@@ -511,5 +572,13 @@ __attribute__((constructor)) static void Cam60Enabler5sInit(void) {
         }
 
         C60_LOG(@"Cam60Enabler5s initialization complete");
+    }
+}
+
+__attribute__((destructor)) static void Cam60Enabler5sDeinit(void) {
+    if (gC60FallbackTimer) {
+        dispatch_source_cancel(gC60FallbackTimer);
+        gC60FallbackTimer = nil;
+        C60_LOG(@"Fallback timer released");
     }
 }

@@ -35,11 +35,20 @@ static NSString *EchoCarrierText(void) {
 // Loose boolean read: kCFBooleanTrue/False and NSNumber/NSString "1" are supported.
 static BOOL EchoEnabledLoose(void) {
     @try {
-        id raw = (__bridge id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("com.cocxace.echo"));
+        CFTypeRef raw = CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("com.cocxace.echo"));
         if (!raw) return YES;
-        if ([raw isKindOfClass:[NSNumber class]]) return [raw boolValue];
-        if ([raw isKindOfClass:[NSString class]]) return [(NSString *)raw boolValue];
-        return YES;
+        BOOL result = YES;
+        if (CFGetTypeID(raw) == CFBooleanGetTypeID()) {
+            result = CFBooleanGetValue((CFBooleanRef)raw);
+        } else if (CFGetTypeID(raw) == CFNumberGetTypeID()) {
+            NSInteger v = 0;
+            CFNumberGetValue((CFNumberRef)raw, kCFNumberNSIntegerType, &v);
+            result = (v != 0);
+        } else if (CFGetTypeID(raw) == CFStringGetTypeID()) {
+            result = [(__bridge NSString *)raw boolValue];
+        }
+        CFRelease(raw);
+        return result;
     } @catch (NSException *e) {
         return YES;
     }

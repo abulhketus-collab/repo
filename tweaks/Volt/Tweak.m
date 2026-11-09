@@ -30,7 +30,7 @@ static NSInteger VoltChoice(NSString *key, NSInteger fallback) {
     CFTypeRef val = CFPreferencesCopyAppValue((CFStringRef)key, CFSTR("com.cocxace.volt"));
     NSInteger result = fallback;
     if (val && CFGetTypeID(val) == CFNumberGetTypeID()) {
-        CFNumberGetValue((CFNumberRef)val, kCFNumberNSInteger, &result);
+        CFNumberGetValue((CFNumberRef)val, kCFNumberNSIntegerType, &result);
     }
     if (val) CFRelease(val);
     return result;
@@ -75,14 +75,16 @@ static UIColor *VoltZoneColor(VoltZone zone, UIColor *fallback) {
                           : (zone == VoltZoneMid) ? @"midColorChoice"
                                                   : @"lowColorChoice";
     CFTypeRef hexValue = CFPreferencesCopyAppValue((CFStringRef)hexKey, CFSTR("com.cocxace.volt"));
-    if (hexValue && CFGetTypeID(hexValue) == CFStringGetTypeID()) {
-        NSString *hex = (__bridge_transfer NSString *)hexValue;
-        if (hex.length >= 6) {
-            if (hexValue) CFRelease(hexValue);
-            return VoltColorFromHex(hex, fallback);
+    NSString *hex = nil;
+    if (hexValue) {
+        if (CFGetTypeID(hexValue) == CFStringGetTypeID()) {
+            hex = [(__bridge NSString *)hexValue copy];
         }
+        CFRelease(hexValue);
     }
-    if (hexValue) CFRelease(hexValue);
+    if (hex && hex.length >= 6) {
+        return VoltColorFromHex(hex, fallback);
+    }
     NSInteger choice = VoltChoice(choiceKey, (NSInteger)zone);
     return VoltColorForChoice(choice);
 }

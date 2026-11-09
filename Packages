@@ -9,10 +9,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb
-Size: 34098
-MD5sum: 3bae13a69f88c138180dd307307d74f0
-SHA1: 08281ccb0b33233caf2a38e141de92dc5af6250f
-SHA256: cf918cdc10ffa7fd85c8e73cf951b24905828dddc520a87b22d750bf9475ae9c
+Size: 36028
+MD5sum: 34ec2dd31124452b2fafb53d76ed15c2
+SHA1: 84ab64ed415be7356f9fbe4c958d4af885b57fc3
+SHA256: 112e3d0fdf8153e740aa8a03cfc29ab709eb6d7605abc893ea3d44c4140f285e
 
 Package: com.cocxace.aura
 Name: Aura
@@ -25,10 +25,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb
-Size: 15330
-MD5sum: ba66a38af4f38bffaf48f29781c1f83d
-SHA1: 93f77b0dd4a2a62d1c683c03c7bfce0c70945dbe
-SHA256: f7e4bcef46ff33b72dd56f7758caf6eb86fe622f86e2bb774d24eba1a759577a
+Size: 17962
+MD5sum: 433d6af5e58c5cab6f7e6e01f2e221b4
+SHA1: 9e649f0f83e83a85d385b57ec9f73cd3da780e42
+SHA256: f29e72e71a55fa5af81a11f6ccdd98e52183f6b054909da1519fe9dc4f33c8fa
 
 Package: com.cocxace.cam60enabler5s
 Name: Camera60Enabler5s
@@ -41,10 +41,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb
-Size: 15480
-MD5sum: fe511de1087e223fa829c827088ed153
-SHA1: cb8b3e27e67e6bade2d1f15b2aec6191b83ff385
-SHA256: 6b8aa973510252b5eaca88570694f027dc5486e2f768c96857ca40ce4c240935
+Size: 16596
+MD5sum: ed668fb00ef8d55e7cdd1325abbdc38b
+SHA1: e7ed3baba33d0c0500824214006b77b7be9c90fb
+SHA256: 2a4162469eb06124a2dc1290eb244fcadce6ddccdc628612625dcef45b5ad5cc
 
 Package: com.cocxace.echo
 Name: Echo
@@ -57,26 +57,26 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb
-Size: 7934
-MD5sum: dd38a78926080b1b14ec571bebc6d680
-SHA1: 9e60b165fd255231af2649fd579e42e3f7a67878
-SHA256: e6a4d2c7139baa5097a690a8a97df84508c15355d8fecd15a36ea2d1e1adf5dc
+Size: 9572
+MD5sum: 9ec3d423b8db5e1dda27307fb0fcb733
+SHA1: db9eb5b49735439c916ee0c2fb795435901e9b29
+SHA256: 681382d4a5136c900ba5b5eb731f2751fbec2649ed2a9a9ffc2d86b73ef9fa71
 
 Package: com.cocxace.glint
 Name: Glint
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Dynamic Island for iOS 12 with Timer, Music Equalizer, Rainbow Glow, Breathing Blink & Settings
+Description: Dynamic Island for iOS 12 with Timer, Music Equalizer, Beat Pulse, Rainbow Glow, 1s Breathing Blink & Settings
 Maintainer: @cocxace
 Author: @cocxace
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb
-Size: 38956
-MD5sum: 53aca78ca97bec7e73c5a65c2696780c
-SHA1: 9a82097f22cd31304a73ebc0b5276391171aa57c
-SHA256: ae437f454d73ead20b22991797ab9ef8022188cd79d6ae6cfb9bfbc2836cc2b3
+Size: 48008
+MD5sum: 779b22d08adf80dab4b33879e927a637
+SHA1: 0c71ae83a266c6cdd9f1fb605d96c4d2bd017676
+SHA256: 2829c1ee759fe72f6ebeb905645ae1bcfe65b438de17edb553331e63d6926a75
 
 Package: com.cocxace.lumina
 Name: Lumina
@@ -89,10 +89,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb
-Size: 11986
-MD5sum: 0bdcf2d67ad3146dd4d649c1996c9e0e
-SHA1: c8a19430e2051ffc712ef41e680ee27aeb34b06c
-SHA256: b015e56db9cec89cea8cfd5268995cfe408ff7c187c475c953fb6f0c53a643e2
+Size: 15158
+MD5sum: d9a4d5d4cbaeabfcc63ce5171f86cb43
+SHA1: d14f8bc8f4fb0807d127ac64a6e40ef088b90c09
+SHA256: 22638cdbf154f1f2c5846e731ed147190004f2a0487aac85910eb2e7cd95a459
 
 Package: com.cocxace.volt
 Name: Volt
@@ -105,7 +105,7 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb
-Size: 9626
-MD5sum: 22de938a76790ed0cd7709d277ed4a80
-SHA1: 3c013e6d1604a6b4d35bd45cefe1f67ef49168e0
-SHA256: ad2bda9d18d779ca65df77ee80243294a7e0e29c42131b0d276c628a8c4b4211
+Size: 13206
+MD5sum: c8e280dfeb31df1fff0db6a0c71fcabd
+SHA1: 438564ad34ccf3051ff30252ef707e1a5d4e6609
+SHA256: 24c2fae011441572936a9fbe618fa8ab032888d4d50dec979001f0862cd0ed73
