@@ -19,6 +19,8 @@ extern NSString *const GlintStateDidChangeNotification;
 - (void)updateMusicState;
 - (void)updatePowerState;
 - (void)updateTorchState;
+- (void)updateTimerState;
+- (void)timerDidFinish;
 - (BOOL)openBundleID:(NSString *)bundleID;
 
 @end
