@@ -1,64 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>cocxace Repo вЂ” iOS 12 Tweaks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<title>Glint</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{
-  --bg:#0a0a0a;
-  --line:#262626;
-  --txt:#f0f0f0;
-  --dim:#8a8a8a;
-  --dim2:#5c5c5c;
-  --glass:rgba(255,255,255,.04);
-  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
-  --accent:#00d2ff;
-  --green:#00ff00;
-  --red:#ff3b30;
-  --yellow:#ffcc00;
-}
+:root{--bg:#0a0a0a;--line:#262626;--txt:#f0f0f0;--dim:#8a8a8a;--dim2:#5c5c5c;--glass:rgba(255,255,255,.04);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
 html,body{height:100%;overflow:hidden}
-body{
-  font-family:var(--font);
-  background:var(--bg);
-  color:var(--txt);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  -webkit-font-smoothing:antialiased;
-}
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ---------- SPLASH ---------- */
-#splash{
-  position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .6s ease;
-}
-#splash.hidden{opacity:0;pointer-events:none;}
-.splash-island{
-  width:110px;height:42px;background:#1a1a1a;border:1px solid var(--txt);border-radius:22px;position:relative;
-  margin-bottom:18px;
-}
-.splash-island::after{
-  content:'';position:absolute;inset:-4px;background:conic-gradient(from 0deg, #00d2ff, #ff0055, #ffcc00, #00d2ff);border-radius:26px;opacity:0;transition:opacity .4s;
-}
-.splash-island.active::after{opacity:.6;animation:sweep 2s linear infinite;}
-@keyframes sweep{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.splash-island .dot{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent);
-}
-#splash h1{font-family:'Press Start 2P',cursive;font-size:clamp(22px,7vw,32px);color:var(--txt);text-shadow:2px 2px 0 #000;letter-spacing:.5px;}
-#splash p{font-family:var(--font);font-size:clamp(10px,3vw,14px);color:var(--dim);margin-top:8px;text-align:center;letter-spacing:.2px;}
-
-/* ---------- PHONE ANIMATION (USER CODE) ---------- */
+body{font-family:var(--font);background:var(--bg);color:var(--txt);display:flex;justify-content:center;align-items:center;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
 .phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
 @media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
 .track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
@@ -117,308 +68,57 @@ body::before{
 .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* ---------- DYNAMIC ISLAND OVERLAY ---------- */
-#island-wrap{position:fixed;top:env(safe-area-inset-top,20px);left:50%;transform:translateX(-50%);z-index:40;pointer-events:none;user-select:none;}
-.island{
-  width:110px;height:42px;background:#1a1a1a;border:1px solid var(--txt);border-radius:22px;position:relative;overflow:hidden;transition:width .35s cubic-bezier(.34,1.56,.64,1),height .35s cubic-bezier(.34,1.56,.64,1),background-color .3s,border-color .3s;
-}
-.island.expanded{width:340px;height:120px;}
-.island .content{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;opacity:0;transition:opacity .25s;pointer-events:auto;}
-.island.expanded .content{opacity:1;}
-.island .icon{font-size:20px;}
-.island .text{font-size:13px;font-weight:600;line-height:1.2;}
-.island .sub{font-size:11px;color:var(--dim);margin-top:2px;}
-.island .pulse{position:absolute;inset:0;border-radius:22px;background:rgba(0,210,255,.3);opacity:0;animation:pulseAnim 2s infinite;pointer-events:none;}
-@keyframes pulseAnim{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.3);opacity:0}}
-.island .battery{width:24px;height:14px;border:1.5px solid var(--txt);border-radius:7px;position:relative;margin-left:10px;}
-.island .battery::after{content:'';position:absolute;right:1px;top:50%;transform:translateY(-50%);width:2px;height:6px;background:var(--txt);}
-.island .battery.fill::after{background:var(--green);}
-
-/* ---------- SETTINGS OVERLAY ---------- */
-#settings{position:fixed;inset:0;z-index:45;background:rgba(0,0,0,.85);display:none;flex-direction:column;}
-#settings.visible{display:flex;}
-.settings-inner{width:100%;max-width:420px;margin:0 auto;padding:20px;overflow-y:auto;}
-.settings-inner h2{font-family:'Press Start 2P',cursive;font-size:16px;color:var(--txt);margin-bottom:16px;text-shadow:1px 1px 0 #000;}
-.settings-group{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;}
-.settings-group h3{font-size:14px;color:var(--txt);margin-bottom:12px;}
-.setting{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);}
-.setting:last-child{border-bottom:none;}
-.setting label{font-size:13px;color:var(--offwhite);flex:1;}
-.setting .desc{font-size:11px;color:var(--dim);margin-top:2px;max-width:260px;}
-.toggle{width:44px;height:24px;border-radius:12px;border:1px solid var(--line);background:var(--bg);position:relative;cursor:pointer;transition:all .2s;}
-.toggle.on{border-color:var(--accent);background:var(--accent);}
-.toggle.knob{position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:left .2s;}
-.toggle.on .knob{left:22px;}
-input[type=range]{width:120px;cursor:pointer;accent-color:var(--accent);}
-select,button{font-family:var(--font);background:var(--bg);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px;cursor:pointer;}
-button.reset{color:var(--red);border-color:var(--red);}
-button.reset:hover{background:rgba(255,59,48,.1);}
-.close-settings{position:absolute;top:16px;right:20px;font-size:24px;color:var(--dim);cursor:pointer;z-index:1;}
-.close-settings:hover{color:var(--txt);}
-
-/* ---------- TWEAKS LIST (BOTTOM) ---------- */
-#tweaks{position:fixed;bottom:0;left:0;right:0;z-index:40;background:linear-gradient(to top, var(--bg), transparent);padding:12px;pointer-events:none;}
-#tweaks.visible{pointer-events:auto;}
-.tweak-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;}
-.tweak-card{min-width:150px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px;pointer-events:auto;flex-shrink:0;}
-.tweak-card h4{font-size:13px;color:var(--txt);margin-bottom:6px;}
-.tweak-card p{font-size:11px;color:var(--dim);margin-bottom:10px;line-height:1.3;}
-.tweak-card .enabled-badge{font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;}
-
-/* ---------- TOAST ---------- */
-.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-
-/* ---------- CHANGELOG ---------- */
-.changelog{max-height:200px;overflow-y:auto;}
-.changelog-item{padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--offwhite);}
-.changelog-item .badge{font-size:10px;padding:2px 6px;border-radius:4px;color:#fff;margin-right:6px;}
-.changelog-item .badge.new{background:var(--green);}
-.changelog-item .badge.updated{background:var(--accent);}
-.changelog-item .date{font-size:10px;color:var(--dim);margin-left:auto;}
 </style>
 </head>
 <body>
-
-<div id="splash">
-  <div class="splash-island"><div class="dot"></div></div>
-  <h1>Glint</h1>
-  <p>tweaks repo</p>
-</div>
-
 <div class="phone">
-  <div class="track"><div class="fill" id="fill"></div></div>
-  <div class="scenes" id="wrap">
-    <section class="scene active">
-      <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-      <h1 class="title">Glint</h1>
-      <p class="subtitle">Dynamic Island for iOS.<br>Spring animation В· timer compression.</p>
-    </section>
-    <section class="scene">
-      <div class="features">
-        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island for iOS</div><div class="fnum">01</div></div>
-        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">Spring animation expansion</div><div class="fnum">02</div></div>
-        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Auto-collapse by timer</div><div class="fnum">03</div></div>
-        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">Stable work В· v1.0.0</div><div class="fnum">04</div></div>
-      </div>
-    </section>
-    <section class="scene">
-      <div class="steps">
-        <div class="step"><div class="sn">01</div><div class="sc"><div class="st">Open Sileo</div><div class="sd">Launch package manager on your device</div></div></div>
-        <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Add repository</div><div class="sd">Sources в†’ + в†’ paste URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
-        <div class="step"><div class="sn">03</div><div class="sc"><div class="st">Find Glint</div><div class="sd">Type name in Sileo search</div></div></div>
-        <div class="step"><div class="sn">04</div><div class="sc"><div class="st">Tap Install</div><div class="sd">Confirm install and wait for completion</div></div></div>
-      </div>
-    </section>
-    <section class="scene">
-      <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <h2 class="ftitle">Ready to install</h2>
-      <p class="fsub">Add the repository and install Glint in a couple of minutes</p>
-      <div class="urlbox" id="uBox" role="button" tabindex="0">
-        <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
-        <div class="cb"><svg viewBox="0 0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-      </div>
-      <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Install</a>
-      <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link</button>
-    </section>
+<div class="track"><div class="fill" id="fill"></div></div>
+<div class="scenes" id="wrap">
+<section class="scene active">
+  <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+  <h1 class="title">Glint</h1>
+  <p class="subtitle">Dynamic Island РґР»СЏ iOS.<br>РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ В· С‚Р°Р№РјРµСЂ СЃР¶Р°С‚РёСЏ.</p>
+</section>
+<section class="scene">
+  <div class="features">
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island РґР»СЏ iOS</div><div class="fnum">01</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ</div><div class="fnum">02</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">РђРІС‚РѕСЃР¶Р°С‚РёРµ РїРѕ С‚Р°Р№РјРµСЂСѓ</div><div class="fnum">03</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">РЎС‚Р°Р±РёР»СЊРЅР°СЏ СЂР°Р±РѕС‚Р° В· v1.0.0</div><div class="fnum">04</div></div>
   </div>
+</section>
+<section class="scene">
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="sc"><div class="st">РћС‚РєСЂРѕР№ Sileo</div><div class="sd">Р—Р°РїСѓСЃС‚Рё РјРµРЅРµРґР¶РµСЂ РїР°РєРµС‚РѕРІ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ</div></div></div>
+    <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№</div><div class="sd">Sources в†’ + в†’ РІСЃС‚Р°РІСЊ URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+    <div class="step"><div class="sn">03</div><div class="sc"><div class="st">РќР°Р№РґРё Glint</div><div class="sd">Р’РІРµРґРё РЅР°Р·РІР°РЅРёРµ РІ РїРѕРёСЃРєРµ Sileo</div></div></div>
+    <div class="step"><div class="sn">04</div><div class="sc"><div class="st">РќР°Р¶РјРё Install</div><div class="sd">РџРѕРґС‚РІРµСЂРґРё СѓСЃС‚Р°РЅРѕРІРєСѓ Рё РґРѕР¶РґРёСЃСЊ Р·Р°РІРµСЂС€РµРЅРёСЏ</div></div></div>
+  </div>
+</section>
+<section class="scene">
+  <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+  <h2 class="ftitle">Р“РѕС‚РѕРІРѕ Рє СѓСЃС‚Р°РЅРѕРІРєРµ</h2>
+  <p class="fsub">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№ Рё СѓСЃС‚Р°РЅРѕРІРё Glint Р·Р° РїР°СЂСѓ РјРёРЅСѓС‚</p>
+  <div class="urlbox" id="uBox" role="button" tabindex="0">
+    <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+    <div class="cb"><svg viewBox="0 0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+  </div>
+  <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>РЈСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
+  <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>РЎРєРѕРїРёСЂРѕРІР°С‚СЊ СЃСЃС‹Р»РєСѓ</button>
+</section>
 </div>
-
 <div class="ctrl">
   <div class="dots" id="dots">
     <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
     <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
   </div>
   <div class="row">
-    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Pause</span></button>
-    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Restart</button>
+    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">РџР°СѓР·Р°</span></button>
+    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Р—Р°РЅРѕРІРѕ</button>
   </div>
 </div>
-
-<!-- Dynamic Island -->
-<div id="island-wrap">
-  <div class="island" id="island">
-    <div class="content" id="island-content">
-      <div class="icon" id="island-icon">в—Џ</div>
-      <div>
-        <div class="text" id="island-text">Dynamic Island</div>
-        <div class="sub" id="island-sub">Ready</div>
-      </div>
-      <div class="battery" id="island-battery"></div>
-    </div>
-    <div class="pulse" id="island-pulse"></div>
-  </div>
-</div>
-
-<!-- Settings -->
-<div id="settings">
-  <div class="close-settings" id="closeSettings">вњ•</div>
-  <div class="settings-inner">
-    <h2>Settings</h2>
-    
-    <div class="settings-group">
-      <h3>Dynamic Island</h3>
-      <div class="setting">
-        <div><div>Enabled</div><div class="desc">Enable Glint island</div></div>
-        <label class="toggle on" id="toggle-glint"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Rainbow glow</div><div class="desc">Cycle glow colors automatically</div></div>
-        <label class="toggle" id="toggle-rainbow"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Blink 1s on/off</div><div class="desc">Glow flashes every second</div></div>
-        <label class="toggle" id="toggle-blink"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Glow strength</div><div class="desc">Intensity of island glow</div></div>
-        <input type="range" min="0" max="100" value="60" id="range-glow">
-      </div>
-      <div class="setting">
-        <div><div>Glow speed</div><div class="desc">Animation speed of glow</div></div>
-        <input type="range" min="1" max="10" value="5" id="range-speed">
-      </div>
-      <div class="setting">
-        <div><div>Custom color</div><div class="desc">Pick island accent color</div></div>
-        <input type="color" value="#00d2ff" id="color-island">
-      </div>
-      <button class="reset" id="reset-glint">Reset defaults</button>
-    </div>
-
-    <div class="settings-group">
-      <h3>Music & Equalizer</h3>
-      <div class="setting">
-        <div><div>Music island</div><div class="desc">Show now playing in Glint</div></div>
-        <label class="toggle on" id="toggle-music"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Equalizer</div><div class="desc">Audio visualizer bars</div></div>
-        <label class="toggle on" id="toggle-eq"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Beat pulse</div><div class="desc">Island moves to beat</div></div>
-        <label class="toggle on" id="toggle-beat"><div class="knob"></div></label>
-      </div>
-      <button class="reset" id="reset-music">Reset defaults</button>
-    </div>
-
-    <div class="settings-group">
-      <h3>Charging & Battery</h3>
-      <div class="setting">
-        <div><div>Charging island</div><div class="desc">Show charging state</div></div>
-        <label class="toggle on" id="toggle-charging"><div class="knob"></div></label>
-      </div>
-      <button class="reset" id="reset-charging">Reset defaults</button>
-    </div>
-
-    <div class="settings-group">
-      <h3>Network & Weather</h3>
-      <div class="setting">
-        <div><div>Network indicator</div><div class="desc">Show WiFi/cellular status</div></div>
-        <label class="toggle on" id="toggle-network"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Weather</div><div class="desc">Show temperature in island</div></div>
-        <label class="toggle on" id="toggle-weather"><div class="knob"></div></label>
-      </div>
-      <button class="reset" id="reset-weather">Reset defaults</button>
-    </div>
-
-    <div class="settings-group">
-      <h3>Camera60Enabler5s</h3>
-      <div class="setting">
-        <div><div>Enable 1080p60</div><div class="desc">Force 60 FPS on iPhone 5s A7 (experimental)</div></div>
-        <label class="toggle" id="toggle-cam60"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Safe mode protection</div><div class="desc">Auto-disable on crash risk</div></div>
-        <label class="toggle on" id="toggle-cam-safe"><div class="knob"></div></label>
-      </div>
-      <div class="setting">
-        <div><div>Quality preset</div><div class="desc">Camera recording quality</div></div>
-        <select id="select-cam-preset">
-          <option>Balance</option>
-          <option>Max Quality</option>
-          <option>Battery Saver</option>
-        </select>
-      </div>
-      <button class="reset" id="reset-cam">Reset defaults</button>
-      <div style="font-size:11px;color:var(--dim);margin-top:8px;">вљ пёЏ 4K60 not supported on iPhone 5s В· 1080p120 unavailable</div>
-    </div>
-
-    <div class="settings-group">
-      <h3>Appearance</h3>
-      <div class="setting">
-        <div><div>Theme</div><div class="desc">Island visual style</div></div>
-        <select id="select-theme">
-          <option>Classic</option>
-          <option>Neon</option>
-          <option>Glass</option>
-          <option>Minimal</option>
-        </select>
-      </div>
-      <div class="setting">
-        <div><div>Time format</div><div class="desc">12h or 24h clock</div></div>
-        <select id="select-time">
-          <option>24h</option>
-          <option>12h</option>
-        </select>
-      </div>
-      <button class="reset" id="reset-appearance">Reset defaults</button>
-    </div>
-
-    <div class="settings-group">
-      <h3>Changelog</h3>
-      <div class="changelog">
-        <div class="changelog-item"><span class="badge new">NEW</span>v1.2.3 В· Glint timer island, music equalizer, charging indicator<div class="date">2026-11-09</div></div>
-        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.2 В· CFPreferences, safe lazy init, destroy on respring<div class="date">2026-11-08</div></div>
-        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.1 В· Fixed tap handling, app launch fallback<div class="date">2026-11-07</div></div>
-        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.0 В· First public release<div class="date">2026-11-01</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Tweaks bottom -->
-<div id="tweaks" class="visible">
-  <div class="tweak-list">
-    <div class="tweak-card">
-      <h4>Glint <span class="enabled-badge">ON</span></h4>
-      <p>Dynamic Island for iOS 12</p>
-    </div>
-    <div class="tweak-card">
-      <h4>Aura <span class="enabled-badge">ON</span></h4>
-      <p>Action Button HUD</p>
-    </div>
-    <div class="tweak-card">
-      <h4>Echo <span class="enabled-badge">ON</span></h4>
-      <p>Carrier text override</p>
-    </div>
-    <div class="tweak-card">
-      <h4>Volt <span class="enabled-badge">ON</span></h4>
-      <p>Battery color by level</p>
-    </div>
-    <div class="tweak-card">
-      <h4>Lumina <span class="enabled-badge">ON</span></h4>
-      <p>Always-On Display</p>
-    </div>
-    <div class="tweak-card">
-      <h4>Cam60Enabler5s <span class="enabled-badge">OFF</span></h4>
-      <p>1080p60 on iPhone 5s</p>
-    </div>
-    <div class="tweak-card">
-      <h4>ActionButton12 <span class="enabled-badge">ON</span></h4>
-      <p>Power/Home HUD</p>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Copied</span></div>
-
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>РЎРєРѕРїРёСЂРѕРІР°РЅРѕ</span></div>
 <script>
-/* ============ USER ANIMATION (preserved) ============ */
 (function(){
 var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
 fl=document.getElementById('fill'),w=document.getElementById('wrap'),
@@ -442,7 +142,7 @@ function tick(){
 }
 function start(){if(tk)clearInterval(tk);lt=0;tk=setInterval(tick,100)}
 function stop(){if(tk){clearInterval(tk);tk=null}}
-function ui(){pz?(pT.textContent='Next',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='Pause',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
+function ui(){pz?(pT.textContent='Р”Р°Р»РµРµ',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='РџР°СѓР·Р°',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
 function go(i){
   if(i<0||i>3)return;
   var o=0;for(var k=0;k<i;k++)o+=D[k]*1000;
@@ -481,287 +181,6 @@ cB.addEventListener('click',function(e){e.stopPropagation();cp()});
 
 function init(){render();ui();start()}
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-})();
-
-/* ============ DYNAMIC ISLAND LOGIC ============ */
-var island=document.getElementById('island');
-var islandContent=document.getElementById('island-content');
-var islandIcon=document.getElementById('island-icon');
-var islandText=document.getElementById('island-text');
-var islandSub=document.getElementById('island-sub');
-var islandPulse=document.getElementById('island-pulse');
-var islandBattery=document.getElementById('island-battery');
-var islandEnabled=JSON.parse(localStorage.getItem('glint-enabled')!==null?localStorage.getItem('glint-enabled'):'true');
-var rainbowEnabled=JSON.parse(localStorage.getItem('glint-rainbow')!==null?localStorage.getItem('glint-rainbow'):'false');
-var blinkEnabled=JSON.parse(localStorage.getItem('glint-blink')!==null?localStorage.getItem('glint-blink'):'false');
-var glowStrength=parseInt(localStorage.getItem('glint-glow')||'60');
-var glowSpeed=parseInt(localStorage.getItem('glint-speed')||'5');
-var islandColor=localStorage.getItem('glint-color')||'#00d2ff';
-
-function setIsland(icon,text,sub,batt,color){
-  if(!islandEnabled)return;
-  island.classList.add('expanded');
-  islandIcon.textContent=icon||'в—Џ';
-  islandText.textContent=text||'Dynamic Island';
-  islandSub.textContent=sub||'';
-  if(color)island.style.borderColor=color;
-  if(batt!==undefined){
-    islandBattery.classList.toggle('fill',batt);
-  }else{
-    islandBattery.classList.remove('fill');
-  }
-  setTimeout(function(){island.classList.remove('expanded');},3000);
-}
-
-function collapseIsland(){
-  island.classList.remove('expanded');
-  island.style.borderColor=islandColor;
-}
-
-function pulseIsland(){
-  if(!islandEnabled)return;
-  islandPulse.style.opacity='.4';
-  setTimeout(function(){islandPulse.style.opacity='0';},1000);
-}
-
-/* Timer display in island */
-var timerDisplayActive=false;
-function showTimer(remaining){
-  if(!islandEnabled)return;
-  var m=Math.floor(remaining/60);
-  var s=remaining%60;
-  var mm=m<10?'0'+m:m;
-  var ss=s<10?'0'+s:s;
-  setIsland('вЏ±','Timer',mm+':'+ss,false,islandColor);
-  timerDisplayActive=true;
-}
-
-/* Music in island */
-var musicActive=false;
-var analyserCtx=null;
-var analyser=null;
-var eqBars=null;
-
-function initMusicEQ(){
-  try{
-    var audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    analyser=audioCtx.createAnalyser();
-    analyser.fftSize=64;
-    var src=audioCtx.createMediaElementSource(new Audio());
-    src.connect(analyser);
-    analyser.connect(audioCtx.destination);
-    eqBars=new Uint8Array(analyser.frequencyBinCount);
-  }catch(e){}
-}
-initMusicEQ();
-
-function updateMusicEQ(){
-  if(!musicEnabled||!analyser)return;
-  analyser.getByteFrequencyData(eqBars);
-  var avg=0;
-  for(var i=0;i<eqBars.length;i++)avg+=eqBars[i];
-  avg/=eqBars.length;
-  var scale=1+avg/128;
-  island.style.transform='scale('+Math.min(scale,1.2)+')';
-  requestAnimationFrame(updateMusicEQ);
-}
-
-var musicEnabled=JSON.parse(localStorage.getItem('glint-music')!==null?localStorage.getItem('glint-music'):'true');
-var eqEnabled=JSON.parse(localStorage.getItem('glint-eq')!==null?localStorage.getItem('glint-eq'):'true');
-var beatEnabled=JSON.parse(localStorage.getItem('glint-beat')!==null?localStorage.getItem('glint-beat'):'true');
-
-function showMusic(title,artist,cover){
-  if(!musicEnabled)return;
-  musicActive=true;
-  var icon='в™Є';
-  if(cover)icon='<img src="'+cover+'" style="width:28px;height:28px;border-radius:6px;border:1px solid var(--txt)">';
-  setIsland(icon,title,artist,false,islandColor);
-  if(eqEnabled&&!beatEnabled)updateMusicEQ();
-}
-
-/* Charging in island */
-var chargingEnabled=JSON.parse(localStorage.getItem('glint-charging')!==null?localStorage.getItem('glint-charging'):'true');
-function showCharging(isCharging,percent){
-  if(!chargingEnabled)return;
-  setIsland(isCharging?'вљЎ':'рџ”‹','Charging',percent+'%',false,isCharging?var(--green):var(--txt));
-  islandBattery.classList.toggle('fill',isCharging);
-  pulseIsland();
-}
-
-/* Network in island */
-var networkEnabled=JSON.parse(localStorage.getItem('glint-network')!==null?localStorage.getItem('glint-network'):'true');
-function updateNetwork(){
-  if(!networkEnabled)return;
-  var online=navigator.onLine;
-  setIsland(online?'рџ“¶':'вњ‚','Network',online?'Online':'Offline',false,online?var(--green):var(--red));
-}
-window.addEventListener('online',updateNetwork);
-window.addEventListener('offline',updateNetwork);
-
-/* Weather in island */
-var weatherEnabled=JSON.parse(localStorage.getItem('glint-weather')!==null?localStorage.getItem('glint-weather'):'true');
-function showWeather(temp,icon){
-  if(!weatherEnabled)return;
-  setIsland(icon||'вЂ','Weather',temp+'В°C',false,islandColor);
-}
-
-/* Notifications in island */
-var notifCount=0;
-function addNotification(title,body){
-  notifCount++;
-  setIsland('рџ””',title,body.substring(0,30),false,var(--accent));
-  pulseIsland();
-}
-
-/* Clock in island */
-var clock24=JSON.parse(localStorage.getItem('glint-clock24')!==null?localStorage.getItem('glint-clock24'):'true');
-function updateClock(){
-  var now=new Date();
-  var h=now.getHours();
-  var m=now.getMinutes();
-  var s=now.getSeconds();
-  var ampm=h>=12?'PM':'AM';
-  if(!clock24){h=h%12||12;}
-  var hh=h<10?'0'+h:h;
-  var mm=m<10?'0'+m:m;
-  var ss=s<10?'0'+s:s;
-  var timeStr=clock24?hh+':'+mm+':'+ss:hh+':'+mm+' '+ampm;
-  // Only show clock if nothing else active
-  if(!musicActive&&!timerDisplayActive){
-    setIsland('рџ•ђ',timeStr,'',false,islandColor);
-  }
-}
-setInterval(updateClock,1000);
-updateClock();
-
-/* Volume indicator */
-var volActive=false;
-function showVolume(level){
-  if(volActive)return;
-  volActive=true;
-  var bars=Math.round(level*10);
-  var barStr='';
-  for(var i=0;i<10;i++)barStr+=i<bars?'в–€':'в–‘';
-  setIsland('рџ”Љ','Volume',barStr,false,var(--accent));
-  setTimeout(function(){volActive=false;collapseIsland();},2000);
-}
-
-/* Rainbow / blink logic */
-function applyIslandStyle(){
-  var el=document.getElementById('island');
-  if(!el)return;
-  if(rainbowEnabled){
-    var hue=Date.now()/50%360;
-    el.style.borderColor='hsl('+hue+',100%,60%)';
-    islandColor='hsl('+hue+',100%,60%)';
-  }else if(blinkEnabled){
-    var on=Math.floor(Date.now()/1000)%2===0;
-    el.style.borderColor=on?islandColor:'transparent';
-  }else{
-    el.style.borderColor=islandColor;
-  }
-  el.style.boxShadow='0 0 '+glowStrength+'px '+glowStrength/4+'px '+islandColor;
-}
-setInterval(applyIslandStyle,100);
-
-/* Settings persistence */
-function save(key,val){localStorage.setItem(key,val);}
-
-/* Settings UI */
-var settings=document.getElementById('settings');
-var closeSettings=document.getElementById('closeSettings');
-
-function toggleSetting(id,key){
-  var el=document.getElementById(id);
-  var on=el.classList.toggle('on');
-  save(key,on);
-  if(key==='glint-enabled'){islandEnabled=on;if(!on)collapseIsland();}
-  if(key==='glint-rainbow'){rainbowEnabled=on;}
-  if(key==='glint-blink'){blinkEnabled=on;}
-  if(key==='glint-music'){musicEnabled=on;}
-  if(key==='glint-eq'){eqEnabled=on;}
-  if(key==='glint-beat'){beatEnabled=on;}
-  if(key==='glint-charging'){chargingEnabled=on;}
-  if(key==='glint-network'){networkEnabled=on;}
-  if(key==='glint-weather'){weatherEnabled=on;}
-  if(key==='glint-cam60'){}
-  if(key==='glint-cam-safe'){}
-}
-
-document.getElementById('toggle-glint').addEventListener('click',function(){toggleSetting('toggle-glint','glint-enabled');});
-document.getElementById('toggle-rainbow').addEventListener('click',function(){toggleSetting('toggle-rainbow','glint-rainbow');});
-document.getElementById('toggle-blink').addEventListener('click',function(){toggleSetting('toggle-blink','glint-blink');});
-document.getElementById('toggle-music').addEventListener('click',function(){toggleSetting('toggle-music','glint-music');});
-document.getElementById('toggle-eq').addEventListener('click',function(){toggleSetting('toggle-eq','glint-eq');});
-document.getElementById('toggle-beat').addEventListener('click',function(){toggleSetting('toggle-beat','glint-beat');});
-document.getElementById('toggle-charging').addEventListener('click',function(){toggleSetting('toggle-charging','glint-charging');});
-document.getElementById('toggle-network').addEventListener('click',function(){toggleSetting('toggle-network','glint-network');});
-document.getElementById('toggle-weather').addEventListener('click',function(){toggleSetting('toggle-weather','glint-weather');});
-document.getElementById('toggle-cam60').addEventListener('click',function(){toggleSetting('toggle-cam60','glint-cam60');});
-document.getElementById('toggle-cam-safe').addEventListener('click',function(){toggleSetting('toggle-cam-safe','glint-cam-safe');});
-
-document.getElementById('range-glow').addEventListener('input',function(){
-  glowStrength=parseInt(this.value||'60');save('glint-glow',glowStrength);
-});
-document.getElementById('range-speed').addEventListener('input',function(){
-  glowSpeed=parseInt(this.value||'5');save('glint-speed',glowSpeed);
-});
-document.getElementById('color-island').addEventListener('input',function(){
-  islandColor=this.value;save('glint-color',islandColor);
-});
-document.getElementById('select-theme').addEventListener('change',function(){
-  save('glint-theme',this.value);
-});
-document.getElementById('select-time').addEventListener('change',function(){
-  clock24=this.value==='24h';save('glint-clock24',clock24);
-});
-document.getElementById('select-cam-preset').addEventListener('change',function(){
-  save('glint-cam-preset',this.value);
-});
-
-function resetGroup(prefix){
-  ['enabled','rainbow','blink','music','eq','beat','charging','network','weather','cam60','cam-safe'].forEach(function(k){
-    localStorage.removeItem(prefix+'-'+k);
-  });
-  location.reload();
-}
-
-document.getElementById('reset-glint').addEventListener('click',function(){resetGroup('glint');});
-document.getElementById('reset-music').addEventListener('click',function(){resetGroup('glint');});
-document.getElementById('reset-charging').addEventListener('click',function(){resetGroup('glint');});
-document.getElementById('reset-weather').addEventListener('click',function(){resetGroup('glint');});
-document.getElementById('reset-cam').addEventListener('click',function(){resetGroup('glint');});
-document.getElementById('reset-appearance').addEventListener('click',function(){resetGroup('glint');});
-
-closeSettings.addEventListener('click',function(){settings.style.display='none';});
-
-/* Island tap to open settings */
-island.addEventListener('click',function(e){
-  e.stopPropagation();
-  settings.style.display='flex';
-});
-
-/* Settings links in bottom tweak list */
-document.querySelectorAll('.tweak-card').forEach(function(card){
-  card.addEventListener('click',function(){
-    settings.style.display='flex';
-  });
-});
-
-/* Demo buttons for testing */
-setTimeout(function(){
-  // Demo timer after 3 seconds
-  if(Math.random()>0.5){
-    showTimer(10);
-  }
-},3000);
-
-/* Splash hide */
-setTimeout(function(){
-  var s=document.getElementById('splash');
-  if(s)s.classList.add('hidden');
-},1800);
-
 })();
 </script>
 </body>
