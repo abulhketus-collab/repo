@@ -27,7 +27,18 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y fakeroot ldid dpkg-dev gzip bzip2 xz-utils rsync
+          sudo apt-get install -y fakeroot dpkg-dev gzip bzip2 xz-utils rsync curl ca-certificates
+
+      - name: Install ldid
+        run: |
+          case "$(uname -m)" in
+            x86_64) ASSET=ldid_linux_x86_64 ;;
+            aarch64) ASSET=ldid_linux_aarch64 ;;
+            *) echo "Unsupported arch: $(uname -m)"; exit 1 ;;
+          esac
+          curl -fsSL -o /tmp/ldid "https://github.com/ProcursusTeam/ldid/releases/latest/download/$ASSET"
+          sudo install -m 755 /tmp/ldid /usr/local/bin/ldid
+          which ldid
 
       - name: Install Theos
         run: |
