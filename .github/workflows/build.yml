@@ -47,10 +47,22 @@ jobs:
 
       - name: Ensure iOS 12.4 SDK
         run: |
+          echo "--- SDKs currently installed ---"
+          ls "$THEOS/sdks" || true
           if [ ! -d "$THEOS/sdks/iPhoneOS12.4.sdk" ]; then
-            git clone --depth 1 https://github.com/theos/sdks.git "$THEOS/sdks"
+            rm -rf /tmp/sdks
+            git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
+            ls /tmp/sdks
+            if [ -d /tmp/sdks/iPhoneOS12.4.sdk ]; then
+              mv /tmp/sdks/iPhoneOS12.4.sdk "$THEOS/sdks/"
+              echo "Installed iPhoneOS12.4.sdk from theos/sdks"
+            else
+              echo "iPhoneOS12.4.sdk not found in theos/sdks"
+              exit 1
+            fi
           fi
-          ls "$THEOS/sdks" | head -20
+          echo "--- Final SDK list ---"
+          ls "$THEOS/sdks"
 
       - name: Build ${{ matrix.tweak }}
         run: |
