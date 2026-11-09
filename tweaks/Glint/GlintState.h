@@ -5,6 +5,7 @@ typedef NS_ENUM(NSInteger, GlintStateType) {
     GlintStateNone = 0,
     GlintStateTorch = 100,
     GlintStateCharging = 300,
+    GlintStateTimer = 450,
     GlintStateMusic = 600,
     GlintStateNotification = 1000,
 };
