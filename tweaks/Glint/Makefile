@@ -11,6 +11,7 @@ Glint_FILES = Tweak.xm \
               GlintPowerObserver.m \
               GlintTorchObserver.m \
               GlintBannerObserver.m \
+              GlintTimerModule.m \
               GlintPrefs.m
 Glint_FRAMEWORKS = UIKit CoreGraphics QuartzCore AudioToolbox MediaRemote IOKit AVFoundation
 Glint_PRIVATE_FRAMEWORKS = SpringBoard
