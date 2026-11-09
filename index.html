@@ -3,13 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Glint</title>
+<title>cocxace Repo вЂ” iOS 12 Tweaks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{--bg:#0a0a0a;--line:#262626;--txt:#f0f0f0;--dim:#8a8a8a;--dim2:#5c5c5c;--glass:rgba(255,255,255,.04);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
+:root{
+  --bg:#0a0a0a;
+  --line:#262626;
+  --txt:#f0f0f0;
+  --dim:#8a8a8a;
+  --dim2:#5c5c5c;
+  --glass:rgba(255,255,255,.04);
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
+  --mc-font:'Press Start 2P',cursive;
+  --mc-shadow:4px 4px 0px #000000;
+  --mc-shadow-sm:2px 2px 0px #000000;
+  --accent:#00d2ff;
+}
 html,body{height:100%;overflow:hidden}
-body{font-family:var(--font);background:var(--bg);color:var(--txt);display:flex;justify-content:center;align-items:center;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--txt);
+  display:flex;
+  flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- PHONE ANIMATION (USER CODE) ---------- */
 .phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
 @media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
 .track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
@@ -68,45 +95,151 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- TWEAKS LIST (MINECRAFT STYLE, BOTTOM) ---------- */
+#tweaks{position:relative;z-index:1;width:100%;background:var(--bg);border-top:4px solid var(--line);padding:2rem 1rem;overflow-x:auto;}
+#tweaks h2{
+  font-family:var(--mc-font);
+  font-size:1.4rem;
+  color:var(--txt);
+  text-shadow:var(--mc-shadow);
+  margin-bottom:1.5rem;
+  border-bottom:3px solid var(--mc-white);
+  display:inline-block;
+  letter-spacing:1px;
+}
+.tweak-grid{
+  display:flex;
+  gap:1rem;
+  overflow-x:auto;
+  padding-bottom:1rem;
+  scrollbar-width:none;
+}
+.tweak-grid::-webkit-scrollbar{display:none;}
+.tweak-card{
+  min-width:150px;
+  background:var(--mc-dark);
+  border:3px solid var(--mc-white);
+  border-radius:0;
+  padding:1rem;
+  flex-shrink:0;
+  transition:transform 0.15s,box-shadow 0.15s;
+}
+.tweak-card:hover{
+  transform:translateY(-4px);
+  box-shadow:8px 8px 0px var(--mc-white);
+  border-color:var(--accent);
+}
+.tweak-card h4{
+  font-family:var(--mc-font);
+  font-size:0.85rem;
+  color:var(--mc-white);
+  margin-bottom:0.5rem;
+  text-shadow:var(--mc-shadow-sm);
+}
+.tweak-card p{
+  font-family:var(--font);
+  font-size:0.7rem;
+  color:var(--mc-offwhite);
+  line-height:1.3;
+  margin-bottom:0.75rem;
+}
+.tweak-card .badge{
+  font-family:var(--mc-font);
+  font-size:0.55rem;
+  color:#00ff00;
+  background:rgba(0,255,0,0.1);
+  border:1px solid #00ff00;
+  padding:2px 6px;
+  border-radius:0;
+  text-shadow:var(--mc-shadow-sm);
+}
+.tweak-card .btn{
+  display:block;
+  width:100%;
+  background:var(--mc-white);
+  color:var(--mc-black);
+  border:2px solid var(--mc-black);
+  padding:8px 12px;
+  font-family:var(--mc-font);
+  font-size:0.65rem;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+  text-shadow:none;
+  transition:all 0.1s;
+}
+.tweak-card .btn:hover{
+  background:var(--accent);
+  border-color:var(--mc-black);
+  transform:scale(1.05);
+}
+.tweak-card .btn:active{
+  transform:scale(0.95);
+  box-shadow:2px 2px 0px var(--mc-white);
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--mc-dark);
+  border-top:4px solid var(--mc-white);
+  padding:1.5rem 1rem;
+  text-align:center;
+  font-family:var(--mc-font);
+  font-size:0.7rem;
+  color:var(--mc-offwhite);
+  text-shadow:var(--mc-shadow-sm);
+}
+footer .repo-link{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
+}
+footer .repo-link:hover{color:var(--mc-white);border-color:var(--mc-white);}
+
+/* ---------- USER ANIMATION SCRIPT (preserved exactly) ---------- */
 </style>
 </head>
 <body>
+
 <div class="phone">
-<div class="track"><div class="fill" id="fill"></div></div>
-<div class="scenes" id="wrap">
-<section class="scene active">
-  <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-  <h1 class="title">Glint</h1>
-  <p class="subtitle">Dynamic Island РґР»СЏ iOS.<br>РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ В· С‚Р°Р№РјРµСЂ СЃР¶Р°С‚РёСЏ.</p>
-</section>
-<section class="scene">
-  <div class="features">
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island РґР»СЏ iOS</div><div class="fnum">01</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ</div><div class="fnum">02</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">РђРІС‚РѕСЃР¶Р°С‚РёРµ РїРѕ С‚Р°Р№РјРµСЂСѓ</div><div class="fnum">03</div></div>
-    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">РЎС‚Р°Р±РёР»СЊРЅР°СЏ СЂР°Р±РѕС‚Р° В· v1.0.0</div><div class="fnum">04</div></div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="scenes" id="wrap">
+    <section class="scene active">
+      <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <h1 class="title">Glint</h1>
+      <p class="subtitle">Dynamic Island РґР»СЏ iOS.<br>РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ В· С‚Р°Р№РјРµСЂ СЃР¶Р°С‚РёСЏ.</p>
+    </section>
+    <section class="scene">
+      <div class="features">
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island РґР»СЏ iOS</div><div class="fnum">01</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ</div><div class="fnum">02</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">РђРІС‚РѕСЃР¶Р°С‚РёРµ РїРѕ С‚Р°Р№РјРµСЂСѓ</div><div class="fnum">03</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">РЎС‚Р°Р±РёР»СЊРЅР°СЏ СЂР°Р±РѕС‚Р° В· v1.0.0</div><div class="fnum">04</div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div class="sc"><div class="st">РћС‚РєСЂРѕР№ Sileo</div><div class="sd">Р—Р°РїСѓСЃС‚Рё РјРµРЅРµРґР¶РµСЂ РїР°РєРµС‚РѕРІ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ</div></div></div>
+        <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№</div><div class="sd">Sources в†’ + в†’ РІСЃС‚Р°РІСЊ URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+        <div class="step"><div class="sn">03</div><div class="sc"><div class="st">РќР°Р№РґРё Glint</div><div class="sd">Р’РІРµРґРё РЅР°Р·РІР°РЅРёРµ РІ РїРѕРёСЃРєРµ Sileo</div></div></div>
+        <div class="step"><div class="sn">04</div><div class="sc"><div class="st">РќР°Р¶РјРё Install</div><div class="sd">РџРѕРґС‚РІРµСЂРґРё СѓСЃС‚Р°РЅРѕРІРєСѓ Рё РґРѕР¶РґРёСЃСЊ Р·Р°РІРµСЂС€РµРЅРёСЏ</div></div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2 class="ftitle">Р“РѕС‚РѕРІРѕ Рє СѓСЃС‚Р°РЅРѕРІРєРµ</h2>
+      <p class="fsub">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№ Рё СѓСЃС‚Р°РЅРѕРІРё Glint Р·Р° РїР°СЂСѓ РјРёРЅСѓС‚</p>
+      <div class="urlbox" id="uBox" role="button" tabindex="0">
+        <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+        <div class="cb"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+      </div>
+      <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>РЈСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
+      <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>РЎРєРѕРїРёСЂРѕРІР°С‚СЊ СЃСЃС‹Р»РєСѓ</button>
+    </section>
   </div>
-</section>
-<section class="scene">
-  <div class="steps">
-    <div class="step"><div class="sn">01</div><div class="sc"><div class="st">РћС‚РєСЂРѕР№ Sileo</div><div class="sd">Р—Р°РїСѓСЃС‚Рё РјРµРЅРµРґР¶РµСЂ РїР°РєРµС‚РѕРІ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ</div></div></div>
-    <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№</div><div class="sd">Sources в†’ + в†’ РІСЃС‚Р°РІСЊ URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
-    <div class="step"><div class="sn">03</div><div class="sc"><div class="st">РќР°Р№РґРё Glint</div><div class="sd">Р’РІРµРґРё РЅР°Р·РІР°РЅРёРµ РІ РїРѕРёСЃРєРµ Sileo</div></div></div>
-    <div class="step"><div class="sn">04</div><div class="sc"><div class="st">РќР°Р¶РјРё Install</div><div class="sd">РџРѕРґС‚РІРµСЂРґРё СѓСЃС‚Р°РЅРѕРІРєСѓ Рё РґРѕР¶РґРёСЃСЊ Р·Р°РІРµСЂС€РµРЅРёСЏ</div></div></div>
-  </div>
-</section>
-<section class="scene">
-  <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-  <h2 class="ftitle">Р“РѕС‚РѕРІРѕ Рє СѓСЃС‚Р°РЅРѕРІРєРµ</h2>
-  <p class="fsub">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№ Рё СѓСЃС‚Р°РЅРѕРІРё Glint Р·Р° РїР°СЂСѓ РјРёРЅСѓС‚</p>
-  <div class="urlbox" id="uBox" role="button" tabindex="0">
-    <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
-    <div class="cb"><svg viewBox="0 0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-  </div>
-  <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>РЈСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
-  <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>РЎРєРѕРїРёСЂРѕРІР°С‚СЊ СЃСЃС‹Р»РєСѓ</button>
-</section>
 </div>
+
 <div class="ctrl">
   <div class="dots" id="dots">
     <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
@@ -118,6 +251,54 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opa
   </div>
 </div>
 <div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>РЎРєРѕРїРёСЂРѕРІР°РЅРѕ</span></div>
+
+<!-- TWEAKS LIST BELOW -->
+<div id="tweaks">
+  <h2>РЅР°С€ СЂРµРїРѕР·РёС‚РѕСЂРёР№</h2>
+  <div class="tweak-grid">
+    <div class="tweak-card">
+      <h4>Glint <span class="badge">v1.2.3</span></h4>
+      <p>Dynamic Island РґР»СЏ iOS 12: СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р·Р°СЂСЏРґРєР°, now-playing, С„РѕРЅР°СЂРёРє</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Aura <span class="badge">v1.2.3</span></h4>
+      <p>Action Button HUD: С„РѕРЅР°СЂРёРє, РєР°РјРµСЂР°, РіРѕР»РѕСЃРѕРІС‹Рµ, СЃРєСЂРёРЅС€РѕС‚</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Echo <span class="badge">v1.2.3</span></h4>
+      <p>РўРµРєСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РІ СЃС‚Р°С‚СѓСЃ-Р±Р°СЂРµ</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Volt <span class="badge">v1.2.3</span></h4>
+      <p>Р¦РІРµС‚ РїСЂРѕС†РµРЅС‚РѕРІ Р±Р°С‚Р°СЂРµРё РїРѕ РїРѕСЂРѕРіР°Рј</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Lumina <span class="badge">v1.2.3</span></h4>
+      <p>Always-On Display РЅР° Р»РѕРєСЃРєСЂРёРЅРµ</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Cam60Enabler5s <span class="badge">v1.0.3</span></h4>
+      <p>1080p @ 60 FPS РЅР° iPhone 5s (A7)</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>ActionButton12 <span class="badge">v1.2.3</span></h4>
+      <p>Action Button HUD РґР»СЏ iOS 12</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>cocxace repo вЂў iOS 12+ вЂў arm64 вЂў @cocxace</p>
+  <p>РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ: <a class="repo-link" href="https://abulhketus-collab.github.io/repo/">https://abulhketus-collab.github.io/repo/</a></p>
+</footer>
+
 <script>
 (function(){
 var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
