@@ -37,6 +37,53 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
     [[AB12Manager sharedManager] loadPreferences];
 }
 
+// v1.2.3: preset expansion + reset handling
+static void AB12HandleResetAndPreset(void) {
+    @try {
+        CFStringRef app = CFSTR("com.cocxace.actionbutton12");
+        NSInteger preset = -1;
+        CFTypeRef pr = CFPreferencesCopyAppValue(CFSTR("preset"), app);
+        if (pr) {
+            if (CFGetTypeID(pr) == CFNumberGetTypeID())
+                CFNumberGetValue((CFNumberRef)pr, kCFNumberNSIntegerType, &preset);
+            CFRelease(pr);
+        }
+        if (preset == 0) {       // All Tools
+            NSDictionary *defs = @{ @"enabled": @(YES), @"trigger": @(2),
+                                    @"disableTorch": @(NO), @"disableCamera": @(NO),
+                                    @"disableVoiceMemos": @(NO), @"disableScreenshot": @(NO),
+                                    @"disableWiFi": @(NO), @"disableBluetooth": @(NO),
+                                    @"haptics": @(YES) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], app);
+            CFPreferencesAppSynchronize(app);
+        } else if (preset == 1) { // Quick Tools
+            NSDictionary *defs = @{ @"enabled": @(YES), @"trigger": @(2),
+                                    @"disableVoiceMemos": @(YES), @"haptics": @(YES) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], app);
+            CFPreferencesAppSynchronize(app);
+        }
+
+        CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), app);
+        BOOL doReset = NO;
+        if (rst) {
+            if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+            CFRelease(rst);
+        }
+        if (doReset) {
+            NSDictionary *defs = @{ @"enabled": @(YES), @"trigger": @(0), @"showSliders": @(YES),
+                                    @"disableTorch": @(NO), @"disableCamera": @(NO),
+                                    @"disableVoiceMemos": @(NO), @"disableScreenshot": @(NO),
+                                    @"disableWiFi": @(NO), @"disableBluetooth": @(NO),
+                                    @"haptics": @(YES), @"preset": @(-1),
+                                    @"actionbutton12Debug": @(NO) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], app);
+            CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, app);
+            CFPreferencesAppSynchronize(app);
+            NSLog(@"[CocxaceTweak] AB12 defaults restored");
+        }
+    } @catch (NSException *e) {}
+}
+
 @implementation AB12Manager
 
 + (instancetype)sharedManager {
@@ -65,6 +112,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
 }
 
 - (void)loadPreferences {
+    AB12HandleResetAndPreset();
     self.enabled = [AB12Prefs boolForKey:@"enabled" defaultValue:YES];
     self.trigger = [AB12Prefs integerForKey:@"trigger" defaultValue:AB12TriggerPower];
     self.showSliders = [AB12Prefs boolForKey:@"showSliders" defaultValue:YES];
