@@ -8,7 +8,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Текст оператора</string>
+			<string>Echo — Carrier Text</string>
+			<key>footerText</key>
+			<string>With the tweak: the status bar shows your custom text instead of the carrier name. Without it: the stock carrier string. Changes apply live via a Darwin notification — no respring needed.</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -22,7 +24,31 @@
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
-			<string>Включить замену текста</string>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Custom Text</string>
+			<key>footerText</key>
+			<string>Type any text. Emoji are supported. Leave empty to fall back to the default.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string>cocxace ⚡</string>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>carrierText</string>
+			<key>label</key>
+			<string>Status Bar Text</string>
+			<key>placeholder</key>
+			<string>cocxace ⚡</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -38,7 +64,7 @@
 			<key>key</key>
 			<string>carrierText</string>
 			<key>label</key>
-			<string>Текст в статус-баре</string>
+			<string>Quick Picks</string>
 			<key>validTitles</key>
 			<array>
 				<string>cocxace ⚡ (default)</string>
@@ -57,10 +83,24 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Изменения применяются сразу по darwin-уведомлению (новая строка появится после следующего обновления статус-бара).</string>
 			<key>label</key>
-			<string>Применение</string>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: text returns to the default and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -80,7 +120,7 @@
 			<key>footerAlignment</key>
 			<integer>1</integer>
 			<key>footerText</key>
-			<string>Echo 1.2.0 by @cocxace</string>
+			<string>Echo by @cocxace</string>
 		</dict>
 	</array>
 	<key>title</key>
