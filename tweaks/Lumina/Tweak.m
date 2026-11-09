@@ -1,4 +1,4 @@
-// Lumina вЂ” Always-On-Display styled lock screen for iOS 12 (com.cocxace.lumina)
+// Lumina — Always-On-Display styled lock screen for iOS 12 (com.cocxace.lumina)
 // v1.2.2: UIWindow-based overlay (no orphaned views), CFPreferences,
 // live reload via darwin notification, destroy on respring / disable.
 
@@ -156,6 +156,43 @@ static void LuminaDarwinCallback(CFNotificationCenterRef center, void *observer,
                                  CFStringRef name, const void *object, CFDictionaryRef userInfo) {
     dispatch_async(dispatch_get_main_queue(), ^{
         @try {
+            // v1.2.3: preset expansion + reset handling
+            NSInteger preset = -1;
+            CFTypeRef pr = CFPreferencesCopyAppValue(CFSTR("preset"), CFSTR("com.cocxace.lumina"));
+            if (pr) {
+                if (CFGetTypeID(pr) == CFNumberGetTypeID())
+                    CFNumberGetValue((CFNumberRef)pr, kCFNumberNSIntegerType, &preset);
+                CFRelease(pr);
+            }
+            if (preset == 0) {   // Classic AOD
+                CFPreferencesSetAppValue(CFSTR("opacity"), @(0.90), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("opacityChoice"), @(3), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("showDate"), kCFBooleanTrue, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+            } else if (preset == 1) {  // Deep Dim
+                CFPreferencesSetAppValue(CFSTR("opacity"), @(0.97), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("opacityChoice"), @(3), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("showDate"), kCFBooleanFalse, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+            }
+
+            CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), CFSTR("com.cocxace.lumina"));
+            BOOL doReset = NO;
+            if (rst) {
+                if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+                CFRelease(rst);
+            }
+            if (doReset) {
+                NSDictionary *defs = @{ @"enabled": @(YES), @"opacity": @(0.90),
+                                        @"opacityChoice": @(3), @"showDate": @(YES),
+                                        @"preset": @(-1), @"luminaDebug": @(NO) };
+                for (NSString *k in defs)
+                    CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+                NSLog(@"[CocxaceTweak] Lumina defaults restored");
+            }
+
             if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) {
                 [self hideAOD];
                 return;
@@ -200,10 +237,10 @@ __attribute__((constructor)) static void initLumina() {
     }
 }
 
-// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ: С‡РёСЃС‚РёРј AOD РѕРєРЅРѕ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+// Деструктор: чистим AOD окно при выгрузке tweak (%c / respring)
 __attribute__((destructor)) static void cleanupLumina(void) {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Lumina destructor вЂ” cleaning up AOD window");
+        NSLog(@"[CocxaceTweak] Lumina destructor — cleaning up AOD window");
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
                 hideAOD();
