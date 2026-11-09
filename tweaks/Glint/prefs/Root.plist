@@ -6,7 +6,8 @@
 	<array>
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
-			<key>label</key><string>Glint</string>
+			<key>label</key><string>Glint — Dynamic Island</string>
+			<key>footerText</key><string>Master switch. Turning this off restores the stock status bar completely.</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSSwitchCell</string>
@@ -16,9 +17,11 @@
 			<key>label</key><string>Enabled</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
+
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
-			<key>label</key><string>Features</string>
+			<key>label</key><string>Modules</string>
+			<key>footerText</key><string>Every island feature has its own switch. With a tweak: events expand the island with spring animations. Without: stock silent banners only.</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSSwitchCell</string>
@@ -33,7 +36,7 @@
 			<key>default</key><true/>
 			<key>defaults</key><string>com.cocxace.glint</string>
 			<key>key</key><string>glintShowCharging</string>
-			<key>label</key><string>Charging</string>
+			<key>label</key><string>Charging Pill</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -42,6 +45,34 @@
 			<key>defaults</key><string>com.cocxace.glint</string>
 			<key>key</key><string>glintShowMusic</string>
 			<key>label</key><string>Now Playing</string>
+			<key>footerText</key><string>Works for Safari web audio too, via MediaRemote.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintShowArtwork</string>
+			<key>label</key><string>Song Artwork</string>
+			<key>footerText</key><string>Show the album cover of the playing track instead of the app icon.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintBeatPulse</string>
+			<key>label</key><string>Beat Pulse</string>
+			<key>footerText</key><string>The island gently pulses while music is playing. Smooth cosmetic loop, safe for SpringBoard.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintShowTimer</string>
+			<key>label</key><string>Countdown Timer</string>
+			<key>footerText</key><string>When you start the Clock countdown, the island shows the remaining MM:SS next to the clock and signals when time is up.</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -49,23 +80,133 @@
 			<key>default</key><true/>
 			<key>defaults</key><string>com.cocxace.glint</string>
 			<key>key</key><string>glintShowTorch</string>
-			<key>label</key><string>Flashlight</string>
+			<key>label</key><string>Flashlight Pill</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Glow — Island Highlight</string>
+			<key>footerText</key><string>Colored glow around the island. Any color from the hue sliders, rainbow cycling, or a 1s on / 1s off blink.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowEnabled</string>
+			<key>label</key><string>Glow Enabled</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>190</integer>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowHue</string>
+			<key>label</key><string>Color Preset</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Cyan</string>
+				<string>Purple</string>
+				<string>Pink</string>
+				<string>Green</string>
+				<string>Orange</string>
+				<string>Blue</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>190</integer>
+				<integer>258</integer>
+				<integer>320</integer>
+				<integer>120</integer>
+				<integer>30</integer>
+				<integer>210</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowHue</string>
+			<key>label</key><string>Custom Hue 1</string>
+			<key>min</key><real>0</real>
+			<key>max</key><real>360</real>
+			<key>interval</key><real>1</real>
+			<key>footerText</key><string>0 = red, 120 = green, 190 = cyan, 258 = purple, 320 = pink.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowHue2</string>
+			<key>label</key><string>Custom Hue 2 (Ring)</string>
+			<key>min</key><real>0</real>
+			<key>max</key><real>360</real>
+			<key>interval</key><real>1</real>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowStrength</string>
+			<key>label</key><string>Glow Strength</string>
+			<key>min</key><real>0</real>
+			<key>max</key><real>100</real>
+			<key>interval</key><real>1</real>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowRadius</string>
+			<key>label</key><string>Glow Spread</string>
+			<key>min</key><real>6</real>
+			<key>max</key><real>30</real>
+			<key>interval</key><real>1</real>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowRainbow</string>
+			<key>label</key><string>Rainbow Cycle</string>
+			<key>footerText</key><string>Glow colors continuously cycle through the full spectrum.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowBlink</string>
+			<key>label</key><string>Blink 1s On / 1s Off</string>
+			<key>footerText</key><string>The glow disappears for one second, then comes back. Combine with rainbow for a disco effect.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>defaults</key><string>com.cocxace.glint</string>
+			<key>key</key><string>glintGlowSpeed</string>
+			<key>label</key><string>Rainbow Speed</string>
+			<key>min</key><real>1</real>
+			<key>max</key><real>10</real>
+			<key>interval</key><real>1</real>
+			<key>footerText</key><string>Higher = faster color cycle. Only used while Rainbow Cycle is on.</string>
+			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
 			<key>label</key><string>Appearance</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSLinkListCell</string>
-			<key>default</key><integer>0</integer>
+			<key>default</key><string>top</string>
 			<key>defaults</key><string>com.cocxace.glint</string>
 			<key>key</key><string>glintPosition</string>
 			<key>label</key><string>Position</string>
 			<key>detail</key><string>PSListItemsController</string>
 			<key>validTitles</key><array>
-				<string>Top</string>
-				<string>Minimal</string>
+				<string>Top Pill</string>
+				<string>Minimal Dot</string>
 			</array>
 			<key>validValues</key><array>
 				<string>top</string>
@@ -80,6 +221,7 @@
 			<key>label</key><string>Corner Radius</string>
 			<key>min</key><real>8</real>
 			<key>max</key><real>24</real>
+			<key>interval</key><real>1</real>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -89,6 +231,7 @@
 			<key>label</key><string>Expanded Height</string>
 			<key>min</key><real>100</real>
 			<key>max</key><real>180</real>
+			<key>interval</key><real>2</real>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -98,6 +241,8 @@
 			<key>label</key><string>Spring Stiffness</string>
 			<key>min</key><real>100</real>
 			<key>max</key><real>300</real>
+			<key>interval</key><real>5</real>
+			<key>footerText</key><string>Higher = snappier expansion. This is a real CASpringAnimation.</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -107,6 +252,8 @@
 			<key>label</key><string>Spring Damping</string>
 			<key>min</key><real>10</real>
 			<key>max</key><real>30</real>
+			<key>interval</key><real>1</real>
+			<key>footerText</key><string>Lower = more bounce, higher = smoother settle.</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -116,6 +263,7 @@
 			<key>label</key><string>Auto-Collapse Delay (s)</string>
 			<key>min</key><real>0</real>
 			<key>max</key><real>10</real>
+			<key>interval</key><real>1</real>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
@@ -126,6 +274,11 @@
 			<key>label</key><string>Haptic on Tap</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Advanced</string>
+		</dict>
 		<dict>
 			<key>cell</key><string>PSSwitchCell</string>
 			<key>default</key><false/>
@@ -133,6 +286,17 @@
 			<key>key</key><string>glintDebug</string>
 			<key>label</key><string>Debug Logging</string>
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Reset</string>
+			<key>footerText</key><string>Reset restores every option on this page to the Glint 1.2.3 defaults.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Reset All Settings</string>
+			<key>action</key><string>resetDefaults</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSButtonCell</string>
@@ -142,7 +306,7 @@
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
 			<key>footerAlignment</key><integer>1</integer>
-			<key>footerText</key><string>Glint by @cocxace</string>
+			<key>footerText</key><string>Glint 1.2.3 by @cocxace — timer next to the clock, song artwork, beat pulse, full glow engine.</string>
 		</dict>
 	</array>
 	<key>title</key><string>Glint</string>
