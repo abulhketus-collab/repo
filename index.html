@@ -2,597 +2,348 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>cocxace Repo вЂ” iOS 12 Tweaks</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Glint</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0a0a0a;--line:#262626;--txt:#f0f0f0;--dim:#8a8a8a;--dim2:#5c5c5c;--glass:rgba(255,255,255,.04);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--txt);display:flex;justify-content:center;align-items:center;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
+@media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
+.track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--txt)}
+.scenes{position:relative;flex:1;margin-top:26px;overflow:hidden}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;text-align:left;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .55s,transform .55s,visibility 0s linear .55s;pointer-events:none}
+.scene.active{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .55s,transform .55s,visibility 0s}
+.logo{width:64px;height:64px;border:1px solid var(--txt);border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:32px;animation:brd 4s ease-in-out infinite}
+@keyframes brd{0%,100%{border-color:var(--txt);opacity:1}50%{border-color:var(--dim);opacity:.7}}
+.logo svg{width:30px;height:30px;stroke:var(--txt);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:clamp(34px,10vw,46px);font-weight:700;letter-spacing:-1.8px;line-height:1;margin-bottom:16px}
+.subtitle{font-size:15px;color:var(--dim);line-height:1.45;max-width:280px}
+.features,.steps{display:flex;flex-direction:column;width:100%}
+.feat,.step{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-10px);transition:opacity .45s,transform .45s}
+.feat:first-child,.step:first-child{border-top:1px solid var(--line)}
+.scene.active .feat,.scene.active .step{opacity:1;transform:none}
+.scene.active :nth-child(1){transition-delay:.1s}
+.scene.active :nth-child(2){transition-delay:.3s}
+.scene.active :nth-child(3){transition-delay:.5s}
+.scene.active :nth-child(4){transition-delay:.7s}
+.fi{width:20px;flex-shrink:0;display:flex;justify-content:center}
+.fi svg{width:18px;height:18px;stroke:var(--dim);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft{font-size:15px;font-weight:500;line-height:1.35;letter-spacing:-.1px}
+.fnum{font-size:12px;color:var(--dim2);font-variant-numeric:tabular-nums;margin-left:auto;flex-shrink:0}
+.step{align-items:flex-start;padding:18px 0;transform:translateY(10px)}
+.sn{font-size:12px;font-weight:600;color:var(--dim2);font-variant-numeric:tabular-nums;padding-top:2px;width:16px;flex-shrink:0}
+.sc{flex:1;min-width:0}
+.st{font-size:15px;font-weight:600;letter-spacing:-.1px;margin-bottom:3px;line-height:1.3}
+.sd{font-size:13px;color:var(--dim);line-height:1.4}
+.su{display:inline-block;margin-top:8px;font-size:11.5px;font-family:ui-monospace,'SF Mono',Menlo,monospace;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:var(--dim);word-break:break-all;line-height:1.3}
+.chk{width:52px;height:52px;border:1px solid var(--txt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px;animation:pop .6s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+.chk svg{width:22px;height:22px;stroke:var(--txt);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ftitle{font-size:clamp(26px,7.5vw,34px);font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:10px}
+.fsub{font-size:14px;color:var(--dim);line-height:1.45;margin-bottom:30px;max-width:280px}
+.urlbox{width:100%;padding:14px 16px;background:var(--glass);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .25s,background .25s}
+.urlbox:active,.urlbox.copied{border-color:var(--dim);background:rgba(255,255,255,.06)}
+.urlt{flex:1;font-size:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;color:var(--dim);word-break:break-all;line-height:1.4}
+.cb{flex-shrink:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.cb:active{transform:scale(.9);background:rgba(255,255,255,.08)}
+.cb svg{width:13px;height:13px;stroke:var(--dim);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bp{width:100%;padding:17px 24px;border:1px solid var(--txt);border-radius:12px;background:var(--txt);color:var(--bg);font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,background .2s;text-decoration:none;letter-spacing:-.1px}
+.bp:active{transform:scale(.98);background:#d8d8d8}
+.bp svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bs{margin-top:8px;width:100%;padding:15px 24px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--dim);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,color .2s,transform .15s}
+.bs:active{transform:scale(.98);background:rgba(255,255,255,.05);color:var(--txt)}
+.bs svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ctrl{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:22px;flex-shrink:0}
+.dots{display:flex;gap:10px;align-items:center}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--dim2);border:none;cursor:pointer;padding:0;transition:all .35s}
+.dot.active{width:22px;height:2px;border-radius:1px;background:var(--txt)}
+.row{display:flex;gap:8px;width:100%}
+.btn{flex:1;padding:12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--dim);font-family:var(--font);font-size:12px;font-weight:500;letter-spacing:.2px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,color .2s,transform .15s}
+.btn:active{transform:scale(.97);background:rgba(255,255,255,.05);color:var(--txt)}
+.btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-:root {
-    --bg: #0a0a0a;
-    --line: #262626;
-    --txt: #f0f0f0;
-    --dim: #8a8a8a;
-    --dim2: #5c5c5c;
-    --glass: rgba(255, 255, 255, 0.04);
-    --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
-    --mc-font: 'Press Start 2P', cursive;
-    --mc-shadow: 4px 4px 0px #000000;
-    --mc-shadow-sm: 2px 2px 0px #000000;
-    --accent: #00d2ff;
+/* ---------- TWEAKS LIST BELOW ANIMATION ---------- */
+#tweaks{position:relative;z-index:1;width:100%;background:var(--bg);border-top:4px solid var(--line);padding:2rem 1rem;}
+#tweaks h2{
+  font-family:var(--font);
+  font-size:1.3rem;
+  color:var(--mc-white);
+  text-shadow:var(--mc-shadow);
+  margin-bottom:1.5rem;
+  border-bottom:3px solid var(--mc-white);
+  display:inline-block;
+  letter-spacing:1px;
 }
-
-html, body {
-    height: 100%;
-    overflow: hidden;
-    font-family: var(--mc-font);
-    background: var(--bg);
-    color: var(--txt);
-    -webkit-font-smoothing: antialiased;
+.tweak-grid{
+  display:flex;
+  gap:1rem;
+  overflow-x:auto;
+  padding-bottom:1rem;
+  scrollbar-width:none;
 }
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+.tweak-grid::-webkit-scrollbar{display:none;}
+.tweak-card{
+  min-width:150px;
+  background:var(--mc-dark);
+  border:3px solid var(--mc-white);
+  border-radius:0;
+  padding:1rem;
+  flex-shrink:0;
+  transition:transform 0.15s,box-shadow 0.15s;
 }
-
-/* ---------- HEADER / ANIMATION ---------- */
-.hero {
-    position: relative;
-    width: 100vw;
-    height: 75vh;
-    background: var(--mc-dark);
-    border-bottom: 4px solid var(--mc-white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+.tweak-card:hover{
+  transform:translateY(-4px);
+  box-shadow:8px 8px 0px var(--mc-white);
+  border-color:var(--accent);
 }
-
-#mc-canvas {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: linear-gradient(to bottom, #2a2a2a 0%, #0a0a0a 100%);
+.tweak-card h4{
+  font-family:var(--mc-font);
+  font-size:0.85rem;
+  color:var(--mc-white);
+  margin-bottom:0.5rem;
+  text-shadow:var(--mc-shadow-sm);
 }
-
-.hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 0 1rem;
-    max-width: 900px;
+.tweak-card p{
+  font-family:var(--font);
+  font-size:0.7rem;
+  color:var(--mc-offwhite);
+  line-height:1.3;
+  margin-bottom:0.75rem;
 }
-
-.hero-title {
-    font-family: var(--mc-font);
-    font-size: clamp(20px, 6vw, 28px);
-    color: var(--mc-white);
-    text-shadow: var(--mc-shadow);
-    margin-bottom: 2rem;
-    line-height: 1.4;
-    white-space: pre-line;
-    letter-spacing: 1px;
+.tweak-card .badge{
+  font-family:var(--mc-font);
+  font-size:0.55rem;
+  color:#00ff00;
+  background:rgba(0,255,0,0.1);
+  border:1px solid #00ff00;
+  padding:2px 6px;
+  border-radius:0;
+  text-shadow:var(--mc-shadow-sm);
 }
-
-.blink {
-    animation: blink 1s infinite;
+.tweak-card .btn{
+  display:block;
+  width:100%;
+  background:var(--mc-white);
+  color:var(--mc-black);
+  border:2px solid var(--mc-black);
+  padding:8px 12px;
+  font-family:var(--mc-font);
+  font-size:0.65rem;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+  text-shadow:none;
+  transition:all 0.1s;
 }
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+.tweak-card .btn:hover{
+  background:var(--accent);
+  border-color:var(--mc-black);
+  transform:scale(1.05);
 }
-
-.hero-hint {
-    font-family: var(--font);
-    font-size: 0.7rem;
-    color: var(--mc-accent);
-    text-shadow: var(--mc-shadow-sm);
-    margin-top: 1rem;
-    display: block;
-}
-
-/* ---------- TWEAKS LIST ---------- */
-.container {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.section-title {
-    font-family: var(--mc-font);
-    font-size: 1.3rem;
-    color: var(--mc-white);
-    margin-bottom: 1.5rem;
-    text-shadow: var(--mc-shadow);
-    border-bottom: 3px solid var(--mc-white);
-    display: inline-block;
-    letter-spacing: 1px;
-}
-
-.tweak-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.tweak-card {
-    background: var(--mc-dark);
-    border: 3px solid var(--mc-white);
-    border-radius: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: flex;
-    flex-direction: column;
-}
-
-.tweak-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 8px 8px 0px var(--mc-white);
-    border-color: var(--accent);
-}
-
-.tweak-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background: var(--mc-gray);
-    border-bottom: 2px solid var(--mc-white);
-}
-
-.tweak-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(45deg, #444, #222);
-    border: 2px solid var(--mc-white);
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
-.tweak-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.tweak-name {
-    font-family: var(--mc-font);
-    font-size: 0.9rem;
-    color: var(--mc-white);
-    text-shadow: var(--mc-shadow-sm);
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.tweak-version {
-    font-family: var(--mc-font);
-    font-size: 0.6rem;
-    color: var(--mc-accent);
-    background: var(--mc-black);
-    padding: 2px 6px;
-    border: 1px solid var(--mc-accent);
-    margin-left: 8px;
-    vertical-align: middle;
-}
-
-.tweak-desc {
-    font-family: var(--font);
-    font-size: 0.7rem;
-    color: var(--mc-offwhite);
-    margin-top: 4px;
-    line-height: 1.35;
-}
-
-.tweak-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: var(--mc-black);
-    border-top: 2px solid var(--mc-white);
-}
-
-.badge {
-    font-family: var(--mc-font);
-    font-size: 0.55rem;
-    color: #00ff00;
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
-    padding: 2px 6px;
-    margin-left: 8px;
-    text-shadow: var(--mc-shadow-sm);
-}
-
-.btn {
-    background: var(--mc-white);
-    color: var(--mc-black);
-    border: 2px solid var(--mc-black);
-    padding: 10px 18px;
-    font-family: var(--mc-font);
-    font-size: 0.65rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    text-shadow: none;
-    transition: all 0.1s;
-    white-space: nowrap;
-}
-
-.btn:hover {
-    background: var(--accent);
-    color: var(--mc-black);
-    border-color: var(--mc-black);
-    transform: scale(1.05);
-}
-
-.btn:active {
-    transform: scale(0.95);
-    box-shadow: 2px 2px 0px var(--mc-white);
+.tweak-card .btn:active{
+  transform:scale(0.95);
+  box-shadow:2px 2px 0px var(--mc-white);
 }
 
 /* ---------- FOOTER ---------- */
-footer {
-    background: var(--mc-dark);
-    border-top: 4px solid var(--mc-white);
-    padding: 1.5rem 1rem;
-    text-align: center;
+footer{
+  background:var(--mc-dark);
+  border-top:4px solid var(--mc-white);
+  padding:1.5rem 1rem;
+  text-align:center;
+  font-family:var(--mc-font);
+  font-size:0.7rem;
+  color:var(--mc-offwhite);
+  text-shadow:var(--mc-shadow-sm);
 }
-
-footer p {
-    font-family: var(--mc-font);
-    font-size: 0.7rem;
-    color: var(--mc-offwhite);
-    text-shadow: var(--mc-shadow-sm);
-    margin-bottom: 0.5rem;
+footer p{
+  font-family:var(--mc-font);
+  font-size:0.7rem;
+  color:var(--mc-offwhite);
+  text-shadow:var(--mc-shadow-sm);
+  margin-bottom:0.5rem;
 }
-
-footer .repo-link {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
+footer .repo-link{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px solid var(--accent);
 }
-
-footer .repo-link:hover {
-    color: var(--mc-white);
-    border-color: var(--mc-white);
+footer .repo-link:hover{
+  color:var(--mc-white);
+  border-color:var(--mc-white);
 }
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 700px) {
-    .hero-title {
-        font-size: 1rem;
-    }
-    .tweak-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .tweak-icon {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
-    .tweak-footer {
-        flex-direction: column;
-        gap: 0.7rem;
-        align-items: flex-start;
-    }
-}
-
-/* ---------- UTILS ---------- */
-.text-center {
-    text-align: center;
-}
-.mt-2 { margin-top: 2rem; }
-
-/* ---------- MINECRAFT ANIMATION SCRIPT ---------- */
 </style>
 </head>
 <body>
 
-<!-- ---------- HERO SECTION WITH MINECRAFT ANIMATION ---------- -->
-<section class="hero">
-    <canvas id="mc-canvas"></canvas>
-    <div class="hero-content">
-        <h1 class="hero-title">
-            С‚РІРёРєРё, РєР°Рє РґРѕР±Р°РІР»СЏС‚СЊ<br>
-            Рё РєР°Рє РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ<span class="blink">_</span>
-        </h1>
-        <span class="hero-hint">Р°РЅРёРјР°С†РёСЏ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµРїРѕР·РёС‚РѕСЂРёСЏ РІ Sileo</span>
-    </div>
-</section>
-
-<!-- ---------- TWEAKS LIST ---------- -->
-<div class="container text-center mt-2">
-    <h2 class="section-title">РЅР°С€ СЂРµРїРѕР·РёС‚РѕСЂРёР№</h2>
-
-    <div class="tweak-grid">
-        <!-- Glint -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџЏќпёЏ</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РѕСЃС‚СЂРѕРІ РґР»СЏ iOS 12 Р±РµР· С‡С‘Р»РєРё: СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р·Р°СЂСЏРґРєР°, now-playing, С„РѕРЅР°СЂРёРє РІ РїРёР»СЋР»Рµ. Spring-Р°РЅРёРјР°С†РёРё, Р±РµР·РѕРїР°СЃРЅС‹Р№ Р·Р°РїСѓСЃРє, Р±РµР· РєСЂР°С€РµР№ SpringBoard.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">SAFE ISLAND</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- Aura -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">вљЎ</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Action Button HUD: РґР»РёРЅРЅР°СЏ РєРЅРѕРїРєР° РїРёС‚Р°РЅРёСЏ РёР»Рё РґРІРѕР№РЅРѕР№ РєР»РёРє Home РѕС‚РєСЂС‹РІР°РµС‚ РїР°РЅРµР»СЊ СЃ С„РѕРЅР°СЂРёРєРѕРј, РєР°РјРµСЂРѕР№, РґРёРєС‚РѕС„РѕРЅРѕРј, СЃРєСЂРёРЅС€РѕС‚РѕРј, Wi-Fi Рё Bluetooth.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">ACTION BUTTON</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- Echo -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџ“¶</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">РЎРІРѕР№ С‚РµРєСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РІ СЃС‚Р°С‚СѓСЃ-Р±Р°СЂРµ. CFPreferences РІРјРµСЃС‚Рѕ plist, live reload С‡РµСЂРµР· darwin-СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё SpringBoard.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">CARRIER</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- Volt -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџ”‹</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Р¦РІРµС‚ РїСЂРѕС†РµРЅС‚РѕРІ Р±Р°С‚Р°СЂРµРё РїРѕ РїРѕСЂРѕРіР°Рј (Р·РµР»С‘РЅС‹Р№/Р¶С‘Р»С‚С‹Р№/РєСЂР°СЃРЅС‹Р№). Р—Р°С‰РёС‚Р° РѕС‚ РґРµР»РµРЅРёСЏ РЅР° РЅРѕР»СЊ, hex-РїР°СЂСЃРёРЅРі С‡РµСЂРµР· NSScanner, РґРµС„РѕР»С‚РЅС‹Рµ РїРѕСЂРѕРіРё 40% Рё 20%.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">BATTERY</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- Lumina -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџЊ™</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Always-On Display РЅР° Р»РѕРєСЃРєСЂРёРЅРµ: Р¶РёРІС‹Рµ С‡Р°СЃС‹ Рё РґР°С‚Р°, Р·Р°С‚РµРјРЅС‘РЅРЅС‹Р№ РѕРІРµСЂР»РµР№. UIWindow РІРјРµСЃС‚Рѕ РІСЊСЋ-РєРѕРЅС‚СЂРѕР»Р»РµСЂР°, РЅРµС‚ РѕСЃРёСЂРѕС‚РµРІС€РёС… РІСЊСЋ РїРѕСЃР»Рµ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРё.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">AOD</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- Cam60Enabler5s -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџ“·</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
-                    <div class="tweak-desc">РџСЂРёРЅСѓРґРёС‚РµР»СЊРЅС‹Р№ 1080p @ 60 FPS РЅР° iPhone 5s (A7). Feature-flag РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІС‹РєР»СЋС‡РµРЅ, С‚РµСЂРјРѕС‚СЂРѕС‚С‚Р»РёРЅРі, С„РѕР»Р±СЌРє РЅР° 30 fps РїСЂРё РЅРµСѓРґР°С‡Рµ.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">EXPERIMENTAL</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-
-        <!-- ActionButton12 -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">рџ“±</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Р”РІРѕР№РЅРѕРµ РЅР°Р¶Р°С‚РёРµ Home РёР»Рё РґР»РёРЅРЅРѕРµ РЅР°Р¶Р°С‚РёРµ РїРёС‚Р°РЅРёСЏ РѕС‚РєСЂС‹РІР°РµС‚ HUD СЃ 4 РєРЅРѕРїРєР°РјРё. %group, РґРµСЃС‚СЂСѓРєС‚РѕСЂ РѕРєРЅР°, CFPreferences, Р±РµР· РґСѓР±Р»РёРєР°С‚РѕРІ С…СѓРєРѕРІ.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <span class="badge">HUD</span>
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
-            </div>
-        </div>
-    </div>
+<div class="phone">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="scenes" id="wrap">
+    <section class="scene active">
+      <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <h1 class="title">Glint</h1>
+      <p class="subtitle">Dynamic Island РґР»СЏ iOS.<br>РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ В· С‚Р°Р№РјРµСЂ СЃР¶Р°С‚РёСЏ.</p>
+    </section>
+    <section class="scene">
+      <div class="features">
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island РґР»СЏ iOS</div><div class="fnum">01</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">РџСЂСѓР¶РёРЅРЅР°СЏ Р°РЅРёРјР°С†РёСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ</div><div class="fnum">02</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">РђРІС‚РѕСЃР¶Р°С‚РёРµ РїРѕ С‚Р°Р№РјРµСЂСѓ</div><div class="fnum">03</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">РЎС‚Р°Р±РёР»СЊРЅР°СЏ СЂР°Р±РѕС‚Р° В· v1.0.0</div><div class="fnum">04</div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div class="sc"><div class="st">РћС‚РєСЂРѕР№ Sileo</div><div class="sd">Р—Р°РїСѓСЃС‚Рё РјРµРЅРµРґР¶РµСЂ РїР°РєРµС‚РѕРІ РЅР° СѓСЃС‚СЂРѕР№СЃС‚РІРµ</div></div></div>
+        <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№</div><div class="sd">Sources в†’ + в†’ РІСЃС‚Р°РІСЊ URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+        <div class="step"><div class="sn">03</div><div class="sc"><div class="st">РќР°Р№РґРё Glint</div><div class="sd">Р’РІРµРґРё РЅР°Р·РІР°РЅРёРµ РІ РїРѕРёСЃРєРµ Sileo</div></div></div>
+        <div class="step"><div class="sn">04</div><div class="sc"><div class="st">РќР°Р¶РјРё Install</div><div class="sd">РџРѕРґС‚РІРµСЂРґРё СѓСЃС‚Р°РЅРѕРІРєСѓ Рё РґРѕР¶РґРёСЃСЊ Р·Р°РІРµСЂС€РµРЅРёСЏ</div></div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2 class="ftitle">Р“РѕС‚РѕРІРѕ Рє СѓСЃС‚Р°РЅРѕРІРєРµ</h2>
+      <p class="fsub">Р”РѕР±Р°РІСЊ СЂРµРїРѕР·РёС‚РѕСЂРёР№ Рё СѓСЃС‚Р°РЅРѕРІРё Glint Р·Р° РїР°СЂСѓ РјРёРЅСѓС‚</p>
+      <div class="urlbox" id="uBox" role="button" tabindex="0">
+        <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+        <div class="cb"><svg viewBox="0 0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+      </div>
+      <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>РЈСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
+      <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>РЎРєРѕРїРёСЂРѕРІР°С‚СЊ СЃСЃС‹Р»РєСѓ</button>
+    </section>
+  </div>
 </div>
 
-<!-- ---------- FOOTER ---------- -->
+<div class="ctrl">
+  <div class="dots" id="dots">
+    <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
+    <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
+  </div>
+  <div class="row">
+    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">РџР°СѓР·Р°</span></button>
+    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Р—Р°РЅРѕРІРѕ</button>
+  </div>
+</div>
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>РЎРєРѕРїРёСЂРѕРІР°РЅРѕ</span></div>
+
+<!-- TWEAKS LIST BELOW ANIMATION -->
+<div id="tweaks">
+  <h2>РЅР°С€ СЂРµРїРѕР·РёС‚РѕСЂРёР№</h2>
+  <div class="tweak-grid">
+    <div class="tweak-card">
+      <h4>Glint <span class="badge">v1.2.3</span></h4>
+      <p>Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РѕСЃС‚СЂРѕРІ РґР»СЏ iOS 12: СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р·Р°СЂСЏРґРєР°, now-playing, С„РѕРЅР°СЂРёРє РІ РїРёР»СЋР»Рµ.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Aura <span class="badge">v1.2.3</span></h4>
+      <p>Action Button HUD: С„РѕРЅР°СЂРёРє, РєР°РјРµСЂР°, РіРѕР»РѕСЃРѕРІС‹Рµ, СЃРєСЂРёРЅС€РѕС‚.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Echo <span class="badge">v1.2.3</span></h4>
+      <p>РўРµРєСЃС‚ РѕРїРµСЂР°С‚РѕСЂР° РІ СЃС‚Р°С‚СѓСЃ-Р±Р°СЂРµ.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Volt <span class="badge">v1.2.3</span></h4>
+      <p>Р¦РІРµС‚ РїСЂРѕС†РµРЅС‚РѕРІ Р±Р°С‚Р°СЂРµРё РїРѕ РїРѕСЂРѕРіР°Рј.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Lumina <span class="badge">v1.2.3</span></h4>
+      <p>Always-On Display РЅР° Р»РѕРєСЃРєСЂРёРЅРµ.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>Cam60Enabler5s <span class="badge">v1.0.3</span></h4>
+      <p>1080p @ 60 FPS РЅР° iPhone 5s (A7).</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+    <div class="tweak-card">
+      <h4>ActionButton12 <span class="badge">v1.2.3</span></h4>
+      <p>Action Button HUD РґР»СЏ iOS 12.</p>
+      <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">СЃРєР°С‡Р°С‚СЊ .deb</a>
+    </div>
+  </div>
+</div>
+
 <footer>
-    <p>cocxace repo вЂў iOS 12+ вЂў arm64 вЂў @cocxace</p>
-    <p>РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ РІ Sileo/Cydia: <span class="repo-link">https://abulhketus-collab.github.io/repo/</span></p>
+  <p>cocxace repo вЂў iOS 12+ вЂў arm64 вЂў @cocxace</p>
+  <p>РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ: <a class="repo-link" href="https://abulhketus-collab.github.io/repo/">https://abulhketus-collab.github.io/repo/</a></p>
 </footer>
 
 <script>
-// ============================================================================
-// MINECRAFT-STYLE INSTALLATION ANIMATION
-// Р РёСЃСѓРµС‚ РїРѕС€Р°РіРѕРІРѕ: С‚РµР»РµС„РѕРЅ -> РєСѓСЂСЃРѕСЂ РёРґРµС‚ Рє Sileo -> РЅР°Р¶Р°С‚РёРµ "+" -> СѓСЃРїРµС…
-// ============================================================================
+(function(){
+var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
+fl=document.getElementById('fill'),w=document.getElementById('wrap'),
+pB=document.getElementById('pBtn'),pT=document.getElementById('pTxt'),pI=document.getElementById('pIco'),
+rB=document.getElementById('rBtn'),to=document.getElementById('toast'),uB=document.getElementById('uBox'),
+uT=document.getElementById('uTxt'),cB=document.getElementById('cBtn'),iB=document.getElementById('iBtn'),
+cur=0,el=0,pz=false,fin=false,lt=0,tk=null;
 
-const canvas = document.getElementById('mc-canvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-let animationPhase = 0; // 0: С‚РµР»РµС„РѕРЅ, 1: РґРІРёР¶РµРЅРёРµ Рє Sileo, 2: РєР»РёРє "+", 3: СѓСЃРїРµС…
-let timer = 0;
-
-function resize() {
-    width = canvas.width = canvas.parentElement.clientWidth;
-    height = canvas.height = canvas.parentElement.clientHeight;
+function render(){
+  var idx=3,acc=0;
+  for(var i=0;i<4;i++){acc+=D[i]*1000;if(el<acc){idx=i;break}}
+  cur=idx;
+  for(var k=0;k<4;k++){sc[k].classList.toggle('active',k===idx);dt[k].classList.toggle('active',k===idx)}
+  fl.style.width=Math.min(100,el/T*100)+'%';
 }
-window.addEventListener('resize', resize);
-resize();
-
-function drawPhone(ctx, x, y, scale) {
-    ctx.fillStyle = '#222222';
-    ctx.fillRect(x, y, 60 * scale, 110 * scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 2 * scale;
-    ctx.strokeRect(x, y, 60 * scale, 110 * scale);
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(x + 4 * scale, y + 4 * scale, 52 * scale, 102 * scale);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '10px monospace';
-    ctx.fillText('12:00', x + 8 * scale, y + 14 * scale);
-    ctx.fillStyle = '#444444';
-    ctx.beginPath();
-    ctx.arc(x + 30 * scale, y + 100 * scale, 8 * scale, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
+function tick(){
+  var n=performance.now();
+  if(!lt)lt=n;
+  var d=Math.min(500,Math.max(0,n-lt));lt=n;
+  if(!pz&&!fin){el+=d;if(el>=T*1000){el=T*1000;fin=true}render()}
 }
-
-function drawCursor(ctx, x, y) {
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + 16, y + 8);
-    ctx.lineTo(x, y + 16);
-    ctx.closePath();
-    ctx.fill();
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    if (animationPhase === 2) {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-        ctx.beginPath();
-        ctx.arc(x, y, 20 + Math.sin(Date.now() / 100) * 10, 0, Math.PI * 2);
-        ctx.fill();
-    }
+function start(){if(tk)clearInterval(tk);lt=0;tk=setInterval(tick,100)}
+function stop(){if(tk){clearInterval(tk);tk=null}}
+function ui(){pz?(pT.textContent='Р”Р°Р»РµРµ',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='РџР°СѓР·Р°',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
+function go(i){
+  if(i<0||i>3)return;
+  var o=0;for(var k=0;k<i;k++)o+=D[k]*1000;
+  el=o;fin=false;pz=false;lt=0;render();ui();if(!tk)start();
 }
+function reset(){stop();cur=0;el=0;pz=false;fin=false;lt=0;render();ui();start()}
 
-function drawSileo(ctx, x, y, scale) {
-    ctx.fillStyle = '#00d2ff';
-    ctx.fillRect(x, y, 40 * scale, 40 * scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 2 * scale;
-    ctx.strokeRect(x, y, 40 * scale, 40 * scale);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '20px monospace';
-    ctx.fillText('S', x + 10 * scale, y + 28 * scale);
+var sx=0,sy=0,sw=0,ax=null;
+function st(x,y){sx=x;sy=y;sw=1;ax=null}
+function mv(x,y){if(!sw)return;var dx=x-sx,dy=y-sy;if(ax===null&&(Math.abs(dx)>10||Math.abs(dy)>10))ax=Math.abs(dx)>Math.abs(dy)?'x':'y'}
+function en(x,y){if(!sw)return;sw=0;var dx=x-sx;if(ax==='x'&&Math.abs(dx)>50)go(dx<0?cur+1:cur-1);ax=null}
+w.addEventListener('touchstart',function(e){st(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchmove',function(e){mv(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchend',function(e){en(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
+var md=0;
+w.addEventListener('mousedown',function(e){if(e.button!==0)return;md=1;st(e.clientX,e.clientY)});
+w.addEventListener('mousemove',function(e){if(md)mv(e.clientX,e.clientY)});
+window.addEventListener('mouseup',function(e){if(!md)return;md=0;en(e.clientX,e.clientY)});
+
+var tt=null;
+function toast(){to.classList.add('show');if(tt)clearTimeout(tt);tt=setTimeout(function(){to.classList.remove('show')},1600)}
+function cp(){
+  var u=uT.textContent.trim();
+  function done(){toast();uB.classList.add('copied');setTimeout(function(){uB.classList.remove('copied')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done).catch(function(){fb(u,done)});
+  else fb(u,done);
 }
+function fb(t,d){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');d()}catch(e){}document.body.removeChild(a)}
 
-function drawPlus(ctx, x, y, scale) {
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(x - 10 * scale, y - 2 * scale, 20 * scale, 4 * scale);
-    ctx.fillRect(x - 2 * scale, y - 10 * scale, 4 * scale, 20 * scale);
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(x - 12 * scale, y - 12 * scale, 24 * scale, 24 * scale);
-}
+pB.addEventListener('click',function(){if(pz){if(fin){reset();return}pz=false;lt=0;ui();if(!tk)start()}else{if(fin)return;pz=true;ui()}});
+rB.addEventListener('click',reset);
+for(var d=0;d<4;d++){(function(b){b.addEventListener('click',function(){var i=parseInt(b.getAttribute('data-s'),10);if(!isNaN(i))go(i)})})(dt[d])}
+uB.addEventListener('click',cp);
+uB.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cp()}});
+cB.addEventListener('click',function(e){e.stopPropagation();cp()});
 
-function drawGrid(ctx, w, h, step) {
-    ctx.strokeStyle = '#1a1a1a';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < w; i += step) {
-        ctx.beginPath();
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, h);
-        ctx.stroke();
-    }
-    for (let j = 0; j < h; j += step) {
-        ctx.beginPath();
-        ctx.moveTo(0, j);
-        ctx.lineTo(w, j);
-        ctx.stroke();
-    }
-}
-
-function animate() {
-    ctx.clearRect(0, 0, width, height);
-    drawGrid(ctx, width, height, 40);
-    timer += 1 / 60;
-
-    if (animationPhase === 0) {
-        const px = width / 2 - 30;
-        const py = height / 2 - 55 + Math.sin(timer) * 5;
-        drawPhone(ctx, px, py, 1);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '12px monospace';
-        ctx.fillText('РѕС‚РєСЂРѕР№ Sileo', width / 2 - 60, height - 60);
-        const cx = width / 2 + 40 + Math.sin(timer * 2) * 20;
-        const cy = height / 2 + 20;
-        drawCursor(ctx, cx, cy);
-        if (timer > 180) {
-            animationPhase = 1;
-            timer = 0;
-        }
-    } else if (animationPhase === 1) {
-        const sx = width / 2 + 80;
-        const sy = height / 2 - 20;
-        drawSileo(ctx, sx, sy, 1);
-        const cx = width / 2 + 40 + (timer / 120) * 80;
-        const cy = height / 2 - 20 + 10;
-        drawCursor(ctx, cx, cy);
-        if (timer > 120) {
-            animationPhase = 2;
-            timer = 0;
-        }
-    } else if (animationPhase === 2) {
-        const sx = width / 2 + 80;
-        const sy = height / 2 - 20;
-        drawSileo(ctx, sx, sy, 1);
-        const cx = width / 2 + 120;
-        const cy = height / 2 - 20 + 10;
-        drawCursor(ctx, cx, cy);
-        drawPlus(ctx, cx + 10, cy - 10, 1);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '10px monospace';
-        ctx.fillText('РґРѕР±Р°РІРёС‚СЊ СЂРµРїРѕ', cx - 40, cy + 30);
-        if (timer > 120) {
-            animationPhase = 3;
-            timer = 0;
-        }
-    } else {
-        ctx.fillStyle = '#00ff00';
-        ctx.font = '16px monospace';
-        ctx.fillText('СЂРµРїРѕ РґРѕР±Р°РІР»РµРЅРѕ!', width / 2 - 70, height / 2);
-        ctx.fillStyle = '#00d2ff';
-        ctx.font = '12px monospace';
-        ctx.fillText('https://abulhketus-collab.github.io/repo/', width / 2 - 110, height / 2 + 30);
-    }
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+function init(){render();ui();start()}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
 </script>
 </body>
 </html>
