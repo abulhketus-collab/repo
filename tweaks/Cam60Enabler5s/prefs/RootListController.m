@@ -34,7 +34,7 @@
                                                            preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        // v1.0.3 safe defaults — 60fps off, protections on
+        // v1.0.3 safe defaults - 60fps off, protections on
         NSDictionary<NSString *, id> *defaults = @{
             @"enabled": @(NO),
             @"slowmo": @(NO),

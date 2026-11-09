@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Echo - Carrier Text</string>
+			<key>footerText</key>
+			<string>With the tweak: the status bar shows your custom text instead of the carrier name. Without it: the stock carrier string. Changes apply live via a Darwin notification - no respring needed.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Custom Text</string>
+			<key>footerText</key>
+			<string>Type any text. Emoji are supported. Leave empty to fall back to the default.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>default</key>
+			<string>cocxace ?</string>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>carrierText</string>
+			<key>label</key>
+			<string>Status Bar Text</string>
+			<key>placeholder</key>
+			<string>cocxace ?</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<string>cocxace ?</string>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>carrierText</string>
+			<key>label</key>
+			<string>Quick Picks</string>
+			<key>validTitles</key>
+			<array>
+				<string>cocxace ? (default)</string>
+				<string>iPhone</string>
+				<string>iLLUMI</string>
+				<string>? cocxace</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<string>cocxace ?</string>
+				<string>iPhone</string>
+				<string>iLLUMI</string>
+				<string>? cocxace</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: text returns to the default and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.echo/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.echo</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Echo by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Echo</string>
+</dict>
+</plist>

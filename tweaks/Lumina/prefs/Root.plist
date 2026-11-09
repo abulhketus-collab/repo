@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Lumina - Always-On Display</string>
+			<key>footerText</key>
+			<string>With the tweak: a dimmed overlay with a live clock appears on the lock screen and closes cleanly on unlock. Without it: the stock black lock screen.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Preset</string>
+			<key>footerText</key>
+			<string>Classic AOD - 90% dim with date. Deep Dim - 97% dim, clock only.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>-1</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>preset</string>
+			<key>label</key>
+			<string>Display Preset</string>
+			<key>validTitles</key>
+			<array>
+				<string>Classic AOD</string>
+				<string>Deep Dim</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>-1</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>3</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>opacityChoice</string>
+			<key>label</key>
+			<string>Overlay Dim Level</string>
+			<key>validTitles</key>
+			<array>
+				<string>50%</string>
+				<string>65%</string>
+				<string>80%</string>
+				<string>90%</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>showDate</string>
+			<key>label</key>
+			<string>Date Under Clock</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: every option returns to defaults and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Lumina by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Lumina</string>
+</dict>
+</plist>

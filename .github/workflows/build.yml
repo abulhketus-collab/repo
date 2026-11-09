@@ -1,48 +1,122 @@
-name: Tweak Suite CI/CD & APT Repository Builder
+name: Build Tweaks (Theos) and Rebuild APT Index
 
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 concurrency:
-  group: "pages"
+  group: "tweak-build"
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        tweak: [Glint, ActionButton12, Aura, Echo, Volt, Lumina, Cam60Enabler5s]
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Tools
+      - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y dpkg-dev bzip2 xz-utils gzip tar ar
+          sudo apt-get install -y fakeroot ldid dpkg-dev gzip bzip2 xz-utils rsync
 
-      - name: Verify Clean GNU Format (Zero PAX)
+      - name: Install Theos
         run: |
-          mkdir -p debs
-          for deb in debs/*.deb; do
-            if [ -f "$deb" ]; then
-              TEMP_D=$(mktemp -d)
-              ar x "$deb" --output="$TEMP_D"
-              PAX_COUNT=$(tar -tvf "$TEMP_D/data.tar.gz" 2>&1 | grep -c "PaxHeaders" || true)
-              if [ "$PAX_COUNT" -gt 0 ]; then
-                echo "PAX header found in $deb! Fixing..."
-                mkdir -p "$TEMP_D/data"
-                tar -xzf "$TEMP_D/data.tar.gz" -C "$TEMP_D/data"
-                tar --format=gnu --owner=0 --group=0 -czf "$TEMP_D/data.tar.gz" -C "$TEMP_D/data" .
-                ar -rc "$deb" "$TEMP_D/debian-binary" "$TEMP_D/control.tar.gz" "$TEMP_D/data.tar.gz"
-              fi
-              rm -rf "$TEMP_D"
-            fi
-          done
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
 
-      - name: Update APT Indexes
+      - name: Ensure iOS 12.4 SDK
         run: |
+          if [ ! -d "$THEOS/sdks/iPhoneOS12.4.sdk" ]; then
+            git clone --depth 1 https://github.com/theos/sdks.git "$THEOS/sdks"
+          fi
+          ls "$THEOS/sdks" | head -20
+
+      - name: Build ${{ matrix.tweak }}
+        run: |
+          cd "tweaks/${{ matrix.tweak }}"
+          make clean package FINALPACKAGE=1 THEOS_PACKAGE_COMPRESSION=gzip THEOS_PACKAGE_FORMAT=gnu
+          mkdir -p ../../debs-new
+          cp -v ./*.deb ../../debs-new/
+          ls -la ../../debs-new
+
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-${{ matrix.tweak }}
+          path: debs-new/*.deb
+          if-no-files-found: error
+
+  apt-index:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download built debs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: deb-*
+          merge-multiple: true
+          path: debs-new
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev gzip bzip2 xz-utils
+
+      - name: Rebuild Packages index
+        run: |
+          set -e
+          cp -v debs-new/*.deb debs/
           dpkg-scanpackages -m debs /dev/null > Packages
-          bzip2 -k -f Packages
           gzip -c Packages > Packages.gz
+          bzip2 -c Packages > Packages.bz2
           xz -c Packages > Packages.xz
+          echo "--- Packages summary ---"
+          grep -E "^(Package|Version|Filename):" Packages
+
+      - name: Regenerate Release file
+        run: |
+          set -e
+          {
+            head -n 8 Release
+            echo "MD5Sum:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(md5sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+            echo "SHA1:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(sha1sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+            echo "SHA256:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+          } > Release.tmp
+          mv Release.tmp Release
+          cat Release
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add debs Packages Packages.gz Packages.bz2 Packages.xz Release
+          git commit -m "CI: add newly built debs and rebuild APT index"
+          git push
+
+      - name: Trigger Pages deploy
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/pages.yml/dispatches" -f ref=main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
