@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Glint</title>
+<title>cocxace Repo — iOS 12 Tweaks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--bg:#0a0a0a;--line:#262626;--txt:#f0f0f0;--dim:#8a8a8a;--dim2:#5c5c5c;--glass:rgba(255,255,255,.04);--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif}
-html,body{height:100%;overflow:hidden}
-body{font-family:var(--font);background:var(--bg);color:var(--txt);display:flex;justify-content:center;align-items:center;-webkit-font-smoothing:antialiased}
+html{overflow-x:hidden;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
-.phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
+.hero{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;padding:30px 12px 40px}
+.phone{position:relative;z-index:1;width:100%;max-width:420px;height:88dvh;max-height:820px;min-height:540px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
 @media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
 .track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
 .fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--txt)}
@@ -69,277 +73,159 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- TWEAKS LIST BELOW ANIMATION ---------- */
-#tweaks {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    background: #0a0a0a;
-    border-top: 4px solid #ffffff;
-    padding: 2rem 1rem;
-}
-#tweaks h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.3rem;
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    text-shadow: 4px 4px 0px #000000;
-    border-bottom: 3px solid #ffffff;
-    display: inline-block;
-    letter-spacing: 1px;
-}
-.tweak-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-.tweak-card {
-    background: #1a1a1a;
-    border: 3px solid #ffffff;
-    border-radius: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    transition: transform 0.15s, box-shadow 0.15s;
-    display: flex;
-    flex-direction: column;
-}
-.tweak-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 8px 8px 0px #ffffff;
-    border-color: #00d2ff;
-}
-.tweak-header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background: #333333;
-    border-bottom: 2px solid #ffffff;
-}
-.tweak-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(45deg,#444,#222);
-    border: 2px solid #ffffff;
-    margin-right: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-.tweak-info {
-    flex: 1;
-    min-width: 0;
-}
-.tweak-name {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.9rem;
-    color: #ffffff;
-    text-shadow: 2px 2px 0px #000000;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.tweak-version {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.65rem;
-    color: #00d2ff;
-    background: #000000;
-    padding: 2px 6px;
-    border: 1px solid #00d2ff;
-    margin-left: 8px;
-    vertical-align: middle;
-}
-.tweak-desc {
-    font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
-    font-size: 0.7rem;
-    color: #e0e0e0;
-    margin-top: 4px;
-    line-height: 1.35;
-}
-.tweak-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: #000000;
-    border-top: 2px solid #ffffff;
-}
-.tweak-card .btn {
-    background: #ffffff;
-    color: #000000;
-    border: 2px solid #000000;
-    padding: 10px 18px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.65rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    text-shadow: none;
-    transition: all 0.1s;
-    white-space: nowrap;
-}
-.tweak-card .btn:hover {
-    background: #00d2ff;
-    color: #000000;
-    border-color: #000000;
-    transform: scale(1.05);
-}
-.tweak-card .btn:active {
-    transform: scale(0.95);
-    box-shadow: 2px 2px 0px #ffffff;
-}
-.tweak-card .badge {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.6rem;
-    color: #00ff00;
-    background: rgba(0,255,0,0.1);
-    border: 1px solid #00ff00;
-    padding: 2px 6px;
-    margin-left: 8px;
-    text-shadow: var(--mc-shadow-sm);
-}
-footer {
-    background: #1a1a1a;
-    border-top: 4px solid #ffffff;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.7rem;
-    color: #e0e0e0;
-    text-shadow: 2px 2px 0px #000000;
-}
-footer p {
-    margin-bottom: 0.5rem;
-}
-footer .repo-link {
-    color: #00d2ff;
-    text-decoration: none;
-    border-bottom: 1px solid #00d2ff;
-}
-footer .repo-link:hover {
-    color: #ffffff;
-    border-color: #ffffff;
-}
+/* ---------- MINECRAFT TWEAKS SECTION ---------- */
+.mc{position:relative;z-index:1;border-top:4px solid #ffffff;background:#0a0a0a;padding:3.2rem 1.2rem 2.6rem}
+.mcwrap{max-width:1000px;margin:0 auto}
+.mc h2{font-family:'Press Start 2P',monospace;font-size:clamp(1rem,3.6vw,1.45rem);color:#ffffff;text-shadow:4px 4px 0 #000;letter-spacing:1px;line-height:1.6;display:inline-block;border-bottom:4px solid #ffffff;padding-bottom:10px}
+.mc .sub{font-family:'Press Start 2P',monospace;font-size:.58rem;color:#8a8a8a;margin-top:14px;line-height:1.8}
+.stack{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
+.card{background:#141414;border:3px solid #ffffff;box-shadow:6px 6px 0 #000000;padding:1.1rem 1.2rem;display:flex;align-items:center;gap:1.1rem;transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 #000000;border-color:#00d2ff}
+.ico{width:60px;height:60px;background:#1f1f1f;border:3px solid #ffffff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0}
+.info{flex:1;min-width:0}
+.name{font-family:'Press Start 2P',monospace;font-size:.78rem;color:#ffffff;text-shadow:2px 2px 0 #000;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ver{font-family:'Press Start 2P',monospace;font-size:.5rem;color:#000000;background:#ffffff;padding:3px 6px;border:2px solid #000000;margin-left:8px;vertical-align:middle;text-shadow:none}
+.desc{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;font-size:.74rem;color:#c9c9c9;line-height:1.55;margin-top:8px}
+.dl{display:inline-block;margin-top:12px;font-family:'Press Start 2P',monospace;font-size:.55rem;color:#000000;background:#ffffff;border:3px solid #000000;box-shadow:4px 4px 0 #000000;padding:10px 16px;text-decoration:none;text-shadow:none;transition:background .1s,transform .1s,box-shadow .1s}
+.dl:hover{background:#00d2ff}
+.dl:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000000}
+@media(max-width:640px){.card{flex-direction:column;align-items:flex-start;gap:.8rem}.info{width:100%}}
+footer{position:relative;z-index:1;background:#141414;border-top:4px solid #ffffff;padding:1.8rem 1.2rem;text-align:center;font-family:'Press Start 2P',monospace;font-size:.6rem;color:#e0e0e0;line-height:2.2;text-shadow:2px 2px 0 #000}
+footer .repo-link{color:#00d2ff;text-decoration:none;border-bottom:2px solid #00d2ff;word-break:break-all}
+footer .repo-link:hover{color:#ffffff;border-color:#ffffff}
 </style>
 </head>
 <body>
 
-<!-- ---------- HERO / ANIMATION (USER CODE) ---------- -->
-<section class="hero">
-    <canvas id="mc-canvas"></canvas>
-    <div class="hero-content">
-        <h1 class="hero-title">
-            твики, как добавлять<br>
-            и как использовать<span class="blink">_</span>
-        </h1>
-        <span class="hero-hint">анимация установки репозитория в Sileo</span>
-    </div>
+<!-- ---------- ANIMATION (USER CODE) ---------- -->
+<header class="hero">
+<div class="phone">
+<div class="track"><div class="fill" id="fill"></div></div>
+<div class="scenes" id="wrap">
+<section class="scene active">
+  <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+  <h1 class="title">Glint</h1>
+  <p class="subtitle">Dynamic Island для iOS.<br>Пружинная анимация · таймер сжатия.</p>
 </section>
-
-<!-- ---------- TWEAKS LIST ---------- -->
-<div class="container">
-    <h2 class="section-title">наш репозиторий</h2>
-    <div class="tweak-grid">
-        <!-- Glint -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">🏝️</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Динамический остров для iOS 12 без чёлки: уведомления, зарядка, now-playing, фонарик в пилюле. Spring-анимации, безопасный запуск.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- Aura -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">⚡</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Action Button HUD: длинная кнопка питания или двойной клик Home открывает панель с фонариком, камерой, диктофоном, скриншотом, Wi-Fi и Bluetooth.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- Echo -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">📶</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Текст оператора в статус-баре. CFPreferences вместо plist, live reload через darwin-уведомления, без перезагрузки SpringBoard.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- Volt -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">🔋</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Цвет процентов батареи по порогам (зелёный/жёлтый/красный). Защита от деления на ноль, hex-парсинг через NSScanner, дефолтные пороги 40% и 20%.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- Lumina -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">🌙</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Always-On Display на локскрине: живые часы и дата, затемнённый оверлей. UIWindow вместо вью-контроллера, нет осиротевших вью после разблокировки.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- Cam60Enabler5s -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">📷</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
-                    <div class="tweak-desc">Принудительный 1080p @ 60 FPS на iPhone 5s (A7). Feature-flag по умолчанию выключен, термотроттлинг, фолбэк на 30 fps при неудаче.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-        <!-- ActionButton12 -->
-        <div class="tweak-card">
-            <div class="tweak-header">
-                <div class="tweak-icon">📱</div>
-                <div class="tweak-info">
-                    <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
-                    <div class="tweak-desc">Двойное нажатие Home или длинное нажатие питания открывает HUD с 4 кнопками. %group, деструктор окна, CFPreferences, без дубликатов хуков.</div>
-                </div>
-            </div>
-            <div class="tweak-footer">
-                <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-            </div>
-        </div>
-    </div>
+<section class="scene">
+  <div class="features">
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island для iOS</div><div class="fnum">01</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">Пружинная анимация расширения</div><div class="fnum">02</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Автосжатие по таймеру</div><div class="fnum">03</div></div>
+    <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">Стабильная работа · v1.0.0</div><div class="fnum">04</div></div>
+  </div>
+</section>
+<section class="scene">
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="sc"><div class="st">Открой Sileo</div><div class="sd">Запусти менеджер пакетов на устройстве</div></div></div>
+    <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Добавь репозиторий</div><div class="sd">Sources → + → вставь URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+    <div class="step"><div class="sn">03</div><div class="sc"><div class="st">Найди Glint</div><div class="sd">Введи название в поиске Sileo</div></div></div>
+    <div class="step"><div class="sn">04</div><div class="sc"><div class="st">Нажми Install</div><div class="sd">Подтверди установку и дождись завершения</div></div></div>
+  </div>
+</section>
+<section class="scene">
+  <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+  <h2 class="ftitle">Готово к установке</h2>
+  <p class="fsub">Добавь репозиторий и установи Glint за пару минут</p>
+  <div class="urlbox" id="uBox" role="button" tabindex="0">
+    <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+    <div class="cb"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+  </div>
+  <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Установить</a>
+  <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Скопировать ссылку</button>
+</section>
 </div>
+<div class="ctrl">
+  <div class="dots" id="dots">
+    <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
+    <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
+  </div>
+  <div class="row">
+    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Пауза</span></button>
+    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Заново</button>
+  </div>
+</div>
+</div>
+</header>
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Скопировано</span></div>
 
-<!-- ---------- FOOTER ---------- -->
+<!-- ---------- TWEAKS ---------- -->
+<main class="mc">
+  <div class="mcwrap">
+    <h2>ТВИКИ РЕПОЗИТОРИЯ</h2>
+    <p class="sub">iOS 12 · arm64 · добавь репо в Sileo и ставь в один тап</p>
+    <div class="stack">
+
+      <div class="card">
+        <div class="ico">🏝️</div>
+        <div class="info">
+          <div class="name">Glint<span class="ver">v1.2.2</span></div>
+          <div class="desc">Динамический остров для iOS 12 без чёлки: уведомления, пилюля зарядки, now-playing, фонарик. Пружинные анимации, безопасный запуск.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.glint_1.2.2_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">⚡</div>
+        <div class="info">
+          <div class="name">Aura<span class="ver">v1.2.0</span></div>
+          <div class="desc">Action Button HUD: панель с фонариком, камерой, диктофоном и скриншотом. Долгое нажатие питания / двойной клик Home.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.aura_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">📶</div>
+        <div class="info">
+          <div class="name">Echo<span class="ver">v1.2.0</span></div>
+          <div class="desc">Текст оператора в статус-баре. CFPreferences + darwin reload — изменения применяются без реслинга SpringBoard.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.echo_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">🔋</div>
+        <div class="info">
+          <div class="name">Volt<span class="ver">v1.2.0</span></div>
+          <div class="desc">Цвет процентов батареи по уровням: зелёный / жёлтый / красный. Пороги настраиваются в настройках твика.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.volt_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">🌙</div>
+        <div class="info">
+          <div class="name">Lumina<span class="ver">v1.2.0</span></div>
+          <div class="desc">Always-On Display на локскрине: затемнённый оверлей с живыми часами и датой. Окно аккуратно закрывается после разблокировки.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.lumina_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">📷</div>
+        <div class="info">
+          <div class="name">Cam60Enabler5s<span class="ver">v1.0.0</span></div>
+          <div class="desc">1080p @ 60 FPS на iPhone 5s (A7). Фолбэк на 30 fps при неудаче, защита от перегрева.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ico">📱</div>
+        <div class="info">
+          <div class="name">ActionButton12<span class="ver">v1.2.0</span></div>
+          <div class="desc">HUD по двойному нажатию Home или долгому нажатию питания: фонарик, камера, диктофон, скриншот, Wi-Fi, Bluetooth.</div>
+          <a class="dl" href="https://abulhketus-collab.github.io/repo/debs/com.cocxace.actionbutton12_1.2.0_iphoneos-arm.deb">скачать .deb</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
 <footer>
-    <p>cocxace repo • iOS 12+ • arm64 • @cocxace</p>
-    <p>добавить репо в Sileo/Cydia: <span class="repo-link">https://abulhketus-collab.github.io/repo/</span></p>
+  <p>cocxace repo • iOS 12+ • arm64 • @cocxace</p>
+  <p>добавить в Sileo/Cydia:<br><a class="repo-link" href="https://abulhketus-collab.github.io/repo/">https://abulhketus-collab.github.io/repo/</a></p>
 </footer>
 
 <!-- ---------- ANIMATION SCRIPT (USER CODE) ---------- -->
