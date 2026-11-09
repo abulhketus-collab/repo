@@ -9,11 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
 * {margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-
-html {
-    overflow-y: auto;
-}
-
+html { overflow-y: auto; }
 body {
     font-family: 'Press Start 2P', cursive;
     background: #0a0a0a;
@@ -21,7 +17,6 @@ body {
     overflow-y: auto;
     -webkit-font-smoothing: antialiased;
 }
-
 body::before {
     content:'';
     position:fixed;
@@ -36,8 +31,8 @@ body::before {
 .hero {
     position: relative;
     width: 100%;
-    height: 82vh;
-    min-height: 560px;
+    height: 70vh;
+    min-height: 480px;
     background: #1a1a1a;
     border-bottom: 4px solid #ffffff;
     display: flex;
@@ -46,7 +41,6 @@ body::before {
     justify-content: center;
     overflow: hidden;
 }
-
 #mc-canvas {
     width: 100%;
     height: 100%;
@@ -56,7 +50,6 @@ body::before {
     z-index: 1;
     background: linear-gradient(to bottom, #2a2a2a 0%, #0a0a0a 100%);
 }
-
 .hero-content {
     position: relative;
     z-index: 10;
@@ -64,7 +57,6 @@ body::before {
     padding: 0 1rem;
     max-width: 900px;
 }
-
 .hero-title {
     font-family: 'Press Start 2P', cursive;
     font-size: clamp(16px, 5vw, 22px);
@@ -75,16 +67,8 @@ body::before {
     white-space: pre-line;
     letter-spacing: 1px;
 }
-
-.blink {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%,100% { opacity:1; }
-    50% { opacity:0.3; }
-}
-
+.blink { animation: blink 1s infinite; }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
 .hero-hint {
     font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
     font-size:0.7rem;
@@ -100,7 +84,6 @@ body::before {
     margin: 2rem auto;
     padding: 0 1rem;
 }
-
 .section-title {
     font-family: 'Press Start 2P', cursive;
     font-size: 1.3rem;
@@ -111,13 +94,11 @@ body::before {
     display: inline-block;
     letter-spacing: 1px;
 }
-
 .tweak-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-
 .tweak-card {
     background: #1a1a1a;
     border: 3px solid #ffffff;
@@ -128,13 +109,11 @@ body::before {
     align-items: center;
     gap: 1rem;
 }
-
 .tweak-card:hover {
     transform: translateY(-4px);
     box-shadow: 8px 8px 0px #ffffff;
     border-color: #00d2ff;
 }
-
 .tweak-icon {
     width: 56px;
     height: 56px;
@@ -146,12 +125,7 @@ body::before {
     font-size: 2rem;
     flex-shrink: 0;
 }
-
-.tweak-info {
-    flex: 1;
-    min-width: 0;
-}
-
+.tweak-info { flex: 1; min-width: 0; }
 .tweak-name {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.85rem;
@@ -162,7 +136,6 @@ body::before {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .tweak-version {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.55rem;
@@ -173,20 +146,17 @@ body::before {
     margin-left: 6px;
     vertical-align: middle;
 }
-
 .tweak-desc {
     font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
     font-size: 0.68rem;
     color: #e0e0e0;
     line-height: 1.3;
 }
-
 .tweak-footer {
     display: flex;
     justify-content: flex-end;
     padding-top: 0.6rem;
 }
-
 .tweak-card .btn {
     background: #ffffff;
     color: #000000;
@@ -200,19 +170,16 @@ body::before {
     text-shadow: none;
     transition: all 0.1s;
 }
-
 .tweak-card .btn:hover {
     background: #00d2ff;
     color: #000000;
     border-color: #000000;
     transform: scale(1.05);
 }
-
 .tweak-card .btn:active {
     transform: scale(0.95);
     box-shadow: 2px 2px 0px #ffffff;
 }
-
 .tweak-card .badge {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.5rem;
@@ -223,7 +190,6 @@ body::before {
     margin-left: 6px;
     text-shadow: 2px 2px 0px #000000;
 }
-
 /* ---------- FOOTER ---------- */
 footer {
     background: #1a1a1a;
@@ -235,31 +201,22 @@ footer {
     color: #e0e0e0;
     text-shadow: 2px 2px 0px #000000;
 }
-
-footer p {
-    margin-bottom: 0.5rem;
-}
-
+footer p { margin-bottom: 0.5rem; }
 footer .repo-link {
     color: #00d2ff;
     text-decoration: none;
     border-bottom: 1px solid #00d2ff;
 }
-
 footer .repo-link:hover {
     color: #ffffff;
     border-color: #ffffff;
 }
-
-/* ---------- MOBILE ---------- */
 @media (max-width: 700px) {
     .hero-title { font-size: 1rem; }
     .tweak-card { flex-direction: column; align-items: flex-start; gap: 0.7rem; }
     .tweak-icon { margin-right: 0; margin-bottom: 0.5rem; }
     .tweak-footer { justify-content: flex-start; }
 }
-
-/* ---------- ANIMATION SCRIPT (USER CODE) ---------- */
 </style>
 </head>
 <body>
@@ -290,7 +247,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">⚡</div>
             <div class="tweak-info">
@@ -301,7 +257,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">📶</div>
             <div class="tweak-info">
@@ -312,7 +267,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">🔋</div>
             <div class="tweak-info">
@@ -323,7 +277,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">🌙</div>
             <div class="tweak-info">
@@ -334,7 +287,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">📷</div>
             <div class="tweak-info">
@@ -345,7 +297,6 @@ footer .repo-link:hover {
                 <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
             </div>
         </div>
-
         <div class="tweak-card">
             <div class="tweak-icon">📱</div>
             <div class="tweak-info">
@@ -367,68 +318,128 @@ footer .repo-link:hover {
 
 <script>
 (function(){
-var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
-fl=document.getElementById('fill'),w=document.getElementById('wrap'),
-pB=document.getElementById('pBtn'),pT=document.getElementById('pTxt'),pI=document.getElementById('pIco'),
-rB=document.getElementById('rBtn'),to=document.getElementById('toast'),uB=document.getElementById('uBox'),
-uT=document.getElementById('uTxt'),cB=document.getElementById('cBtn'),iB=document.getElementById('iBtn'),
-cur=0,el=0,pz=false,fin=false,lt=0,tk=null;
+var canvas = document.getElementById('mc-canvas');
+var ctx = canvas.getContext('2d');
+var width, height;
+var animationPhase = 0; // 0: телефон, 1: движение к Sileo, 2: клик "+", 3: успех
+var timer = 0;
 
-function render(){
-  var idx=3,acc=0;
-  for(var i=0;i<4;i++){acc+=D[i]*1000;if(el<acc){idx=i;break}}
-  cur=idx;
-  for(var k=0;k<4;k++){sc[k].classList.toggle('active',k===idx);dt[k].classList.toggle('active',k===idx)}
-  fl.style.width=Math.min(100,el/T*100)+'%';
+function resize(){
+    width = canvas.width = canvas.parentElement.clientWidth;
+    height = canvas.height = canvas.parentElement.clientHeight;
 }
-function tick(){
-  var n=performance.now();
-  if(!lt)lt=n;
-  var d=Math.min(500,Math.max(0,n-lt));lt=n;
-  if(!pz&&!fin){el+=d;if(el>=T*1000){el=T*1000;fin=true}render()}
+window.addEventListener('resize', resize);
+resize();
+
+function drawPhone(ctx, x, y, scale){
+    ctx.fillStyle = '#222222';
+    ctx.fillRect(x, y, 60*scale, 110*scale);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 2*scale;
+    ctx.strokeRect(x, y, 60*scale, 110*scale);
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(x+4*scale, y+4*scale, 52*scale, 102*scale);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '10px monospace';
+    ctx.fillText('12:00', x+8*scale, y+14*scale);
+    ctx.fillStyle = '#444444';
+    ctx.beginPath();
+    ctx.arc(x+30*scale, y+100*scale, 8*scale, 0, Math.PI*2);
+    ctx.fill();
+    ctx.stroke();
 }
-function start(){if(tk)clearInterval(tk);lt=0;tk=setInterval(tick,100)}
-function stop(){if(tk){clearInterval(tk);tk=null}}
-function ui(){pz?(pT.textContent='Далее',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='Пауза',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
-function go(i){
-  if(i<0||i>3)return;
-  var o=0;for(var k=0;k<i;k++)o+=D[k]*1000;
-  el=o;fin=false;pz=false;lt=0;render();ui();if(!tk)start();
+function drawCursor(ctx, x, y){
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+16, y+8);
+    ctx.lineTo(x, y+16);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    if (animationPhase === 2) {
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.beginPath();
+        ctx.arc(x, y, 20 + Math.sin(Date.now()/100)*10, 0, Math.PI*2);
+        ctx.fill();
+    }
 }
-function reset(){stop();cur=0;el=0;pz=false;fin=false;lt=0;render();ui();start()}
-
-var sx=0,sy=0,sw=0,ax=null;
-function st(x,y){sx=x;sy=y;sw=1;ax=null}
-function mv(x,y){if(!sw)return;var dx=x-sx,dy=y-sy;if(ax===null&&(Math.abs(dx)>10||Math.abs(dy)>10))ax=Math.abs(dx)>Math.abs(dy)?'x':'y'}
-function en(x,y){if(!sw)return;sw=0;var dx=x-sx;if(ax==='x'&&Math.abs(dx)>50)go(dx<0?cur+1:cur-1);ax=null}
-w.addEventListener('touchstart',function(e){st(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
-w.addEventListener('touchmove',function(e){mv(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
-w.addEventListener('touchend',function(e){en(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
-var md=0;
-w.addEventListener('mousedown',function(e){if(e.button!==0)return;md=1;st(e.clientX,e.clientY)});
-w.addEventListener('mousemove',function(e){if(md)mv(e.clientX,e.clientY)});
-window.addEventListener('mouseup',function(e){if(!md)return;md=0;en(e.clientX,e.clientY)});
-
-var tt=null;
-function toast(){to.classList.add('show');if(tt)clearTimeout(tt);tt=setTimeout(function(){to.classList.remove('show')},1600)}
-function cp(){
-  var u=uT.textContent.trim();
-  function done(){toast();uB.classList.add('copied');setTimeout(function(){uB.classList.remove('copied')},1500)}
-  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done).catch(function(){fb(u,done)});
-  else fb(u,done);
+function drawSileo(ctx, x, y, scale){
+    ctx.fillStyle = '#00d2ff';
+    ctx.fillRect(x, y, 40*scale, 40*scale);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 2*scale;
+    ctx.strokeRect(x, y, 40*scale, 40*scale);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '20px monospace';
+    ctx.fillText('S', x+10*scale, y+28*scale);
 }
-function fb(t,d){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');d()}catch(e){}document.body.removeChild(a)}
-
-pB.addEventListener('click',function(){if(pz){if(fin){reset();return}pz=false;lt=0;ui();if(!tk)start()}else{if(fin)return;pz=true;ui()}});
-rB.addEventListener('click',reset);
-for(var d=0;d<4;d++){(function(b){b.addEventListener('click',function(){var i=parseInt(b.getAttribute('data-s'),10);if(!isNaN(i))go(i)})})(dt[d])}
-uB.addEventListener('click',cp);
-uB.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cp()}});
-cB.addEventListener('click',function(e){e.stopPropagation();cp()});
-
-function init(){render();ui();start()}
-document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
-})();
+function drawPlus(ctx, x, y, scale){
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x-10*scale, y-2*scale, 20*scale, 4*scale);
+    ctx.fillRect(x-2*scale, y-10*scale, 4*scale, 20*scale);
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x-12*scale, y-12*scale, 24*scale, 24*scale);
+}
+function drawGrid(ctx, w, h, step){
+    ctx.strokeStyle = '#1a1a1a';
+    ctx.lineWidth = 1;
+    for (var i=0; i<w; i+=step){
+        ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,h); ctx.stroke();
+    }
+    for (var j=0; j<h; j+=step){
+        ctx.beginPath(); ctx.moveTo(0,j); ctx.lineTo(w,j); ctx.stroke();
+    }
+}
+function animate(){
+    ctx.clearRect(0, 0, width, height);
+    drawGrid(ctx, width, height, 40);
+    timer += 1/60;
+    if (animationPhase === 0){
+        var px = width/2 - 30;
+        var py = height/2 - 55 + Math.sin(timer)*5;
+        drawPhone(ctx, px, py, 1);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '12px monospace';
+        ctx.fillText('открой Sileo', width/2 - 60, height - 60);
+        var cx = width/2 + 40 + Math.sin(timer*2)*20;
+        var cy = height/2 + 20;
+        drawCursor(ctx, cx, cy);
+        if (timer > 180){ animationPhase = 1; timer = 0; }
+    } else if (animationPhase === 1){
+        var sx = width/2 + 80;
+        var sy = height/2 - 20;
+        drawSileo(ctx, sx, sy, 1);
+        var cx = width/2 + 40 + (timer/120)*80;
+        var cy = height/2 - 20 + 10;
+        drawCursor(ctx, cx, cy);
+        if (timer > 120){ animationPhase = 2; timer = 0; }
+    } else if (animationPhase === 2){
+        var sx = width/2 + 80;
+        var sy = height/2 - 20;
+        drawSileo(ctx, sx, sy, 1);
+        var cx = width/2 + 120;
+        var cy = height/2 - 20 + 10;
+        drawCursor(ctx, cx, cy);
+        drawPlus(ctx, cx + 10, cy - 10, 1);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '10px monospace';
+        ctx.fillText('добавить репо', cx - 40, cy + 30);
+        if (timer > 120){ animationPhase = 3; timer = 0; }
+    } else {
+        ctx.fillStyle = '#00ff00';
+        ctx.font = '16px monospace';
+        ctx.fillText('репо добавлено!', width/2 - 70, height/2);
+        ctx.fillStyle = '#00d2ff';
+        ctx.font = '12px monospace';
+        ctx.fillText('https://abulhketus-collab.github.io/repo/', width/2 - 110, height/2 + 30);
+    }
+    requestAnimationFrame(animate);
+}
+animate();
 </script>
 </body>
 </html>
