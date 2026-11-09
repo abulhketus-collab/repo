@@ -223,6 +223,43 @@
 		</dict>
 		<dict>
 			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Preset</string>
+			<key>footerText</key><string>A preset applies a ready-made set of all options at once. Choose Custom to keep your own values.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>-1</integer>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>preset</string>
+			<key>label</key><string>Configuration Preset</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>All Tools</string>
+				<string>Quick Tools (Torch + Camera only)</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>-1</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Reset</string>
+			<key>footerText</key><string>Flip once: every option returns to defaults and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.actionbutton12</string>
+			<key>key</key><string>resetDefaults</string>
+			<key>label</key><string>Reset All Settings</string>
+			<key>PostNotification</key><string>com.cocxace.actionbutton12/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key><string>PSButtonCell</string>
