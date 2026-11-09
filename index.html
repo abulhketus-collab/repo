@@ -1,650 +1,768 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cocxace Repo — iOS 12 Tweaks</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>cocxace Repo вЂ” iOS 12 Tweaks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0a0a0a;
+  --line:#262626;
+  --txt:#f0f0f0;
+  --dim:#8a8a8a;
+  --dim2:#5c5c5c;
+  --glass:rgba(255,255,255,.04);
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',system-ui,sans-serif;
+  --accent:#00d2ff;
+  --green:#00ff00;
+  --red:#ff3b30;
+  --yellow:#ffcc00;
+}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--txt);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-        :root {
-            --mc-black: #0a0a0a;
-            --mc-dark: #1a1a1a;
-            --mc-gray: #333333;
-            --mc-white: #ffffff;
-            --mc-offwhite: #e0e0e0;
-            --mc-accent: #00d2ff;
-            --mc-shadow: 4px 4px 0px #000000;
-            --mc-shadow-sm: 2px 2px 0px #000000;
-        }
+/* ---------- SPLASH ---------- */
+#splash{
+  position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .6s ease;
+}
+#splash.hidden{opacity:0;pointer-events:none;}
+.splash-island{
+  width:110px;height:42px;background:#1a1a1a;border:1px solid var(--txt);border-radius:22px;position:relative;
+  margin-bottom:18px;
+}
+.splash-island::after{
+  content:'';position:absolute;inset:-4px;background:conic-gradient(from 0deg, #00d2ff, #ff0055, #ffcc00, #00d2ff);border-radius:26px;opacity:0;transition:opacity .4s;
+}
+.splash-island.active::after{opacity:.6;animation:sweep 2s linear infinite;}
+@keyframes sweep{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.splash-island .dot{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent);
+}
+#splash h1{font-family:'Press Start 2P',cursive;font-size:clamp(22px,7vw,32px);color:var(--txt);text-shadow:2px 2px 0 #000;letter-spacing:.5px;}
+#splash p{font-family:var(--font);font-size:clamp(10px,3vw,14px);color:var(--dim);margin-top:8px;text-align:center;letter-spacing:.2px;}
 
-        body {
-            background: var(--mc-black);
-            color: var(--mc-white);
-            font-family: 'Press Start 2P', cursive;
-            overflow-x: hidden;
-        }
+/* ---------- PHONE ANIMATION (USER CODE) ---------- */
+.phone{position:relative;z-index:1;width:100%;max-width:420px;height:100dvh;max-height:900px;display:flex;flex-direction:column;padding:env(safe-area-inset-top,16px) 22px env(safe-area-inset-bottom,22px);overflow:hidden;background:var(--bg)}
+@media(min-width:440px){.phone{height:88dvh;border-radius:32px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.8)}}
+.track{width:100%;height:1px;background:var(--line);flex-shrink:0;margin-top:14px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--txt)}
+.scenes{position:relative;flex:1;margin-top:26px;overflow:hidden}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;text-align:left;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .55s,transform .55s,visibility 0s linear .55s;pointer-events:none}
+.scene.active{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition:opacity .55s,transform .55s,visibility 0s}
+.logo{width:64px;height:64px;border:1px solid var(--txt);border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:32px;animation:brd 4s ease-in-out infinite}
+@keyframes brd{0%,100%{border-color:var(--txt);opacity:1}50%{border-color:var(--dim);opacity:.7}}
+.logo svg{width:30px;height:30px;stroke:var(--txt);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:clamp(34px,10vw,46px);font-weight:700;letter-spacing:-1.8px;line-height:1;margin-bottom:16px}
+.subtitle{font-size:15px;color:var(--dim);line-height:1.45;max-width:280px}
+.features,.steps{display:flex;flex-direction:column;width:100%}
+.feat,.step{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-10px);transition:opacity .45s,transform .45s}
+.feat:first-child,.step:first-child{border-top:1px solid var(--line)}
+.scene.active .feat,.scene.active .step{opacity:1;transform:none}
+.scene.active :nth-child(1){transition-delay:.1s}
+.scene.active :nth-child(2){transition-delay:.3s}
+.scene.active :nth-child(3){transition-delay:.5s}
+.scene.active :nth-child(4){transition-delay:.7s}
+.fi{width:20px;flex-shrink:0;display:flex;justify-content:center}
+.fi svg{width:18px;height:18px;stroke:var(--dim);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ft{font-size:15px;font-weight:500;line-height:1.35;letter-spacing:-.1px}
+.fnum{font-size:12px;color:var(--dim2);font-variant-numeric:tabular-nums;margin-left:auto;flex-shrink:0}
+.step{align-items:flex-start;padding:18px 0;transform:translateY(10px)}
+.sn{font-size:12px;font-weight:600;color:var(--dim2);font-variant-numeric:tabular-nums;padding-top:2px;width:16px;flex-shrink:0}
+.sc{flex:1;min-width:0}
+.st{font-size:15px;font-weight:600;letter-spacing:-.1px;margin-bottom:3px;line-height:1.3}
+.sd{font-size:13px;color:var(--dim);line-height:1.4}
+.su{display:inline-block;margin-top:8px;font-size:11.5px;font-family:ui-monospace,'SF Mono',Menlo,monospace;padding:5px 9px;border:1px solid var(--line);border-radius:6px;color:var(--dim);word-break:break-all;line-height:1.3}
+.chk{width:52px;height:52px;border:1px solid var(--txt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:30px;animation:pop .6s cubic-bezier(.34,1.4,.64,1) both}
+@keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+.chk svg{width:22px;height:22px;stroke:var(--txt);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ftitle{font-size:clamp(26px,7.5vw,34px);font-weight:700;letter-spacing:-1.2px;line-height:1.05;margin-bottom:10px}
+.fsub{font-size:14px;color:var(--dim);line-height:1.45;margin-bottom:30px;max-width:280px}
+.urlbox{width:100%;padding:14px 16px;background:var(--glass);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .25s,background .25s}
+.urlbox:active,.urlbox.copied{border-color:var(--dim);background:rgba(255,255,255,.06)}
+.urlt{flex:1;font-size:12px;font-family:ui-monospace,'SF Mono',Menlo,monospace;color:var(--dim);word-break:break-all;line-height:1.4}
+.cb{flex-shrink:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.cb:active{transform:scale(.9);background:rgba(255,255,255,.08)}
+.cb svg{width:13px;height:13px;stroke:var(--dim);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bp{width:100%;padding:17px 24px;border:1px solid var(--txt);border-radius:12px;background:var(--txt);color:var(--bg);font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,background .2s;text-decoration:none;letter-spacing:-.1px}
+.bp:active{transform:scale(.98);background:#d8d8d8}
+.bp svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bs{margin-top:8px;width:100%;padding:15px 24px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--dim);font-family:var(--font);font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,color .2s,transform .15s}
+.bs:active{transform:scale(.98);background:rgba(255,255,255,.05);color:var(--txt)}
+.bs svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ctrl{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:22px;flex-shrink:0}
+.dots{display:flex;gap:10px;align-items:center}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--dim2);border:none;cursor:pointer;padding:0;transition:all .35s}
+.dot.active{width:22px;height:2px;border-radius:1px;background:var(--txt)}
+.row{display:flex;gap:8px;width:100%}
+.btn{flex:1;padding:12px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--dim);font-family:var(--font);font-size:12px;font-weight:500;letter-spacing:.2px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,color .2s,transform .15s}
+.btn:active{transform:scale(.97);background:rgba(255,255,255,.05);color:var(--txt)}
+.btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-        /* ---------- HEADER / ANIMATION ---------- */
-        .hero {
-            position: relative;
-            width: 100vw;
-            height: 75vh;
-            background: var(--mc-dark);
-            border-bottom: 4px solid var(--mc-white);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+/* ---------- DYNAMIC ISLAND OVERLAY ---------- */
+#island-wrap{position:fixed;top:env(safe-area-inset-top,20px);left:50%;transform:translateX(-50%);z-index:40;pointer-events:none;user-select:none;}
+.island{
+  width:110px;height:42px;background:#1a1a1a;border:1px solid var(--txt);border-radius:22px;position:relative;overflow:hidden;transition:width .35s cubic-bezier(.34,1.56,.64,1),height .35s cubic-bezier(.34,1.56,.64,1),background-color .3s,border-color .3s;
+}
+.island.expanded{width:340px;height:120px;}
+.island .content{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;opacity:0;transition:opacity .25s;pointer-events:auto;}
+.island.expanded .content{opacity:1;}
+.island .icon{font-size:20px;}
+.island .text{font-size:13px;font-weight:600;line-height:1.2;}
+.island .sub{font-size:11px;color:var(--dim);margin-top:2px;}
+.island .pulse{position:absolute;inset:0;border-radius:22px;background:rgba(0,210,255,.3);opacity:0;animation:pulseAnim 2s infinite;pointer-events:none;}
+@keyframes pulseAnim{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.3);opacity:0}}
+.island .battery{width:24px;height:14px;border:1.5px solid var(--txt);border-radius:7px;position:relative;margin-left:10px;}
+.island .battery::after{content:'';position:absolute;right:1px;top:50%;transform:translateY(-50%);width:2px;height:6px;background:var(--txt);}
+.island .battery.fill::after{background:var(--green);}
 
-        #mc-canvas {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            background: linear-gradient(to bottom, #2a2a2a 0%, #0a0a0a 100%);
-        }
+/* ---------- SETTINGS OVERLAY ---------- */
+#settings{position:fixed;inset:0;z-index:45;background:rgba(0,0,0,.85);display:none;flex-direction:column;}
+#settings.visible{display:flex;}
+.settings-inner{width:100%;max-width:420px;margin:0 auto;padding:20px;overflow-y:auto;}
+.settings-inner h2{font-family:'Press Start 2P',cursive;font-size:16px;color:var(--txt);margin-bottom:16px;text-shadow:1px 1px 0 #000;}
+.settings-group{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;}
+.settings-group h3{font-size:14px;color:var(--txt);margin-bottom:12px;}
+.setting{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);}
+.setting:last-child{border-bottom:none;}
+.setting label{font-size:13px;color:var(--offwhite);flex:1;}
+.setting .desc{font-size:11px;color:var(--dim);margin-top:2px;max-width:260px;}
+.toggle{width:44px;height:24px;border-radius:12px;border:1px solid var(--line);background:var(--bg);position:relative;cursor:pointer;transition:all .2s;}
+.toggle.on{border-color:var(--accent);background:var(--accent);}
+.toggle.knob{position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:left .2s;}
+.toggle.on .knob{left:22px;}
+input[type=range]{width:120px;cursor:pointer;accent-color:var(--accent);}
+select,button{font-family:var(--font);background:var(--bg);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px;cursor:pointer;}
+button.reset{color:var(--red);border-color:var(--red);}
+button.reset:hover{background:rgba(255,59,48,.1);}
+.close-settings{position:absolute;top:16px;right:20px;font-size:24px;color:var(--dim);cursor:pointer;z-index:1;}
+.close-settings:hover{color:var(--txt);}
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 0 1rem;
-            max-width: 900px;
-        }
+/* ---------- TWEAKS LIST (BOTTOM) ---------- */
+#tweaks{position:fixed;bottom:0;left:0;right:0;z-index:40;background:linear-gradient(to top, var(--bg), transparent);padding:12px;pointer-events:none;}
+#tweaks.visible{pointer-events:auto;}
+.tweak-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;}
+.tweak-card{min-width:150px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px;pointer-events:auto;flex-shrink:0;}
+.tweak-card h4{font-size:13px;color:var(--txt);margin-bottom:6px;}
+.tweak-card p{font-size:11px;color:var(--dim);margin-bottom:10px;line-height:1.3;}
+.tweak-card .enabled-badge{font-size:10px;color:var(--green);font-weight:700;text-transform:uppercase;}
 
-        .hero-title {
-            font-size: 1.6rem;
-            color: var(--mc-white);
-            text-shadow: var(--mc-shadow);
-            margin-bottom: 2rem;
-            line-height: 1.5;
-            white-space: pre-line;
-        }
+/* ---------- TOAST ---------- */
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--txt);color:var(--bg);padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;display:flex;align-items:center;gap:7px;letter-spacing:-.1px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-        .blink {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .hero-hint {
-            font-size: 0.7rem;
-            color: var(--mc-accent);
-            text-shadow: var(--mc-shadow-sm);
-            margin-top: 1rem;
-            display: block;
-        }
-
-        /* ---------- TWEAKS LIST ---------- */
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            color: var(--mc-white);
-            margin-bottom: 1.5rem;
-            text-shadow: var(--mc-shadow);
-            border-bottom: 3px solid var(--mc-white);
-            display: inline-block;
-        }
-
-        .tweak-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tweak-card {
-            background: var(--mc-dark);
-            border: 3px solid var(--mc-white);
-            border-radius: 0;
-            margin-bottom: 0;
-            overflow: hidden;
-            transition: transform 0.15s, box-shadow 0.15s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tweak-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 8px 8px 0px var(--mc-white);
-            border-color: var(--mc-accent);
-        }
-
-        .tweak-header {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            background: var(--mc-gray);
-            border-bottom: 2px solid var(--mc-white);
-        }
-
-        .tweak-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(45deg, #444, #222);
-            border: 2px solid var(--mc-white);
-            margin-right: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            flex-shrink: 0;
-        }
-
-        .tweak-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .tweak-name {
-            font-size: 1rem;
-            color: var(--mc-white);
-            text-shadow: 2px 2px 0px #000;
-            margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tweak-version {
-            font-size: 0.65rem;
-            color: var(--mc-accent);
-            background: var(--mc-black);
-            padding: 2px 6px;
-            border: 1px solid var(--mc-accent);
-            margin-left: 8px;
-            vertical-align: middle;
-        }
-
-        .tweak-desc {
-            font-size: 0.7rem;
-            color: var(--mc-offwhite);
-            margin-top: 4px;
-            line-height: 1.35;
-        }
-
-        .tweak-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: var(--mc-black);
-            border-top: 2px solid var(--mc-white);
-        }
-
-        .badge {
-            font-size: 0.6rem;
-            color: #00ff00;
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            padding: 2px 6px;
-            margin-left: 8px;
-            text-shadow: var(--mc-shadow-sm);
-        }
-
-        .btn {
-            background: var(--mc-white);
-            color: var(--mc-black);
-            border: 2px solid var(--mc-black);
-            padding: 10px 18px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.65rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            text-shadow: none;
-            transition: all 0.1s;
-            white-space: nowrap;
-        }
-
-        .btn:hover {
-            background: var(--mc-accent);
-            color: var(--mc-black);
-            border-color: var(--mc-black);
-            transform: scale(1.05);
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-            box-shadow: 2px 2px 0px var(--mc-white);
-        }
-
-        /* ---------- FOOTER ---------- */
-        footer {
-            background: var(--mc-dark);
-            border-top: 4px solid var(--mc-white);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.7rem;
-            color: var(--mc-offwhite);
-            text-shadow: var(--mc-shadow);
-            margin-bottom: 0.5rem;
-        }
-
-        footer .repo-link {
-            color: var(--mc-accent);
-            text-decoration: none;
-            border-bottom: 1px solid var(--mc-accent);
-        }
-
-        footer .repo-link:hover {
-            color: var(--mc-white);
-            border-color: var(--mc-white);
-        }
-
-        /* ---------- MOBILE ---------- */
-        @media (max-width: 700px) {
-            .hero-title {
-                font-size: 1.1rem;
-            }
-            .tweak-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .tweak-icon {
-                margin-right: 0;
-                margin-bottom: 0.5rem;
-            }
-            .tweak-footer {
-                flex-direction: column;
-                gap: 0.7rem;
-                align-items: flex-start;
-            }
-        }
-
-        /* ---------- UTILS ---------- */
-        .text-center {
-            text-align: center;
-        }
-        .mt-2 { margin-top: 2rem; }
-    </style>
+/* ---------- CHANGELOG ---------- */
+.changelog{max-height:200px;overflow-y:auto;}
+.changelog-item{padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--offwhite);}
+.changelog-item .badge{font-size:10px;padding:2px 6px;border-radius:4px;color:#fff;margin-right:6px;}
+.changelog-item .badge.new{background:var(--green);}
+.changelog-item .badge.updated{background:var(--accent);}
+.changelog-item .date{font-size:10px;color:var(--dim);margin-left:auto;}
+</style>
 </head>
 <body>
 
-    <!-- ---------- HERO SECTION WITH MINECRAFT ANIMATION ---------- -->
-    <section class="hero">
-        <canvas id="mc-canvas"></canvas>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                твики, как добавлять<br>
-                и как использовать<span class="blink">_</span>
-            </h1>
-            <span class="hero-hint">анимация установки репозитория в Sileo</span>
-        </div>
+<div id="splash">
+  <div class="splash-island"><div class="dot"></div></div>
+  <h1>Glint</h1>
+  <p>tweaks repo</p>
+</div>
+
+<div class="phone">
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <div class="scenes" id="wrap">
+    <section class="scene active">
+      <div class="logo"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <h1 class="title">Glint</h1>
+      <p class="subtitle">Dynamic Island for iOS.<br>Spring animation В· timer compression.</p>
     </section>
+    <section class="scene">
+      <div class="features">
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="ft">Dynamic Island for iOS</div><div class="fnum">01</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></div><div class="ft">Spring animation expansion</div><div class="fnum">02</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ft">Auto-collapse by timer</div><div class="fnum">03</div></div>
+        <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="ft">Stable work В· v1.0.0</div><div class="fnum">04</div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div class="sc"><div class="st">Open Sileo</div><div class="sd">Launch package manager on your device</div></div></div>
+        <div class="step"><div class="sn">02</div><div class="sc"><div class="st">Add repository</div><div class="sd">Sources в†’ + в†’ paste URL</div><span class="su">https://abulhketus-collab.github.io/repo/</span></div></div>
+        <div class="step"><div class="sn">03</div><div class="sc"><div class="st">Find Glint</div><div class="sd">Type name in Sileo search</div></div></div>
+        <div class="step"><div class="sn">04</div><div class="sc"><div class="st">Tap Install</div><div class="sd">Confirm install and wait for completion</div></div></div>
+      </div>
+    </section>
+    <section class="scene">
+      <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2 class="ftitle">Ready to install</h2>
+      <p class="fsub">Add the repository and install Glint in a couple of minutes</p>
+      <div class="urlbox" id="uBox" role="button" tabindex="0">
+        <span class="urlt" id="uTxt">https://abulhketus-collab.github.io/repo/</span>
+        <div class="cb"><svg viewBox="0 0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+      </div>
+      <a class="bp" id="iBtn" href="sileo://source/https://abulhketus-collab.github.io/repo/"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Install</a>
+      <button class="bs" id="cBtn"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy link</button>
+    </section>
+  </div>
+</div>
 
-    <!-- ---------- TWEAKS LIST ---------- -->
-    <div class="container text-center mt-2">
-        <h2 class="section-title">наш репозиторий</h2>
+<div class="ctrl">
+  <div class="dots" id="dots">
+    <button class="dot active" data-s="0"></button><button class="dot" data-s="1"></button>
+    <button class="dot" data-s="2"></button><button class="dot" data-s="3"></button>
+  </div>
+  <div class="row">
+    <button class="btn" id="pBtn"><svg viewBox="0 0 24 24" id="pIco"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg><span id="pTxt">Pause</span></button>
+    <button class="btn" id="rBtn"><svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Restart</button>
+  </div>
+</div>
 
-        <div class="tweak-grid">
-            <!-- Glint -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">🏝️</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Glint <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Динамический остров для iOS 12 без чёлки: уведомления, зарядка, now-playing и фонарик в пилюле. Spring-анимации, безопасный запуск, без крашей SpringBoard.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">SAFE ISLAND</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Glint/com.cocxace.glint_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
+<!-- Dynamic Island -->
+<div id="island-wrap">
+  <div class="island" id="island">
+    <div class="content" id="island-content">
+      <div class="icon" id="island-icon">в—Џ</div>
+      <div>
+        <div class="text" id="island-text">Dynamic Island</div>
+        <div class="sub" id="island-sub">Ready</div>
+      </div>
+      <div class="battery" id="island-battery"></div>
+    </div>
+    <div class="pulse" id="island-pulse"></div>
+  </div>
+</div>
 
-            <!-- Aura -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">⚡</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Aura <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Action Button HUD: длинная кнопка питания или двойной клик Home открывает панель с фонариком, камерой, диктофоном, скриншотом, Wi-Fi и Bluetooth.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">ACTION BUTTON</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Aura/com.cocxace.aura_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-
-            <!-- Echo -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">📶</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Echo <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Свой текст оператора в статус-баре. CFPreferences вместо plist, live reload через darwin-уведомления, без перезагрузки SpringBoard.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">CARRIER</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Echo/com.cocxace.echo_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-
-            <!-- Volt -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">🔋</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Volt <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Цвет процентов батареи по порогам (зелёный/жёлтый/красный). Защита от деления на ноль, hex-парсинг через NSScanner, дефолтные пороги 40% и 20%.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">BATTERY</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Volt/com.cocxace.volt_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-
-            <!-- Lumina -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">🌙</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Lumina <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Always-On Display на локскрине: живые часы и дата, затемнённый оверлей. UIWindow вместо вью-контроллера, нет осиротевших вью после разблокировки.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">AOD</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Lumina/com.cocxace.lumina_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-
-            <!-- Cam60Enabler5s -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">📷</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">Cam60Enabler5s <span class="tweak-version">v1.0.3</span></div>
-                        <div class="tweak-desc">Принудительный 1080p @ 60 FPS на iPhone 5s (A7). Feature-flag по умолчанию выключен, термотроттлинг, фолбэк на 30 fps при неудаче.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">EXPERIMENTAL</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/Cam60Enabler5s/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-
-            <!-- ActionButton12 -->
-            <div class="tweak-card">
-                <div class="tweak-header">
-                    <div class="tweak-icon">📱</div>
-                    <div class="tweak-info">
-                        <div class="tweak-name">ActionButton12 <span class="tweak-version">v1.2.3</span></div>
-                        <div class="tweak-desc">Двойное нажатие Home или длинное нажатие питания открывает HUD с 4 кнопками. %group, деструктор окна, CFPreferences, без дубликатов хуков.</div>
-                    </div>
-                </div>
-                <div class="tweak-footer">
-                    <span class="badge">HUD</span>
-                    <a href="https://github.com/abulhketus-collab/repo/raw/main/tweaks/ActionButton12/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb" class="btn">скачать .deb</a>
-                </div>
-            </div>
-        </div>
+<!-- Settings -->
+<div id="settings">
+  <div class="close-settings" id="closeSettings">вњ•</div>
+  <div class="settings-inner">
+    <h2>Settings</h2>
+    
+    <div class="settings-group">
+      <h3>Dynamic Island</h3>
+      <div class="setting">
+        <div><div>Enabled</div><div class="desc">Enable Glint island</div></div>
+        <label class="toggle on" id="toggle-glint"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Rainbow glow</div><div class="desc">Cycle glow colors automatically</div></div>
+        <label class="toggle" id="toggle-rainbow"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Blink 1s on/off</div><div class="desc">Glow flashes every second</div></div>
+        <label class="toggle" id="toggle-blink"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Glow strength</div><div class="desc">Intensity of island glow</div></div>
+        <input type="range" min="0" max="100" value="60" id="range-glow">
+      </div>
+      <div class="setting">
+        <div><div>Glow speed</div><div class="desc">Animation speed of glow</div></div>
+        <input type="range" min="1" max="10" value="5" id="range-speed">
+      </div>
+      <div class="setting">
+        <div><div>Custom color</div><div class="desc">Pick island accent color</div></div>
+        <input type="color" value="#00d2ff" id="color-island">
+      </div>
+      <button class="reset" id="reset-glint">Reset defaults</button>
     </div>
 
-    <!-- ---------- FOOTER ---------- -->
-    <footer>
-        <p>cocxace repo • iOS 12+ • arm64 • @cocxace</p>
-        <p>добавить репо в Sileo/Cydia: <span class="repo-link">https://abulhketus-collab.github.io/repo/</span></p>
-    </footer>
+    <div class="settings-group">
+      <h3>Music & Equalizer</h3>
+      <div class="setting">
+        <div><div>Music island</div><div class="desc">Show now playing in Glint</div></div>
+        <label class="toggle on" id="toggle-music"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Equalizer</div><div class="desc">Audio visualizer bars</div></div>
+        <label class="toggle on" id="toggle-eq"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Beat pulse</div><div class="desc">Island moves to beat</div></div>
+        <label class="toggle on" id="toggle-beat"><div class="knob"></div></label>
+      </div>
+      <button class="reset" id="reset-music">Reset defaults</button>
+    </div>
 
-    <!-- ---------- MINECRAFT ANIMATION SCRIPT ---------- -->
-    <script>
-        // ============================================================================
-        // MINECRAFT-STYLE INSTALLATION ANIMATION
-        // Рисует пошагово: телефон -> курсор идет к Sileo -> нажатие "+" -> успех
-        // ============================================================================
+    <div class="settings-group">
+      <h3>Charging & Battery</h3>
+      <div class="setting">
+        <div><div>Charging island</div><div class="desc">Show charging state</div></div>
+        <label class="toggle on" id="toggle-charging"><div class="knob"></div></label>
+      </div>
+      <button class="reset" id="reset-charging">Reset defaults</button>
+    </div>
 
-        const canvas = document.getElementById('mc-canvas');
-        const ctx = canvas.getContext('2d');
+    <div class="settings-group">
+      <h3>Network & Weather</h3>
+      <div class="setting">
+        <div><div>Network indicator</div><div class="desc">Show WiFi/cellular status</div></div>
+        <label class="toggle on" id="toggle-network"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Weather</div><div class="desc">Show temperature in island</div></div>
+        <label class="toggle on" id="toggle-weather"><div class="knob"></div></label>
+      </div>
+      <button class="reset" id="reset-weather">Reset defaults</button>
+    </div>
 
-        let width, height;
-        let animationPhase = 0; // 0: телефон, 1: движение к Sileo, 2: клик "+", 3: успех
-        let timer = 0;
+    <div class="settings-group">
+      <h3>Camera60Enabler5s</h3>
+      <div class="setting">
+        <div><div>Enable 1080p60</div><div class="desc">Force 60 FPS on iPhone 5s A7 (experimental)</div></div>
+        <label class="toggle" id="toggle-cam60"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Safe mode protection</div><div class="desc">Auto-disable on crash risk</div></div>
+        <label class="toggle on" id="toggle-cam-safe"><div class="knob"></div></label>
+      </div>
+      <div class="setting">
+        <div><div>Quality preset</div><div class="desc">Camera recording quality</div></div>
+        <select id="select-cam-preset">
+          <option>Balance</option>
+          <option>Max Quality</option>
+          <option>Battery Saver</option>
+        </select>
+      </div>
+      <button class="reset" id="reset-cam">Reset defaults</button>
+      <div style="font-size:11px;color:var(--dim);margin-top:8px;">вљ пёЏ 4K60 not supported on iPhone 5s В· 1080p120 unavailable</div>
+    </div>
 
-        function resize() {
-            width = canvas.width = canvas.parentElement.clientWidth;
-            height = canvas.height = canvas.parentElement.clientHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
+    <div class="settings-group">
+      <h3>Appearance</h3>
+      <div class="setting">
+        <div><div>Theme</div><div class="desc">Island visual style</div></div>
+        <select id="select-theme">
+          <option>Classic</option>
+          <option>Neon</option>
+          <option>Glass</option>
+          <option>Minimal</option>
+        </select>
+      </div>
+      <div class="setting">
+        <div><div>Time format</div><div class="desc">12h or 24h clock</div></div>
+        <select id="select-time">
+          <option>24h</option>
+          <option>12h</option>
+        </select>
+      </div>
+      <button class="reset" id="reset-appearance">Reset defaults</button>
+    </div>
 
-        // ----------------------------------------------------------
-        // РИСОВКА ПИКСЕЛЬНОГО ТЕЛЕФОНА
-        // ----------------------------------------------------------
-        function drawPhone(ctx, x, y, scale) {
-            // корпус телефона
-            ctx.fillStyle = '#222222';
-            ctx.fillRect(x, y, 60 * scale, 110 * scale);
-            ctx.strokeStyle = '#000000';
-            ctx.lineWidth = 2 * scale;
-            ctx.strokeRect(x, y, 60 * scale, 110 * scale);
+    <div class="settings-group">
+      <h3>Changelog</h3>
+      <div class="changelog">
+        <div class="changelog-item"><span class="badge new">NEW</span>v1.2.3 В· Glint timer island, music equalizer, charging indicator<div class="date">2026-11-09</div></div>
+        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.2 В· CFPreferences, safe lazy init, destroy on respring<div class="date">2026-11-08</div></div>
+        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.1 В· Fixed tap handling, app launch fallback<div class="date">2026-11-07</div></div>
+        <div class="changelog-item"><span class="badge updated">UPDATED</span>v1.2.0 В· First public release<div class="date">2026-11-01</div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            // экран (чёрный прямоугольник внутри)
-            ctx.fillStyle = '#000000';
-            ctx.fillRect(x + 4 * scale, y + 4 * scale, 52 * scale, 102 * scale);
+<!-- Tweaks bottom -->
+<div id="tweaks" class="visible">
+  <div class="tweak-list">
+    <div class="tweak-card">
+      <h4>Glint <span class="enabled-badge">ON</span></h4>
+      <p>Dynamic Island for iOS 12</p>
+    </div>
+    <div class="tweak-card">
+      <h4>Aura <span class="enabled-badge">ON</span></h4>
+      <p>Action Button HUD</p>
+    </div>
+    <div class="tweak-card">
+      <h4>Echo <span class="enabled-badge">ON</span></h4>
+      <p>Carrier text override</p>
+    </div>
+    <div class="tweak-card">
+      <h4>Volt <span class="enabled-badge">ON</span></h4>
+      <p>Battery color by level</p>
+    </div>
+    <div class="tweak-card">
+      <h4>Lumina <span class="enabled-badge">ON</span></h4>
+      <p>Always-On Display</p>
+    </div>
+    <div class="tweak-card">
+      <h4>Cam60Enabler5s <span class="enabled-badge">OFF</span></h4>
+      <p>1080p60 on iPhone 5s</p>
+    </div>
+    <div class="tweak-card">
+      <h4>ActionButton12 <span class="enabled-badge">ON</span></h4>
+      <p>Power/Home HUD</p>
+    </div>
+  </div>
+</div>
 
-            // время на экране
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '10px monospace';
-            ctx.fillText('12:00', x + 8 * scale, y + 14 * scale);
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Copied</span></div>
 
-            // домашняя кнопка (круг внизу)
-            ctx.fillStyle = '#444444';
-            ctx.beginPath();
-            ctx.arc(x + 30 * scale, y + 100 * scale, 8 * scale, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.stroke();
-        }
+<script>
+/* ============ USER ANIMATION (preserved) ============ */
+(function(){
+var D=[4,5,7,4],T=20,sc=document.querySelectorAll('.scene'),dt=document.querySelectorAll('.dot'),
+fl=document.getElementById('fill'),w=document.getElementById('wrap'),
+pB=document.getElementById('pBtn'),pT=document.getElementById('pTxt'),pI=document.getElementById('pIco'),
+rB=document.getElementById('rBtn'),to=document.getElementById('toast'),uB=document.getElementById('uBox'),
+uT=document.getElementById('uTxt'),cB=document.getElementById('cBtn'),iB=document.getElementById('iBtn'),
+cur=0,el=0,pz=false,fin=false,lt=0,tk=null;
 
-        // ----------------------------------------------------------
-        // РИСОВКА КУРСОРА (стрелочка мыши)
-        // ----------------------------------------------------------
-        function drawCursor(ctx, x, y) {
-            // тело курсора (белая стрелочка)
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + 16, y + 8);
-            ctx.lineTo(x, y + 16);
-            ctx.closePath();
-            ctx.fill();
+function render(){
+  var idx=3,acc=0;
+  for(var i=0;i<4;i++){acc+=D[i]*1000;if(el<acc){idx=i;break}}
+  cur=idx;
+  for(var k=0;k<4;k++){sc[k].classList.toggle('active',k===idx);dt[k].classList.toggle('active',k===idx)}
+  fl.style.width=Math.min(100,el/T*100)+'%';
+}
+function tick(){
+  var n=performance.now();
+  if(!lt)lt=n;
+  var d=Math.min(500,Math.max(0,n-lt));lt=n;
+  if(!pz&&!fin){el+=d;if(el>=T*1000){el=T*1000;fin=true}render()}
+}
+function start(){if(tk)clearInterval(tk);lt=0;tk=setInterval(tick,100)}
+function stop(){if(tk){clearInterval(tk);tk=null}}
+function ui(){pz?(pT.textContent='Next',pI.innerHTML='<path d="M8 5v14l11-7z"/>'):(pT.textContent='Pause',pI.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>')}
+function go(i){
+  if(i<0||i>3)return;
+  var o=0;for(var k=0;k<i;k++)o+=D[k]*1000;
+  el=o;fin=false;pz=false;lt=0;render();ui();if(!tk)start();
+}
+function reset(){stop();cur=0;el=0;pz=false;fin=false;lt=0;render();ui();start()}
 
-            // чёрная обводка курсора
-            ctx.strokeStyle = '#000000';
-            ctx.lineWidth = 1;
-            ctx.stroke();
+var sx=0,sy=0,sw=0,ax=null;
+function st(x,y){sx=x;sy=y;sw=1;ax=null}
+function mv(x,y){if(!sw)return;var dx=x-sx,dy=y-sy;if(ax===null&&(Math.abs(dx)>10||Math.abs(dy)>10))ax=Math.abs(dx)>Math.abs(dy)?'x':'y'}
+function en(x,y){if(!sw)return;sw=0;var dx=x-sx;if(ax==='x'&&Math.abs(dx)>50)go(dx<0?cur+1:cur-1);ax=null}
+w.addEventListener('touchstart',function(e){st(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchmove',function(e){mv(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
+w.addEventListener('touchend',function(e){en(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
+var md=0;
+w.addEventListener('mousedown',function(e){if(e.button!==0)return;md=1;st(e.clientX,e.clientY)});
+w.addEventListener('mousemove',function(e){if(md)mv(e.clientX,e.clientY)});
+window.addEventListener('mouseup',function(e){if(!md)return;md=0;en(e.clientX,e.clientY)});
 
-            // эффект клика (вторая фаза)
-            if (animationPhase === 2) {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.beginPath();
-                ctx.arc(x, y, 20 + Math.sin(Date.now() / 100) * 10, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+var tt=null;
+function toast(){to.classList.add('show');if(tt)clearTimeout(tt);tt=setTimeout(function(){to.classList.remove('show')},1600)}
+function cp(){
+  var u=uT.textContent.trim();
+  function done(){toast();uB.classList.add('copied');setTimeout(function(){uB.classList.remove('copied')},1500)}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(done).catch(function(){fb(u,done)});
+  else fb(u,done);
+}
+function fb(t,d){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');d()}catch(e){}document.body.removeChild(a)}
 
-        // ----------------------------------------------------------
-        // РИСОВКА ИКОНКИ SILEO (скруглённый квадрат с буквой S)
-        // ----------------------------------------------------------
-        function drawSileo(ctx, x, y, scale) {
-            // основной квадрат иконки (голубой)
-            ctx.fillStyle = '#00d2ff';
-            ctx.fillRect(x, y, 40 * scale, 40 * scale);
-            ctx.strokeStyle = '#000000';
-            ctx.lineWidth = 2 * scale;
-            ctx.strokeRect(x, y, 40 * scale, 40 * scale);
+pB.addEventListener('click',function(){if(pz){if(fin){reset();return}pz=false;lt=0;ui();if(!tk)start()}else{if(fin)return;pz=true;ui()}});
+rB.addEventListener('click',reset);
+for(var d=0;d<4;d++){(function(b){b.addEventListener('click',function(){var i=parseInt(b.getAttribute('data-s'),10);if(!isNaN(i))go(i)})})(dt[d])}
+uB.addEventListener('click',cp);
+uB.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();cp()}});
+cB.addEventListener('click',function(e){e.stopPropagation();cp()});
 
-            // буква "S" внутри
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '20px monospace';
-            ctx.fillText('S', x + 10 * scale, y + 28 * scale);
-        }
+function init(){render();ui();start()}
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
 
-        // ----------------------------------------------------------
-        // РИСОВКА КНОПКИ "+" (добавить репо)
-        // ----------------------------------------------------------
-        function drawPlus(ctx, x, y, scale) {
-            // горизонтальная полоса
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(x - 10 * scale, y - 2 * scale, 20 * scale, 4 * scale);
-            // вертикальная полоса
-            ctx.fillRect(x - 2 * scale, y - 10 * scale, 4 * scale, 20 * scale);
-            // обводка квадрата вокруг плюса
-            ctx.strokeStyle = '#000000';
-            ctx.lineWidth = 1;
-            ctx.strokeRect(x - 12 * scale, y - 12 * scale, 24 * scale, 24 * scale);
-        }
+/* ============ DYNAMIC ISLAND LOGIC ============ */
+var island=document.getElementById('island');
+var islandContent=document.getElementById('island-content');
+var islandIcon=document.getElementById('island-icon');
+var islandText=document.getElementById('island-text');
+var islandSub=document.getElementById('island-sub');
+var islandPulse=document.getElementById('island-pulse');
+var islandBattery=document.getElementById('island-battery');
+var islandEnabled=JSON.parse(localStorage.getItem('glint-enabled')!==null?localStorage.getItem('glint-enabled'):'true');
+var rainbowEnabled=JSON.parse(localStorage.getItem('glint-rainbow')!==null?localStorage.getItem('glint-rainbow'):'false');
+var blinkEnabled=JSON.parse(localStorage.getItem('glint-blink')!==null?localStorage.getItem('glint-blink'):'false');
+var glowStrength=parseInt(localStorage.getItem('glint-glow')||'60');
+var glowSpeed=parseInt(localStorage.getItem('glint-speed')||'5');
+var islandColor=localStorage.getItem('glint-color')||'#00d2ff';
 
-        // ----------------------------------------------------------
-        // РИСОВКА ПИКСЕЛЬНОЙ СЕТКИ ФОНА (в стиле Майнкрафта)
-        // ----------------------------------------------------------
-        function drawGrid(ctx, w, h, step) {
-            ctx.strokeStyle = '#1a1a1a';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < w; i += step) {
-                ctx.beginPath();
-                ctx.moveTo(i, 0);
-                ctx.lineTo(i, h);
-                ctx.stroke();
-            }
-            for (let j = 0; j < h; j += step) {
-                ctx.beginPath();
-                ctx.moveTo(0, j);
-                ctx.lineTo(w, j);
-                ctx.stroke();
-            }
-        }
+function setIsland(icon,text,sub,batt,color){
+  if(!islandEnabled)return;
+  island.classList.add('expanded');
+  islandIcon.textContent=icon||'в—Џ';
+  islandText.textContent=text||'Dynamic Island';
+  islandSub.textContent=sub||'';
+  if(color)island.style.borderColor=color;
+  if(batt!==undefined){
+    islandBattery.classList.toggle('fill',batt);
+  }else{
+    islandBattery.classList.remove('fill');
+  }
+  setTimeout(function(){island.classList.remove('expanded');},3000);
+}
 
-        // ----------------------------------------------------------
-        // ОСНОВНОЙ ЦИКЛ АНИМАЦИИ
-        // ----------------------------------------------------------
-        function animate() {
-            // очистка холста
-            ctx.clearRect(0, 0, width, height);
+function collapseIsland(){
+  island.classList.remove('expanded');
+  island.style.borderColor=islandColor;
+}
 
-            // фоновая сетка
-            drawGrid(ctx, width, height, 40);
+function pulseIsland(){
+  if(!islandEnabled)return;
+  islandPulse.style.opacity='.4';
+  setTimeout(function(){islandPulse.style.opacity='0';},1000);
+}
 
-            // инкремент таймера (имитация 60 FPS)
-            timer += 1 / 60;
+/* Timer display in island */
+var timerDisplayActive=false;
+function showTimer(remaining){
+  if(!islandEnabled)return;
+  var m=Math.floor(remaining/60);
+  var s=remaining%60;
+  var mm=m<10?'0'+m:m;
+  var ss=s<10?'0'+s:s;
+  setIsland('вЏ±','Timer',mm+':'+ss,false,islandColor);
+  timerDisplayActive=true;
+}
 
-            // ------------------------------------------------------
-            // ФАЗА 0: Телефон посередине, подсказка снизу
-            // ------------------------------------------------------
-            if (animationPhase === 0) {
-                const px = width / 2 - 30;
-                const py = height / 2 - 55 + Math.sin(timer) * 5; // лёгкое дыхание
-                drawPhone(ctx, px, py, 1);
+/* Music in island */
+var musicActive=false;
+var analyserCtx=null;
+var analyser=null;
+var eqBars=null;
 
-                // подсказка снизу от телефона
-                ctx.fillStyle = '#ffffff';
-                ctx.font = '12px monospace';
-                ctx.fillText('открой Sileo', width / 2 - 60, height - 60);
+function initMusicEQ(){
+  try{
+    var audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    analyser=audioCtx.createAnalyser();
+    analyser.fftSize=64;
+    var src=audioCtx.createMediaElementSource(new Audio());
+    src.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    eqBars=new Uint8Array(analyser.frequencyBinCount);
+  }catch(e){}
+}
+initMusicEQ();
 
-                // курсор лежит около телефона и чуть трясётся
-                const cx = width / 2 + 40 + Math.sin(timer * 2) * 20;
-                const cy = height / 2 + 20;
-                drawCursor(ctx, cx, cy);
+function updateMusicEQ(){
+  if(!musicEnabled||!analyser)return;
+  analyser.getByteFrequencyData(eqBars);
+  var avg=0;
+  for(var i=0;i<eqBars.length;i++)avg+=eqBars[i];
+  avg/=eqBars.length;
+  var scale=1+avg/128;
+  island.style.transform='scale('+Math.min(scale,1.2)+')';
+  requestAnimationFrame(updateMusicEQ);
+}
 
-                // через 3 секунды переходим к следующей фазе
-                if (timer > 180) {
-                    animationPhase = 1;
-                    timer = 0;
-                }
-            }
-            // ------------------------------------------------------
-            // ФАЗА 1: Иконка Sileo справа, курсор движется к ней
-            // ------------------------------------------------------
-            else if (animationPhase === 1) {
-                const sx = width / 2 + 80;
-                const sy = height / 2 - 20;
-                drawSileo(ctx, sx, sy, 1);
+var musicEnabled=JSON.parse(localStorage.getItem('glint-music')!==null?localStorage.getItem('glint-music'):'true');
+var eqEnabled=JSON.parse(localStorage.getItem('glint-eq')!==null?localStorage.getItem('glint-eq'):'true');
+var beatEnabled=JSON.parse(localStorage.getItem('glint-beat')!==null?localStorage.getItem('glint-beat'):'true');
 
-                // курсор едет от центра к иконке Sileo
-                const cx = width / 2 + 40 + (timer / 120) * 80;
-                const cy = height / 2 - 20 + 10;
-                drawCursor(ctx, cx, cy);
+function showMusic(title,artist,cover){
+  if(!musicEnabled)return;
+  musicActive=true;
+  var icon='в™Є';
+  if(cover)icon='<img src="'+cover+'" style="width:28px;height:28px;border-radius:6px;border:1px solid var(--txt)">';
+  setIsland(icon,title,artist,false,islandColor);
+  if(eqEnabled&&!beatEnabled)updateMusicEQ();
+}
 
-                // через 2 секунды переходим к клику
-                if (timer > 120) {
-                    animationPhase = 2;
-                    timer = 0;
-                }
-            }
-            // ------------------------------------------------------
-            // ФАЗА 2: Курсор нажимает на "+", эффект клика
-            // ------------------------------------------------------
-            else if (animationPhase === 2) {
-                const sx = width / 2 + 80;
-                const sy = height / 2 - 20;
-                drawSileo(ctx, sx, sy, 1);
+/* Charging in island */
+var chargingEnabled=JSON.parse(localStorage.getItem('glint-charging')!==null?localStorage.getItem('glint-charging'):'true');
+function showCharging(isCharging,percent){
+  if(!chargingEnabled)return;
+  setIsland(isCharging?'вљЎ':'рџ”‹','Charging',percent+'%',false,isCharging?var(--green):var(--txt));
+  islandBattery.classList.toggle('fill',isCharging);
+  pulseIsland();
+}
 
-                // курсор стоит на месте кнопки "+"
-                const cx = width / 2 + 120;
-                const cy = height / 2 - 20 + 10;
-                drawCursor(ctx, cx, cy);
+/* Network in island */
+var networkEnabled=JSON.parse(localStorage.getItem('glint-network')!==null?localStorage.getItem('glint-network'):'true');
+function updateNetwork(){
+  if(!networkEnabled)return;
+  var online=navigator.onLine;
+  setIsland(online?'рџ“¶':'вњ‚','Network',online?'Online':'Offline',false,online?var(--green):var(--red));
+}
+window.addEventListener('online',updateNetwork);
+window.addEventListener('offline',updateNetwork);
 
-                // кнопка "+" под курсором
-                drawPlus(ctx, cx + 10, cy - 10, 1);
+/* Weather in island */
+var weatherEnabled=JSON.parse(localStorage.getItem('glint-weather')!==null?localStorage.getItem('glint-weather'):'true');
+function showWeather(temp,icon){
+  if(!weatherEnabled)return;
+  setIsland(icon||'вЂ','Weather',temp+'В°C',false,islandColor);
+}
 
-                // текст подсказки
-                ctx.fillStyle = '#ffffff';
-                ctx.font = '10px monospace';
-                ctx.fillText('добавить репо', cx - 40, cy + 30);
+/* Notifications in island */
+var notifCount=0;
+function addNotification(title,body){
+  notifCount++;
+  setIsland('рџ””',title,body.substring(0,30),false,var(--accent));
+  pulseIsland();
+}
 
-                // через 2 секунды финал
-                if (timer > 120) {
-                    animationPhase = 3;
-                    timer = 0;
-                }
-            }
-            // ------------------------------------------------------
-            // ФАЗА 3: Успех, зелёный текст и ссылка на репо
-            // ------------------------------------------------------
-            else {
-                // сообщение об успехе
-                ctx.fillStyle = '#00ff00';
-                ctx.font = '16px monospace';
-                ctx.fillText('репо добавлено!', width / 2 - 70, height / 2);
+/* Clock in island */
+var clock24=JSON.parse(localStorage.getItem('glint-clock24')!==null?localStorage.getItem('glint-clock24'):'true');
+function updateClock(){
+  var now=new Date();
+  var h=now.getHours();
+  var m=now.getMinutes();
+  var s=now.getSeconds();
+  var ampm=h>=12?'PM':'AM';
+  if(!clock24){h=h%12||12;}
+  var hh=h<10?'0'+h:h;
+  var mm=m<10?'0'+m:m;
+  var ss=s<10?'0'+s:s;
+  var timeStr=clock24?hh+':'+mm+':'+ss:hh+':'+mm+' '+ampm;
+  // Only show clock if nothing else active
+  if(!musicActive&&!timerDisplayActive){
+    setIsland('рџ•ђ',timeStr,'',false,islandColor);
+  }
+}
+setInterval(updateClock,1000);
+updateClock();
 
-                // ссылка на репозиторий
-                ctx.fillStyle = '#00d2ff';
-                ctx.font = '12px monospace';
-                ctx.fillText('https://abulhketus-collab.github.io/repo/', width / 2 - 110, height / 2 + 30);
-            }
+/* Volume indicator */
+var volActive=false;
+function showVolume(level){
+  if(volActive)return;
+  volActive=true;
+  var bars=Math.round(level*10);
+  var barStr='';
+  for(var i=0;i<10;i++)barStr+=i<bars?'в–€':'в–‘';
+  setIsland('рџ”Љ','Volume',barStr,false,var(--accent));
+  setTimeout(function(){volActive=false;collapseIsland();},2000);
+}
 
-            // запрашиваем следующий кадр
-            requestAnimationFrame(animate);
-        }
+/* Rainbow / blink logic */
+function applyIslandStyle(){
+  var el=document.getElementById('island');
+  if(!el)return;
+  if(rainbowEnabled){
+    var hue=Date.now()/50%360;
+    el.style.borderColor='hsl('+hue+',100%,60%)';
+    islandColor='hsl('+hue+',100%,60%)';
+  }else if(blinkEnabled){
+    var on=Math.floor(Date.now()/1000)%2===0;
+    el.style.borderColor=on?islandColor:'transparent';
+  }else{
+    el.style.borderColor=islandColor;
+  }
+  el.style.boxShadow='0 0 '+glowStrength+'px '+glowStrength/4+'px '+islandColor;
+}
+setInterval(applyIslandStyle,100);
 
-        // запуск анимации
-        animate();
-    </script>
+/* Settings persistence */
+function save(key,val){localStorage.setItem(key,val);}
+
+/* Settings UI */
+var settings=document.getElementById('settings');
+var closeSettings=document.getElementById('closeSettings');
+
+function toggleSetting(id,key){
+  var el=document.getElementById(id);
+  var on=el.classList.toggle('on');
+  save(key,on);
+  if(key==='glint-enabled'){islandEnabled=on;if(!on)collapseIsland();}
+  if(key==='glint-rainbow'){rainbowEnabled=on;}
+  if(key==='glint-blink'){blinkEnabled=on;}
+  if(key==='glint-music'){musicEnabled=on;}
+  if(key==='glint-eq'){eqEnabled=on;}
+  if(key==='glint-beat'){beatEnabled=on;}
+  if(key==='glint-charging'){chargingEnabled=on;}
+  if(key==='glint-network'){networkEnabled=on;}
+  if(key==='glint-weather'){weatherEnabled=on;}
+  if(key==='glint-cam60'){}
+  if(key==='glint-cam-safe'){}
+}
+
+document.getElementById('toggle-glint').addEventListener('click',function(){toggleSetting('toggle-glint','glint-enabled');});
+document.getElementById('toggle-rainbow').addEventListener('click',function(){toggleSetting('toggle-rainbow','glint-rainbow');});
+document.getElementById('toggle-blink').addEventListener('click',function(){toggleSetting('toggle-blink','glint-blink');});
+document.getElementById('toggle-music').addEventListener('click',function(){toggleSetting('toggle-music','glint-music');});
+document.getElementById('toggle-eq').addEventListener('click',function(){toggleSetting('toggle-eq','glint-eq');});
+document.getElementById('toggle-beat').addEventListener('click',function(){toggleSetting('toggle-beat','glint-beat');});
+document.getElementById('toggle-charging').addEventListener('click',function(){toggleSetting('toggle-charging','glint-charging');});
+document.getElementById('toggle-network').addEventListener('click',function(){toggleSetting('toggle-network','glint-network');});
+document.getElementById('toggle-weather').addEventListener('click',function(){toggleSetting('toggle-weather','glint-weather');});
+document.getElementById('toggle-cam60').addEventListener('click',function(){toggleSetting('toggle-cam60','glint-cam60');});
+document.getElementById('toggle-cam-safe').addEventListener('click',function(){toggleSetting('toggle-cam-safe','glint-cam-safe');});
+
+document.getElementById('range-glow').addEventListener('input',function(){
+  glowStrength=parseInt(this.value||'60');save('glint-glow',glowStrength);
+});
+document.getElementById('range-speed').addEventListener('input',function(){
+  glowSpeed=parseInt(this.value||'5');save('glint-speed',glowSpeed);
+});
+document.getElementById('color-island').addEventListener('input',function(){
+  islandColor=this.value;save('glint-color',islandColor);
+});
+document.getElementById('select-theme').addEventListener('change',function(){
+  save('glint-theme',this.value);
+});
+document.getElementById('select-time').addEventListener('change',function(){
+  clock24=this.value==='24h';save('glint-clock24',clock24);
+});
+document.getElementById('select-cam-preset').addEventListener('change',function(){
+  save('glint-cam-preset',this.value);
+});
+
+function resetGroup(prefix){
+  ['enabled','rainbow','blink','music','eq','beat','charging','network','weather','cam60','cam-safe'].forEach(function(k){
+    localStorage.removeItem(prefix+'-'+k);
+  });
+  location.reload();
+}
+
+document.getElementById('reset-glint').addEventListener('click',function(){resetGroup('glint');});
+document.getElementById('reset-music').addEventListener('click',function(){resetGroup('glint');});
+document.getElementById('reset-charging').addEventListener('click',function(){resetGroup('glint');});
+document.getElementById('reset-weather').addEventListener('click',function(){resetGroup('glint');});
+document.getElementById('reset-cam').addEventListener('click',function(){resetGroup('glint');});
+document.getElementById('reset-appearance').addEventListener('click',function(){resetGroup('glint');});
+
+closeSettings.addEventListener('click',function(){settings.style.display='none';});
+
+/* Island tap to open settings */
+island.addEventListener('click',function(e){
+  e.stopPropagation();
+  settings.style.display='flex';
+});
+
+/* Settings links in bottom tweak list */
+document.querySelectorAll('.tweak-card').forEach(function(card){
+  card.addEventListener('click',function(){
+    settings.style.display='flex';
+  });
+});
+
+/* Demo buttons for testing */
+setTimeout(function(){
+  // Demo timer after 3 seconds
+  if(Math.random()>0.5){
+    showTimer(10);
+  }
+},3000);
+
+/* Splash hide */
+setTimeout(function(){
+  var s=document.getElementById('splash');
+  if(s)s.classList.add('hidden');
+},1800);
+
+})();
+</script>
 </body>
 </html>
