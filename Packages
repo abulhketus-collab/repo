@@ -1,77 +1,112 @@
-Package: com.cocxace.glint
-Name: Glint
-Version: 1.2.3
+Package: com.cocxace.actionbutton12
+Name: ActionButton12
+Depends: mobilesubstrate, firmware (>= 12.0)
+Version: 1.2.0
 Architecture: iphoneos-arm
-Description: Dynamic Island for iOS 12 notchless devices: notifications, charging, now-playing and torch pill with spring animations
+Description: Action Button HUD for iOS 12 by @cocxace
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+Filename: debs/com.cocxace.actionbutton12_1.2.0_iphoneos-arm.deb
+Size: 40154
+MD5sum: 8659430123cbdde15988d8351e1c247f
+SHA1: e7e9678fcad7d7615331f8cf7699b02bfb328cb3
+SHA256: 76c1696360684e2819d4b2f1ce389d90a8239bd57eacf6c62210be59242ec396
+SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
 
 Package: com.cocxace.aura
 Name: Aura
-Version: 1.2.3
+Version: 1.2.0
 Architecture: iphoneos-arm
 Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
-
-Package: com.cocxace.echo
-Name: Echo
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
-
-Package: com.cocxace.volt
-Name: Volt
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Battery percent color by level with configurable thresholds for iOS 12
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
-
-Package: com.cocxace.lumina
-Name: Lumina
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+Filename: debs/com.cocxace.aura_1.2.0_iphoneos-arm.deb
+Size: 14640
+MD5sum: c68911ca77279f52b2880043a7744c6e
+SHA1: 44e00643226e04554be32a973e0a44d06905819f
+SHA256: 5553592fdc29a367c7fb0ea2aed63cf975ae4d751b06d89ca7bff0b58e404a15
+SileoDepiction: depictions/com.cocxace.aura/sileo.json
 
 Package: com.cocxace.cam60enabler5s
 Name: Cam60Enabler5s
-Version: 1.0.3
+Version: 1.0.0
 Architecture: iphoneos-arm
 Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+Filename: debs/com.cocxace.cam60enabler5s_1.0.0_iphoneos-arm.deb
+Size: 10078
+MD5sum: afb08af74299a48f43a808c2ca7a500e
+SHA1: 677ebae88817799b0ab9a99a3bb50322fc8e4b24
+SHA256: 22d9fd69f56ab1ca3c35413cc0742a967329ad545715e67cbf430e26567e112f
+SileoDepiction: depictions/com.cocxace.cam60enabler5s/sileo.json
 
-Package: com.cocxace.actionbutton12
-Name: ActionButton12
-Version: 1.2.3
+Package: com.cocxace.echo
+Name: Echo
+Version: 1.2.0
 Architecture: iphoneos-arm
-Description: Action Button HUD for iOS 12: long-press Power / double-tap Home panel with torch, camera, voice memos, screenshot, Wi-Fi, Bluetooth
+Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
 Maintainer: cocxace <@cocxace>
 Author: cocxace <@cocxace>
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+Filename: debs/com.cocxace.echo_1.2.0_iphoneos-arm.deb
+Size: 7738
+MD5sum: 4a107d0f3b6a59e52070951d8fee006a
+SHA1: add14ce56bc8ef09ed37ddb6781fc55abfdd696e
+SHA256: dcf55a53ac95f66dd763f7005772b5fa38aee481d0df612607c2c74eb87b5f63
+SileoDepiction: depictions/com.cocxace.echo/sileo.json
+
+Package: com.cocxace.glint
+Name: Glint
+Version: 1.2.0
+Architecture: iphoneos-arm
+Description: Dynamic Island is back: notifications, charging pill, now playing and torch for iOS 12 notchless devices
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.glint_1.2.2_iphoneos-arm.deb
+Size: 37742
+MD5sum: aa8237653f1b55405547873c58a8da88
+SHA1: e595f5f6028665b963eb99ad0ab9f40b3b022c45
+SHA256: 396f2a967bfcce9e1b634ea6ab366b8f922fb19e8e2d3b91b06c395bcdfb95a8
+SileoDepiction: depictions/com.cocxace.glint/sileo.json
+
+Package: com.cocxace.lumina
+Name: Lumina
+Version: 1.2.0
+Architecture: iphoneos-arm
+Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.lumina_1.2.0_iphoneos-arm.deb
+Size: 11688
+MD5sum: 7b06db03cb30329e57c19635e9b51622
+SHA1: 757b88b0f3d6ab80fa9d960080ee84ee9657a372
+SHA256: 30c662cddc3f334169dc25d7f547eb2963700c5b18ec5d6d75777f10e581ff57
+SileoDepiction: depictions/com.cocxace.lumina/sileo.json
+
+Package: com.cocxace.volt
+Name: Volt
+Version: 1.2.0
+Architecture: iphoneos-arm
+Description: Battery percent color by level with configurable thresholds for iOS 12
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.volt_1.2.0_iphoneos-arm.deb
+Size: 9286
+MD5sum: 13980ea5b862e383c1b9940b02044b00
+SHA1: eaad91f26e0cb182c53b91f82c6449653d6c9290
+SHA256: 1679dc4664d77df1546f9ae4f8947a9e139cb409bf1eef4b49dbd545bc809254
+SileoDepiction: depictions/com.cocxace.volt/sileo.json
 
