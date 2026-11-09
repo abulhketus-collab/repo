@@ -2,11 +2,16 @@
 #import <spawn.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import <notify.h>
+#import <AudioToolbox/AudioServices.h>
 
 #define GLINT_PREFS_ID CFSTR("com.cocxace.glint")
 #define GLINT_RELOAD   "com.cocxace.glint/reload"
 
 @implementation GlintRootListController
+
+- (void)testAudioChimeBell {
+    AudioServicesPlaySystemSound(1007);
+}
 
 - (NSArray *)specifiers {
     if (!_specifiers) {

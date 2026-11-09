@@ -2,111 +2,110 @@ Package: com.cocxace.actionbutton12
 Name: ActionButton12
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Classic Action Button HUD with volume and brightness sliders for iOS 12
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Action Button HUD with interactive volume & brightness sliders and Settings pane
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb
-Size: 928
-MD5sum: 20eb383b2cce5e9431092cb2886ab9aa
-SHA1: 3381d702a9716210fd03bfad43c6dec22e059648
-SHA256: 3d4f99687450bb44a7c37c9d15c4b074bc3ad58d42a561107385661af80559b7
-SileoDepiction: depictions/com.cocxace.actionbutton12/sileo.json
+Size: 34098
+MD5sum: 3bae13a69f88c138180dd307307d74f0
+SHA1: 08281ccb0b33233caf2a38e141de92dc5af6250f
+SHA256: cf918cdc10ffa7fd85c8e73cf951b24905828dddc520a87b22d750bf9475ae9c
 
 Package: com.cocxace.aura
 Name: Aura
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Action Button HUD with 2x2 grid, Spring animations and customizable slots
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Action Button HUD with Apple spring physics (damping: 0.7), dark glass blur and Settings pane
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb
-Size: 11010
-MD5sum: ee93d0c7e63a9a89e9801074b2f635e9
-SHA1: 1714cd69b6932f02fa73e42bcdcae034bbd0624d
-SHA256: e835d97d108ce7f0ec124c79f53fd87320106020c938ab25f4a06ed386c9397b
-SileoDepiction: depictions/com.cocxace.aura/sileo.json
+Size: 15330
+MD5sum: ba66a38af4f38bffaf48f29781c1f83d
+SHA1: 93f77b0dd4a2a62d1c683c03c7bfce0c70945dbe
+SHA256: f7e4bcef46ff33b72dd56f7758caf6eb86fe622f86e2bb774d24eba1a759577a
 
 Package: com.cocxace.cam60enabler5s
-Name: Cam60Enabler5s
+Name: Camera60Enabler5s
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Enables 1080p 60 FPS recording with quality presets and crash safeguards
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: 1080p 60 FPS Camera Unlock for iPhone 5s with Settings Pane, Quality Presets & Crash Safeguard
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb
-Size: 934
-MD5sum: 43db47ad02031bf1759fae5e69f1cdc9
-SHA1: 8bd48bd55e3d7306c691e609e1b4aa16b3d72c23
-SHA256: ec0801105fe8d6a3f4062598922854ab419a7682911f4f9127858e4d139e0f71
-SileoDepiction: depictions/com.cocxace.cam60enabler5s/sileo.json
+Size: 15480
+MD5sum: fe511de1087e223fa829c827088ed153
+SHA1: cb8b3e27e67e6bade2d1f15b2aec6191b83ff385
+SHA256: 6b8aa973510252b5eaca88570694f027dc5486e2f768c96857ca40ce4c240935
 
 Package: com.cocxace.echo
 Name: Echo
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Custom carrier text in the status bar with instant live reload
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Custom carrier string in iOS 12 status bar with instant Darwin reload and Settings pane
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb
-Size: 4026
-MD5sum: 2c86efbb02a5e7efa09a4bae10f9f112
-SHA1: 22dc3146766c96b6ee03cb73a77b94e867ef308a
-SHA256: 36607dddaa55f9fa68cff345b2417bb0f649194b4c5c9f5b1552f71bc4a96583
-SileoDepiction: depictions/com.cocxace.echo/sileo.json
+Size: 7934
+MD5sum: dd38a78926080b1b14ec571bebc6d680
+SHA1: 9e60b165fd255231af2649fd579e42e3f7a67878
+SHA256: e6a4d2c7139baa5097a690a8a97df84508c15355d8fecd15a36ea2d1e1adf5dc
 
 Package: com.cocxace.glint
 Name: Glint
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Dynamic Island for iOS 12 with Timer, Music Equalizer, Live Activities and Settings
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Dynamic Island for iOS 12 with Timer, Music Equalizer, Rainbow Glow, Breathing Blink & Settings
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb
-Size: 33738
-MD5sum: 673fcf9418f7b8d0f86a75266aef2428
-SHA1: f65e1b6529dd84f3b417c9a85dceabe376ae9892
-SHA256: 4eb411edc53517ab1e60687c48320a9b7c1f38d79af6a432cee79040ddd0c73f
-SileoDepiction: depictions/com.cocxace.glint/sileo.json
+Size: 38956
+MD5sum: 53aca78ca97bec7e73c5a65c2696780c
+SHA1: 9a82097f22cd31304a73ebc0b5276391171aa57c
+SHA256: ae437f454d73ead20b22991797ab9ef8022188cd79d6ae6cfb9bfbc2836cc2b3
 
 Package: com.cocxace.lumina
 Name: Lumina
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Always-On Display with UltraLight clock typography and smooth lockscreen fading
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Always-On Display lockscreen clock with UltraLight typography and Settings pane
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb
-Size: 7994
-MD5sum: 04221ade040fb8b33263bb8e1acd1c3a
-SHA1: ebaa8004221a75463affe9c416231d37180db3bb
-SHA256: 77beac8aaf98d4f89de5c0d9d3a251bedb585f5d6c5fbdd568dcebe9d42ea182
-SileoDepiction: depictions/com.cocxace.lumina/sileo.json
+Size: 11986
+MD5sum: 0bdcf2d67ad3146dd4d649c1996c9e0e
+SHA1: c8a19430e2051ffc712ef41e680ee27aeb34b06c
+SHA256: b015e56db9cec89cea8cfd5268995cfe408ff7c187c475c953fb6f0c53a643e2
 
 Package: com.cocxace.volt
 Name: Volt
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Battery percentage with dynamic color transitions (Green, Yellow, Red)
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
+Description: Battery percent with dynamic color gradient transitions and Settings pane
+Maintainer: @cocxace
+Author: @cocxace
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb
-Size: 5498
-MD5sum: 4b02f221b7f7b54d9f0202e26308b152
-SHA1: 1ef8a31f8e0326cca9088daac2c155babf852d2a
-SHA256: 82226b93b80f7e686b64da2a9853ef02fdd2f5e883eecbcb5cb7544a41394bbe
-SileoDepiction: depictions/com.cocxace.volt/sileo.json
-
+Size: 9626
+MD5sum: 22de938a76790ed0cd7709d277ed4a80
+SHA1: 3c013e6d1604a6b4d35bd45cefe1f67ef49168e0
+SHA256: ad2bda9d18d779ca65df77ee80243294a7e0e29c42131b0d276c628a8c4b4211

@@ -76,6 +76,11 @@
 			<key>PostNotification</key><string>com.cocxace.glint/reload</string>
 		</dict>
 		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>🔔 Test Audio Chime Bell</string>
+			<key>action</key><string>testAudioChimeBell</string>
+		</dict>
+		<dict>
 			<key>cell</key><string>PSSwitchCell</string>
 			<key>default</key><true/>
 			<key>defaults</key><string>com.cocxace.glint</string>
