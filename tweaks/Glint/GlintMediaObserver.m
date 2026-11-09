@@ -22,19 +22,19 @@ static void _glintMediaCallback(void) {
 
 + (void)install {
     if (![GlintPrefs boolForKey:@"glintShowMusic" defaultValue:YES]) return;
-    // Р РµРіРёСЃС‚СЂРёСЂСѓРµРј MediaRemote СѓРІРµРґРѕРјР»РµРЅРёСЏ (fallback)
+    // Регистрируем MediaRemote уведомления (fallback)
     MRMediaRemoteRegisterForNowPlayingNotifications(_glintMediaCallback, dispatch_get_main_queue());
-    // РџРµСЂРІРёС‡РЅР°СЏ РїСЂРѕРІРµСЂРєР°
+    // Первичная проверка
     [[GlintStateManager sharedManager] updateMusicState];
 }
 
 + (void)uninstall {
-    // РџСѓР±Р»РёС‡РЅРѕРіРѕ API РѕС‚РїРёСЃРєРё Сѓ MediaRemote РЅР° iOS 12 РЅРµС‚
+    // Публичного API отписки у MediaRemote на iOS 12 нет
 }
 
 + (NSDictionary *)currentNowPlayingInfo {
     @try {
-        // РћРЎРќРћР’РќРћР™ РёСЃС‚РѕС‡РЅРёРє РЅР° iOS 12 вЂ” SBMediaController (РЅР°РґС‘Р¶РЅРµРµ MediaRemote)
+        // ОСНОВНОЙ источник на iOS 12 — SBMediaController (надёжнее MediaRemote)
         Class sbMediaCls = NSClassFromString(@"SBMediaController");
         if (sbMediaCls) {
             id media = [sbMediaCls performSelector:@selector(sharedInstance)];
@@ -56,22 +56,31 @@ static void _glintMediaCallback(void) {
                             bundleID = [app performSelector:@selector(bundleIdentifier)];
                         }
                     }
+                    // v1.2.3: artwork if SBMediaController exposes it (guarded)
+                    UIImage *artwork = nil;
+                    if ([media respondsToSelector:@selector(nowPlayingArtwork)]) {
+                        @try {
+                            id art = [media performSelector:@selector(nowPlayingArtwork)];
+                            if ([art isKindOfClass:[UIImage class]]) artwork = art;
+                        } @catch (NSException *e) { artwork = nil; }
+                    }
                     return @{
                         @"title": title ?: @"",
                         @"artist": artist ?: @"",
                         @"bundleID": bundleID ?: @"",
+                        @"artwork": artwork ?: [NSNull null],
                         @"source": @"SBMediaController"
                     };
                 }
             }
         }
 
-        // FALLBACK вЂ” MediaRemote
+        // FALLBACK — MediaRemote
         CFDictionaryRef info = MRMediaRemoteGetNowPlayingInfo();
         if (!info) return nil;
         NSDictionary *dict = (__bridge_transfer NSDictionary *)info;
 
-        // РљР»СЋС‡Рё MediaRemote вЂ” СЃС‚СЂРѕРєРѕРІС‹Рµ Р»РёС‚РµСЂР°Р»С‹, С‚.Рє. РєРѕРЅСЃС‚Р°РЅС‚С‹ РјРѕРіСѓС‚ РЅРµ СЃСѓС‰РµСЃС‚РІРѕРІР°С‚СЊ РІ iOS 12 Р·Р°РіРѕР»РѕРІРєР°С…
+        // Ключи MediaRemote — строковые литералы, т.к. константы могут не существовать в iOS 12 заголовках
         NSString *title = dict[@"title"] ?: dict[@(kMRMediaRemoteNowPlayingInfoTitle)];
         NSString *artist = dict[@"artist"] ?: dict[@(kMRMediaRemoteNowPlayingInfoArtist)];
         NSDictionary *client = dict[@"clientPropertiesData"] ?: dict[@(kMRMediaRemoteNowPlayingInfoClientPropertiesData)];
@@ -79,10 +88,19 @@ static void _glintMediaCallback(void) {
 
         if (!title || title.length == 0) return nil;
 
+        // v1.2.3: album artwork bytes → UIImage (Safari web audio тоже попадает сюда)
+        UIImage *artwork = nil;
+        NSData *artData = dict[@"artworkData"] ?: dict[@(kMRMediaRemoteNowPlayingInfoArtworkData)];
+        if ([artData isKindOfClass:[NSData class]] && artData.length > 0) {
+            UIImage *decoded = [UIImage imageWithData:artData];
+            if (decoded) artwork = decoded;
+        }
+
         return @{
             @"title": title,
             @"artist": artist ?: @"",
             @"bundleID": clientBundle ?: @"",
+            @"artwork": artwork ?: [NSNull null],
             @"source": @"MediaRemote"
         };
     } @catch (NSException *e) {
