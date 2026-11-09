@@ -1,4 +1,4 @@
-// Volt вЂ” battery percent color for iOS 12 (com.cocxace.volt)
+// Volt — battery percent color for iOS 12 (com.cocxace.volt)
 // v1.2.2: CFPreferences instead of plist re-reads, live reload via darwin,
 // division-by-zero guard at 0% / 100%, hex parse via NSScanner.
 
@@ -101,10 +101,57 @@ static float VoltPercent(void) {
 
 #pragma mark - Darwin reload
 
+// v1.2.3: preset expansion + reset handling (works from any pref bundle build)
+#define VOLT_APP CFSTR("com.cocxace.volt")
+
+static void VoltWriteDict(NSDictionary *defs) {
+    for (NSString *k in defs) {
+        CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], VOLT_APP);
+    }
+    CFPreferencesAppSynchronize(VOLT_APP);
+}
+
+static void VoltApplyPreset(void) {
+    @try {
+        NSInteger preset = -1;
+        CFTypeRef pr = CFPreferencesCopyAppValue(CFSTR("preset"), VOLT_APP);
+        if (pr) {
+            if (CFGetTypeID(pr) == CFNumberGetTypeID())
+                CFNumberGetValue((CFNumberRef)pr, kCFNumberNSIntegerType, &preset);
+            CFRelease(pr);
+        }
+        if (preset == 0) {          // Classic
+            VoltWriteDict(@{ @"highThreshold": @(40.0), @"lowThreshold": @(20.0),
+                             @"highColorChoice": @(0), @"midColorChoice": @(1), @"lowColorChoice": @(2) });
+        } else if (preset == 1) {   // Night Stealth
+            VoltWriteDict(@{ @"highThreshold": @(40.0), @"lowThreshold": @(20.0),
+                             @"highColorChoice": @(8), @"midColorChoice": @(6), @"lowColorChoice": @(2) });
+        }
+    } @catch (NSException *e) {}
+}
+
+static void VoltResetDefaults(void) {
+    @try {
+        VoltWriteDict(@{ @"highThreshold": @(40.0), @"lowThreshold": @(20.0),
+                         @"highColorChoice": @(0), @"midColorChoice": @(1), @"lowColorChoice": @(2),
+                         @"preset": @(-1), @"voltDebug": @(NO) });
+        CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, VOLT_APP);
+        CFPreferencesAppSynchronize(VOLT_APP);
+        NSLog(@"[CocxaceTweak] Volt defaults restored");
+    } @catch (NSException *e) {}
+}
+
 static void VoltDarwinCallback(CFNotificationCenterRef center, void *observer,
                                CFStringRef name, const void *object, CFDictionaryRef userInfo) {
     @try {
-        // CFPreferences cache is invalidated automatically on Darwin notification
+        VoltApplyPreset();
+        CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), VOLT_APP);
+        BOOL doReset = NO;
+        if (rst) {
+            if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+            CFRelease(rst);
+        }
+        if (doReset) VoltResetDefaults();
     } @catch (NSException *e) {}
 }
 
@@ -162,9 +209,9 @@ __attribute__((constructor)) static void initVolt() {
     }
 }
 
-// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+// Деструктор при выгрузке tweak (%c / respring)
 __attribute__((destructor)) static void cleanupVolt(void) {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Volt destructor вЂ” cleaning up");
+        NSLog(@"[CocxaceTweak] Volt destructor — cleaning up");
     }
 }
