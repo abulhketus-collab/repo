@@ -1,4 +1,4 @@
-// Echo вЂ” custom carrier text for iOS 12 (com.cocxace.echo)
+// Echo — custom carrier text for iOS 12 (com.cocxace.echo)
 // v1.1.0: CFPreferences instead of plist re-reads, live reload via darwin.
 
 #import <UIKit/UIKit.h>
@@ -16,17 +16,17 @@ static NSString *EchoCarrierText(void) {
         if (raw == NULL) {
             // Placed in case of an absent preference.
             CFPreferencesSetAppValue(CFSTR("enabled"), kCFBooleanTrue, app);
-            CFPreferencesSetAppValue(key, (__bridge CFStringRef) @"cocxace вљЎ", app);
+            CFPreferencesSetAppValue(key, (__bridge CFStringRef) @"cocxace ⚡", app);
             CFPreferencesAppSynchronize(app);
             raw = CFPreferencesCopyAppValue(key, app);
-            if (raw == NULL) return @"cocxace вљЎ";
+            if (raw == NULL) return @"cocxace ⚡";
         }
         NSString *text = (__bridge_transfer NSString *)raw;
-        if (text.length == 0) return @"cocxace вљЎ";
+        if (text.length == 0) return @"cocxace ⚡";
         return text;
     } @catch (NSException *e) {
         NSLog(@"[Tweak Error] Echo prefs: %@", e);
-        return @"cocxace вљЎ";
+        return @"cocxace ⚡";
     }
 }
 
@@ -64,6 +64,22 @@ static void hook_carrier(id self, SEL _cmd) {
 // Live reload when the user saves preferences.
 static void EchoDarwinCallback(CFNotificationCenterRef center, void *observer,
                                CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    // v1.2.3: reset handling (plist-only, works in any pref bundle build)
+    @try {
+        CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), CFSTR("com.cocxace.echo"));
+        BOOL doReset = NO;
+        if (rst) {
+            if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+            CFRelease(rst);
+        }
+        if (doReset) {
+            CFPreferencesSetAppValue(CFSTR("enabled"), kCFBooleanTrue, CFSTR("com.cocxace.echo"));
+            CFPreferencesSetAppValue(CFSTR("carrierText"), (__bridge CFStringRef)@"cocxace ⚡", CFSTR("com.cocxace.echo"));
+            CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, CFSTR("com.cocxace.echo"));
+            CFPreferencesAppSynchronize(CFSTR("com.cocxace.echo"));
+            NSLog(@"[CocxaceTweak] Echo defaults restored");
+        }
+    } @catch (NSException *e) {}
     // CFPreferences caches are invalidated; the next updateCarrierItems call is placed again.
     CFPreferencesAppSynchronize(CFSTR("com.cocxace.echo"));
 }
@@ -94,9 +110,9 @@ __attribute__((constructor)) static void initEcho() {
     }
 }
 
-// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РїСЂРё РІС‹РіСЂСѓР·РєРµ tweak (%c / respring)
+// Деструктор при выгрузке tweak (%c / respring)
 __attribute__((destructor)) static void cleanupEcho(void) {
     @autoreleasepool {
-        NSLog(@"[CocxaceTweak] Echo destructor вЂ” cleaning up");
+        NSLog(@"[CocxaceTweak] Echo destructor — cleaning up");
     }
 }
