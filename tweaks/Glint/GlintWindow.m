@@ -24,6 +24,7 @@ static const char *kGlintLog = "GlintWindow";
 @interface GlintWindow ()
 
 @property (nonatomic, strong) CAShapeLayer *pillLayer;
+@property (nonatomic, strong) CAShapeLayer *glowRing;
 @property (nonatomic, strong) UIVisualEffectView *backdropView;
 @property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -72,9 +73,23 @@ static GlintWindow *_sharedWindow = nil;
     _pillLayer.shadowOffset = CGSizeMake(0, 4);
     [self.layer addSublayer:_pillLayer];
 
+    // v1.2.3: colored glow ring around the island (rainbow / blink capable)
+    _glowRing = [CAShapeLayer layer];
+    _glowRing.fillColor = [UIColor clearColor].CGColor;
+    _glowRing.lineWidth = 2.0;
+    _glowRing.hidden = YES;
+    [self.layer insertSublayer:_glowRing above:_pillLayer];
+
     [self buildContent];
     [self addGestures];
     [self updatePosition];
+    [self applyGlowPrefs];
+    __weak typeof(self) weakSelf = self;
+    [GlintPrefs installDarwinReloadObserver:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf applyGlowPrefs];
+        });
+    }];
     self.isHidden = YES;
 }
 
@@ -113,7 +128,7 @@ static GlintWindow *_sharedWindow = nil;
     _minimalDotView.alpha = 0;
     [self addSubview:_minimalDotView];
 
-    // --- Р­РєРІР°Р»Р°Р№Р·РµСЂ (now-playing РІРѕР»РЅС‹) ---
+    // --- Эквалайзер (now-playing волны) ---
     NSMutableArray<CALayer *> *waves = [NSMutableArray array];
     CGFloat totalW = 0.f;
     for (NSInteger i = 0; i < kGlintWaveCount; i++) {
@@ -172,7 +187,7 @@ static GlintWindow *_sharedWindow = nil;
             return;
         }
 
-        // Р—Р°С‰РёС‚Р° РѕС‚ РїРѕРєР°Р·Р° РїРѕРІРµСЂС… РІС…РѕРґСЏС‰РµРіРѕ Р·РІРѕРЅРєР°
+        // Защита от показа поверх входящего звонка
         Class lsmCls = NSClassFromString(@"SBLockScreenManager");
         if (lsmCls) {
             id lsm = [lsmCls performSelector:@selector(sharedInstance)];
@@ -184,7 +199,7 @@ static GlintWindow *_sharedWindow = nil;
 
         GlintStateType type = state ? state.type : GlintStateNone;
 
-        // Р’СЃРµРіРґР° РѕР±РЅРѕРІР»СЏРµРј UI, РґР°Р¶Рµ РµСЃР»Рё С‚РёРї С‚РѕС‚ Р¶Рµ вЂ” РєРѕРЅС‚РµРЅС‚ РјРѕР¶РµС‚ Р±С‹С‚СЊ РґСЂСѓРіРёРј (РЅРѕРІРѕРµ СѓРІРµРґРѕРјР»РµРЅРёРµ)
+        // Всегда обновляем UI, даже если тип тот же — контент может быть другим (новое уведомление)
         self.currentType = type;
         self.isHidden = NO;
         [self populateWithState:state];
@@ -201,6 +216,7 @@ static GlintWindow *_sharedWindow = nil;
         _subtitleLabel.text = nil;
         _minimalDotView.hidden = YES;
         [self setWavesVisible:NO];
+        [self setBeatPulseActive:NO];
         return;
     }
 
@@ -210,6 +226,7 @@ static GlintWindow *_sharedWindow = nil;
 
     BOOL isMusic = (state.type == GlintStateMusic);
     [self setWavesVisible:isMusic];
+    [self setBeatPulseActive:isMusic && [GlintPrefs boolForKey:@"glintBeatPulse" defaultValue:YES]];
 
     if ([GlintPrefs stringForKey:@"glintPosition" defaultValue:@"top"] isEqualToString:@"minimal"]) {
         _minimalDotView.hidden = NO;
@@ -221,7 +238,7 @@ static GlintWindow *_sharedWindow = nil;
         _minimalDotView.hidden = YES;
     }
 
-    // Р Р°СЃРїРѕР»РѕР¶РёС‚СЊ РІРѕР»РЅС‹ СЃРїСЂР°РІР° РІ С‚РµРєСѓС‰РµРј bounds РѕРєРЅР°
+    // Расположить волны справа в текущем bounds окна
     if (isMusic && state.type == GlintStateMusic) {
         CGRect rect = self.bounds;
         CGFloat startX = rect.size.width - 40.f;
@@ -320,6 +337,135 @@ static GlintWindow *_sharedWindow = nil;
     _minimalDotView.frame = CGRectMake((rect.size.width - kGlintMinimalSize) / 2.f,
                                        (rect.size.height - kGlintMinimalSize) / 2.f,
                                        kGlintMinimalSize, kGlintMinimalSize);
+
+    // v1.2.3: shadow follows the pill shape (no square shadow artifacts)
+    _pillLayer.shadowPath = _pillLayer.path;
+    _backdropView.layer.cornerRadius = rect.size.height / 2.f;
+
+    if (_glowRing) {
+        CGRect ringRect = CGRectInset(rect, -2.f);
+        _glowRing.frame = ringRect;
+        _glowRing.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, ringRect.size.width, ringRect.size.height)
+                                                    cornerRadius:ringRect.size.height / 2.f].CGPath;
+        _glowRing.hidden = NO;
+    }
+}
+
+#pragma mark - v1.2.3 Glow engine (any color / rainbow / blink)
+
+// Re-applies all glow preferences. Called on init and on the Darwin
+// "com.cocxace.glint/reload" notification, so changes from Settings are live.
+- (void)applyGlowPrefs {
+    if (!_pillLayer) return;
+    @try {
+        BOOL enabled  = [GlintPrefs boolForKey:@"glintGlowEnabled" defaultValue:YES];
+        CGFloat strength = [GlintPrefs floatForKey:@"glintGlowStrength" defaultValue:55.f] / 100.f; // 0..1
+        CGFloat glowRadius = [GlintPrefs floatForKey:@"glintGlowRadius" defaultValue:14.f];
+        BOOL rainbow   = [GlintPrefs boolForKey:@"glintGlowRainbow" defaultValue:NO];
+        BOOL blink     = [GlintPrefs boolForKey:@"glintGlowBlink" defaultValue:NO];
+        CGFloat speed  = [GlintPrefs floatForKey:@"glintGlowSpeed" defaultValue:5.f];   // 1..10
+        CGFloat hue1   = [GlintPrefs floatForKey:@"glintGlowHue"  defaultValue:190.f];  // 0..360
+        CGFloat hue2   = [GlintPrefs floatForKey:@"glintGlowHue2" defaultValue:258.f];  // 0..360
+
+        // Always start from a clean slate so old animations never linger
+        [_pillLayer removeAnimationForKey:@"glintGlowRainbow"];
+        [_pillLayer removeAnimationForKey:@"glintGlowBlink"];
+        [_glowRing removeAnimationForKey:@"glintGlowRainbow"];
+        [_glowRing removeAnimationForKey:@"glintGlowBlink"];
+
+        if (!enabled) {
+            _pillLayer.shadowColor  = [UIColor blackColor].CGColor;
+            _pillLayer.shadowOpacity = 0.35f;
+            _pillLayer.shadowRadius  = 6.f;
+            _pillLayer.shadowOffset  = CGSizeMake(0, 4);
+            _glowRing.hidden = YES;
+            return;
+        }
+
+        UIColor *c1 = [UIColor colorWithHue:hue1 / 360.f saturation:0.85f brightness:1.f alpha:1.f];
+        UIColor *c2 = [UIColor colorWithHue:hue2 / 360.f saturation:0.85f brightness:1.f alpha:1.f];
+
+        CGFloat baseOpacity = 0.25f + 0.55f * strength;
+
+        _pillLayer.shadowColor   = c1.CGColor;
+        _pillLayer.shadowOpacity = baseOpacity;
+        _pillLayer.shadowRadius  = glowRadius;
+        _pillLayer.shadowOffset  = CGSizeZero;
+
+        _glowRing.strokeColor = c2.CGColor;
+        _glowRing.lineWidth   = 1.5f + 1.5f * strength;
+        if (self.bounds.size.width > 0) _glowRing.hidden = NO;
+
+        if (rainbow) {
+            // 13-stop hue wheel on the shadow color + ring stroke color.
+            // Duration from the speed slider: 1 => 13s, 10 => 4s.
+            NSMutableArray *stops = [NSMutableArray arrayWithCapacity:13];
+            for (NSInteger i = 0; i <= 12; i++) {
+                UIColor *c = [UIColor colorWithHue:(i % 12) / 12.f saturation:0.9f brightness:1.f alpha:1.f];
+                [stops addObject:(id)c.CGColor];
+            }
+            CGFloat dur = MAX(2.0, 14.0 - speed);
+            CAKeyframeAnimation *shadow = [CAKeyframeAnimation animationWithKeyPath:@"shadowColor"];
+            shadow.values = stops;
+            shadow.duration = dur;
+            shadow.repeatCount = HUGE_VALF;
+            shadow.calculationMode = kCAAnimationLinear;
+            [_pillLayer addAnimation:shadow forKey:@"glintGlowRainbow"];
+
+            CAKeyframeAnimation *ring = [CAKeyframeAnimation animationWithKeyPath:@"strokeColor"];
+            ring.values = stops;
+            ring.duration = dur;
+            ring.repeatCount = HUGE_VALF;
+            ring.calculationMode = kCAAnimationLinear;
+            [_glowRing addAnimation:ring forKey:@"glintGlowRainbow"];
+        }
+
+        if (blink) {
+            // "1 second on / 1 second off": discrete 2s cycle, no fades
+            CAKeyframeAnimation *shadowBlink = [CAKeyframeAnimation animationWithKeyPath:@"shadowOpacity"];
+            shadowBlink.values = @[ @(baseOpacity), @(0.0f) ];
+            shadowBlink.keyTimes = @[ @0.0f, @0.5f ];
+            shadowBlink.duration = 2.0;
+            shadowBlink.repeatCount = HUGE_VALF;
+            shadowBlink.calculationMode = kCAAnimationDiscrete;
+            [_pillLayer addAnimation:shadowBlink forKey:@"glintGlowBlink"];
+
+            CAKeyframeAnimation *ringBlink = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+            ringBlink.values = @[ @1.0f, @(0.0f) ];
+            ringBlink.keyTimes = @[ @0.0f, @0.5f ];
+            ringBlink.duration = 2.0;
+            ringBlink.repeatCount = HUGE_VALF;
+            ringBlink.calculationMode = kCAAnimationDiscrete;
+            [_glowRing addAnimation:ringBlink forKey:@"glintGlowBlink"];
+        }
+    } @catch (NSException *e) {
+        // Never risk Safe Mode over cosmetics
+        GlintWinLog(@"applyGlowPrefs exception: %@", e);
+    }
+}
+
+#pragma mark - v1.2.3 Beat pulse
+
+// Cosmetic beat pulse while music is visible: a subtle 0.5s scale loop
+// on the pill + backdrop. Real FFT taps are not available in SpringBoard,
+// so this is the smooth, safe approximation.
+- (void)setBeatPulseActive:(BOOL)active {
+    NSArray<CALayer *> *targets = @[_pillLayer, _backdropView.layer];
+    for (CALayer *l in targets) {
+        if (!l) continue;
+        if (active) {
+            if ([l animationForKey:@"glintBeat"]) continue;
+            CAKeyframeAnimation *beat = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+            beat.values  = @[ @1.0f, @1.022f, @1.0f ];
+            beat.keyTimes = @[ @0.0f, @0.5f, @1.0f ];
+            beat.duration = 0.5f;
+            beat.repeatCount = HUGE_VALF;
+            beat.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            [l addAnimation:beat forKey:@"glintBeat"];
+        } else {
+            [l removeAnimationForKey:@"glintBeat"];
+        }
+    }
 }
 
 - (void)scheduleAutoCollapse {
@@ -354,11 +500,17 @@ static GlintWindow *_sharedWindow = nil;
     GlintWinLog(@"destroy");
     [self autoCollapseTimerInvalidate];
     [self setWavesVisible:NO];
+    [self setBeatPulseActive:NO];
     _waveLayers = nil;
+    [_pillLayer removeAnimationForKey:@"glintGlowRainbow"];
+    [_pillLayer removeAnimationForKey:@"glintGlowBlink"];
+    [_glowRing removeAnimationForKey:@"glintGlowRainbow"];
+    [_glowRing removeAnimationForKey:@"glintGlowBlink"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     for (UIGestureRecognizer *g in self.gestureRecognizers) [self removeGestureRecognizer:g];
 
     _pillLayer = nil;
+    _glowRing = nil;
     _backdropView = nil;
     _iconView = nil;
     _titleLabel = nil;
