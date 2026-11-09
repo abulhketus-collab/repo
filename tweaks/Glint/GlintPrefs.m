@@ -3,12 +3,14 @@
 #import <os/log.h>
 
 #define GLINT_APP_ID CFSTR("com.cocxace.glint")
-#define GLINT_PREFS_VERSION 2
+#define GLINT_PREFS_VERSION 3
 #define GLINT_RELOAD_NOTIFICATION CFSTR("com.cocxace.glint/reload")
 
 static const char *kGlintLog = "Glint";
 
-#define GlintLog(fmt, ...)     do { if ([GlintPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Glint] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+#define GlintLog(fmt, ...) \
+    do { if ([GlintPrefs sharedPrefs].debugEnabled) \
+        os_log(OS_LOG_DEFAULT, "[Glint] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
 
 @implementation GlintPrefs {
     BOOL _debugEnabled;
@@ -48,6 +50,18 @@ static const char *kGlintLog = "Glint";
     [defs setObject:@(YES) forKey:@"glintShowCharging"];
     [defs setObject:@(YES) forKey:@"glintShowMusic"];
     [defs setObject:@(YES) forKey:@"glintShowTorch"];
+    // v1.2.3: timer, artwork, beat pulse, glow engine
+    [defs setObject:@(YES) forKey:@"glintShowTimer"];
+    [defs setObject:@(YES) forKey:@"glintShowArtwork"];
+    [defs setObject:@(YES) forKey:@"glintBeatPulse"];
+    [defs setObject:@(YES) forKey:@"glintGlowEnabled"];
+    [defs setObject:@(55.f) forKey:@"glintGlowStrength"];
+    [defs setObject:@(14.f) forKey:@"glintGlowRadius"];
+    [defs setObject:@(5.f)  forKey:@"glintGlowSpeed"];
+    [defs setObject:@(190.f) forKey:@"glintGlowHue"];
+    [defs setObject:@(258.f) forKey:@"glintGlowHue2"];
+    [defs setObject:@(NO) forKey:@"glintGlowRainbow"];
+    [defs setObject:@(NO) forKey:@"glintGlowBlink"];
     [defs setObject:@"top" forKey:@"glintPosition"];
     [defs setObject:@(16.f) forKey:@"glintCornerRadius"];
     [defs setObject:@(140.f) forKey:@"glintExpandedHeight"];
