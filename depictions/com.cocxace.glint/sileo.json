@@ -4,7 +4,7 @@
   "tintColor": "#007AFF",
   "tabs": [
     {
-      "tabname": "Описание",
+      "tabname": "Description",
       "views": [
         {
           "class": "DepictionHeaderView",
@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.2.1 by @cocxace"
+          "title": "Version 1.2.3 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Glint 1.2.1 — Dynamic Island как на iPhone 14 Pro.**\n\nТеперь по-настоящему работает:\n\n* чёрная пилюля лежит в фоне всегда; тап → приложение источника уведомления\n* долгий тап → полная карточка с деталями;\n* уведомления: раскрытие через BBServer, иконка/глиф остаются в левом слоте;\n* зарядка: зелёное раскрытие + постоянный ⚡-слот при подключении;\n* музыка: анимированные «эквалайзер-бары» в правом слоте, трек/артист в карточке;\n* фонарик: индикатор через KVO на torchMode;\n* запуск приложений: SBUIController → LSApplicationWorkspace → URL-схема (три пути, надёжно).\n\n**Настройки** (Settings → Glint):\n\n* Размер пилюли: Small / Normal / Large (без респринга)\n* Тумблеры: уведомления / зарядка / музыка / фонарик / приветствие\n\nКомпитация: iPhone 5s (A7), iOS 12.0–12.5.8, arm64.\n\nv1.2.1 исправляет: приём касаний плашки, запуск приложений при тапе, инициализацию если applicationDidFinishLaunching: недоступен."
+          "markdown": "**Glint 1.2.3 — Dynamic Island for iOS 12.5.8 (iPhone 5s)**\n\n* Real-time countdown timer MM:SS beside the status clock with alert chime\n* Safari audio integration with live 5-band equalizer & beat-reactive pulsing\n* Customizable edge lighting: solid color, rainbow cycle, or 1s breathing blink\n* Charging indicator with green pulse and fast battery percentage readout\n* 100% Main Thread UI & lazy window init (Zero Safe Mode guarantee)\n* Settings app integration (Settings > Glint) with instant apply without respring\n* Strict Pure GNU Tar format (resolves corrupted filesystem tarfile error)\n\n**Compatibility:** iPhone 5s (Apple A7 arm64), iOS 12.0 – 12.5.8.\n**Architecture:** Rootful Sileo / Zebra / Cydia APT."
         },
         {
           "class": "DepictionSpacerView",
@@ -24,7 +24,7 @@
         },
         {
           "class": "DepictionTableButtonView",
-          "title": "Разработчик: @cocxace",
+          "title": "Developer: @cocxace (GitHub)",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
         }

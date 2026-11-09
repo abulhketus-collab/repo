@@ -4,7 +4,7 @@
   "tintColor": "#007AFF",
   "tabs": [
     {
-      "tabname": "Описание",
+      "tabname": "Description",
       "views": [
         {
           "class": "DepictionHeaderView",
@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.2.0 by @cocxace"
+          "title": "Version 1.2.3 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Volt 1.2.0 — цвет процентов батареи.**\n\nЗелёный / жёлтый / красный по уровню заряда.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Volt\n* выбор цвета для каждой зоны (HIGH/MID/LOW) из 9 вариантов;\n* пороги HIGH/MID/LOW настраиваются в списках (30–50% / 10–25%);\n* legacy hex-ключи `highColor`/`midColor`/`lowColor` (`RRGGBB`) тоже работают;\n* живой reload по `com.cocxace.volt/reload`"
+          "markdown": "**Volt 1.2.3 — Color-Gradient Battery Percentage**\n\n* Adds clean numerical battery percentage to iOS 12 status bar\n* Dynamic color tinting: Green (>40%) > Yellow (20-40%) > Red (<20%)\n* Safe Substrate hooks on UIStatusBarBatteryPercentItemView\n* Settings bundle in Settings > Volt\n* Strict Pure GNU Tar format (resolves corrupted filesystem tarfile error)\n\n**Compatibility:** iPhone 5s (Apple A7 arm64), iOS 12.0 – 12.5.8.\n**Architecture:** Rootful Sileo / Zebra / Cydia APT."
         },
         {
           "class": "DepictionSpacerView",
@@ -24,7 +24,7 @@
         },
         {
           "class": "DepictionTableButtonView",
-          "title": "Разработчик: @cocxace",
+          "title": "Developer: @cocxace (GitHub)",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
         }

@@ -1,23 +1,28 @@
 <div align="center">
 
-# ⚡ cocxace's Jailbreak Suite
-### Элитные 60 FPS твики для iOS 12.0 — 12.5.8 (iPhone 5s / A7 chip) & Официальный APT Репозиторий
+# ⚡ @cocxace Jailbreak Repository
+### Premium 60 FPS Tweaks for iOS 12.0 — 12.5.8 (iPhone 5s / Apple A7)
 
-[![Author](https://img.shields.io/badge/Developer-@cocxace-blue.svg?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/abulhketus-collab)
+[![Developer](https://img.shields.io/badge/Developer-@cocxace-007AFF.svg?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/abulhketus-collab)
 [![iOS](https://img.shields.io/badge/iOS-12.0%20--%2012.5.8-34C759.svg?style=for-the-badge)](https://apple.com)
 [![Architecture](https://img.shields.io/badge/Arch-arm64%20(A7)-FF9500.svg?style=for-the-badge)](https://apple.com)
 [![Sileo](https://img.shields.io/badge/Sileo-Ready-5856D6.svg?style=for-the-badge&logo=sileo&logoColor=white)](https://abulhketus-collab.github.io/repo/)
-[![Zebra](https://img.shields.io/badge/Zebra-Supported-black.svg?style=for-the-badge)](https://abulhketus-collab.github.io/repo/)
+[![Zebra](https://img.shields.io/badge/Zebra-Supported-000000.svg?style=for-the-badge)](https://abulhketus-collab.github.io/repo/)
 
 <br>
 
 <p align="center">
   <a href="sileo://source/https://abulhketus-collab.github.io/repo/">
-    <img src="https://img.shields.io/badge/👉%20ДОБАВИТЬ%20В%20SILEO-007AFF?style=for-the-badge&logo=apple&logoColor=white" height="46">
+    <img src="https://img.shields.io/badge/👉%20ADD%20TO%20SILEO-007AFF?style=for-the-badge&logo=apple&logoColor=white" height="46">
   </a>
 </p>
 
-**Официальный APT-адрес репозитория:**
+**Official APT Repository URL:**
+```text
+https://abulhketus-collab.github.io/repo/
+```
+
+**Live Showcase & Interactive Simulator:**
 ```text
 https://abulhketus-collab.github.io/repo/
 ```
@@ -26,38 +31,48 @@ https://abulhketus-collab.github.io/repo/
 
 ---
 
-## 📱 Коллекция проверенных твиков (@cocxace Suite)
+## 📱 Verified Suite (@cocxace v1.2.3 Ecosystem)
 
-| Твик | Версия | Описание и возможности | Статус |
+| Tweak | Version | Description & Capabilities | Safe Mode Status |
 | :--- | :---: | :--- | :---: |
-| **🔘 ActionButton12** | `1.0.0` | **Action Button HUD с iPhone 15 Pro**: сетка 2x2, фонарик, камера, диктофон, скриншот и плавные ползунки громкости/яркости. 100% безопасная ленивая инициализация. | `🟢 Stable` |
-| **🏝️ Glint** | `1.0.0` | **Fake Dynamic Island**: стильная овальная плашка по центру вверху. Пружинная анимация расширения при уведомлениях с таймером сжатия. | `🟢 Stable` |
-| **🌙 Lumina** | `1.0.0` | **Always-On Display**: мягкое затемнение экрана блокировки с пульсирующими часами сверхтонкого начертания UltraLight. | `🟢 Stable` |
-| **📶 Echo** | `1.0.0` | **Custom Carrier**: кастомизация имени оператора сотовой связи в статус-баре в реальном времени. | `🟢 Stable` |
-| **🔋 Volt** | `1.0.0` | **Battery Tint**: цветной процент заряда батареи (зелёный/жёлтый/красный) без мерцания и перегрузки. | `🟢 Stable` |
+| **🏝️ Glint** | `1.2.3` | **Dynamic Island for iOS 12**: Countdown timer MM:SS beside the status clock, Safari audio visualizer with 5-band equalizer & beat pulse, customizable edge lighting (solid, rainbow cycle, 1s breathing blink), fast charging indicator. | `🟢 100% Safe` |
+| **📷 Camera60Enabler5s** | `1.2.3` | **1080p 60 FPS Camera Unlock**: Enables silky smooth 60 FPS video recording on iPhone 5s stock Camera app. Adds configuration menu in iOS Settings with quality presets. | `🟢 100% Safe` |
+| **✨ Aura** | `1.2.3` | **Spring Physics Action Button HUD**: Apple-style floating action menu with fluid spring damping (0.7), dark glass blur, 2x2 shortcut grid, and direct app workspace launch via SBUIController. | `🟢 100% Safe` |
+| **🔘 ActionButton12** | `1.2.3` | **Action Button HUD + Sliders**: Triggers on long-press Power (0.6s) or Home. Interactive volume & brightness sliders, flashlight, camera, voice memos, screenshot. | `🟢 100% Safe` |
+| **🌙 Lumina** | `1.2.3` | **Always-On Display**: Ambient lockscreen clock with UltraLight typography and smooth alpha cross-dissolve transition. Sub-0.1% CPU consumption. | `🟢 100% Safe` |
+| **📡 Echo** | `1.2.3` | **Custom Status Bar Carrier**: Replaces the operator label in the iOS 12 status bar with custom text or emoji. Instant apply without respring. | `🟢 100% Safe` |
+| **🔋 Volt** | `1.2.3` | **Color-Graded Battery Percentage**: Clean numerical percent readout in status bar with dynamic color tinting (Green > Yellow > Red). | `🟢 100% Safe` |
 
 ---
 
-## 🌟 Особенности архитектуры
+## 🛠️ Architecture & Packaging Safeguards
 
-- ⚡ **Ленивая инициализация (Zero Boot Impact):** Никаких `UIWindow` и обращений к `[UIScreen mainScreen]` до старта SpringBoard. Телефон загружается мгновенно, без зависаний.
-- 🛡️ **Формат архива GNU (No PAX):** Архивы `.deb` собраны со строгим форматом `tar --format=gnu` без заголовков PAX, что гарантирует 100% совместимость со старым `dpkg` на iOS 12.5.8.
-- 📳 **Тактильный отклик:** Использование системного звукового отклика `AudioServicesPlaySystemSound(1519)` для iPhone 5s.
+1. **Pure GNU Tar Format (0 PAX Headers):**
+   - Packages are compiled with strict `tarfile.GNU_FORMAT` (`--format=gnu`).
+   - Completely prevents the legacy iOS 12 dpkg error: `"corrupted filesystem tarfile in package archive: unsupported PAX tar header type 'x'"`.
+2. **Zero Safe-Mode UI Architecture:**
+   - All UI instantiations (`UIWindow`, `UIView`, animations) are 100% lazy and bound to `dispatch_async(dispatch_get_main_queue(), ...)`.
+   - Zero UI work inside dyld constructors (`__attribute__((constructor))`), preventing SpringBoard watchdog panics.
+   - All Substrate hooks are shielded inside `@try { ... } @catch (...)` blocks.
 
 ---
 
-## 🚀 Как добавить репозиторий на устройстве
+## 📥 How to Add to Package Managers
 
-1. Откройте эту страницу в Safari на вашем iPhone:  
-   👉 **[https://abulhketus-collab.github.io/repo/](https://abulhketus-collab.github.io/repo/)**
-2. Нажмите большую светящуюся кнопку **«ДОБАВИТЬ В SILEO»**.
-3. Либо перейдите в Sileo ➔ **«Источники»** ➔ **«+»** ➔ добавьте адрес:
-   ```text
-   https://abulhketus-collab.github.io/repo/
-   ```
+### Sileo
+Tap the **"Add to Sileo"** button on the website, or in Sileo go to **Sources → + → paste `https://abulhketus-collab.github.io/repo/`**.
+
+### Zebra
+Go to **Sources → Edit → Add → paste `https://abulhketus-collab.github.io/repo/`**.
+
+### Cydia
+Go to **Sources → Edit → Add → paste `https://abulhketus-collab.github.io/repo/`**.
+
+### Manual Installation (Filza)
+Download any `.deb` file from the `debs/` directory, open in **Filza File Manager**, tap **Install**, and tap **Respring**.
 
 ---
 
 <div align="center">
-  <sub>Разработано специально для классических устройств Apple. Made with ❤️ by <b>@cocxace</b></sub>
+  <sub>Handcrafted with care for classic iOS devices. Developed by @cocxace.</sub>
 </div>

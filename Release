@@ -1,23 +1,23 @@
-Origin: cocxace's Repo
-Label: cocxace's Repo
+Origin: cocxace's Suite
+Label: cocxace's Suite
 Suite: stable
-Version: 1.0
+Version: 1.2.3
 Codename: ios
 Architectures: iphoneos-arm iphoneos-arm64
 Components: main
-Description: Official tweak repository by @cocxace for iOS 12+
+Description: Official Suite v1.2.3 for iOS 12.5.8 (iPhone 5s) by @cocxace
 MD5Sum:
- e33c410c547030f6728d080f4942bbf0 4147 Packages
- e0d75609431fbfb960e4a87f020207c0 1478 Packages.gz
- 41e6b98e3cc69c23c5b285e7985f6529 1580 Packages.bz2
- 5074aa0744a432f1670a8fb29b97350b 1508 Packages.xz
+ fe36afcfb89253c3eb72f1908bb80625 4067 Packages
+ aecd01226ad1df26e0e06f0f8f80dca8 1417 Packages.gz
+ d933ab3c21733f7ba0b476117f4f03da 1553 Packages.bz2
+ c52ed369720ad7dfba1dae9319242291 1452 Packages.xz
 SHA1:
- 79793167f449eb25967a92f81fdab37f3b5b5aaf 4147 Packages
- a756c5ee3aecdfddbf9dffcc5e4ec2a5388b1e83 1478 Packages.gz
- 8129eaa517ce53e2a8670c9ac10e587d3115bab3 1580 Packages.bz2
- b9d0be3ef7094ebdc567d115a7c732da49cd96ac 1508 Packages.xz
+ 2f1f0dc552106d8ea63e66d40acc871a5d220522 4067 Packages
+ 294d4b7c404b2eaf7fe94a0fffd7c73d4f8de1cb 1417 Packages.gz
+ 61ab2842b953e5f1d08869db02054c48b5b05579 1553 Packages.bz2
+ 385b1bda600d23edefed809d0e5b71488fa66444 1452 Packages.xz
 SHA256:
- ffc0548e983080d73585977ae1e6d87e1f00cf5b7984a6d73db1a7e27e2f08f3 4147 Packages
- e10354d68ed0d7f478b2d4e9b180f81f5c1eb57808af3cea71d219c23ffc4100 1478 Packages.gz
- a658efefb08af5208c0b12dca0960ee8a32a12d9d797b5860b2a6f9a34183252 1580 Packages.bz2
- 673cc343b1577504861ace588e87b2a3ca613248ec553c772a0e7cee8c4e57e6 1508 Packages.xz
+ 6ec4c9ecff0b6e8570b7987b48cb4554d45abf52d69521768f2e8c4477045faa 4067 Packages
+ 510623f70c1d47efa767030c1c8a1d7856f309e0c9188f0062cb581ef058df88 1417 Packages.gz
+ 51ebf69c77abf358e1a4c6e1de731c0caeefb52f4b825d5d3f4100656ba0041f 1553 Packages.bz2
+ a6d777a4eb66adada219d8ee54feda13a281fefa3563a71e9c02c1b14a0d4505 1452 Packages.xz

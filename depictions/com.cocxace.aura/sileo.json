@@ -4,7 +4,7 @@
   "tintColor": "#007AFF",
   "tabs": [
     {
-      "tabname": "Описание",
+      "tabname": "Description",
       "views": [
         {
           "class": "DepictionHeaderView",
@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.2.0 by @cocxace"
+          "title": "Version 1.2.3 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Aura 1.2.0 — Action Button HUD.**\n\nДолгий тап боковой кнопки открывает стеклянную панель: 🔦 Фонарик, 📷 Камера, 🎙 Диктофон, 📸 Скриншот.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Aura (enabled, вибрация haptics)\n* запуск приложений через SBUIController (надёжнее openURL)\n* адаптивная разметка под любой экран, spring-анимация"
+          "markdown": "**Aura 1.2.3 — Spring Physics Action Button HUD**\n\n* Apple-style Action Button with spring physics (damping: 0.7)\n* Dark glass blur (UIBlurEffectStyleDark) with 2x2 shortcut grid\n* Direct app launch via SBUIController without openURL delays\n* Zero dyld load-time execution (no bootloops or Watchdog panics)\n* Strict Pure GNU Tar format (resolves corrupted filesystem tarfile error)\n\n**Compatibility:** iPhone 5s (Apple A7 arm64), iOS 12.0 – 12.5.8.\n**Architecture:** Rootful Sileo / Zebra / Cydia APT."
         },
         {
           "class": "DepictionSpacerView",
@@ -24,7 +24,7 @@
         },
         {
           "class": "DepictionTableButtonView",
-          "title": "Разработчик: @cocxace",
+          "title": "Developer: @cocxace (GitHub)",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
         }

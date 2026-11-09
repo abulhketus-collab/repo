@@ -4,7 +4,7 @@
   "tintColor": "#007AFF",
   "tabs": [
     {
-      "tabname": "Описание",
+      "tabname": "Description",
       "views": [
         {
           "class": "DepictionHeaderView",
@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.2.0 by @cocxace"
+          "title": "Version 1.2.3 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**Lumina 1.2.0 — Always-On-Display стиль локскрина.**\n\nЗатемнённый оверлей с живыми часами. Выглядит как AOD на iPhone 5s.\n\nВ 1.2.0:\n\n* панель настроек: Настройки → Lumina (enabled, дата, прозрачность)\n* фикс «осиротевшего» оверлея: пересоединяется к текущему локскрину\n* прозрачность пресетами 50/65/80/90% (`opacityChoice`), legacy `opacity` работает\n* адаптивные размеры под любой экран, таймер в NSRunLoopCommonModes"
+          "markdown": "**Lumina 1.2.3 — Always-On Display Lockscreen**\n\n* UltraLight typography ambient clock on locked display\n* Smooth alpha cross-dissolve animation into stock lockscreen\n* Sub-0.1% CPU consumption to maximize iPhone 5s battery life\n* PreferenceLoader settings bundle in Settings > Lumina\n* Strict Pure GNU Tar format (resolves corrupted filesystem tarfile error)\n\n**Compatibility:** iPhone 5s (Apple A7 arm64), iOS 12.0 – 12.5.8.\n**Architecture:** Rootful Sileo / Zebra / Cydia APT."
         },
         {
           "class": "DepictionSpacerView",
@@ -24,7 +24,7 @@
         },
         {
           "class": "DepictionTableButtonView",
-          "title": "Разработчик: @cocxace",
+          "title": "Developer: @cocxace (GitHub)",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
         }

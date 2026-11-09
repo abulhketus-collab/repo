@@ -4,7 +4,7 @@
   "tintColor": "#007AFF",
   "tabs": [
     {
-      "tabname": "Описание",
+      "tabname": "Description",
       "views": [
         {
           "class": "DepictionHeaderView",
@@ -12,11 +12,11 @@
         },
         {
           "class": "DepictionSubheaderView",
-          "title": "Версия 1.2.0 by @cocxace"
+          "title": "Version 1.2.3 by @cocxace"
         },
         {
           "class": "DepictionMarkdownView",
-          "markdown": "**ActionButton12 1.2.0 — Action Button HUD для iOS 12.**\n\nДолгий тап Power открывает стеклянную панель: 🔦 Фонарик, 📷 Камера, 🎙 Диктофон, 📸 Скриншот + слайдеры яркости/громкости.\n\nВ 1.2.0:\n\n* **сейф-мод фикс**: каждый хук проверяется через `class_getInstanceMethod`, конструктор обёрнут в @try/@catch; лишние хуки `_hardwareButtonPressed:` и SBUIController удалены;\n* дебаунс 0.35 с на toggleHUD (двойные хуки больше не два раза переключают);\n* настройки теперь реально видны: добавлен PreferenceLoader-запись `Library/PreferenceLoader/Preferences/ActionButton12.plist` (в версии 1.0.0 её не было — поэтому панели не было в Настройках).\nСтавится через Sileo/Zebra/Cydia из этого репозитория; после установки дайте респринг (или дождитесь эффекта)."
+          "markdown": "**ActionButton12 1.2.3 — Action Button HUD with Sliders**\n\n* Long-press Power (0.6s) or Home button to trigger Action HUD\n* Interactive real-time volume and screen brightness sliders\n* Quick toggles: Flashlight, Camera, Voice Memos, Screenshot\n* 100% lazy UIWindow instantiation bound to Main Queue\n* Strict Pure GNU Tar format (resolves corrupted filesystem tarfile error)\n\n**Compatibility:** iPhone 5s (Apple A7 arm64), iOS 12.0 – 12.5.8.\n**Architecture:** Rootful Sileo / Zebra / Cydia APT."
         },
         {
           "class": "DepictionSpacerView",
@@ -24,7 +24,7 @@
         },
         {
           "class": "DepictionTableButtonView",
-          "title": "Разработчик: @cocxace",
+          "title": "Developer: @cocxace (GitHub)",
           "action": "https://github.com/abulhketus-collab",
           "openExternal": true
         }
