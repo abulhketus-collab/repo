@@ -8,7 +8,9 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Always-On Display</string>
+			<string>Lumina — Always-On Display</string>
+			<key>footerText</key>
+			<string>With the tweak: a dimmed overlay with a live clock appears on the lock screen and closes cleanly on unlock. Without it: the stock black lock screen.</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -22,7 +24,43 @@
 			<key>key</key>
 			<string>enabled</string>
 			<key>label</key>
-			<string>Включить затемнение локскрина</string>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Preset</string>
+			<key>footerText</key>
+			<string>Classic AOD — 90% dim with date. Deep Dim — 97% dim, clock only.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>-1</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>preset</string>
+			<key>label</key>
+			<string>Display Preset</string>
+			<key>validTitles</key>
+			<array>
+				<string>Classic AOD</string>
+				<string>Deep Dim</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>-1</integer>
+			</array>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -38,7 +76,7 @@
 			<key>key</key>
 			<string>opacityChoice</string>
 			<key>label</key>
-			<string>Прозрачность оверлея</string>
+			<string>Overlay Dim Level</string>
 			<key>validTitles</key>
 			<array>
 				<string>50%</string>
@@ -66,7 +104,29 @@
 			<key>key</key>
 			<string>showDate</string>
 			<key>label</key>
-			<string>Дата под часами</string>
+			<string>Date Under Clock</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: every option returns to defaults and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -86,7 +146,7 @@
 			<key>footerAlignment</key>
 			<integer>1</integer>
 			<key>footerText</key>
-			<string>Lumina 1.2.0 by @cocxace</string>
+			<string>Lumina by @cocxace</string>
 		</dict>
 	</array>
 	<key>title</key>
