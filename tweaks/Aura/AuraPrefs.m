@@ -7,7 +7,55 @@
 #define AURA_RELOAD_NOTIFICATION CFSTR("com.cocxace.aura/reload")
 
 static const char *kAuraLog = "Aura";
-#define AuraLog(fmt, ...)     do { if ([AuraPrefs sharedPrefs].debugEnabled)         os_log(OS_LOG_DEFAULT, "[Aura] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+#define AuraLog(fmt, ...) \
+    do { if ([AuraPrefs sharedPrefs].debugEnabled) \
+        os_log(OS_LOG_DEFAULT, "[Aura] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+// v1.2.3: preset expansion + reset handling on the Darwin reload notification
+static void AuraDarwinCallback(CFNotificationCenterRef center, void *observer,
+                               CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    @try {
+        NSInteger preset = -1;
+        CFTypeRef pr = CFPreferencesCopyAppValue(CFSTR("preset"), AURA_APP_ID);
+        if (pr) {
+            if (CFGetTypeID(pr) == CFNumberGetTypeID())
+                CFNumberGetValue((CFNumberRef)pr, kCFNumberNSIntegerType, &preset);
+            CFRelease(pr);
+        }
+        if (preset == 0) {       // All Tools
+            NSDictionary *defs = @{ @"enabled": @(YES), @"trigger": @(2),
+                                    @"disableTorch": @(NO), @"disableCamera": @(NO),
+                                    @"disableVoiceMemos": @(NO), @"disableScreenshot": @(NO),
+                                    @"haptics": @(YES) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], AURA_APP_ID);
+            CFPreferencesAppSynchronize(AURA_APP_ID);
+        } else if (preset == 1) { // Quick Tools
+            NSDictionary *defs = @{ @"enabled": @(YES), @"trigger": @(2),
+                                    @"disableVoiceMemos": @(YES), @"haptics": @(YES) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], AURA_APP_ID);
+            CFPreferencesAppSynchronize(AURA_APP_ID);
+        }
+
+        CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), AURA_APP_ID);
+        BOOL doReset = NO;
+        if (rst) {
+            if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+            CFRelease(rst);
+        }
+        if (doReset) {
+            NSDictionary *defs = @{ @"prefsVersion": @(AURA_PREFS_VERSION), @"enabled": @(YES),
+                                    @"trigger": @(0), @"showSliders": @(YES),
+                                    @"disableTorch": @(NO), @"disableCamera": @(NO),
+                                    @"disableVoiceMemos": @(NO), @"disableScreenshot": @(NO),
+                                    @"haptics": @(YES), @"preset": @(-1), @"auraDebug": @(NO) };
+            for (NSString *k in defs) CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], AURA_APP_ID);
+            CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, AURA_APP_ID);
+            CFPreferencesAppSynchronize(AURA_APP_ID);
+            os_log(OS_LOG_DEFAULT, "[Aura] defaults restored");
+        }
+    } @catch (NSException *e) { }
+}
 
 @implementation AuraPrefs {
     BOOL _debugEnabled;
@@ -34,6 +82,13 @@ static const char *kAuraLog = "Aura";
             if (dbg) _debugEnabled = CFBooleanGetValue(dbg);
             CFRelease(appPrefs);
         }
+        // v1.2.3: listen for pref changes to apply presets / reset
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                        NULL,
+                                        AuraDarwinCallback,
+                                        AURA_RELOAD_NOTIFICATION,
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
     }
     return self;
 }
