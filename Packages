@@ -10,9 +10,9 @@ Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb
 Size: 36028
-MD5sum: 34ec2dd31124452b2fafb53d76ed15c2
-SHA1: 84ab64ed415be7356f9fbe4c958d4af885b57fc3
-SHA256: 112e3d0fdf8153e740aa8a03cfc29ab709eb6d7605abc893ea3d44c4140f285e
+MD5sum: 70cf669d7c4f1d19627a8cd01ddcfff9
+SHA1: 36634531b2f173555fdd604ed73f38b33b83cdd9
+SHA256: dd91554765340cf9dde7f3be37eaa6f656372090117627a159e2675e85548f72
 
 Package: com.cocxace.aura
 Name: Aura
@@ -25,10 +25,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb
-Size: 17962
-MD5sum: 433d6af5e58c5cab6f7e6e01f2e221b4
-SHA1: 9e649f0f83e83a85d385b57ec9f73cd3da780e42
-SHA256: f29e72e71a55fa5af81a11f6ccdd98e52183f6b054909da1519fe9dc4f33c8fa
+Size: 17964
+MD5sum: 9d56aaf03405e447d09fef3b386823f2
+SHA1: 36a4119f2b0ca8fda842f77ab7c6df4435aa6137
+SHA256: 11cbe9c91faa57cf4fc6f42d87e0fe20a8c4507144c4adae3c2f9f5cd89609f3
 
 Package: com.cocxace.cam60enabler5s
 Name: Camera60Enabler5s
@@ -41,10 +41,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb
-Size: 16596
-MD5sum: ed668fb00ef8d55e7cdd1325abbdc38b
-SHA1: e7ed3baba33d0c0500824214006b77b7be9c90fb
-SHA256: 2a4162469eb06124a2dc1290eb244fcadce6ddccdc628612625dcef45b5ad5cc
+Size: 15770
+MD5sum: 86d5f9310f2e7694bbf2f7ffb096aff8
+SHA1: 83c116c0aa5913f6a154cb175162db361fa13f91
+SHA256: 7ec05215f2a9411da0c9b5f8fd5d4438642e921da6d5e39ca56fc60dc0b2586b
 
 Package: com.cocxace.echo
 Name: Echo
@@ -57,10 +57,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb
-Size: 9572
-MD5sum: 9ec3d423b8db5e1dda27307fb0fcb733
-SHA1: db9eb5b49735439c916ee0c2fb795435901e9b29
-SHA256: 681382d4a5136c900ba5b5eb731f2751fbec2649ed2a9a9ffc2d86b73ef9fa71
+Size: 9570
+MD5sum: 57fdc13d4e4710cfb005f961a346c58e
+SHA1: 13f620b7da040298636fe9fa25348534cc2304b8
+SHA256: c80100d5f22a073426f0e2f0b8c9879b18b8ec55a37792d22c4fec098a7e1564
 
 Package: com.cocxace.glint
 Name: Glint
@@ -73,10 +73,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb
-Size: 48008
-MD5sum: 779b22d08adf80dab4b33879e927a637
-SHA1: 0c71ae83a266c6cdd9f1fb605d96c4d2bd017676
-SHA256: 2829c1ee759fe72f6ebeb905645ae1bcfe65b438de17edb553331e63d6926a75
+Size: 48010
+MD5sum: 8e63069cb68e837ea931a6933141053c
+SHA1: 4f937e7f2b75e68c8a260a4f9e00be419b3c215d
+SHA256: 5be29a3fc329a19a18c790849a0a469171e2744c2ac96e1a7abdb1c9a67a93a1
 
 Package: com.cocxace.lumina
 Name: Lumina
@@ -89,10 +89,10 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb
-Size: 15158
-MD5sum: d9a4d5d4cbaeabfcc63ce5171f86cb43
-SHA1: d14f8bc8f4fb0807d127ac64a6e40ef088b90c09
-SHA256: 22638cdbf154f1f2c5846e731ed147190004f2a0487aac85910eb2e7cd95a459
+Size: 15160
+MD5sum: b06721a010b94bd2b38e194e0bbbafc8
+SHA1: d34d63fa3680aa049e264c5aa6ac0a0b3a46e878
+SHA256: 04e68eca0bc0299a6e2a8d556e1e4bad47603bcacb706ac393d884f9531e1544
 
 Package: com.cocxace.volt
 Name: Volt
@@ -105,7 +105,7 @@ Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
 Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb
-Size: 13206
-MD5sum: c8e280dfeb31df1fff0db6a0c71fcabd
-SHA1: 438564ad34ccf3051ff30252ef707e1a5d4e6609
-SHA256: 24c2fae011441572936a9fbe618fa8ab032888d4d50dec979001f0862cd0ed73
+Size: 13208
+MD5sum: e6ca46844a08f56a78e3ddcf1701d69d
+SHA1: 4e018167b7433d99016d6ddb9fcbbef7255d8c82
+SHA256: ee83b58d73dbad0aaf26f12a242ce6746f0f89fb7d729508f297a0ca39d8c81f
