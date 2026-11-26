@@ -2,6 +2,7 @@
 #import "GlintStateManager.h"
 #import "GlintPrefs.h"
 #import <os/log.h>
+#import <objc/runtime.h>
 
 extern void MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result);
 
@@ -42,7 +43,8 @@ static void hook_dismissBanner(id self, SEL _cmd, id bannerView) {
         NSSelectorFromString(@"_presentBannerView:animated:")
     };
     BOOL hookedPresent = NO;
-    for (SEL sel in presentSels) {
+    for (NSUInteger i = 0; i < sizeof(presentSels) / sizeof(presentSels[0]); i++) {
+        SEL sel = presentSels[i];
         Method m = class_getInstanceMethod(cls, sel);
         if (m) {
             MSHookMessageEx(cls, sel, (IMP)&hook_presentBanner, (IMP *)&gOrigPresentBanner);
@@ -57,7 +59,8 @@ static void hook_dismissBanner(id self, SEL _cmd, id bannerView) {
         NSSelectorFromString(@"_dismissBulletin:"),
         NSSelectorFromString(@"dismissBanner:")
     };
-    for (SEL sel in dismissSels) {
+    for (NSUInteger i = 0; i < sizeof(dismissSels) / sizeof(dismissSels[0]); i++) {
+        SEL sel = dismissSels[i];
         Method m = class_getInstanceMethod(cls, sel);
         if (m) {
             MSHookMessageEx(cls, sel, (IMP)&hook_dismissBanner, (IMP *)&gOrigDismissBanner);
