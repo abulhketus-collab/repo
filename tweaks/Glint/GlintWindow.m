@@ -48,8 +48,8 @@ static GlintWindow *_sharedWindow = nil;
 
 + (instancetype)sharedWindow {
     if (!_sharedWindow) {
+        // initWithFrame: already calls commonInit — do not call it twice.
         _sharedWindow = [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        [_sharedWindow commonInit];
     }
     return _sharedWindow;
 }
@@ -191,16 +191,7 @@ static GlintWindow *_sharedWindow = nil;
             return;
         }
 
-        // Защита от показа поверх входящего звонка
-        Class lsmCls = NSClassFromString(@"SBLockScreenManager");
-        if (lsmCls) {
-            id lsm = [lsmCls performSelector:@selector(sharedInstance)];
-            if (lsm && [lsm respondsToSelector:@selector(isUILocked)] && [lsm isUILocked]) {
-                self.hidden = YES;
-                return;
-            }
-        }
-
+        // Dynamic Island and the timer must stay visible on the lock screen.
         GlintStateType type = state ? state.type : GlintStateNone;
 
         // Всегда обновляем UI, даже если тип тот же — контент может быть другим (новое уведомление)
