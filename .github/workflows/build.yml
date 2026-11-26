@@ -27,7 +27,7 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y fakeroot dpkg-dev gzip bzip2 xz-utils rsync curl ca-certificates
+          sudo apt-get install -y build-essential fakeroot dpkg-dev gzip bzip2 xz-utils rsync curl ca-certificates perl libxml2 libtinfo6 zip git
 
       - name: Install ldid
         run: |
@@ -40,28 +40,20 @@ jobs:
           sudo install -m 755 /tmp/ldid /usr/local/bin/ldid
           which ldid
 
-      - name: Install Theos
+      - name: Install Theos (no GitHub API)
         run: |
-          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+          export THEOS="$HOME/theos"
+          git clone --recursive --depth 1 https://github.com/theos/theos.git "$THEOS"
+          mkdir -p "$THEOS/toolchain"
+          curl -fsSL https://github.com/L1ghtmann/llvm-project/releases/latest/download/iOSToolchain-x86_64.tar.xz | tar -xJ -C "$THEOS/toolchain/"
+          test -x "$THEOS/toolchain/linux/iphone/bin/clang"
           echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
 
-      - name: Ensure iOS 12.4 SDK
+      - name: Install iOS 12.4 SDK
         run: |
-          echo "--- SDKs currently installed ---"
-          ls "$THEOS/sdks" || true
-          if [ ! -d "$THEOS/sdks/iPhoneOS12.4.sdk" ]; then
-            rm -rf /tmp/sdks
-            git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
-            ls /tmp/sdks
-            if [ -d /tmp/sdks/iPhoneOS12.4.sdk ]; then
-              mv /tmp/sdks/iPhoneOS12.4.sdk "$THEOS/sdks/"
-              echo "Installed iPhoneOS12.4.sdk from theos/sdks"
-            else
-              echo "iPhoneOS12.4.sdk not found in theos/sdks"
-              exit 1
-            fi
-          fi
-          echo "--- Final SDK list ---"
+          git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
+          mkdir -p "$THEOS/sdks"
+          cp -a /tmp/sdks/iPhoneOS12.4.sdk "$THEOS/sdks/"
           ls "$THEOS/sdks"
 
       - name: Build ${{ matrix.tweak }}

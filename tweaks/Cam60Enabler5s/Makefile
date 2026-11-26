@@ -9,7 +9,7 @@ TWEAK_NAME = Cam60Enabler5s
 Cam60Enabler5s_FILES = Tweak.m
 Cam60Enabler5s_FRAMEWORKS = UIKit AVFoundation CoreMedia CoreVideo Foundation
 Cam60Enabler5s_PRIVATE_FRAMEWORKS = CameraUI
-Cam60Enabler5s_CFLAGS = -fobjc-arc -fobjc-exceptions -O2 -Wno-deprecated-declarations -Wno-arc-performSelector-leaks
+Cam60Enabler5s_CFLAGS = -Wno-unused-function -Wno-unused-variable -fobjc-arc -fobjc-exceptions -O2 -Wno-deprecated-declarations -Wno-arc-performSelector-leaks
 
 THEOS_PACKAGE_COMPRESSION = gzip
 THEOS_PACKAGE_FORMAT = gnu
