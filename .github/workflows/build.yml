@@ -147,8 +147,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add debs Packages Packages.gz Packages.bz2 Packages.xz Release
-          git commit -m "CI: add newly built debs and rebuild APT index"
-          git push
+          if git diff --cached --quiet; then
+            echo "No index changes to commit"
+          else
+            git commit -m "CI: add newly built debs and rebuild APT index [skip ci]"
+            git push
+          fi
 
       - name: Trigger Pages deploy
         run: |
