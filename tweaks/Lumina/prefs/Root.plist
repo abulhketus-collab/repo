@@ -1,1 +1,155 @@
-PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCgk8a2V5Pml0ZW1zPC9rZXk+DQoJPGFycmF5Pg0KCQk8ZGljdD4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPg0KCQkJPGtleT5sYWJlbDwva2V5Pg0KCQkJPHN0cmluZz5MdW1pbmEgLSBBbHdheXMtT24gRGlzcGxheTwvc3RyaW5nPg0KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+DQoJCQk8c3RyaW5nPldpdGggdGhlIHR3ZWFrOiBhIGRpbW1lZCBvdmVybGF5IHdpdGggYSBsaXZlIGNsb2NrIGFwcGVhcnMgb24gdGhlIGxvY2sgc2NyZWVuIGFuZCBjbG9zZXMgY2xlYW5seSBvbiB1bmxvY2suIFdpdGhvdXQgaXQ6IHRoZSBzdG9jayBibGFjayBsb2NrIHNjcmVlbi48L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+UG9zdE5vdGlmaWNhdGlvbjwva2V5Pg0KCQkJPHN0cmluZz5jb20uY29jeGFjZS5sdW1pbmEvcmVsb2FkPC9zdHJpbmc+DQoJCQk8a2V5PmNlbGw8L2tleT4NCgkJCTxzdHJpbmc+UFNTd2l0Y2hDZWxsPC9zdHJpbmc+DQoJCQk8a2V5PmRlZmF1bHQ8L2tleT4NCgkJCTx0cnVlLz4NCgkJCTxrZXk+ZGVmYXVsdHM8L2tleT4NCgkJCTxzdHJpbmc+Y29tLmNvY3hhY2UubHVtaW5hPC9zdHJpbmc+DQoJCQk8a2V5PmtleTwva2V5Pg0KCQkJPHN0cmluZz5lbmFibGVkPC9zdHJpbmc+DQoJCQk8a2V5PmxhYmVsPC9rZXk+DQoJCQk8c3RyaW5nPkVuYWJsZWQ8L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPg0KCQkJPGtleT5sYWJlbDwva2V5Pg0KCQkJPHN0cmluZz5QcmVzZXQ8L3N0cmluZz4NCgkJCTxrZXk+Zm9vdGVyVGV4dDwva2V5Pg0KCQkJPHN0cmluZz5DbGFzc2ljIEFPRCAtIDkwJSBkaW0gd2l0aCBkYXRlLiBEZWVwIERpbSAtIDk3JSBkaW0sIGNsb2NrIG9ubHkuPC9zdHJpbmc+DQoJCTwvZGljdD4NCgkJPGRpY3Q+DQoJCQk8a2V5PlBvc3ROb3RpZmljYXRpb248L2tleT4NCgkJCTxzdHJpbmc+Y29tLmNvY3hhY2UubHVtaW5hL3JlbG9hZDwvc3RyaW5nPg0KCQkJPGtleT5jZWxsPC9rZXk+DQoJCQk8c3RyaW5nPlBTTGlua0xpc3RDZWxsPC9zdHJpbmc+DQoJCQk8a2V5PmRlZmF1bHQ8L2tleT4NCgkJCTxpbnRlZ2VyPi0xPC9pbnRlZ2VyPg0KCQkJPGtleT5kZWZhdWx0czwva2V5Pg0KCQkJPHN0cmluZz5jb20uY29jeGFjZS5sdW1pbmE8L3N0cmluZz4NCgkJCTxrZXk+ZGV0YWlsPC9rZXk+DQoJCQk8c3RyaW5nPlBTTGlzdEl0ZW1zQ29udHJvbGxlcjwvc3RyaW5nPg0KCQkJPGtleT5rZXk8L2tleT4NCgkJCTxzdHJpbmc+cHJlc2V0PC9zdHJpbmc+DQoJCQk8a2V5PmxhYmVsPC9rZXk+DQoJCQk8c3RyaW5nPkRpc3BsYXkgUHJlc2V0PC9zdHJpbmc+DQoJCQk8a2V5PnZhbGlkVGl0bGVzPC9rZXk+DQoJCQk8YXJyYXk+DQoJCQkJPHN0cmluZz5DbGFzc2ljIEFPRDwvc3RyaW5nPg0KCQkJCTxzdHJpbmc+RGVlcCBEaW08L3N0cmluZz4NCgkJCQk8c3RyaW5nPkN1c3RvbTwvc3RyaW5nPg0KCQkJPC9hcnJheT4NCgkJCTxrZXk+dmFsaWRWYWx1ZXM8L2tleT4NCgkJCTxhcnJheT4NCgkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPg0KCQkJCTxpbnRlZ2VyPjE8L2ludGVnZXI+DQoJCQkJPGludGVnZXI+LTE8L2ludGVnZXI+DQoJCQk8L2FycmF5Pg0KCQk8L2RpY3Q+DQoJCTxkaWN0Pg0KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+DQoJCQk8c3RyaW5nPmNvbS5jb2N4YWNlLmx1bWluYS9yZWxvYWQ8L3N0cmluZz4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0xpbmtMaXN0Q2VsbDwvc3RyaW5nPg0KCQkJPGtleT5kZWZhdWx0PC9rZXk+DQoJCQk8aW50ZWdlcj4zPC9pbnRlZ2VyPg0KCQkJPGtleT5kZWZhdWx0czwva2V5Pg0KCQkJPHN0cmluZz5jb20uY29jeGFjZS5sdW1pbmE8L3N0cmluZz4NCgkJCTxrZXk+ZGV0YWlsPC9rZXk+DQoJCQk8c3RyaW5nPlBTTGlzdEl0ZW1zQ29udHJvbGxlcjwvc3RyaW5nPg0KCQkJPGtleT5rZXk8L2tleT4NCgkJCTxzdHJpbmc+b3BhY2l0eUNob2ljZTwvc3RyaW5nPg0KCQkJPGtleT5sYWJlbDwva2V5Pg0KCQkJPHN0cmluZz5PdmVybGF5IERpbSBMZXZlbDwvc3RyaW5nPg0KCQkJPGtleT52YWxpZFRpdGxlczwva2V5Pg0KCQkJPGFycmF5Pg0KCQkJCTxzdHJpbmc+NTAlPC9zdHJpbmc+DQoJCQkJPHN0cmluZz42NSU8L3N0cmluZz4NCgkJCQk8c3RyaW5nPjgwJTwvc3RyaW5nPg0KCQkJCTxzdHJpbmc+OTAlPC9zdHJpbmc+DQoJCQk8L2FycmF5Pg0KCQkJPGtleT52YWxpZFZhbHVlczwva2V5Pg0KCQkJPGFycmF5Pg0KCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+DQoJCQkJPGludGVnZXI+MTwvaW50ZWdlcj4NCgkJCQk8aW50ZWdlcj4yPC9pbnRlZ2VyPg0KCQkJCTxpbnRlZ2VyPjM8L2ludGVnZXI+DQoJCQk8L2FycmF5Pg0KCQk8L2RpY3Q+DQoJCTxkaWN0Pg0KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+DQoJCQk8c3RyaW5nPmNvbS5jb2N4YWNlLmx1bWluYS9yZWxvYWQ8L3N0cmluZz4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU1N3aXRjaENlbGw8L3N0cmluZz4NCgkJCTxrZXk+ZGVmYXVsdDwva2V5Pg0KCQkJPHRydWUvPg0KCQkJPGtleT5kZWZhdWx0czwva2V5Pg0KCQkJPHN0cmluZz5jb20uY29jeGFjZS5sdW1pbmE8L3N0cmluZz4NCgkJCTxrZXk+a2V5PC9rZXk+DQoJCQk8c3RyaW5nPnNob3dEYXRlPC9zdHJpbmc+DQoJCQk8a2V5PmxhYmVsPC9rZXk+DQoJCQk8c3RyaW5nPkRhdGUgVW5kZXIgQ2xvY2s8L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPg0KCQkJPGtleT5sYWJlbDwva2V5Pg0KCQkJPHN0cmluZz5SZXNldDwvc3RyaW5nPg0KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+DQoJCQk8c3RyaW5nPkZsaXAgb25jZTogZXZlcnkgb3B0aW9uIHJldHVybnMgdG8gZGVmYXVsdHMgYW5kIHRoZSBzd2l0Y2ggZmxpcHMgYmFjayBvZmYgYXV0b21hdGljYWxseS48L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+UG9zdE5vdGlmaWNhdGlvbjwva2V5Pg0KCQkJPHN0cmluZz5jb20uY29jeGFjZS5sdW1pbmEvcmVsb2FkPC9zdHJpbmc+DQoJCQk8a2V5PmNlbGw8L2tleT4NCgkJCTxzdHJpbmc+UFNTd2l0Y2hDZWxsPC9zdHJpbmc+DQoJCQk8a2V5PmRlZmF1bHQ8L2tleT4NCgkJCTxmYWxzZS8+DQoJCQk8a2V5PmRlZmF1bHRzPC9rZXk+DQoJCQk8c3RyaW5nPmNvbS5jb2N4YWNlLmx1bWluYTwvc3RyaW5nPg0KCQkJPGtleT5rZXk8L2tleT4NCgkJCTxzdHJpbmc+cmVzZXREZWZhdWx0czwvc3RyaW5nPg0KCQkJPGtleT5sYWJlbDwva2V5Pg0KCQkJPHN0cmluZz5SZXNldCBBbGwgU2V0dGluZ3M8L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPg0KCQk8L2RpY3Q+DQoJCTxkaWN0Pg0KCQkJPGtleT5hY3Rpb248L2tleT4NCgkJCTxzdHJpbmc+cmVzcHJpbmc8L3N0cmluZz4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0J1dHRvbkNlbGw8L3N0cmluZz4NCgkJCTxrZXk+bGFiZWw8L2tleT4NCgkJCTxzdHJpbmc+UmVzcHJpbmc8L3N0cmluZz4NCgkJPC9kaWN0Pg0KCQk8ZGljdD4NCgkJCTxrZXk+Y2VsbDwva2V5Pg0KCQkJPHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPg0KCQkJPGtleT5mb290ZXJBbGlnbm1lbnQ8L2tleT4NCgkJCTxpbnRlZ2VyPjE8L2ludGVnZXI+DQoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT4NCgkJCTxzdHJpbmc+THVtaW5hIGJ5IEBjb2N4YWNlPC9zdHJpbmc+DQoJCTwvZGljdD4NCgk8L2FycmF5Pg0KCTxrZXk+dGl0bGU8L2tleT4NCgk8c3RyaW5nPkx1bWluYTwvc3RyaW5nPg0KPC9kaWN0Pg0KPC9wbGlzdD4NCg==
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Lumina - Always-On Display</string>
+			<key>footerText</key>
+			<string>With the tweak: a dimmed overlay with a live clock appears on the lock screen and closes cleanly on unlock. Without it: the stock black lock screen.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Preset</string>
+			<key>footerText</key>
+			<string>Classic AOD - 90% dim with date. Deep Dim - 97% dim, clock only.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>-1</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>preset</string>
+			<key>label</key>
+			<string>Display Preset</string>
+			<key>validTitles</key>
+			<array>
+				<string>Classic AOD</string>
+				<string>Deep Dim</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>-1</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>3</integer>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>opacityChoice</string>
+			<key>label</key>
+			<string>Overlay Dim Level</string>
+			<key>validTitles</key>
+			<array>
+				<string>50%</string>
+				<string>65%</string>
+				<string>80%</string>
+				<string>90%</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>showDate</string>
+			<key>label</key>
+			<string>Date Under Clock</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reset</string>
+			<key>footerText</key>
+			<string>Flip once: every option returns to defaults and the switch flips back off automatically.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.cocxace.lumina/reload</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.cocxace.lumina</string>
+			<key>key</key>
+			<string>resetDefaults</string>
+			<key>label</key>
+			<string>Reset All Settings</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>respring</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Lumina by @cocxace</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Lumina</string>
+</dict>
+</plist>

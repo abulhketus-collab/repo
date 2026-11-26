@@ -1,1 +1,300 @@
-I2ltcG9ydCAiR2xpbnRTdGF0ZU1hbmFnZXIuaCINCiNpbXBvcnQgIkdsaW50UHJlZnMuaCINCiNpbXBvcnQgIkdsaW50V2luZG93LmgiDQojaW1wb3J0ICJHbGludFRpbWVyTW9kdWxlLmgiDQojaW1wb3J0ICJHbGludE1lZGlhT2JzZXJ2ZXIuaCINCiNpbXBvcnQgIkdsaW50UG93ZXJPYnNlcnZlci5oIg0KI2ltcG9ydCA8b3MvbG9nLmg+DQoNCk5TU3RyaW5nICpjb25zdCBHbGludFN0YXRlRGlkQ2hhbmdlTm90aWZpY2F0aW9uID0gQCJHbGludFN0YXRlRGlkQ2hhbmdlTm90aWZpY2F0aW9uIjsNCg0Kc3RhdGljIGNvbnN0IGNoYXIgKmtHbGludExvZyA9ICJHbGludFN0YXRlTWFuYWdlciI7DQoNCiNkZWZpbmUgR2xpbnRTTUxvZyhmbXQsIC4uLikgXA0KICAgIGRvIHsgaWYgKFtHbGludFByZWZzIGRlYnVnRW5hYmxlZF0pIFwNCiAgICAgICAgb3NfbG9nKE9TX0xPR19ERUZBVUxULCAiW0dsaW50U01dICVzOiAiIGZtdCwgX19QUkVUVFlfRlVOQ1RJT05fXywgIyNfX1ZBX0FSR1NfXyk7IH0gd2hpbGUoMCkNCg0KLy8g0JTQtdC00YPQv9C70LjQutCw0YbQuNGPINGD0LLQtdC00L7QvNC70LXQvdC40Lk6INC+0LTQvdC+INC4INGC0L4g0LbQtSDQv9GA0LjQu9C+0LbQtdC90LjQtSDQvdC1INGB0L/QsNC80LjRgiDRh9Cw0YnQtSAxINGA0LDQt9CwINCyIDIg0YHQtdC6DQpzdGF0aWMgTlNTdHJpbmcgKmdMYXN0Tm90aWZLZXkgPSBuaWw7DQpzdGF0aWMgTlNUaW1lSW50ZXJ2YWwgZ0xhc3ROb3RpZkF0ID0gMDsNCg0KQGltcGxlbWVudGF0aW9uIEdsaW50U3RhdGVNYW5hZ2VyIHsNCiAgICBOU011dGFibGVPcmRlcmVkU2V0PEdsaW50U3RhdGUgKj4gKl9zdGF0ZXM7DQogICAgZGlzcGF0Y2hfcXVldWVfdCBfcXVldWU7DQp9DQoNCisgKGluc3RhbmNldHlwZSlzaGFyZWRNYW5hZ2VyIHsNCiAgICBzdGF0aWMgR2xpbnRTdGF0ZU1hbmFnZXIgKnM7DQogICAgc3RhdGljIGRpc3BhdGNoX29uY2VfdCBvbmNlOw0KICAgIGRpc3BhdGNoX29uY2UoJm9uY2UsIF57DQogICAgICAgIHMgPSBbW3NlbGYgYWxsb2NdIGluaXRdOw0KICAgIH0pOw0KICAgIHJldHVybiBzOw0KfQ0KDQotIChpbnN0YW5jZXR5cGUpaW5pdCB7DQogICAgaWYgKHNlbGYgPSBbc3VwZXIgaW5pdF0pIHsNCiAgICAgICAgX3N0YXRlcyA9IFtOU011dGFibGVPcmRlcmVkU2V0IG9yZGVyZWRTZXRdOw0KICAgICAgICBfcXVldWUgPSBkaXNwYXRjaF9xdWV1ZV9jcmVhdGUoImNvbS5jb2N4YWNlLmdsaW50LnN0YXRlIiwgRElTUEFUQ0hfUVVFVUVfU0VSSUFMKTsNCiAgICB9DQogICAgcmV0dXJuIHNlbGY7DQp9DQoNCi0gKHZvaWQpc2V0dXBJZkVuYWJsZWQgew0KICAgIGlmICghW0dsaW50UHJlZnMgYm9vbEZvcktleTpAImVuYWJsZUdsaW50IiBkZWZhdWx0VmFsdWU6WUVTXSkgcmV0dXJuOw0KICAgIEdsaW50U01Mb2coQCJzZXR1cElmRW5hYmxlZCIpOw0KICAgIFtbR2xpbnRXaW5kb3cgc2hhcmVkV2luZG93XSB1cGRhdGVQb3NpdGlvbl07DQp9DQoNCi0gKHZvaWQpdGVhckRvd24gew0KICAgIEdsaW50U01Mb2coQCJ0ZWFyRG93biIpOw0KICAgIFtzZWxmIHJlbW92ZUFsbFN0YXRlc107DQogICAgW1tHbGludFdpbmRvdyBzaGFyZWRXaW5kb3ddIGRlc3Ryb3ldOw0KfQ0KDQotICh2b2lkKWFkZFN0YXRlOihHbGludFN0YXRlICopc3RhdGUgew0KICAgIGlmICghc3RhdGUpIHJldHVybjsNCiAgICBkaXNwYXRjaF9zeW5jKF9xdWV1ZSwgXnsNCiAgICAgICAgTlNVSW50ZWdlciBpZHggPSBbX3N0YXRlcyBpbmRleE9mT2JqZWN0UGFzc2luZ1Rlc3Q6XkJPT0woR2xpbnRTdGF0ZSAqcywgTlNVSW50ZWdlciBpLCBCT09MICpzdG9wKSB7DQogICAgICAgICAgICByZXR1cm4gW3Mua2V5IGlzRXF1YWxUb1N0cmluZzpzdGF0ZS5rZXldOw0KICAgICAgICB9XTsNCiAgICAgICAgaWYgKGlkeCAhPSBOU05vdEZvdW5kKSBbX3N0YXRlcyByZW1vdmVPYmplY3RBdEluZGV4OmlkeF07DQogICAgICAgIFtfc3RhdGVzIGFkZE9iamVjdDpzdGF0ZV07DQogICAgICAgIFtfc3RhdGVzIHNvcnRVc2luZ0NvbXBhcmF0b3I6Xk5TQ29tcGFyaXNvblJlc3VsdChHbGludFN0YXRlICphLCBHbGludFN0YXRlICpiKSB7DQogICAgICAgICAgICBpZiAoYS5wcmlvcml0eSAhPSBiLnByaW9yaXR5KSByZXR1cm4gKGIucHJpb3JpdHkgPiBhLnByaW9yaXR5KSA/IE5TT3JkZXJlZERlc2NlbmRpbmcgOiBOU09yZGVyZWRBc2NlbmRpbmc7DQogICAgICAgICAgICByZXR1cm4gTlNPcmRlcmVkU2FtZTsNCiAgICAgICAgfV07DQogICAgfSk7DQogICAgZGlzcGF0Y2hfYXN5bmMoZGlzcGF0Y2hfZ2V0X21haW5fcXVldWUoKSwgXnsNCiAgICAgICAgW1tHbGludFdpbmRvdyBzaGFyZWRXaW5kb3ddIHNob3dTdGF0ZTpzZWxmLnRvcFN0YXRlIGFuaW1hdGVkOllFU107DQogICAgICAgIFtbTlNOb3RpZmljYXRpb25DZW50ZXIgZGVmYXVsdENlbnRlcl0gcG9zdE5vdGlmaWNhdGlvbk5hbWU6R2xpbnRTdGF0ZURpZENoYW5nZU5vdGlmaWNhdGlvbiBvYmplY3Q6c2VsZl07DQogICAgfSk7DQp9DQoNCi0gKHZvaWQpcmVtb3ZlU3RhdGVXaXRoS2V5OihOU1N0cmluZyAqKWtleSB7DQogICAgZGlzcGF0Y2hfc3luYyhfcXVldWUsIF57DQogICAgICAgIE5TVUludGVnZXIgaWR4ID0gW19zdGF0ZXMgaW5kZXhPZk9iamVjdFBhc3NpbmdUZXN0Ol5CT09MKEdsaW50U3RhdGUgKnMsIE5TVUludGVnZXIgaSwgQk9PTCAqc3RvcCkgew0KICAgICAgICAgICAgcmV0dXJuIFtzLmtleSBpc0VxdWFsVG9TdHJpbmc6a2V5XTsNCiAgICAgICAgfV07DQogICAgICAgIGlmIChpZHggIT0gTlNOb3RGb3VuZCkgW19zdGF0ZXMgcmVtb3ZlT2JqZWN0QXRJbmRleDppZHhdOw0KICAgIH0pOw0KICAgIGRpc3BhdGNoX2FzeW5jKGRpc3BhdGNoX2dldF9tYWluX3F1ZXVlKCksIF57DQogICAgICAgIFtbR2xpbnRXaW5kb3cgc2hhcmVkV2luZG93XSBzaG93U3RhdGU6c2VsZi50b3BTdGF0ZSBhbmltYXRlZDpZRVNdOw0KICAgIH0pOw0KfQ0KDQotIChHbGludFN0YXRlICopdG9wU3RhdGUgew0KICAgIF9fYmxvY2sgR2xpbnRTdGF0ZSAqdG9wID0gbmlsOw0KICAgIGRpc3BhdGNoX3N5bmMoX3F1ZXVlLCBeeyB0b3AgPSBbX3N0YXRlcyBmaXJzdE9iamVjdF07IH0pOw0KICAgIHJldHVybiB0b3A7DQp9DQoNCi0gKE5TQXJyYXk8R2xpbnRTdGF0ZSAqPiAqKWFsbFN0YXRlcyB7DQogICAgX19ibG9jayBOU0FycmF5ICphcnIgPSBuaWw7DQogICAgZGlzcGF0Y2hfc3luYyhfcXVldWUsIF57IGFyciA9IFtfc3RhdGVzIGNvcHldOyB9KTsNCiAgICByZXR1cm4gYXJyOw0KfQ0KDQotICh2b2lkKWFkZE5vdGlmaWNhdGlvbkJ1bGxldGluOihpZClidWxsZXRpbiB7DQogICAgaWYgKCFbR2xpbnRQcmVmcyBib29sRm9yS2V5OkAiZ2xpbnRTaG93Tm90aWZpY2F0aW9ucyIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsNCiAgICBAdHJ5IHsNCiAgICAgICAgTlNTdHJpbmcgKnRpdGxlID0gW2J1bGxldGluIHZhbHVlRm9yS2V5OkAidGl0bGUiXTsNCiAgICAgICAgTlNTdHJpbmcgKmJvZHkgPSBbYnVsbGV0aW4gdmFsdWVGb3JLZXk6QCJtZXNzYWdlIl0gPzogW2J1bGxldGluIHZhbHVlRm9yS2V5OkAiYm9keSJdOw0KICAgICAgICBOU1N0cmluZyAqc2VjdGlvbklEID0gW2J1bGxldGluIHZhbHVlRm9yS2V5OkAic2VjdGlvbklEIl07DQogICAgICAgIGlmICghc2VjdGlvbklEIHx8IHNlY3Rpb25JRC5sZW5ndGggPT0gMCkgc2VjdGlvbklEID0gW2J1bGxldGluIHZhbHVlRm9yS2V5OkAiYnVsbGV0aW5JRCJdOw0KDQogICAgICAgIC8vINCU0LXQtNGD0L/Qu9C40LrQsNGG0LjRjzog0L3QtSDQv9C+0LrQsNC30YvQstCw0YLRjCDQvtC00L3QviDQuCDRgtC+INC20LUg0YPQstC10LTQvtC80LvQtdC90LjQtSDQvtGCINGC0L7Qs9C+INC20LUg0L/RgNC40LvQvtC20LXQvdC40Y8g0YfQsNGJ0LUg0YDQsNC30LAg0LIgMiDRgdC10LrRg9C90LTRiw0KICAgICAgICBOU1N0cmluZyAqZGVkdXBLZXkgPSBbTlNTdHJpbmcgc3RyaW5nV2l0aEZvcm1hdDpAIm5vdGlmOiVAIiwgc2VjdGlvbklEID86IEAidW5rbm93biJdOw0KICAgICAgICBOU1RpbWVJbnRlcnZhbCBub3cgPSBDQUN1cnJlbnRNZWRpYVRpbWUoKTsNCiAgICAgICAgaWYgKFtkZWR1cEtleSBpc0VxdWFsVG9TdHJpbmc6Z0xhc3ROb3RpZktleV0gJiYgKG5vdyAtIGdMYXN0Tm90aWZBdCkgPCAyLjApIHsNCiAgICAgICAgICAgIHJldHVybjsNCiAgICAgICAgfQ0KICAgICAgICBnTGFzdE5vdGlmS2V5ID0gZGVkdXBLZXk7DQogICAgICAgIGdMYXN0Tm90aWZBdCA9IG5vdzsNCg0KICAgICAgICBHbGludFN0YXRlICpzID0gW1tHbGludFN0YXRlIGFsbG9jXSBpbml0V2l0aFR5cGU6R2xpbnRTdGF0ZU5vdGlmaWNhdGlvbg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTpkZWR1cEtleQ0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByaW9yaXR5OkdsaW50U3RhdGVOb3RpZmljYXRpb25dOw0KICAgICAgICBzLnRpdGxlID0gdGl0bGUgPzogQCJOb3RpZmljYXRpb24iOw0KICAgICAgICBzLnN1YnRpdGxlID0gYm9keTsNCiAgICAgICAgcy5idW5kbGVJRCA9IHNlY3Rpb25JRDsNCiAgICAgICAgcy50aW1lc3RhbXAgPSBub3c7DQogICAgICAgIHMuaWNvbiA9IFtzZWxmIGljb25Gb3JCdW5kbGVJRDpzZWN0aW9uSURdOw0KICAgICAgICBbc2VsZiBhZGRTdGF0ZTpzXTsNCiAgICB9IEBjYXRjaCAoTlNFeGNlcHRpb24gKmUpIHsNCiAgICAgICAgR2xpbnRTTUxvZyhAInBhcnNlIGJ1bGxldGluIGZhaWxlZDogJUAiLCBlKTsNCiAgICB9DQp9DQoNCi0gKHZvaWQpcmVtb3ZlTm90aWZpY2F0aW9uV2l0aFNlY3Rpb25JRDooTlNTdHJpbmcgKilzZWN0aW9uSUQgew0KICAgIFtzZWxmIHJlbW92ZVN0YXRlV2l0aEtleTpzZWN0aW9uSUQgPyBbTlNTdHJpbmcgc3RyaW5nV2l0aEZvcm1hdDpAIm5vdGlmOiVAIiwgc2VjdGlvbklEXSA6IEAibm90aWY6dW5rbm93biJdOw0KfQ0KDQotIChVSUltYWdlICopaWNvbkZvckJ1bmRsZUlEOihOU1N0cmluZyAqKWJ1bmRsZUlEIHsNCiAgICBpZiAoIWJ1bmRsZUlEKSByZXR1cm4gbmlsOw0KICAgIENsYXNzIHVpSW1hZ2UgPSBOU0NsYXNzRnJvbVN0cmluZyhAIlVJSW1hZ2UiKTsNCiAgICBpZiAoW3VpSW1hZ2UgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihfYXBwbGljYXRpb25JY29uSW1hZ2VGb3JCdW5kbGVJZGVudGlmaWVyOnNjYWxlOildKSB7DQogICAgICAgIFVJSW1hZ2UgKmltZyA9IFt1aUltYWdlIHBlcmZvcm1TZWxlY3RvcjpAc2VsZWN0b3IoX2FwcGxpY2F0aW9uSWNvbkltYWdlRm9yQnVuZGxlSWRlbnRpZmllcjpzY2FsZTopDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgd2l0aE9iamVjdDpidW5kbGVJRA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHdpdGhPYmplY3Q6QChVSVNjcmVlbi5tYWluU2NyZWVuLnNjYWxlKV07DQogICAgICAgIGlmIChpbWcpIHJldHVybiBpbWc7DQogICAgfQ0KICAgIHJldHVybiBuaWw7DQp9DQoNCi0gKEJPT0wpb3BlbkJ1bmRsZUlEOihOU1N0cmluZyAqKWJ1bmRsZUlEIHsNCiAgICBpZiAoIWJ1bmRsZUlEKSByZXR1cm4gTk87DQogICAgQ2xhc3Mgd3MgPSBOU0NsYXNzRnJvbVN0cmluZyhAIkxTQXBwbGljYXRpb25Xb3Jrc3BhY2UiKTsNCiAgICBpZiAoIXdzIHx8ICFbd3MgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihkZWZhdWx0V29ya3NwYWNlKV0pIHJldHVybiBOTzsNCiAgICBpZCB3b3Jrc3BhY2UgPSBbd3MgcGVyZm9ybVNlbGVjdG9yOkBzZWxlY3RvcihkZWZhdWx0V29ya3NwYWNlKV07DQogICAgU0VMIHNlbCA9IEBzZWxlY3RvcihvcGVuQXBwbGljYXRpb25XaXRoQnVuZGxlSUQ6KTsNCiAgICBpZiAoW3dvcmtzcGFjZSByZXNwb25kc1RvU2VsZWN0b3I6c2VsXSkgew0KICAgICAgICBAdHJ5IHsNCiNwcmFnbWEgY2xhbmcgZGlhZ25vc3RpYyBwdXNoDQojcHJhZ21hIGNsYW5nIGRpYWdub3N0aWMgaWdub3JlZCAiLVdhcmMtcGVyZm9ybVNlbGVjdG9yLWxlYWtzIg0KICAgICAgICAgICAgW3dvcmtzcGFjZSBwZXJmb3JtU2VsZWN0b3I6c2VsIHdpdGhPYmplY3Q6YnVuZGxlSURdOw0KI3ByYWdtYSBjbGFuZyBkaWFnbm9zdGljIHBvcA0KICAgICAgICAgICAgcmV0dXJuIFlFUzsNCiAgICAgICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7DQogICAgICAgICAgICBHbGludFNNTG9nKEAib3BlbiBhcHAgZmFpbGVkOiAlQCIsIGUpOw0KICAgICAgICB9DQogICAgfQ0KICAgIHJldHVybiBOTzsNCn0NCg0KLSAodm9pZCl1cGRhdGVNdXNpY1N0YXRlIHsNCiAgICBpZiAoIVtHbGludFByZWZzIGJvb2xGb3JLZXk6QCJnbGludFNob3dNdXNpYyIgZGVmYXVsdFZhbHVlOllFU10pIHsNCiAgICAgICAgW3NlbGYgcmVtb3ZlU3RhdGVzT2ZUeXBlOkdsaW50U3RhdGVNdXNpY107DQogICAgICAgIHJldHVybjsNCiAgICB9DQogICAgTlNEaWN0aW9uYXJ5ICppbmZvID0gW0dsaW50TWVkaWFPYnNlcnZlciBjdXJyZW50Tm93UGxheWluZ0luZm9dOw0KICAgIGlmICghaW5mbykgew0KICAgICAgICBbc2VsZiByZW1vdmVTdGF0ZXNPZlR5cGU6R2xpbnRTdGF0ZU11c2ljXTsNCiAgICAgICAgcmV0dXJuOw0KICAgIH0NCiAgICBOU1N0cmluZyAqdGl0bGUgPSBpbmZvW0AidGl0bGUiXTsNCiAgICBOU1N0cmluZyAqYXJ0aXN0ID0gaW5mb1tAImFydGlzdCJdOw0KICAgIE5TU3RyaW5nICpjbGllbnRCdW5kbGUgPSBpbmZvW0AiYnVuZGxlSUQiXTsNCiAgICBpZiAoIXRpdGxlIHx8IHRpdGxlLmxlbmd0aCA9PSAwKSB7DQogICAgICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlTXVzaWNdOw0KICAgICAgICByZXR1cm47DQogICAgfQ0KICAgIEdsaW50U3RhdGUgKnMgPSBbW0dsaW50U3RhdGUgYWxsb2NdIGluaXRXaXRoVHlwZTpHbGludFN0YXRlTXVzaWMNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtleTpbTlNTdHJpbmcgc3RyaW5nV2l0aEZvcm1hdDpAIm11c2ljOiVAIiwgY2xpZW50QnVuZGxlID86IEAidW5rbm93biJdDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcmlvcml0eTpHbGludFN0YXRlTXVzaWNdOw0KICAgIHMudGl0bGUgPSB0aXRsZTsNCiAgICBzLnN1YnRpdGxlID0gYXJ0aXN0ID86IEAiIjsNCiAgICBzLmJ1bmRsZUlEID0gY2xpZW50QnVuZGxlID86IEAiIjsNCiAgICBzLnRpbWVzdGFtcCA9IENBQ3VycmVudE1lZGlhVGltZSgpOw0KICAgIC8vIHYxLjIuMzogYWxidW0gYXJ0d29yayBmcm9tIE1lZGlhUmVtb3RlICh3b3JrcyBmb3IgU2FmYXJpIHdlYiBhdWRpbyB0b28pLA0KICAgIC8vIGZhbGxpbmcgYmFjayB0byB0aGUgYXBwIGljb24NCiAgICBpZiAoW0dsaW50UHJlZnMgYm9vbEZvcktleTpAImdsaW50U2hvd0FydHdvcmsiIGRlZmF1bHRWYWx1ZTpZRVNdKSB7DQogICAgICAgIFVJSW1hZ2UgKmFydCA9IG5pbDsNCiAgICAgICAgaWQgcmF3QXJ0ID0gaW5mb1tAImFydHdvcmsiXTsNCiAgICAgICAgaWYgKFtyYXdBcnQgaXNLaW5kT2ZDbGFzczpbVUlJbWFnZSBjbGFzc11dKSBhcnQgPSByYXdBcnQ7DQogICAgICAgIHMuaWNvbiA9IGFydCA/OiBbc2VsZiBpY29uRm9yQnVuZGxlSUQ6Y2xpZW50QnVuZGxlXTsNCiAgICB9IGVsc2Ugew0KICAgICAgICBzLmljb24gPSBbc2VsZiBpY29uRm9yQnVuZGxlSUQ6Y2xpZW50QnVuZGxlXTsNCiAgICB9DQogICAgW3NlbGYgYWRkU3RhdGU6c107DQp9DQoNCi8vIHYxLjIuMzogbWlycm9yIHRoZSBuYXRpdmUgQ2xvY2sgY291bnRkb3duIGluIHRoZSBpc2xhbmQgKHRpbWVyIG5lYXIgdGhlIGNsb2NrKQ0KLSAodm9pZCl1cGRhdGVUaW1lclN0YXRlIHsNCiAgICBpZiAoIVtHbGludFByZWZzIGJvb2xGb3JLZXk6QCJnbGludFNob3dUaW1lciIgZGVmYXVsdFZhbHVlOllFU10pIHsNCiAgICAgICAgW3NlbGYgcmVtb3ZlU3RhdGVzT2ZUeXBlOkdsaW50U3RhdGVUaW1lcl07DQogICAgICAgIHJldHVybjsNCiAgICB9DQogICAgTlNJbnRlZ2VyIHJlbWFpbmluZyA9IFtHbGludFRpbWVyTW9kdWxlIHJlbWFpbmluZ1NlY29uZHNdOw0KICAgIGlmIChyZW1haW5pbmcgPD0gMCkgew0KICAgICAgICBbc2VsZiByZW1vdmVTdGF0ZXNPZlR5cGU6R2xpbnRTdGF0ZVRpbWVyXTsNCiAgICAgICAgcmV0dXJuOw0KICAgIH0NCiAgICBOU0ludGVnZXIgbW0gPSByZW1haW5pbmcgLyA2MDsNCiAgICBOU0ludGVnZXIgc3MgPSByZW1haW5pbmcgJSA2MDsNCiAgICBOU1N0cmluZyAqY2xvY2sgPSBbTlNTdHJpbmcgc3RyaW5nV2l0aEZvcm1hdDpAIiUwMmxkOiUwMmxkIiwgKGxvbmcpbW0sIChsb25nKXNzXTsNCiAgICBHbGludFN0YXRlICpzID0gW1tHbGludFN0YXRlIGFsbG9jXSBpbml0V2l0aFR5cGU6R2xpbnRTdGF0ZVRpbWVyDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OkAidGltZXIiDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcmlvcml0eTpHbGludFN0YXRlVGltZXJdOw0KICAgIHMudGl0bGUgPSBbTlNTdHJpbmcgc3RyaW5nV2l0aEZvcm1hdDpAIuKPsSAlQCIsIGNsb2NrXTsNCiAgICBzLnN1YnRpdGxlID0gQCJDb3VudGRvd24gcnVubmluZyI7DQogICAgcy5wZXJzaXN0ZW50ID0gWUVTOw0KICAgIHMudGltZXN0YW1wID0gQ0FDdXJyZW50TWVkaWFUaW1lKCk7DQogICAgW3NlbGYgYWRkU3RhdGU6c107DQp9DQoNCi0gKHZvaWQpdGltZXJEaWRGaW5pc2ggew0KICAgIGlmICghW0dsaW50UHJlZnMgYm9vbEZvcktleTpAImdsaW50U2hvd1RpbWVyIiBkZWZhdWx0VmFsdWU6WUVTXSkgcmV0dXJuOw0KICAgIEdsaW50U3RhdGUgKnMgPSBbW0dsaW50U3RhdGUgYWxsb2NdIGluaXRXaXRoVHlwZTpHbGludFN0YXRlVGltZXINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6QCJ0aW1lci1maW5pc2hlZCINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByaW9yaXR5OkdsaW50U3RhdGVUaW1lcl07DQogICAgcy50aXRsZSA9IEAi4o+xIFRpbWVyIEZpbmlzaGVkIjsNCiAgICBzLnN1YnRpdGxlID0gQCJUaW1lIGlzIHVwIjsNCiAgICBzLnBlcnNpc3RlbnQgPSBOTzsNCiAgICBzLnRpbWVzdGFtcCA9IENBQ3VycmVudE1lZGlhVGltZSgpOw0KICAgIFtzZWxmIGFkZFN0YXRlOnNdOw0KICAgIGRpc3BhdGNoX2FmdGVyKGRpc3BhdGNoX3RpbWUoRElTUEFUQ0hfVElNRV9OT1csIChpbnQ2NF90KSg1LjAgKiBOU0VDX1BFUl9TRUMpKSwNCiAgICAgICAgICAgICAgICAgICBkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeew0KICAgICAgICBbW0dsaW50U3RhdGVNYW5hZ2VyIHNoYXJlZE1hbmFnZXJdIHJlbW92ZVN0YXRlV2l0aEtleTpAInRpbWVyLWZpbmlzaGVkIl07DQogICAgfSk7DQp9DQoNCi0gKHZvaWQpdXBkYXRlUG93ZXJTdGF0ZSB7DQogICAgaWYgKCFbR2xpbnRQcmVmcyBib29sRm9yS2V5OkAiZ2xpbnRTaG93Q2hhcmdpbmciIGRlZmF1bHRWYWx1ZTpZRVNdKSB7DQogICAgICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlQ2hhcmdpbmddOw0KICAgICAgICByZXR1cm47DQogICAgfQ0KICAgIGlmICghW0dsaW50UG93ZXJPYnNlcnZlciBpc0NoYXJnaW5nXSkgew0KICAgICAgICBbc2VsZiByZW1vdmVTdGF0ZXNPZlR5cGU6R2xpbnRTdGF0ZUNoYXJnaW5nXTsNCiAgICAgICAgcmV0dXJuOw0KICAgIH0NCiAgICBDR0Zsb2F0IGNhcGFjaXR5ID0gW0dsaW50UG93ZXJPYnNlcnZlciBjdXJyZW50Q2FwYWNpdHldOw0KICAgIEdsaW50U3RhdGUgKnMgPSBbW0dsaW50U3RhdGUgYWxsb2NdIGluaXRXaXRoVHlwZTpHbGludFN0YXRlQ2hhcmdpbmcNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6QCJjaGFyZ2luZyINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcmlvcml0eTpHbGludFN0YXRlQ2hhcmdpbmddOw0KICAgIHMudGl0bGUgPSBAIkNoYXJnaW5nIjsNCiAgICBzLnN1YnRpdGxlID0gW05TU3RyaW5nIHN0cmluZ1dpdGhGb3JtYXQ6QCIlLjBmJSUiLCBjYXBhY2l0eV07DQogICAgcy5wZXJzaXN0ZW50ID0gWUVTOw0KICAgIHMuaWNvbiA9IFtVSUltYWdlIGltYWdlTmFtZWQ6QCJib2x0Il07DQogICAgW3NlbGYgYWRkU3RhdGU6c107DQp9DQoNCi0gKHZvaWQpdXBkYXRlVG9yY2hTdGF0ZSB7DQogICAgaWYgKCFbR2xpbnRQcmVmcyBib29sRm9yS2V5OkAiZ2xpbnRTaG93VG9yY2giIGRlZmF1bHRWYWx1ZTpZRVNdKSB7DQogICAgICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlVG9yY2hdOw0KICAgICAgICByZXR1cm47DQogICAgfQ0KICAgIGlmICghW0dsaW50VG9yY2hPYnNlcnZlciBpc1RvcmNoT25dKSB7DQogICAgICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlVG9yY2hdOw0KICAgICAgICByZXR1cm47DQogICAgfQ0KICAgIEdsaW50U3RhdGUgKnMgPSBbW0dsaW50U3RhdGUgYWxsb2NdIGluaXRXaXRoVHlwZTpHbGludFN0YXRlVG9yY2gNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6QCJ0b3JjaCINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwcmlvcml0eTpHbGludFN0YXRlVG9yY2hdOw0KICAgIHMudGl0bGUgPSBAIkZsYXNobGlnaHQiOw0KICAgIHMuc3VidGl0bGUgPSBAIk9uIjsNCiAgICBzLnBlcnNpc3RlbnQgPSBZRVM7DQogICAgcy5pY29uID0gW1VJSW1hZ2UgaW1hZ2VOYW1lZDpAImZsYXNobGlnaHQub24iXTsNCiAgICBbc2VsZiBhZGRTdGF0ZTpzXTsNCn0NCg0KLSAodm9pZClyZW1vdmVTdGF0ZXNPZlR5cGU6KEdsaW50U3RhdGVUeXBlKXR5cGUgew0KICAgIGRpc3BhdGNoX3N5bmMoX3F1ZXVlLCBeew0KICAgICAgICBbX3N0YXRlcyByZW1vdmVPYmplY3RzV2l0aE9wdGlvbnM6TlNTb3J0Q29uY3VycmVudCB1c2luZ0Jsb2NrOl5CT09MKEdsaW50U3RhdGUgKnMsIE5TVUludGVnZXIgaWR4LCBCT09MICpzdG9wKSB7DQogICAgICAgICAgICByZXR1cm4gcy50eXBlID09IHR5cGU7DQogICAgICAgIH1dOw0KICAgIH0pOw0KICAgIGRpc3BhdGNoX2FzeW5jKGRpc3BhdGNoX2dldF9tYWluX3F1ZXVlKCksIF57DQogICAgICAgIFtbR2xpbnRXaW5kb3cgc2hhcmVkV2luZG93XSBzaG93U3RhdGU6c2VsZi50b3BTdGF0ZSBhbmltYXRlZDpZRVNdOw0KICAgIH0pOw0KfQ0KDQotICh2b2lkKXJlbW92ZUFsbFN0YXRlcyB7DQogICAgW3NlbGYgcmVtb3ZlU3RhdGVzT2ZUeXBlOkdsaW50U3RhdGVOb3RpZmljYXRpb25dOw0KICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlTXVzaWNdOw0KICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlQ2hhcmdpbmddOw0KICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlVG9yY2hdOw0KICAgIFtzZWxmIHJlbW92ZVN0YXRlc09mVHlwZTpHbGludFN0YXRlVGltZXJdOw0KfQ0KDQpAZW5kDQo=
+#import "GlintStateManager.h"
+#import "GlintPrefs.h"
+#import "GlintWindow.h"
+#import "GlintTimerModule.h"
+#import "GlintMediaObserver.h"
+#import "GlintPowerObserver.h"
+#import <os/log.h>
+
+NSString *const GlintStateDidChangeNotification = @"GlintStateDidChangeNotification";
+
+static const char *kGlintLog = "GlintStateManager";
+
+#define GlintSMLog(fmt, ...) \
+    do { if ([GlintPrefs debugEnabled]) \
+        os_log(OS_LOG_DEFAULT, "[GlintSM] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while(0)
+
+// Дедупликация уведомлений: одно и то же приложение не спамит чаще 1 раза в 2 сек
+static NSString *gLastNotifKey = nil;
+static NSTimeInterval gLastNotifAt = 0;
+
+@implementation GlintStateManager {
+    NSMutableOrderedSet<GlintState *> *_states;
+    dispatch_queue_t _queue;
+}
+
++ (instancetype)sharedManager {
+    static GlintStateManager *s;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        s = [[self alloc] init];
+    });
+    return s;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _states = [NSMutableOrderedSet orderedSet];
+        _queue = dispatch_queue_create("com.cocxace.glint.state", DISPATCH_QUEUE_SERIAL);
+    }
+    return self;
+}
+
+- (void)setupIfEnabled {
+    if (![GlintPrefs boolForKey:@"enableGlint" defaultValue:YES]) return;
+    GlintSMLog(@"setupIfEnabled");
+    [[GlintWindow sharedWindow] updatePosition];
+}
+
+- (void)tearDown {
+    GlintSMLog(@"tearDown");
+    [self removeAllStates];
+    [[GlintWindow sharedWindow] destroy];
+}
+
+- (void)addState:(GlintState *)state {
+    if (!state) return;
+    dispatch_sync(_queue, ^{
+        NSUInteger idx = [_states indexOfObjectPassingTest:^BOOL(GlintState *s, NSUInteger i, BOOL *stop) {
+            return [s.key isEqualToString:state.key];
+        }];
+        if (idx != NSNotFound) [_states removeObjectAtIndex:idx];
+        [_states addObject:state];
+        [_states sortUsingComparator:^NSComparisonResult(GlintState *a, GlintState *b) {
+            if (a.priority != b.priority) return (b.priority > a.priority) ? NSOrderedDescending : NSOrderedAscending;
+            return NSOrderedSame;
+        }];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintWindow sharedWindow] showState:self.topState animated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:GlintStateDidChangeNotification object:self];
+    });
+}
+
+- (void)removeStateWithKey:(NSString *)key {
+    dispatch_sync(_queue, ^{
+        NSUInteger idx = [_states indexOfObjectPassingTest:^BOOL(GlintState *s, NSUInteger i, BOOL *stop) {
+            return [s.key isEqualToString:key];
+        }];
+        if (idx != NSNotFound) [_states removeObjectAtIndex:idx];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintWindow sharedWindow] showState:self.topState animated:YES];
+    });
+}
+
+- (GlintState *)topState {
+    __block GlintState *top = nil;
+    dispatch_sync(_queue, ^{ top = [_states firstObject]; });
+    return top;
+}
+
+- (NSArray<GlintState *> *)allStates {
+    __block NSArray *arr = nil;
+    dispatch_sync(_queue, ^{ arr = [_states copy]; });
+    return arr;
+}
+
+- (void)addNotificationBulletin:(id)bulletin {
+    if (![GlintPrefs boolForKey:@"glintShowNotifications" defaultValue:YES]) return;
+    @try {
+        NSString *title = [bulletin valueForKey:@"title"];
+        NSString *body = [bulletin valueForKey:@"message"] ?: [bulletin valueForKey:@"body"];
+        NSString *sectionID = [bulletin valueForKey:@"sectionID"];
+        if (!sectionID || sectionID.length == 0) sectionID = [bulletin valueForKey:@"bulletinID"];
+
+        // Дедупликация: не показывать одно и то же уведомление от того же приложения чаще раза в 2 секунды
+        NSString *dedupKey = [NSString stringWithFormat:@"notif:%@", sectionID ?: @"unknown"];
+        NSTimeInterval now = CACurrentMediaTime();
+        if ([dedupKey isEqualToString:gLastNotifKey] && (now - gLastNotifAt) < 2.0) {
+            return;
+        }
+        gLastNotifKey = dedupKey;
+        gLastNotifAt = now;
+
+        GlintState *s = [[GlintState alloc] initWithType:GlintStateNotification
+                                                       key:dedupKey
+                                                    priority:GlintStateNotification];
+        s.title = title ?: @"Notification";
+        s.subtitle = body;
+        s.bundleID = sectionID;
+        s.timestamp = now;
+        s.icon = [self iconForBundleID:sectionID];
+        [self addState:s];
+    } @catch (NSException *e) {
+        GlintSMLog(@"parse bulletin failed: %@", e);
+    }
+}
+
+- (void)removeNotificationWithSectionID:(NSString *)sectionID {
+    [self removeStateWithKey:sectionID ? [NSString stringWithFormat:@"notif:%@", sectionID] : @"notif:unknown"];
+}
+
+- (UIImage *)iconForBundleID:(NSString *)bundleID {
+    if (!bundleID) return nil;
+    Class uiImage = NSClassFromString(@"UIImage");
+    if ([uiImage respondsToSelector:@selector(_applicationIconImageForBundleIdentifier:scale:)]) {
+        UIImage *img = [uiImage performSelector:@selector(_applicationIconImageForBundleIdentifier:scale:)
+                                  withObject:bundleID
+                                  withObject:@(UIScreen.mainScreen.scale)];
+        if (img) return img;
+    }
+    return nil;
+}
+
+- (BOOL)openBundleID:(NSString *)bundleID {
+    if (!bundleID) return NO;
+    Class ws = NSClassFromString(@"LSApplicationWorkspace");
+    if (!ws || ![ws respondsToSelector:@selector(defaultWorkspace)]) return NO;
+    id workspace = [ws performSelector:@selector(defaultWorkspace)];
+    SEL sel = @selector(openApplicationWithBundleID:);
+    if ([workspace respondsToSelector:sel]) {
+        @try {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [workspace performSelector:sel withObject:bundleID];
+#pragma clang diagnostic pop
+            return YES;
+        } @catch (NSException *e) {
+            GlintSMLog(@"open app failed: %@", e);
+        }
+    }
+    return NO;
+}
+
+- (void)updateMusicState {
+    if (![GlintPrefs boolForKey:@"glintShowMusic" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
+    NSDictionary *info = [GlintMediaObserver currentNowPlayingInfo];
+    if (!info) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
+    NSString *title = info[@"title"];
+    NSString *artist = info[@"artist"];
+    NSString *clientBundle = info[@"bundleID"];
+    if (!title || title.length == 0) {
+        [self removeStatesOfType:GlintStateMusic];
+        return;
+    }
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateMusic
+                                                   key:[NSString stringWithFormat:@"music:%@", clientBundle ?: @"unknown"]
+                                                priority:GlintStateMusic];
+    s.title = title;
+    s.subtitle = artist ?: @"";
+    s.bundleID = clientBundle ?: @"";
+    s.timestamp = CACurrentMediaTime();
+    // v1.2.3: album artwork from MediaRemote (works for Safari web audio too),
+    // falling back to the app icon
+    if ([GlintPrefs boolForKey:@"glintShowArtwork" defaultValue:YES]) {
+        UIImage *art = nil;
+        id rawArt = info[@"artwork"];
+        if ([rawArt isKindOfClass:[UIImage class]]) art = rawArt;
+        s.icon = art ?: [self iconForBundleID:clientBundle];
+    } else {
+        s.icon = [self iconForBundleID:clientBundle];
+    }
+    [self addState:s];
+}
+
+// v1.2.3: mirror the native Clock countdown in the island (timer near the clock)
+- (void)updateTimerState {
+    if (![GlintPrefs boolForKey:@"glintShowTimer" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateTimer];
+        return;
+    }
+    NSInteger remaining = [GlintTimerModule remainingSeconds];
+    if (remaining <= 0) {
+        [self removeStatesOfType:GlintStateTimer];
+        return;
+    }
+    NSInteger mm = remaining / 60;
+    NSInteger ss = remaining % 60;
+    NSString *clock = [NSString stringWithFormat:@"%02ld:%02ld", (long)mm, (long)ss];
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTimer
+                                                    key:@"timer"
+                                                priority:GlintStateTimer];
+    s.title = [NSString stringWithFormat:@"⏱ %@", clock];
+    s.subtitle = @"Countdown running";
+    s.persistent = YES;
+    s.timestamp = CACurrentMediaTime();
+    [self addState:s];
+}
+
+- (void)timerDidFinish {
+    if (![GlintPrefs boolForKey:@"glintShowTimer" defaultValue:YES]) return;
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTimer
+                                                    key:@"timer-finished"
+                                                priority:GlintStateTimer];
+    s.title = @"⏱ Timer Finished";
+    s.subtitle = @"Time is up";
+    s.persistent = NO;
+    s.timestamp = CACurrentMediaTime();
+    [self addState:s];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(), ^{
+        [[GlintStateManager sharedManager] removeStateWithKey:@"timer-finished"];
+    });
+}
+
+- (void)updatePowerState {
+    if (![GlintPrefs boolForKey:@"glintShowCharging" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateCharging];
+        return;
+    }
+    if (![GlintPowerObserver isCharging]) {
+        [self removeStatesOfType:GlintStateCharging];
+        return;
+    }
+    CGFloat capacity = [GlintPowerObserver currentCapacity];
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateCharging
+                                                 key:@"charging"
+                                              priority:GlintStateCharging];
+    s.title = @"Charging";
+    s.subtitle = [NSString stringWithFormat:@"%.0f%%", capacity];
+    s.persistent = YES;
+    s.icon = [UIImage imageNamed:@"bolt"];
+    [self addState:s];
+}
+
+- (void)updateTorchState {
+    if (![GlintPrefs boolForKey:@"glintShowTorch" defaultValue:YES]) {
+        [self removeStatesOfType:GlintStateTorch];
+        return;
+    }
+    if (![GlintTorchObserver isTorchOn]) {
+        [self removeStatesOfType:GlintStateTorch];
+        return;
+    }
+    GlintState *s = [[GlintState alloc] initWithType:GlintStateTorch
+                                                 key:@"torch"
+                                              priority:GlintStateTorch];
+    s.title = @"Flashlight";
+    s.subtitle = @"On";
+    s.persistent = YES;
+    s.icon = [UIImage imageNamed:@"flashlight.on"];
+    [self addState:s];
+}
+
+- (void)removeStatesOfType:(GlintStateType)type {
+    dispatch_sync(_queue, ^{
+        [_states removeObjectsWithOptions:NSSortConcurrent usingBlock:^BOOL(GlintState *s, NSUInteger idx, BOOL *stop) {
+            return s.type == type;
+        }];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintWindow sharedWindow] showState:self.topState animated:YES];
+    });
+}
+
+- (void)removeAllStates {
+    [self removeStatesOfType:GlintStateNotification];
+    [self removeStatesOfType:GlintStateMusic];
+    [self removeStatesOfType:GlintStateCharging];
+    [self removeStatesOfType:GlintStateTorch];
+    [self removeStatesOfType:GlintStateTimer];
+}
+
+@end

@@ -1,1 +1,49 @@
-I2ltcG9ydCA8VUlLaXQvVUlLaXQuaD4NCiNpbXBvcnQgIkFCMTJDb21tb24uaCINCg0KQHByb3RvY29sIEFCMTJIVURWaWV3RGVsZWdhdGUgPE5TT2JqZWN0Pg0KLSAodm9pZClodWREaWRTZWxlY3RBY3Rpb246KEFCMTJBY3Rpb24pYWN0aW9uOw0KLSAodm9pZClodWREaWRSZXF1ZXN0RGlzbWlzczsNCkBlbmQNCg0KQGludGVyZmFjZSBBQjEySFVEQ2VsbCA6IFVJQ29udHJvbA0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbikgQUIxMkFjdGlvbiBhY3Rpb247DQpAcHJvcGVydHkgKG5vbmF0b21pYywgc3Ryb25nKSBVSUltYWdlVmlldyAqaWNvbkltYWdlVmlldzsNCi0gKGluc3RhbmNldHlwZSlpbml0V2l0aEZyYW1lOihDR1JlY3QpZnJhbWUgYWN0aW9uOihBQjEyQWN0aW9uKWFjdGlvbjsNCi0gKHZvaWQpdXBkYXRlQWN0aW9uOihBQjEyQWN0aW9uKWFjdGlvbjsNCkBlbmQNCg0KdHlwZWRlZiBOU19FTlVNKE5TSW50ZWdlciwgQUIxMlNsaWRlclR5cGUpIHsNCiAgICBBQjEyU2xpZGVyVHlwZUJyaWdodG5lc3MgPSAwLA0KICAgIEFCMTJTbGlkZXJUeXBlVm9sdW1lID0gMQ0KfTsNCg0KQGludGVyZmFjZSBBQjEyU2xpZGVyVmlldyA6IFVJVmlldw0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbikgQUIxMlNsaWRlclR5cGUgdHlwZTsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBhc3NpZ24pIENHRmxvYXQgdmFsdWU7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgc3Ryb25nKSBVSUltYWdlVmlldyAqaWNvblZpZXc7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgc3Ryb25nKSBVSVZpZXcgKmZpbGxWaWV3Ow0KQHByb3BlcnR5IChub25hdG9taWMsIGNvcHkpIHZvaWQgKF52YWx1ZUNoYW5nZWRCbG9jaykoQ0dGbG9hdCB2YWx1ZSk7DQotIChpbnN0YW5jZXR5cGUpaW5pdFdpdGhGcmFtZTooQ0dSZWN0KWZyYW1lIHR5cGU6KEFCMTJTbGlkZXJUeXBlKXR5cGU7DQotICh2b2lkKXVwZGF0ZVZhbHVlOihDR0Zsb2F0KXZhbHVlIGFuaW1hdGVkOihCT09MKWFuaW1hdGVkOw0KQGVuZA0KDQpAaW50ZXJmYWNlIEFCMTJIVURWaWV3IDogVUlWaWV3DQpAcHJvcGVydHkgKG5vbmF0b21pYywgd2VhaykgaWQ8QUIxMkhVRFZpZXdEZWxlZ2F0ZT4gZGVsZWdhdGU7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgYXNzaWduKSBCT09MIHNob3dTbGlkZXJzOw0KLSAoaW5zdGFuY2V0eXBlKWluaXRXaXRoQWN0aW9uczooTlNBcnJheTxOU051bWJlciAqPiAqKWFjdGlvbnMgc2hvd1NsaWRlcnM6KEJPT0wpc2hvd1NsaWRlcnM7DQotICh2b2lkKXVwZGF0ZUFjdGlvbnM6KE5TQXJyYXk8TlNOdW1iZXIgKj4gKilhY3Rpb25zIHNob3dTbGlkZXJzOihCT09MKXNob3dTbGlkZXJzOw0KQGVuZA0KDQpAaW50ZXJmYWNlIEFCMTJWaWV3Q29udHJvbGxlciA6IFVJVmlld0NvbnRyb2xsZXIgPEFCMTJIVURWaWV3RGVsZWdhdGU+DQpAcHJvcGVydHkgKG5vbmF0b21pYywgc3Ryb25nKSBBQjEySFVEVmlldyAqaHVkVmlldzsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBjb3B5KSB2b2lkICheYWN0aW9uQmxvY2spKEFCMTJBY3Rpb24pOw0KQHByb3BlcnR5IChub25hdG9taWMsIGNvcHkpIHZvaWQgKF5kaXNtaXNzQmxvY2spKHZvaWQpOw0KQGVuZA0KDQpAaW50ZXJmYWNlIEFCMTJIVURXaW5kb3cgOiBVSVdpbmRvdw0KKyAoaW5zdGFuY2V0eXBlKXNoYXJlZFdpbmRvdzsNCi0gKHZvaWQpc2hvd1dpdGhBY3Rpb25zOihOU0FycmF5PE5TTnVtYmVyICo+ICopYWN0aW9ucyBzaG93U2xpZGVyczooQk9PTClzaG93U2xpZGVyczsNCi0gKHZvaWQpaGlkZVdpdGhDb21wbGV0aW9uOih2b2lkICheKSh2b2lkKSljb21wbGV0aW9uOw0KQHByb3BlcnR5IChub25hdG9taWMsIHJlYWRvbmx5KSBCT09MIGlzU2hvd2luZzsNCkBlbmQNCg==
+#import <UIKit/UIKit.h>
+#import "AB12Common.h"
+
+@protocol AB12HUDViewDelegate <NSObject>
+- (void)hudDidSelectAction:(AB12Action)action;
+- (void)hudDidRequestDismiss;
+@end
+
+@interface AB12HUDCell : UIControl
+@property (nonatomic, assign) AB12Action action;
+@property (nonatomic, strong) UIImageView *iconImageView;
+- (instancetype)initWithFrame:(CGRect)frame action:(AB12Action)action;
+- (void)updateAction:(AB12Action)action;
+@end
+
+typedef NS_ENUM(NSInteger, AB12SliderType) {
+    AB12SliderTypeBrightness = 0,
+    AB12SliderTypeVolume = 1
+};
+
+@interface AB12SliderView : UIView
+@property (nonatomic, assign) AB12SliderType type;
+@property (nonatomic, assign) CGFloat value;
+@property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UIView *fillView;
+@property (nonatomic, copy) void (^valueChangedBlock)(CGFloat value);
+- (instancetype)initWithFrame:(CGRect)frame type:(AB12SliderType)type;
+- (void)updateValue:(CGFloat)value animated:(BOOL)animated;
+@end
+
+@interface AB12HUDView : UIView
+@property (nonatomic, weak) id<AB12HUDViewDelegate> delegate;
+@property (nonatomic, assign) BOOL showSliders;
+- (instancetype)initWithActions:(NSArray<NSNumber *> *)actions showSliders:(BOOL)showSliders;
+- (void)updateActions:(NSArray<NSNumber *> *)actions showSliders:(BOOL)showSliders;
+@end
+
+@interface AB12ViewController : UIViewController <AB12HUDViewDelegate>
+@property (nonatomic, strong) AB12HUDView *hudView;
+@property (nonatomic, copy) void (^actionBlock)(AB12Action);
+@property (nonatomic, copy) void (^dismissBlock)(void);
+@end
+
+@interface AB12HUDWindow : UIWindow
++ (instancetype)sharedWindow;
+- (void)showWithActions:(NSArray<NSNumber *> *)actions showSliders:(BOOL)showSliders;
+- (void)hideWithCompletion:(void (^)(void))completion;
+@property (nonatomic, readonly) BOOL isShowing;
+@end

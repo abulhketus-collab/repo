@@ -1,1 +1,10 @@
-UGFja2FnZTogY29tLmNvY3hhY2UuYXVyYQ0KTmFtZTogQXVyYQ0KVmVyc2lvbjogMS4yLjMNCkFyY2hpdGVjdHVyZTogaXBob25lb3MtYXJtDQpEZXNjcmlwdGlvbjogUHJlbWl1bSBBY3Rpb24gQnV0dG9uIEhVRDogbG9uZy1wcmVzcyBwYW5lbCB3aXRoIHRvcmNoLCBjYW1lcmEsIHZvaWNlIG1lbW9zIGFuZCBzY3JlZW5zaG90DQpNYWludGFpbmVyOiBjb2N4YWNlIDxAY29jeGFjZT4NCkF1dGhvcjogY29jeGFjZSA8QGNvY3hhY2U+DQpTZWN0aW9uOiBUd2Vha3MNCkRlcGVuZHM6IG1vYmlsZXN1YnN0cmF0ZSwgZmlybXdhcmUgKD49IDEyLjApDQpIb21lcGFnZTogaHR0cHM6Ly9naXRodWIuY29tL2FidWxoa2V0dXMtY29sbGFiL3JlcG8NCg==
+Package: com.cocxace.aura
+Name: Aura
+Version: 1.2.3
+Architecture: iphoneos-arm
+Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo

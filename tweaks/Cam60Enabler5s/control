@@ -1,1 +1,10 @@
-UGFja2FnZTogY29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMKTmFtZTogQ2FtNjBFbmFibGVyNXMKVmVyc2lvbjogMS4wLjMKQXJjaGl0ZWN0dXJlOiBpcGhvbmVvcy1hcm0KRGVzY3JpcHRpb246IEZvcmNlIDEwODBwIEZ1bGwgSEQgdmlkZW8gcmVjb3JkaW5nIGF0IDYwIEZQUyBvbiBpUGhvbmUgNXMgQ2FtZXJhIGFwcCAoQTcpLiBPdmVycmlkZXMgQ2FtZXJhVUkgYW5kIEFWRm91bmRhdGlvbiBmcmFtZS1yYXRlIGNoZWNrcy4KTWFpbnRhaW5lcjogY29jeGFjZSA8QGNvY3hhY2U+CkF1dGhvcjogY29jeGFjZSA8QGNvY3hhY2U+ClNlY3Rpb246IFR3ZWFrcwpEZXBlbmRzOiBtb2JpbGVzdWJzdHJhdGUsIGZpcm13YXJlICg+PSAxMi4wKQpIb21lcGFnZTogaHR0cHM6Ly9naXRodWIuY29tL2FidWxoa2V0dXMtY29sbGFiL3JlcG8K
+Package: com.cocxace.cam60enabler5s
+Name: Cam60Enabler5s
+Version: 1.0.3
+Architecture: iphoneos-arm
+Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)
+Homepage: https://github.com/abulhketus-collab/repo

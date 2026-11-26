@@ -1,1 +1,44 @@
-I2ltcG9ydCAiQXVyYVByZWZzLmgiCiNpbXBvcnQgPENvcmVGb3VuZGF0aW9uL0NvcmVGb3VuZGF0aW9uLmg+CgpAaW1wbGVtZW50YXRpb24gQXVyYVByZWZzCgorIChpbnN0YW5jZXR5cGUpc2hhcmVkUHJlZnMgewogICAgc3RhdGljIEF1cmFQcmVmcyAqcyA9IG5pbDsKICAgIHN0YXRpYyBkaXNwYXRjaF9vbmNlX3Qgb25jZTsKICAgIGRpc3BhdGNoX29uY2UoJm9uY2UsIF57IHMgPSBbW3NlbGYgYWxsb2NdIGluaXRdOyB9KTsKICAgIHJldHVybiBzOwp9CgotIChCT09MKWRlYnVnRW5hYmxlZCB7IHJldHVybiBOTzsgfQoKKyAoQk9PTClib29sRm9yS2V5OihOU1N0cmluZyAqKWtleSBkZWZhdWx0VmFsdWU6KEJPT0wpZGVmIHsKICAgIENGVHlwZVJlZiB2YWwgPSBDRlByZWZlcmVuY2VzQ29weUFwcFZhbHVlKChfX2JyaWRnZSBDRlN0cmluZ1JlZilrZXksIENGU1RSKCJjb20uY29jeGFjZS5hdXJhIikpOwogICAgQk9PTCByZXN1bHQgPSBkZWY7CiAgICBpZiAodmFsKSB7CiAgICAgICAgaWYgKENGR2V0VHlwZUlEKHZhbCkgPT0gQ0ZCb29sZWFuR2V0VHlwZUlEKCkpIHJlc3VsdCA9IENGQm9vbGVhbkdldFZhbHVlKChDRkJvb2xlYW5SZWYpdmFsKTsKICAgICAgICBlbHNlIGlmIChDRkdldFR5cGVJRCh2YWwpID09IENGTnVtYmVyR2V0VHlwZUlEKCkpIHsKICAgICAgICAgICAgTlNJbnRlZ2VyIHYgPSAwOwogICAgICAgICAgICBDRk51bWJlckdldFZhbHVlKChDRk51bWJlclJlZil2YWwsIGtDRk51bWJlck5TSW50ZWdlclR5cGUsICZ2KTsKICAgICAgICAgICAgcmVzdWx0ID0gKHYgIT0gMCk7CiAgICAgICAgfQogICAgICAgIENGUmVsZWFzZSh2YWwpOwogICAgfQogICAgcmV0dXJuIHJlc3VsdDsKfQoKKyAoTlNJbnRlZ2VyKWludGVnZXJGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooTlNJbnRlZ2VyKWRlZiB7CiAgICBDRlR5cGVSZWYgdmFsID0gQ0ZQcmVmZXJlbmNlc0NvcHlBcHBWYWx1ZSgoX19icmlkZ2UgQ0ZTdHJpbmdSZWYpa2V5LCBDRlNUUigiY29tLmNvY3hhY2UuYXVyYSIpKTsKICAgIE5TSW50ZWdlciByZXN1bHQgPSBkZWY7CiAgICBpZiAodmFsKSB7CiAgICAgICAgaWYgKENGR2V0VHlwZUlEKHZhbCkgPT0gQ0ZOdW1iZXJHZXRUeXBlSUQoKSkgewogICAgICAgICAgICBDRk51bWJlckdldFZhbHVlKChDRk51bWJlclJlZil2YWwsIGtDRk51bWJlck5TSW50ZWdlclR5cGUsICZyZXN1bHQpOwogICAgICAgIH0KICAgICAgICBDRlJlbGVhc2UodmFsKTsKICAgIH0KICAgIHJldHVybiByZXN1bHQ7Cn0KCisgKHZvaWQpcmVnaXN0ZXJEZWZhdWx0cyB7fQoKQGVuZAo=
+#import "AuraPrefs.h"
+#import <CoreFoundation/CoreFoundation.h>
+
+@implementation AuraPrefs
+
++ (instancetype)sharedPrefs {
+    static AuraPrefs *s = nil;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{ s = [[self alloc] init]; });
+    return s;
+}
+
+- (BOOL)debugEnabled { return NO; }
+
++ (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)def {
+    CFTypeRef val = CFPreferencesCopyAppValue((__bridge CFStringRef)key, CFSTR("com.cocxace.aura"));
+    BOOL result = def;
+    if (val) {
+        if (CFGetTypeID(val) == CFBooleanGetTypeID()) result = CFBooleanGetValue((CFBooleanRef)val);
+        else if (CFGetTypeID(val) == CFNumberGetTypeID()) {
+            NSInteger v = 0;
+            CFNumberGetValue((CFNumberRef)val, kCFNumberNSIntegerType, &v);
+            result = (v != 0);
+        }
+        CFRelease(val);
+    }
+    return result;
+}
+
++ (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)def {
+    CFTypeRef val = CFPreferencesCopyAppValue((__bridge CFStringRef)key, CFSTR("com.cocxace.aura"));
+    NSInteger result = def;
+    if (val) {
+        if (CFGetTypeID(val) == CFNumberGetTypeID()) {
+            CFNumberGetValue((CFNumberRef)val, kCFNumberNSIntegerType, &result);
+        }
+        CFRelease(val);
+    }
+    return result;
+}
+
++ (void)registerDefaults {}
+
+@end

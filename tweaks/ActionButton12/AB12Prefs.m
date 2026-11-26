@@ -1,1 +1,104 @@
-I2ltcG9ydCAiQUIxMlByZWZzLmgiCiNpbXBvcnQgIkFCMTJDb21tb24uaCIKI2ltcG9ydCA8Q29yZUZvdW5kYXRpb24vQ29yZUZvdW5kYXRpb24uaD4KI2ltcG9ydCA8b3MvbG9nLmg+CgojZGVmaW5lIEFCMTJfUFJFRlNfVkVSU0lPTiAyCgojZGVmaW5lIEFCMTJMb2coZm10LCAuLi4pIFwKICAgIGRvIHsgaWYgKFtBQjEyUHJlZnMgZGVidWdFbmFibGVkXSkgXAogICAgICAgIG9zX2xvZyhPU19MT0dfREVGQVVMVCwgIltBY3Rpb25CdXR0b24xMl0gJXM6ICIgZm10LCBfX1BSRVRUWV9GVU5DVElPTl9fLCAjI19fVkFfQVJHU19fKTsgfSB3aGlsZSAoMCkKCkBpbXBsZW1lbnRhdGlvbiBBQjEyUHJlZnMgewogICAgQk9PTCBfZGVidWdFbmFibGVkOwogICAgTlNJbnRlZ2VyIF9wcmVmc1ZlcnNpb247Cn0KCisgKGluc3RhbmNldHlwZSlzaGFyZWRQcmVmcyB7CiAgICBzdGF0aWMgQUIxMlByZWZzICpzOwogICAgc3RhdGljIGRpc3BhdGNoX29uY2VfdCBvbmNlOwogICAgZGlzcGF0Y2hfb25jZSgmb25jZSwgXnsKICAgICAgICBzID0gW1tzZWxmIGFsbG9jXSBpbml0XTsKICAgICAgICBbc2VsZiByZWdpc3RlckRlZmF1bHRzXTsKICAgIH0pOwogICAgcmV0dXJuIHM7Cn0KCi0gKGluc3RhbmNldHlwZSlpbml0IHsKICAgIGlmIChzZWxmID0gW3N1cGVyIGluaXRdKSB7CiAgICAgICAgQ0ZEaWN0aW9uYXJ5UmVmIGFwcFByZWZzID0gQ0ZQcmVmZXJlbmNlc0NvcHlBcHBWYWx1ZShBQjEyX0FQUF9JRCwgQUIxMl9BUFBfSUQpOwogICAgICAgIGlmIChhcHBQcmVmcykgewogICAgICAgICAgICBDRk51bWJlclJlZiB2ZXIgPSBDRkRpY3Rpb25hcnlHZXRWYWx1ZShhcHBQcmVmcywgQ0ZTVFIoInByZWZzVmVyc2lvbiIpKTsKICAgICAgICAgICAgaWYgKHZlcikgQ0ZOdW1iZXJHZXRWYWx1ZSh2ZXIsIGtDRk51bWJlck5TSW50ZWdlclR5cGUsICZfcHJlZnNWZXJzaW9uKTsKICAgICAgICAgICAgQ0ZCb29sZWFuUmVmIGRiZyA9IENGRGljdGlvbmFyeUdldFZhbHVlKGFwcFByZWZzLCBDRlNUUigiYWN0aW9uYnV0dG9uMTJEZWJ1ZyIpKTsKICAgICAgICAgICAgaWYgKGRiZykgX2RlYnVnRW5hYmxlZCA9IENGQm9vbGVhbkdldFZhbHVlKGRiZyk7CiAgICAgICAgICAgIENGUmVsZWFzZShhcHBQcmVmcyk7CiAgICAgICAgfQogICAgfQogICAgcmV0dXJuIHNlbGY7Cn0KCisgKHZvaWQpcmVnaXN0ZXJEZWZhdWx0cyB7CiAgICBOU0RpY3Rpb25hcnkgKmRlZnMgPSBAewogICAgICAgIEAicHJlZnNWZXJzaW9uIjogQChBQjEyX1BSRUZTX1ZFUlNJT04pLAogICAgICAgIEAiZW5hYmxlZCI6IEAoWUVTKSwKICAgICAgICBAInRyaWdnZXIiOiBAKDApLAogICAgICAgIEAic2hvd1NsaWRlcnMiOiBAKFlFUyksCiAgICAgICAgQCJkaXNhYmxlVG9yY2giOiBAKE5PKSwKICAgICAgICBAImRpc2FibGVDYW1lcmEiOiBAKE5PKSwKICAgICAgICBAImRpc2FibGVWb2ljZU1lbW9zIjogQChOTyksCiAgICAgICAgQCJkaXNhYmxlU2NyZWVuc2hvdCI6IEAoTk8pLAogICAgICAgIEAiZGlzYWJsZVdpRmkiOiBAKE5PKSwKICAgICAgICBAImRpc2FibGVCbHVldG9vdGgiOiBAKE5PKSwKICAgICAgICBAImhhcHRpY3MiOiBAKFlFUyksCiAgICAgICAgQCJhY3Rpb25idXR0b24xMkRlYnVnIjogQChOTykKICAgIH07CiAgICBmb3IgKE5TU3RyaW5nICprZXkgaW4gZGVmcykgewogICAgICAgIGlmIChDRlByZWZlcmVuY2VzQ29weUFwcFZhbHVlKChfX2JyaWRnZSBDRlN0cmluZ1JlZilrZXksIEFCMTJfQVBQX0lEKSA9PSBOVUxMKSB7CiAgICAgICAgICAgIENGUHJlZmVyZW5jZXNTZXRBcHBWYWx1ZSgoX19icmlkZ2UgQ0ZTdHJpbmdSZWYpa2V5LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKWRlZnNba2V5XSwgQUIxMl9BUFBfSUQpOwogICAgICAgIH0KICAgIH0KICAgIENGUHJlZmVyZW5jZXNBcHBTeW5jaHJvbml6ZShBQjEyX0FQUF9JRCk7Cn0KCisgKHZvaWQpc2V0Qm9vbDooQk9PTCl2YWx1ZSBmb3JLZXk6KE5TU3RyaW5nICopa2V5IHsKICAgIENGUHJlZmVyZW5jZXNTZXRBcHBWYWx1ZSgoX19icmlkZ2UgQ0ZTdHJpbmdSZWYpa2V5LCB2YWx1ZSA/IGtDRkJvb2xlYW5UcnVlIDoga0NGQm9vbGVhbkZhbHNlLCBBQjEyX0FQUF9JRCk7CiAgICBDRlByZWZlcmVuY2VzQXBwU3luY2hyb25pemUoQUIxMl9BUFBfSUQpOwogICAgW3NlbGYgcG9zdFJlbG9hZE5vdGlmaWNhdGlvbl07Cn0KCisgKHZvaWQpc2V0SW50ZWdlcjooTlNJbnRlZ2VyKXZhbHVlIGZvcktleTooTlNTdHJpbmcgKilrZXkgewogICAgQ0ZQcmVmZXJlbmNlc1NldEFwcFZhbHVlKChfX2JyaWRnZSBDRlN0cmluZ1JlZilrZXksIChfX2JyaWRnZSBDRk51bWJlclJlZilAKHZhbHVlKSwgQUIxMl9BUFBfSUQpOwogICAgQ0ZQcmVmZXJlbmNlc0FwcFN5bmNocm9uaXplKEFCMTJfQVBQX0lEKTsKICAgIFtzZWxmIHBvc3RSZWxvYWROb3RpZmljYXRpb25dOwp9CgorIChCT09MKWJvb2xGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooQk9PTClkZWYgewogICAgQ0ZUeXBlUmVmIHZhbCA9IENGUHJlZmVyZW5jZXNDb3B5QXBwVmFsdWUoKF9fYnJpZGdlIENGU3RyaW5nUmVmKWtleSwgQUIxMl9BUFBfSUQpOwogICAgQk9PTCByZXN1bHQgPSBkZWY7CiAgICBpZiAodmFsICYmIENGR2V0VHlwZUlEKHZhbCkgPT0gQ0ZCb29sZWFuR2V0VHlwZUlEKCkpIHJlc3VsdCA9IENGQm9vbGVhbkdldFZhbHVlKChDRkJvb2xlYW5SZWYpdmFsKTsKICAgIGlmICh2YWwpIENGUmVsZWFzZSh2YWwpOwogICAgcmV0dXJuIHJlc3VsdDsKfQoKKyAoTlNJbnRlZ2VyKWludGVnZXJGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooTlNJbnRlZ2VyKWRlZiB7CiAgICBDRlR5cGVSZWYgdmFsID0gQ0ZQcmVmZXJlbmNlc0NvcHlBcHBWYWx1ZSgoX19icmlkZ2UgQ0ZTdHJpbmdSZWYpa2V5LCBBQjEyX0FQUF9JRCk7CiAgICBOU0ludGVnZXIgcmVzdWx0ID0gZGVmOwogICAgaWYgKHZhbCAmJiBDRkdldFR5cGVJRCh2YWwpID09IENGTnVtYmVyR2V0VHlwZUlEKCkpIENGTnVtYmVyR2V0VmFsdWUoKENGTnVtYmVyUmVmKXZhbCwga0NGTnVtYmVyTlNJbnRlZ2VyVHlwZSwgJnJlc3VsdCk7CiAgICBpZiAodmFsKSBDRlJlbGVhc2UodmFsKTsKICAgIHJldHVybiByZXN1bHQ7Cn0KCisgKHZvaWQpcG9zdFJlbG9hZE5vdGlmaWNhdGlvbiB7CiAgICBDRk5vdGlmaWNhdGlvbkNlbnRlclBvc3ROb3RpZmljYXRpb24oQ0ZOb3RpZmljYXRpb25DZW50ZXJHZXREYXJ3aW5Ob3RpZnlDZW50ZXIoKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBQjEyX1JFTE9BRF9OT1RJRklDQVRJT04sIE5VTEwsIE5VTEwsIFlFUyk7Cn0KCi0gKEJPT0wpZGVidWdFbmFibGVkIHsgcmV0dXJuIF9kZWJ1Z0VuYWJsZWQ7IH0KLSAoTlNJbnRlZ2VyKXByZWZzVmVyc2lvbiB7IHJldHVybiBfcHJlZnNWZXJzaW9uOyB9CgorIChCT09MKWRlYnVnRW5hYmxlZCB7IHJldHVybiBbc2VsZiBzaGFyZWRQcmVmc10uZGVidWdFbmFibGVkOyB9CisgKE5TSW50ZWdlcilwcmVmc1ZlcnNpb24geyByZXR1cm4gW3NlbGYgc2hhcmVkUHJlZnNdLnByZWZzVmVyc2lvbjsgfQoKQGVuZAo=
+#import "AB12Prefs.h"
+#import "AB12Common.h"
+#import <CoreFoundation/CoreFoundation.h>
+#import <os/log.h>
+
+#define AB12_PREFS_VERSION 2
+
+#define AB12Log(fmt, ...) \
+    do { if ([AB12Prefs debugEnabled]) \
+        os_log(OS_LOG_DEFAULT, "[ActionButton12] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+@implementation AB12Prefs {
+    BOOL _debugEnabled;
+    NSInteger _prefsVersion;
+}
+
++ (instancetype)sharedPrefs {
+    static AB12Prefs *s;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        s = [[self alloc] init];
+        [self registerDefaults];
+    });
+    return s;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        CFDictionaryRef appPrefs = CFPreferencesCopyAppValue(AB12_APP_ID, AB12_APP_ID);
+        if (appPrefs) {
+            CFNumberRef ver = CFDictionaryGetValue(appPrefs, CFSTR("prefsVersion"));
+            if (ver) CFNumberGetValue(ver, kCFNumberNSIntegerType, &_prefsVersion);
+            CFBooleanRef dbg = CFDictionaryGetValue(appPrefs, CFSTR("actionbutton12Debug"));
+            if (dbg) _debugEnabled = CFBooleanGetValue(dbg);
+            CFRelease(appPrefs);
+        }
+    }
+    return self;
+}
+
++ (void)registerDefaults {
+    NSDictionary *defs = @{
+        @"prefsVersion": @(AB12_PREFS_VERSION),
+        @"enabled": @(YES),
+        @"trigger": @(0),
+        @"showSliders": @(YES),
+        @"disableTorch": @(NO),
+        @"disableCamera": @(NO),
+        @"disableVoiceMemos": @(NO),
+        @"disableScreenshot": @(NO),
+        @"disableWiFi": @(NO),
+        @"disableBluetooth": @(NO),
+        @"haptics": @(YES),
+        @"actionbutton12Debug": @(NO)
+    };
+    for (NSString *key in defs) {
+        if (CFPreferencesCopyAppValue((__bridge CFStringRef)key, AB12_APP_ID) == NULL) {
+            CFPreferencesSetAppValue((__bridge CFStringRef)key,
+                                     (__bridge CFPropertyListRef)defs[key], AB12_APP_ID);
+        }
+    }
+    CFPreferencesAppSynchronize(AB12_APP_ID);
+}
+
++ (void)setBool:(BOOL)value forKey:(NSString *)key {
+    CFPreferencesSetAppValue((__bridge CFStringRef)key, value ? kCFBooleanTrue : kCFBooleanFalse, AB12_APP_ID);
+    CFPreferencesAppSynchronize(AB12_APP_ID);
+    [self postReloadNotification];
+}
+
++ (void)setInteger:(NSInteger)value forKey:(NSString *)key {
+    CFPreferencesSetAppValue((__bridge CFStringRef)key, (__bridge CFNumberRef)@(value), AB12_APP_ID);
+    CFPreferencesAppSynchronize(AB12_APP_ID);
+    [self postReloadNotification];
+}
+
++ (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)def {
+    CFTypeRef val = CFPreferencesCopyAppValue((__bridge CFStringRef)key, AB12_APP_ID);
+    BOOL result = def;
+    if (val && CFGetTypeID(val) == CFBooleanGetTypeID()) result = CFBooleanGetValue((CFBooleanRef)val);
+    if (val) CFRelease(val);
+    return result;
+}
+
++ (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)def {
+    CFTypeRef val = CFPreferencesCopyAppValue((__bridge CFStringRef)key, AB12_APP_ID);
+    NSInteger result = def;
+    if (val && CFGetTypeID(val) == CFNumberGetTypeID()) CFNumberGetValue((CFNumberRef)val, kCFNumberNSIntegerType, &result);
+    if (val) CFRelease(val);
+    return result;
+}
+
++ (void)postReloadNotification {
+    CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(),
+                                         AB12_RELOAD_NOTIFICATION, NULL, NULL, YES);
+}
+
+- (BOOL)debugEnabled { return _debugEnabled; }
+- (NSInteger)prefsVersion { return _prefsVersion; }
+
++ (BOOL)debugEnabled { return [self sharedPrefs].debugEnabled; }
++ (NSInteger)prefsVersion { return [self sharedPrefs].prefsVersion; }
+
+@end

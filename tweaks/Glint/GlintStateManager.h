@@ -1,1 +1,26 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQojaW1wb3J0ICJHbGludFN0YXRlLmgiDQoNCmV4dGVybiBOU1N0cmluZyAqY29uc3QgR2xpbnRTdGF0ZURpZENoYW5nZU5vdGlmaWNhdGlvbjsNCg0KQGludGVyZmFjZSBHbGludFN0YXRlTWFuYWdlciA6IE5TT2JqZWN0DQoNCisgKGluc3RhbmNldHlwZSlzaGFyZWRNYW5hZ2VyOw0KLSAodm9pZClzZXR1cElmRW5hYmxlZDsNCi0gKHZvaWQpdGVhckRvd247DQotICh2b2lkKWFkZFN0YXRlOihHbGludFN0YXRlICopc3RhdGU7DQotICh2b2lkKXJlbW92ZVN0YXRlV2l0aEtleTooTlNTdHJpbmcgKilrZXk7DQotICh2b2lkKXJlbW92ZVN0YXRlc09mVHlwZTooR2xpbnRTdGF0ZVR5cGUpdHlwZTsNCi0gKHZvaWQpcmVtb3ZlQWxsU3RhdGVzOw0KLSAoR2xpbnRTdGF0ZSAqKXRvcFN0YXRlOw0KLSAoTlNBcnJheTxHbGludFN0YXRlICo+ICopYWxsU3RhdGVzOw0KLSAodm9pZClhZGROb3RpZmljYXRpb25CdWxsZXRpbjooaWQpYnVsbGV0aW47DQotICh2b2lkKXJlbW92ZU5vdGlmaWNhdGlvbldpdGhTZWN0aW9uSUQ6KE5TU3RyaW5nICopc2VjdGlvbklEOw0KLSAodm9pZCl1cGRhdGVNdXNpY1N0YXRlOw0KLSAodm9pZCl1cGRhdGVQb3dlclN0YXRlOw0KLSAodm9pZCl1cGRhdGVUb3JjaFN0YXRlOw0KLSAodm9pZCl1cGRhdGVUaW1lclN0YXRlOw0KLSAodm9pZCl0aW1lckRpZEZpbmlzaDsNCi0gKEJPT0wpb3BlbkJ1bmRsZUlEOihOU1N0cmluZyAqKWJ1bmRsZUlEOw0KDQpAZW5kDQo=
+#import <Foundation/Foundation.h>
+#import "GlintState.h"
+
+extern NSString *const GlintStateDidChangeNotification;
+
+@interface GlintStateManager : NSObject
+
++ (instancetype)sharedManager;
+- (void)setupIfEnabled;
+- (void)tearDown;
+- (void)addState:(GlintState *)state;
+- (void)removeStateWithKey:(NSString *)key;
+- (void)removeStatesOfType:(GlintStateType)type;
+- (void)removeAllStates;
+- (GlintState *)topState;
+- (NSArray<GlintState *> *)allStates;
+- (void)addNotificationBulletin:(id)bulletin;
+- (void)removeNotificationWithSectionID:(NSString *)sectionID;
+- (void)updateMusicState;
+- (void)updatePowerState;
+- (void)updateTorchState;
+- (void)updateTimerState;
+- (void)timerDidFinish;
+- (BOOL)openBundleID:(NSString *)bundleID;
+
+@end

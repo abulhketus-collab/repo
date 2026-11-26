@@ -1,1 +1,13 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgR2xpbnRNZWRpYU9ic2VydmVyIDogTlNPYmplY3QNCg0KKyAodm9pZClpbnN0YWxsOw0KKyAodm9pZCl1bmluc3RhbGw7DQorIChOU0RpY3Rpb25hcnkgKiljdXJyZW50Tm93UGxheWluZ0luZm87DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5EDQo=
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GlintMediaObserver : NSObject
+
++ (void)install;
++ (void)uninstall;
++ (NSDictionary *)currentNowPlayingInfo;
+
+@end
+
+NS_ASSUME_NONNULL_END

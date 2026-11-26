@@ -1,1 +1,32 @@
-VEFSR0VUID0gaXBob25lOmNsYW5nOjEyLjQ6MTIuMA0KQVJDSFMgPSBhcm02NA0KaW5jbHVkZSAkKFRIRU9TKS9tYWtlZmlsZXMvY29tbW9uLm1rDQoNClRXRUFLX05BTUUgPSBHbGludA0KR2xpbnRfRklMRVMgPSBUd2Vhay54bSBcDQogICAgICAgICAgICAgIEdsaW50V2luZG93Lm0gXA0KICAgICAgICAgICAgICBHbGludFN0YXRlLm0gXA0KICAgICAgICAgICAgICBHbGludFN0YXRlTWFuYWdlci5tIFwNCiAgICAgICAgICAgICAgR2xpbnRNZWRpYU9ic2VydmVyLm0gXA0KICAgICAgICAgICAgICBHbGludFBvd2VyT2JzZXJ2ZXIubSBcDQogICAgICAgICAgICAgIEdsaW50VG9yY2hPYnNlcnZlci5tIFwNCiAgICAgICAgICAgICAgR2xpbnRCYW5uZXJPYnNlcnZlci5tIFwNCiAgICAgICAgICAgICAgR2xpbnRUaW1lck1vZHVsZS5tIFwNCiAgICAgICAgICAgICAgR2xpbnRQcmVmcy5tDQpHbGludF9GUkFNRVdPUktTID0gVUlLaXQgQ29yZUdyYXBoaWNzIFF1YXJ0ekNvcmUgQXVkaW9Ub29sYm94IE1lZGlhUmVtb3RlIElPS2l0IEFWRm91bmRhdGlvbg0KR2xpbnRfUFJJVkFURV9GUkFNRVdPUktTID0gU3ByaW5nQm9hcmQNCkdsaW50X0NGTEFHUyA9IC1mb2JqYy1hcmMgLWZvYmpjLWV4Y2VwdGlvbnMgLVduby1kZXByZWNhdGVkLWRlY2xhcmF0aW9ucw0KR2xpbnRfTElCUkFSSUVTID0gc3Vic3RyYXRlDQpUSEVPU19QQUNLQUdFX0NPTVBSRVNTSU9OID0gZ3ppcA0KVEhFT1NfUEFDS0FHRV9GT1JNQVQgPSBnbnUNCg0KaW5jbHVkZSAkKFRIRU9TX01BS0VfUEFUSCkvdHdlYWsubWsNCg0KQlVORExFX05BTUUgPSBHbGludFByZWZlcmVuY2VzDQpHbGludFByZWZlcmVuY2VzX0ZJTEVTID0gcHJlZnMvR2xpbnRSb290TGlzdENvbnRyb2xsZXIubW0NCkdsaW50UHJlZmVyZW5jZXNfSU5TVEFMTF9QQVRIID0gL0xpYnJhcnkvUHJlZmVyZW5jZUJ1bmRsZXMNCkdsaW50UHJlZmVyZW5jZXNfRlJBTUVXT1JLUyA9IFVJS2l0DQpHbGludFByZWZlcmVuY2VzX1BSSVZBVEVfRlJBTUVXT1JLUyA9IFByZWZlcmVuY2VzDQpHbGludFByZWZlcmVuY2VzX0NGTEFHUyA9IC1mb2JqYy1hcmMNCg0KaW5jbHVkZSAkKFRIRU9TX01BS0VfUEFUSCkvYnVuZGxlLm1rDQo=
+TARGET = iphone:clang:12.4:12.0
+ARCHS = arm64
+include $(THEOS)/makefiles/common.mk
+
+TWEAK_NAME = Glint
+Glint_FILES = Tweak.xm \
+              GlintWindow.m \
+              GlintState.m \
+              GlintStateManager.m \
+              GlintMediaObserver.m \
+              GlintPowerObserver.m \
+              GlintTorchObserver.m \
+              GlintBannerObserver.m \
+              GlintTimerModule.m \
+              GlintPrefs.m
+Glint_FRAMEWORKS = UIKit CoreGraphics QuartzCore AudioToolbox MediaRemote IOKit AVFoundation
+Glint_PRIVATE_FRAMEWORKS = SpringBoard
+Glint_CFLAGS = -fobjc-arc -fobjc-exceptions -Wno-deprecated-declarations -Wno-arc-performSelector-leaks
+Glint_LIBRARIES = substrate
+THEOS_PACKAGE_COMPRESSION = gzip
+THEOS_PACKAGE_FORMAT = gnu
+
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+BUNDLE_NAME = GlintPreferences
+GlintPreferences_FILES = prefs/GlintRootListController.mm
+GlintPreferences_INSTALL_PATH = /Library/PreferenceBundles
+GlintPreferences_FRAMEWORKS = UIKit
+GlintPreferences_PRIVATE_FRAMEWORKS = Preferences
+GlintPreferences_CFLAGS = -fobjc-arc
+
+include $(THEOS_MAKE_PATH)/bundle.mk

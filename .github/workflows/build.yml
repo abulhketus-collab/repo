@@ -1,1 +1,145 @@
-bmFtZTogQnVpbGQgVHdlYWtzIChUaGVvcykgYW5kIFJlYnVpbGQgQVBUIEluZGV4DQoNCm9uOg0KICBwdXNoOg0KICAgIGJyYW5jaGVzOiBbICJtYWluIiBdDQogIHdvcmtmbG93X2Rpc3BhdGNoOg0KDQpwZXJtaXNzaW9uczoNCiAgY29udGVudHM6IHdyaXRlDQogIGFjdGlvbnM6IHdyaXRlDQoNCmNvbmN1cnJlbmN5Og0KICBncm91cDogInR3ZWFrLWJ1aWxkIg0KICBjYW5jZWwtaW4tcHJvZ3Jlc3M6IGZhbHNlDQoNCmpvYnM6DQogIGJ1aWxkOg0KICAgIHJ1bnMtb246IHVidW50dS0yMi4wNA0KICAgIHN0cmF0ZWd5Og0KICAgICAgZmFpbC1mYXN0OiBmYWxzZQ0KICAgICAgbWF0cml4Og0KICAgICAgICB0d2VhazogW0dsaW50LCBBY3Rpb25CdXR0b24xMiwgQXVyYSwgRWNobywgVm9sdCwgTHVtaW5hLCBDYW02MEVuYWJsZXI1c10NCiAgICBzdGVwczoNCiAgICAgIC0gbmFtZTogQ2hlY2tvdXQNCiAgICAgICAgdXNlczogYWN0aW9ucy9jaGVja291dEB2NA0KDQogICAgICAtIG5hbWU6IEluc3RhbGwgYnVpbGQgZGVwZW5kZW5jaWVzDQogICAgICAgIHJ1bjogfA0KICAgICAgICAgIHN1ZG8gYXB0LWdldCB1cGRhdGUNCiAgICAgICAgICBzdWRvIGFwdC1nZXQgaW5zdGFsbCAteSBmYWtlcm9vdCBkcGtnLWRldiBnemlwIGJ6aXAyIHh6LXV0aWxzIHJzeW5jIGN1cmwgY2EtY2VydGlmaWNhdGVzDQoNCiAgICAgIC0gbmFtZTogSW5zdGFsbCBsZGlkDQogICAgICAgIHJ1bjogfA0KICAgICAgICAgIGNhc2UgIiQodW5hbWUgLW0pIiBpbg0KICAgICAgICAgICAgeDg2XzY0KSBBU1NFVD1sZGlkX2xpbnV4X3g4Nl82NCA7Ow0KICAgICAgICAgICAgYWFyY2g2NCkgQVNTRVQ9bGRpZF9saW51eF9hYXJjaDY0IDs7DQogICAgICAgICAgICAqKSBlY2hvICJVbnN1cHBvcnRlZCBhcmNoOiAkKHVuYW1lIC1tKSI7IGV4aXQgMSA7Ow0KICAgICAgICAgIGVzYWMNCiAgICAgICAgICBjdXJsIC1mc1NMIC1vIC90bXAvbGRpZCAiaHR0cHM6Ly9naXRodWIuY29tL1Byb2N1cnN1c1RlYW0vbGRpZC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvJEFTU0VUIg0KICAgICAgICAgIHN1ZG8gaW5zdGFsbCAtbSA3NTUgL3RtcC9sZGlkIC91c3IvbG9jYWwvYmluL2xkaWQNCiAgICAgICAgICB3aGljaCBsZGlkDQoNCiAgICAgIC0gbmFtZTogSW5zdGFsbCBUaGVvcw0KICAgICAgICBydW46IHwNCiAgICAgICAgICBiYXNoIC1jICIkKGN1cmwgLWZzU0wgaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3RoZW9zL3RoZW9zL21hc3Rlci9iaW4vaW5zdGFsbC10aGVvcykiDQogICAgICAgICAgZWNobyAiVEhFT1M9JEhPTUUvdGhlb3MiID4+ICIkR0lUSFVCX0VOViINCg0KICAgICAgLSBuYW1lOiBFbnN1cmUgaU9TIDEyLjQgU0RLDQogICAgICAgIHJ1bjogfA0KICAgICAgICAgIGVjaG8gIi0tLSBTREtzIGN1cnJlbnRseSBpbnN0YWxsZWQgLS0tIg0KICAgICAgICAgIGxzICIkVEhFT1Mvc2RrcyIgfHwgdHJ1ZQ0KICAgICAgICAgIGlmIFsgISAtZCAiJFRIRU9TL3Nka3MvaVBob25lT1MxMi40LnNkayIgXTsgdGhlbg0KICAgICAgICAgICAgcm0gLXJmIC90bXAvc2Rrcw0KICAgICAgICAgICAgZ2l0IGNsb25lIC0tZGVwdGggMSBodHRwczovL2dpdGh1Yi5jb20vdGhlb3Mvc2Rrcy5naXQgL3RtcC9zZGtzDQogICAgICAgICAgICBscyAvdG1wL3Nka3MNCiAgICAgICAgICAgIGlmIFsgLWQgL3RtcC9zZGtzL2lQaG9uZU9TMTIuNC5zZGsgXTsgdGhlbg0KICAgICAgICAgICAgICBtdiAvdG1wL3Nka3MvaVBob25lT1MxMi40LnNkayAiJFRIRU9TL3Nka3MvIg0KICAgICAgICAgICAgICBlY2hvICJJbnN0YWxsZWQgaVBob25lT1MxMi40LnNkayBmcm9tIHRoZW9zL3Nka3MiDQogICAgICAgICAgICBlbHNlDQogICAgICAgICAgICAgIGVjaG8gImlQaG9uZU9TMTIuNC5zZGsgbm90IGZvdW5kIGluIHRoZW9zL3Nka3MiDQogICAgICAgICAgICAgIGV4aXQgMQ0KICAgICAgICAgICAgZmkNCiAgICAgICAgICBmaQ0KICAgICAgICAgIGVjaG8gIi0tLSBGaW5hbCBTREsgbGlzdCAtLS0iDQogICAgICAgICAgbHMgIiRUSEVPUy9zZGtzIg0KDQogICAgICAtIG5hbWU6IEJ1aWxkICR7eyBtYXRyaXgudHdlYWsgfX0NCiAgICAgICAgcnVuOiB8DQogICAgICAgICAgY2QgInR3ZWFrcy8ke3sgbWF0cml4LnR3ZWFrIH19Ig0KICAgICAgICAgIG1ha2UgY2xlYW4gcGFja2FnZSBGSU5BTFBBQ0tBR0U9MSBUSEVPU19QQUNLQUdFX0NPTVBSRVNTSU9OPWd6aXAgVEhFT1NfUEFDS0FHRV9GT1JNQVQ9Z251DQogICAgICAgICAgbWtkaXIgLXAgLi4vLi4vZGVicy1uZXcNCiAgICAgICAgICBjcCAtdiAuLyouZGViIC4uLy4uL2RlYnMtbmV3Lw0KICAgICAgICAgIGxzIC1sYSAuLi8uLi9kZWJzLW5ldw0KDQogICAgICAtIG5hbWU6IFVwbG9hZCBkZWIgYXJ0aWZhY3QNCiAgICAgICAgdXNlczogYWN0aW9ucy91cGxvYWQtYXJ0aWZhY3RAdjQNCiAgICAgICAgd2l0aDoNCiAgICAgICAgICBuYW1lOiBkZWItJHt7IG1hdHJpeC50d2VhayB9fQ0KICAgICAgICAgIHBhdGg6IGRlYnMtbmV3LyouZGViDQogICAgICAgICAgaWYtbm8tZmlsZXMtZm91bmQ6IGVycm9yDQoNCiAgYXB0LWluZGV4Og0KICAgIG5lZWRzOiBidWlsZA0KICAgIHJ1bnMtb246IHVidW50dS0yMi4wNA0KICAgIHN0ZXBzOg0KICAgICAgLSBuYW1lOiBDaGVja291dA0KICAgICAgICB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0DQoNCiAgICAgIC0gbmFtZTogRG93bmxvYWQgYnVpbHQgZGVicw0KICAgICAgICB1c2VzOiBhY3Rpb25zL2Rvd25sb2FkLWFydGlmYWN0QHY0DQogICAgICAgIHdpdGg6DQogICAgICAgICAgcGF0dGVybjogZGViLSoNCiAgICAgICAgICBtZXJnZS1tdWx0aXBsZTogdHJ1ZQ0KICAgICAgICAgIHBhdGg6IGRlYnMtbmV3DQoNCiAgICAgIC0gbmFtZTogSW5zdGFsbCB0b29scw0KICAgICAgICBydW46IHwNCiAgICAgICAgICBzdWRvIGFwdC1nZXQgdXBkYXRlDQogICAgICAgICAgc3VkbyBhcHQtZ2V0IGluc3RhbGwgLXkgZHBrZy1kZXYgZ3ppcCBiemlwMiB4ei11dGlscw0KDQogICAgICAtIG5hbWU6IFJlYnVpbGQgUGFja2FnZXMgaW5kZXgNCiAgICAgICAgcnVuOiB8DQogICAgICAgICAgc2V0IC1lDQogICAgICAgICAgY3AgLXYgZGVicy1uZXcvKi5kZWIgZGVicy8NCiAgICAgICAgICBkcGtnLXNjYW5wYWNrYWdlcyAtbSBkZWJzIC9kZXYvbnVsbCA+IFBhY2thZ2VzDQogICAgICAgICAgZ3ppcCAtYyBQYWNrYWdlcyA+IFBhY2thZ2VzLmd6DQogICAgICAgICAgYnppcDIgLWMgUGFja2FnZXMgPiBQYWNrYWdlcy5iejINCiAgICAgICAgICB4eiAtYyBQYWNrYWdlcyA+IFBhY2thZ2VzLnh6DQogICAgICAgICAgZWNobyAiLS0tIFBhY2thZ2VzIHN1bW1hcnkgLS0tIg0KICAgICAgICAgIGdyZXAgLUUgIl4oUGFja2FnZXxWZXJzaW9ufEZpbGVuYW1lKToiIFBhY2thZ2VzDQoNCiAgICAgIC0gbmFtZTogUmVnZW5lcmF0ZSBSZWxlYXNlIGZpbGUNCiAgICAgICAgcnVuOiB8DQogICAgICAgICAgc2V0IC1lDQogICAgICAgICAgew0KICAgICAgICAgICAgaGVhZCAtbiA4IFJlbGVhc2UNCiAgICAgICAgICAgIGVjaG8gIk1ENVN1bToiDQogICAgICAgICAgICBmb3IgZiBpbiBQYWNrYWdlcyBQYWNrYWdlcy5neiBQYWNrYWdlcy5iejIgUGFja2FnZXMueHo7IGRvDQogICAgICAgICAgICAgIHByaW50ZiAnICVzICVzICVzXG4nICIkKG1kNXN1bSAiJGYiIHwgY3V0IC1kJyAnIC1mMSkiICIkKHN0YXQgLWMlcyAiJGYiKSIgIiRmIg0KICAgICAgICAgICAgZG9uZQ0KICAgICAgICAgICAgZWNobyAiU0hBMToiDQogICAgICAgICAgICBmb3IgZiBpbiBQYWNrYWdlcyBQYWNrYWdlcy5neiBQYWNrYWdlcy5iejIgUGFja2FnZXMueHo7IGRvDQogICAgICAgICAgICAgIHByaW50ZiAnICVzICVzICVzXG4nICIkKHNoYTFzdW0gIiRmIiB8IGN1dCAtZCcgJyAtZjEpIiAiJChzdGF0IC1jJXMgIiRmIikiICIkZiINCiAgICAgICAgICAgIGRvbmUNCiAgICAgICAgICAgIGVjaG8gIlNIQTI1NjoiDQogICAgICAgICAgICBmb3IgZiBpbiBQYWNrYWdlcyBQYWNrYWdlcy5neiBQYWNrYWdlcy5iejIgUGFja2FnZXMueHo7IGRvDQogICAgICAgICAgICAgIHByaW50ZiAnICVzICVzICVzXG4nICIkKHNoYTI1NnN1bSAiJGYiIHwgY3V0IC1kJyAnIC1mMSkiICIkKHN0YXQgLWMlcyAiJGYiKSIgIiRmIg0KICAgICAgICAgICAgZG9uZQ0KICAgICAgICAgIH0gPiBSZWxlYXNlLnRtcA0KICAgICAgICAgIG12IFJlbGVhc2UudG1wIFJlbGVhc2UNCiAgICAgICAgICBjYXQgUmVsZWFzZQ0KDQogICAgICAtIG5hbWU6IENvbW1pdCBhbmQgcHVzaA0KICAgICAgICBydW46IHwNCiAgICAgICAgICBnaXQgY29uZmlnIHVzZXIubmFtZSAiZ2l0aHViLWFjdGlvbnNbYm90XSINCiAgICAgICAgICBnaXQgY29uZmlnIHVzZXIuZW1haWwgIjQxODk4MjgyK2dpdGh1Yi1hY3Rpb25zW2JvdF1AdXNlcnMubm9yZXBseS5naXRodWIuY29tIg0KICAgICAgICAgIGdpdCBhZGQgZGVicyBQYWNrYWdlcyBQYWNrYWdlcy5neiBQYWNrYWdlcy5iejIgUGFja2FnZXMueHogUmVsZWFzZQ0KICAgICAgICAgIGdpdCBjb21taXQgLW0gIkNJOiBhZGQgbmV3bHkgYnVpbHQgZGVicyBhbmQgcmVidWlsZCBBUFQgaW5kZXgiDQogICAgICAgICAgZ2l0IHB1c2gNCg0KICAgICAgLSBuYW1lOiBUcmlnZ2VyIFBhZ2VzIGRlcGxveQ0KICAgICAgICBydW46IHwNCiAgICAgICAgICBnaCBhcGkgLVggUE9TVCAicmVwb3MvJEdJVEhVQl9SRVBPU0lUT1JZL2FjdGlvbnMvd29ya2Zsb3dzL3BhZ2VzLnltbC9kaXNwYXRjaGVzIiAtZiByZWY9bWFpbg0KICAgICAgICBlbnY6DQogICAgICAgICAgR0hfVE9LRU46ICR7eyBzZWNyZXRzLkdJVEhVQl9UT0tFTiB9fQ0K
+name: Build Tweaks (Theos) and Rebuild APT Index
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: "tweak-build"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        tweak: [Glint, ActionButton12, Aura, Echo, Volt, Lumina, Cam60Enabler5s]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fakeroot dpkg-dev gzip bzip2 xz-utils rsync curl ca-certificates
+
+      - name: Install ldid
+        run: |
+          case "$(uname -m)" in
+            x86_64) ASSET=ldid_linux_x86_64 ;;
+            aarch64) ASSET=ldid_linux_aarch64 ;;
+            *) echo "Unsupported arch: $(uname -m)"; exit 1 ;;
+          esac
+          curl -fsSL -o /tmp/ldid "https://github.com/ProcursusTeam/ldid/releases/latest/download/$ASSET"
+          sudo install -m 755 /tmp/ldid /usr/local/bin/ldid
+          which ldid
+
+      - name: Install Theos
+        run: |
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+          echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
+
+      - name: Ensure iOS 12.4 SDK
+        run: |
+          echo "--- SDKs currently installed ---"
+          ls "$THEOS/sdks" || true
+          if [ ! -d "$THEOS/sdks/iPhoneOS12.4.sdk" ]; then
+            rm -rf /tmp/sdks
+            git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
+            ls /tmp/sdks
+            if [ -d /tmp/sdks/iPhoneOS12.4.sdk ]; then
+              mv /tmp/sdks/iPhoneOS12.4.sdk "$THEOS/sdks/"
+              echo "Installed iPhoneOS12.4.sdk from theos/sdks"
+            else
+              echo "iPhoneOS12.4.sdk not found in theos/sdks"
+              exit 1
+            fi
+          fi
+          echo "--- Final SDK list ---"
+          ls "$THEOS/sdks"
+
+      - name: Build ${{ matrix.tweak }}
+        run: |
+          cd "tweaks/${{ matrix.tweak }}"
+          make clean package FINALPACKAGE=1 THEOS_PACKAGE_COMPRESSION=gzip THEOS_PACKAGE_FORMAT=gnu
+          mkdir -p ../../debs-new
+          cp -v ./*.deb ../../debs-new/
+          ls -la ../../debs-new
+
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-${{ matrix.tweak }}
+          path: debs-new/*.deb
+          if-no-files-found: error
+
+  apt-index:
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download built debs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: deb-*
+          merge-multiple: true
+          path: debs-new
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev gzip bzip2 xz-utils
+
+      - name: Rebuild Packages index
+        run: |
+          set -e
+          cp -v debs-new/*.deb debs/
+          dpkg-scanpackages -m debs /dev/null > Packages
+          gzip -c Packages > Packages.gz
+          bzip2 -c Packages > Packages.bz2
+          xz -c Packages > Packages.xz
+          echo "--- Packages summary ---"
+          grep -E "^(Package|Version|Filename):" Packages
+
+      - name: Regenerate Release file
+        run: |
+          set -e
+          {
+            head -n 8 Release
+            echo "MD5Sum:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(md5sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+            echo "SHA1:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(sha1sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+            echo "SHA256:"
+            for f in Packages Packages.gz Packages.bz2 Packages.xz; do
+              printf ' %s %s %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "$(stat -c%s "$f")" "$f"
+            done
+          } > Release.tmp
+          mv Release.tmp Release
+          cat Release
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add debs Packages Packages.gz Packages.bz2 Packages.xz Release
+          git commit -m "CI: add newly built debs and rebuild APT index"
+          git push
+
+      - name: Trigger Pages deploy
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/pages.yml/dispatches" -f ref=main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

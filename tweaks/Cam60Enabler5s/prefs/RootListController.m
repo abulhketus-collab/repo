@@ -1,1 +1,64 @@
-I2ltcG9ydCA8UHJlZmVyZW5jZXMvUFNMaXN0Q29udHJvbGxlci5oPg0KI2ltcG9ydCA8c3Bhd24uaD4NCiNpbXBvcnQgPENvcmVGb3VuZGF0aW9uL0NvcmVGb3VuZGF0aW9uLmg+DQojaW1wb3J0IDxub3RpZnkuaD4NCg0KQGludGVyZmFjZSBDYW02MFJvb3RMaXN0Q29udHJvbGxlciA6IFBTTGlzdENvbnRyb2xsZXINCkBlbmQNCg0KQGltcGxlbWVudGF0aW9uIENhbTYwUm9vdExpc3RDb250cm9sbGVyDQoNCi0gKE5TQXJyYXkgKilzcGVjaWZpZXJzIHsNCiAgICBpZiAoIV9zcGVjaWZpZXJzKSB7DQogICAgICAgIF9zcGVjaWZpZXJzID0gW3NlbGYgbG9hZFNwZWNpZmllcnNGcm9tUGxpc3ROYW1lOkAiUm9vdCIgdGFyZ2V0OnNlbGZdOw0KICAgIH0NCiAgICByZXR1cm4gX3NwZWNpZmllcnM7DQp9DQoNCi0gKHZvaWQpcmVzcHJpbmcgew0KICAgIFVJQWxlcnRDb250cm9sbGVyICphbGVydCA9IFtVSUFsZXJ0Q29udHJvbGxlciBhbGVydENvbnRyb2xsZXJXaXRoVGl0bGU6QCJDYW02MEVuYWJsZXI1cyINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtZXNzYWdlOkAiUmVzcHJpbmcgU3ByaW5nQm9hcmQgdG8gYXBwbHkgY2hhbmdlcz8iDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJlZmVycmVkU3R5bGU6VUlBbGVydENvbnRyb2xsZXJTdHlsZUFsZXJ0XTsNCiAgICBbYWxlcnQgYWRkQWN0aW9uOltVSUFsZXJ0QWN0aW9uIGFjdGlvbldpdGhUaXRsZTpAIkNhbmNlbCIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlQ2FuY2VsIGhhbmRsZXI6bmlsXV07DQogICAgW2FsZXJ0IGFkZEFjdGlvbjpbVUlBbGVydEFjdGlvbiBhY3Rpb25XaXRoVGl0bGU6QCJSZXNwcmluZyIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlRGVzdHJ1Y3RpdmUgaGFuZGxlcjpeKFVJQWxlcnRBY3Rpb24gKmFjdGlvbikgew0KICAgICAgICBwaWRfdCBwaWQ7DQogICAgICAgIGNvbnN0IGNoYXIgKmFyZ3ZbXSA9IHsia2lsbGFsbCIsICItOSIsICJTcHJpbmdCb2FyZCIsIE5VTEx9Ow0KICAgICAgICBwb3NpeF9zcGF3bigmcGlkLCAiL3Vzci9iaW4va2lsbGFsbCIsIE5VTEwsIE5VTEwsIChjaGFyICpjb25zdCAqKWFyZ3YsIE5VTEwpOw0KICAgIH1dXTsNCiAgICBbc2VsZiBwcmVzZW50Vmlld0NvbnRyb2xsZXI6YWxlcnQgYW5pbWF0ZWQ6WUVTIGNvbXBsZXRpb246bmlsXTsNCn0NCg0KLSAodm9pZClyZXNldERlZmF1bHRzIHsNCiAgICBVSUFsZXJ0Q29udHJvbGxlciAqYWxlcnQgPSBbVUlBbGVydENvbnRyb2xsZXIgYWxlcnRDb250cm9sbGVyV2l0aFRpdGxlOkAiQ2FtNjBFbmFibGVyNXMiDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWVzc2FnZTpAIlJlc2V0IGFsbCBzZXR0aW5ncyB0byBzYWZlIGRlZmF1bHRzPyINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJlZmVycmVkU3R5bGU6VUlBbGVydENvbnRyb2xsZXJTdHlsZUFsZXJ0XTsNCiAgICBbYWxlcnQgYWRkQWN0aW9uOltVSUFsZXJ0QWN0aW9uIGFjdGlvbldpdGhUaXRsZTpAIkNhbmNlbCIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlQ2FuY2VsIGhhbmRsZXI6bmlsXV07DQogICAgW2FsZXJ0IGFkZEFjdGlvbjpbVUlBbGVydEFjdGlvbiBhY3Rpb25XaXRoVGl0bGU6QCJSZXNldCIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlRGVzdHJ1Y3RpdmUgaGFuZGxlcjpeKFVJQWxlcnRBY3Rpb24gKmFjdGlvbikgew0KICAgICAgICAvLyB2MS4wLjMgc2FmZSBkZWZhdWx0cyAtIDYwZnBzIG9mZiwgcHJvdGVjdGlvbnMgb24NCiAgICAgICAgTlNEaWN0aW9uYXJ5PE5TU3RyaW5nICosIGlkPiAqZGVmYXVsdHMgPSBAew0KICAgICAgICAgICAgQCJlbmFibGVkIjogQChOTyksDQogICAgICAgICAgICBAInNsb3dtbyI6IEAoTk8pLA0KICAgICAgICAgICAgQCJmNGs2MCI6IEAoTk8pLA0KICAgICAgICAgICAgQCJwcm9yYXciOiBAKE5PKSwNCiAgICAgICAgICAgIEAiY2luZSI6IEAoTk8pLA0KICAgICAgICAgICAgQCJiaXRyYXRlIjogQCg1MC4wKSwNCiAgICAgICAgICAgIEAicXVhbGl0eSI6IEAoODUuMCksDQogICAgICAgICAgICBAInRoZXJtYWwiOiBAKFlFUyksDQogICAgICAgICAgICBAImF1dG9kaXMiOiBAKFlFUyksDQogICAgICAgICAgICBAInByb2ZpbGUiOiBAKC0xKQ0KICAgICAgICB9Ow0KICAgICAgICBDRlN0cmluZ1JlZiBhcHBJRCA9IENGU1RSKCJjb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cyIpOw0KICAgICAgICBmb3IgKE5TU3RyaW5nICprZXkgaW4gZGVmYXVsdHMpIHsNCiAgICAgICAgICAgIENGUHJlZmVyZW5jZXNTZXRBcHBWYWx1ZSgoQ0ZTdHJpbmdSZWYpa2V5LCAoX19icmlkZ2UgQ0ZUeXBlUmVmKWRlZmF1bHRzW2tleV0sIGFwcElEKTsNCiAgICAgICAgfQ0KICAgICAgICBDRlByZWZlcmVuY2VzQXBwU3luY2hyb25pemUoYXBwSUQpOw0KICAgICAgICBub3RpZnlfcG9zdCgiY29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMvcmVsb2FkIik7DQoNCiAgICAgICAgZGlzcGF0Y2hfYWZ0ZXIoZGlzcGF0Y2hfdGltZShESVNQQVRDSF9USU1FX05PVywgKGludDY0X3QpKDAuNCAqIE5TRUNfUEVSX1NFQykpLCBkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeew0KICAgICAgICAgICAgW3NlbGYgcmVsb2FkU3BlY2lmaWVyc107DQogICAgICAgIH0pOw0KICAgIH1dXTsNCiAgICBbc2VsZiBwcmVzZW50Vmlld0NvbnRyb2xsZXI6YWxlcnQgYW5pbWF0ZWQ6WUVTIGNvbXBsZXRpb246bmlsXTsNCn0NCg0KQGVuZA0K
+#import <Preferences/PSListController.h>
+#import <spawn.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <notify.h>
+
+@interface Cam60RootListController : PSListController
+@end
+
+@implementation Cam60RootListController
+
+- (NSArray *)specifiers {
+    if (!_specifiers) {
+        _specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
+    }
+    return _specifiers;
+}
+
+- (void)respring {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cam60Enabler5s"
+                                                                   message:@"Respring SpringBoard to apply changes?"
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        pid_t pid;
+        const char *argv[] = {"killall", "-9", "SpringBoard", NULL};
+        posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char *const *)argv, NULL);
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)resetDefaults {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cam60Enabler5s"
+                                                                   message:@"Reset all settings to safe defaults?"
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        // v1.0.3 safe defaults - 60fps off, protections on
+        NSDictionary<NSString *, id> *defaults = @{
+            @"enabled": @(NO),
+            @"slowmo": @(NO),
+            @"f4k60": @(NO),
+            @"proraw": @(NO),
+            @"cine": @(NO),
+            @"bitrate": @(50.0),
+            @"quality": @(85.0),
+            @"thermal": @(YES),
+            @"autodis": @(YES),
+            @"profile": @(-1)
+        };
+        CFStringRef appID = CFSTR("com.cocxace.cam60enabler5s");
+        for (NSString *key in defaults) {
+            CFPreferencesSetAppValue((CFStringRef)key, (__bridge CFTypeRef)defaults[key], appID);
+        }
+        CFPreferencesAppSynchronize(appID);
+        notify_post("com.cocxace.cam60enabler5s/reload");
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self reloadSpecifiers];
+        });
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+@end

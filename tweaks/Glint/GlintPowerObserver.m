@@ -1,1 +1,71 @@
-I2ltcG9ydCAiR2xpbnRQb3dlck9ic2VydmVyLmgiDQojaW1wb3J0ICJHbGludFN0YXRlTWFuYWdlci5oIg0KI2ltcG9ydCAiR2xpbnRQcmVmcy5oIg0KI2ltcG9ydCA8SU9LaXQvSU9LaXRMaWIuaD4NCiNpbXBvcnQgPElPS2l0L3BzL0lPUG93ZXJTb3VyY2VzLmg+DQojaW1wb3J0IDxvcy9sb2cuaD4NCg0Kc3RhdGljIENGUnVuTG9vcFNvdXJjZVJlZiBfZ2xpbnRQb3dlclJMUyA9IE5VTEw7DQoNCnN0YXRpYyB2b2lkIF9nbGludFBvd2VyQ2FsbGJhY2sodm9pZCAqY29udGV4dCkgew0KICAgIGRpc3BhdGNoX2FzeW5jKGRpc3BhdGNoX2dldF9tYWluX3F1ZXVlKCksIF57DQogICAgICAgIFtbR2xpbnRTdGF0ZU1hbmFnZXIgc2hhcmVkTWFuYWdlcl0gdXBkYXRlUG93ZXJTdGF0ZV07DQogICAgfSk7DQp9DQoNCkBpbXBsZW1lbnRhdGlvbiBHbGludFBvd2VyT2JzZXJ2ZXINCg0KKyAodm9pZClpbnN0YWxsIHsNCiAgICBpZiAoIVtHbGludFByZWZzIGJvb2xGb3JLZXk6QCJnbGludFNob3dDaGFyZ2luZyIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsNCiAgICBfZ2xpbnRQb3dlclJMUyA9IElPUFNOb3RpZmljYXRpb25DcmVhdGVSdW5Mb29wU291cmNlKENGUnVuTG9vcEdldE1haW4oKSwgTlVMTCwgTlVMTCwgTlVMTCk7DQogICAgaWYgKF9nbGludFBvd2VyUkxTKSB7DQogICAgICAgIENGUnVuTG9vcEFkZFNvdXJjZShDRlJ1bkxvb3BHZXRNYWluKCksIF9nbGludFBvd2VyUkxTLCBrQ0ZSdW5Mb29wQ29tbW9uTW9kZXMpOw0KICAgIH0NCiAgICBbW0dsaW50U3RhdGVNYW5hZ2VyIHNoYXJlZE1hbmFnZXJdIHVwZGF0ZVBvd2VyU3RhdGVdOw0KfQ0KDQorICh2b2lkKXVuaW5zdGFsbCB7DQogICAgaWYgKF9nbGludFBvd2VyUkxTKSB7DQogICAgICAgIENGUnVuTG9vcFJlbW92ZVNvdXJjZShDRlJ1bkxvb3BHZXRNYWluKCksIF9nbGludFBvd2VyUkxTLCBrQ0ZSdW5Mb29wQ29tbW9uTW9kZXMpOw0KICAgICAgICBDRlJlbGVhc2UoX2dsaW50UG93ZXJSTFMpOw0KICAgICAgICBfZ2xpbnRQb3dlclJMUyA9IE5VTEw7DQogICAgfQ0KfQ0KDQorIChCT09MKWlzQ2hhcmdpbmcgew0KICAgIENGVHlwZVJlZiBpbmZvID0gSU9QU0NvcHlQb3dlclNvdXJjZXNJbmZvKCk7DQogICAgaWYgKCFpbmZvKSByZXR1cm4gTk87DQogICAgQ0ZBcnJheVJlZiBsaXN0ID0gSU9QU0NvcHlQb3dlclNvdXJjZXNMaXN0KGluZm8pOw0KICAgIEJPT0wgY2hhcmdpbmcgPSBOTzsNCiAgICBmb3IgKENGSW5kZXggaSA9IDA7IGkgPCBDRkFycmF5R2V0Q291bnQobGlzdCk7IGkrKykgew0KICAgICAgICBDRlN0cmluZ1JlZiBuYW1lID0gQ0ZBcnJheUdldFZhbHVlQXRJbmRleChsaXN0LCBpKTsNCiAgICAgICAgQ0ZEaWN0aW9uYXJ5UmVmIGRlc2MgPSBJT1BTR2V0UG93ZXJTb3VyY2VEZXNjcmlwdGlvbihpbmZvLCBuYW1lKTsNCiAgICAgICAgaWYgKGRlc2MpIHsNCiAgICAgICAgICAgIENGQm9vbGVhblJlZiBpc0NoZyA9IENGRGljdGlvbmFyeUdldFZhbHVlKGRlc2MsIENGU1RSKGtJT1BTSXNDaGFyZ2luZ0tleSkpOw0KICAgICAgICAgICAgaWYgKGlzQ2hnID09IGtDRkJvb2xlYW5UcnVlKSBjaGFyZ2luZyA9IFlFUzsNCiAgICAgICAgfQ0KICAgIH0NCiAgICBDRlJlbGVhc2UobGlzdCk7DQogICAgQ0ZSZWxlYXNlKGluZm8pOw0KICAgIHJldHVybiBjaGFyZ2luZzsNCn0NCg0KKyAoQ0dGbG9hdCljdXJyZW50Q2FwYWNpdHkgew0KICAgIENGVHlwZVJlZiBpbmZvID0gSU9QU0NvcHlQb3dlclNvdXJjZXNJbmZvKCk7DQogICAgaWYgKCFpbmZvKSByZXR1cm4gLTEuZjsNCiAgICBDRkFycmF5UmVmIGxpc3QgPSBJT1BTQ29weVBvd2VyU291cmNlc0xpc3QoaW5mbyk7DQogICAgQ0dGbG9hdCBjYXAgPSAtMS5mOw0KICAgIGZvciAoQ0ZJbmRleCBpID0gMDsgaSA8IENGQXJyYXlHZXRDb3VudChsaXN0KTsgaSsrKSB7DQogICAgICAgIENGU3RyaW5nUmVmIG5hbWUgPSBDRkFycmF5R2V0VmFsdWVBdEluZGV4KGxpc3QsIGkpOw0KICAgICAgICBDRkRpY3Rpb25hcnlSZWYgZGVzYyA9IElPUFNHZXRQb3dlclNvdXJjZURlc2NyaXB0aW9uKGluZm8sIG5hbWUpOw0KICAgICAgICBpZiAoZGVzYykgew0KICAgICAgICAgICAgQ0ZOdW1iZXJSZWYgYyA9IENGRGljdGlvbmFyeUdldFZhbHVlKGRlc2MsIENGU1RSKGtJT1BTQ3VycmVudENhcGFjaXR5S2V5KSk7DQogICAgICAgICAgICBpZiAoYykgQ0ZOdW1iZXJHZXRWYWx1ZShjLCBrQ0ZOdW1iZXJDR0Zsb2F0VHlwZSwgJmNhcCk7DQogICAgICAgIH0NCiAgICB9DQogICAgQ0ZSZWxlYXNlKGxpc3QpOw0KICAgIENGUmVsZWFzZShpbmZvKTsNCiAgICByZXR1cm4gY2FwOw0KfQ0KDQpAZW5kDQo=
+#import "GlintPowerObserver.h"
+#import "GlintStateManager.h"
+#import "GlintPrefs.h"
+#import <IOKit/IOKitLib.h>
+#import <IOKit/ps/IOPowerSources.h>
+#import <os/log.h>
+
+static CFRunLoopSourceRef _glintPowerRLS = NULL;
+
+static void _glintPowerCallback(void *context) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintStateManager sharedManager] updatePowerState];
+    });
+}
+
+@implementation GlintPowerObserver
+
++ (void)install {
+    if (![GlintPrefs boolForKey:@"glintShowCharging" defaultValue:YES]) return;
+    _glintPowerRLS = IOPSNotificationCreateRunLoopSource(CFRunLoopGetMain(), NULL, NULL, NULL);
+    if (_glintPowerRLS) {
+        CFRunLoopAddSource(CFRunLoopGetMain(), _glintPowerRLS, kCFRunLoopCommonModes);
+    }
+    [[GlintStateManager sharedManager] updatePowerState];
+}
+
++ (void)uninstall {
+    if (_glintPowerRLS) {
+        CFRunLoopRemoveSource(CFRunLoopGetMain(), _glintPowerRLS, kCFRunLoopCommonModes);
+        CFRelease(_glintPowerRLS);
+        _glintPowerRLS = NULL;
+    }
+}
+
++ (BOOL)isCharging {
+    CFTypeRef info = IOPSCopyPowerSourcesInfo();
+    if (!info) return NO;
+    CFArrayRef list = IOPSCopyPowerSourcesList(info);
+    BOOL charging = NO;
+    for (CFIndex i = 0; i < CFArrayGetCount(list); i++) {
+        CFStringRef name = CFArrayGetValueAtIndex(list, i);
+        CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
+        if (desc) {
+            CFBooleanRef isChg = CFDictionaryGetValue(desc, CFSTR(kIOPSIsChargingKey));
+            if (isChg == kCFBooleanTrue) charging = YES;
+        }
+    }
+    CFRelease(list);
+    CFRelease(info);
+    return charging;
+}
+
++ (CGFloat)currentCapacity {
+    CFTypeRef info = IOPSCopyPowerSourcesInfo();
+    if (!info) return -1.f;
+    CFArrayRef list = IOPSCopyPowerSourcesList(info);
+    CGFloat cap = -1.f;
+    for (CFIndex i = 0; i < CFArrayGetCount(list); i++) {
+        CFStringRef name = CFArrayGetValueAtIndex(list, i);
+        CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
+        if (desc) {
+            CFNumberRef c = CFDictionaryGetValue(desc, CFSTR(kIOPSCurrentCapacityKey));
+            if (c) CFNumberGetValue(c, kCFNumberCGFloatType, &cap);
+        }
+    }
+    CFRelease(list);
+    CFRelease(info);
+    return cap;
+}
+
+@end

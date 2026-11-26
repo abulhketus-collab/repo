@@ -1,1 +1,93 @@
-I2ltcG9ydCAiR2xpbnRCYW5uZXJPYnNlcnZlci5oIg0KI2ltcG9ydCAiR2xpbnRTdGF0ZU1hbmFnZXIuaCINCiNpbXBvcnQgIkdsaW50UHJlZnMuaCINCiNpbXBvcnQgPG9zL2xvZy5oPg0KDQpzdGF0aWMgdm9pZCAqZ09yaWdQcmVzZW50QmFubmVyID0gTlVMTDsNCnN0YXRpYyB2b2lkICpnT3JpZ0Rpc21pc3NCYW5uZXIgPSBOVUxMOw0KDQpzdGF0aWMgdm9pZCBob29rX3ByZXNlbnRCYW5uZXIoaWQgc2VsZiwgU0VMIF9jbWQsIGlkIGJ1bGxldGluKSB7DQogICAgaWYgKGdPcmlnUHJlc2VudEJhbm5lcikgKCh2b2lkICgqKShpZCwgU0VMLCBpZCkpZ09yaWdQcmVzZW50QmFubmVyKShzZWxmLCBfY21kLCBidWxsZXRpbik7DQogICAgaWYgKCFbR2xpbnRQcmVmcyBib29sRm9yS2V5OkAiZ2xpbnRTaG93Tm90aWZpY2F0aW9ucyIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsNCiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeew0KICAgICAgICBbW0dsaW50U3RhdGVNYW5hZ2VyIHNoYXJlZE1hbmFnZXJdIGFkZE5vdGlmaWNhdGlvbkJ1bGxldGluOmJ1bGxldGluXTsNCiAgICB9KTsNCn0NCg0Kc3RhdGljIHZvaWQgaG9va19kaXNtaXNzQmFubmVyKGlkIHNlbGYsIFNFTCBfY21kLCBpZCBiYW5uZXJWaWV3KSB7DQogICAgaWYgKGdPcmlnRGlzbWlzc0Jhbm5lcikgKCh2b2lkICgqKShpZCwgU0VMLCBpZCkpZ09yaWdEaXNtaXNzQmFubmVyKShzZWxmLCBfY21kLCBiYW5uZXJWaWV3KTsNCiAgICBpZCBidWxsZXRpbiA9IFtiYW5uZXJWaWV3IHZhbHVlRm9yS2V5OkAiYnVsbGV0aW4iXTsNCiAgICBpZiAoYnVsbGV0aW4pIHsNCiAgICAgICAgTlNTdHJpbmcgKnNpZCA9IFtidWxsZXRpbiB2YWx1ZUZvcktleTpAInNlY3Rpb25JRCJdOw0KICAgICAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeew0KICAgICAgICAgICAgW1tHbGludFN0YXRlTWFuYWdlciBzaGFyZWRNYW5hZ2VyXSByZW1vdmVTdGF0ZVdpdGhLZXk6c2lkID8gW05TU3RyaW5nIHN0cmluZ1dpdGhGb3JtYXQ6QCJub3RpZjolQCIsIHNpZF0gOiBAIm5vdGlmOnVua25vd24iXTsNCiAgICAgICAgfSk7DQogICAgfQ0KfQ0KDQpAaW1wbGVtZW50YXRpb24gR2xpbnRCYW5uZXJPYnNlcnZlcg0KDQorICh2b2lkKWluc3RhbGwgew0KICAgIGlmICghW0dsaW50UHJlZnMgYm9vbEZvcktleTpAImdsaW50U2hvd05vdGlmaWNhdGlvbnMiIGRlZmF1bHRWYWx1ZTpZRVNdKSByZXR1cm47DQogICAgQ2xhc3MgY2xzID0gTlNDbGFzc0Zyb21TdHJpbmcoQCJTQkJ1bGxldGluQmFubmVyQ29udHJvbGxlciIpOw0KICAgIGlmICghY2xzKSByZXR1cm47DQoNCiAgICAvLyDQoNGf0KHQgtCg0ZXQoMKx0KHRk9CgwrXQoNGYINCg0IXQoMK10KHQg9Cg0ZTQoNGV0KDCu9Ch0IrQoNGU0KDRlSDQoNCG0KDCsNCh0ILQoNGR0KDCsNCg0IXQoeKAmtCg0ZXQoNCGINCh0IPQoMK10KDCu9CgwrXQoNGU0KHigJrQoNGV0KHQgtCgwrAg0KDSkdCgwrvQodCPIGlPUyAxMi40DQogICAgU0VMIHByZXNlbnRTZWxzW10gPSB7DQogICAgICAgIE5TU2VsZWN0b3JGcm9tU3RyaW5nKEAiX3ByZXNlbnRCdWxsZXRpbjoiKSwNCiAgICAgICAgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJfcHJlc2VudEJ1bGxldGluOmFuaW1hdGVkOiIpLA0KICAgICAgICBOU1NlbGVjdG9yRnJvbVN0cmluZyhAIl9wcmVzZW50QmFubmVyVmlldzoiKSwNCiAgICAgICAgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJfcHJlc2VudEJhbm5lclZpZXc6YW5pbWF0ZWQ6IikNCiAgICB9Ow0KICAgIEJPT0wgaG9va2VkUHJlc2VudCA9IE5POw0KICAgIGZvciAoU0VMIHNlbCBpbiBwcmVzZW50U2Vscykgew0KICAgICAgICBNZXRob2QgbSA9IGNsYXNzX2dldEluc3RhbmNlTWV0aG9kKGNscywgc2VsKTsNCiAgICAgICAgaWYgKG0pIHsNCiAgICAgICAgICAgIE1TSG9va01lc3NhZ2VFeChjbHMsIHNlbCwgKElNUCkmaG9va19wcmVzZW50QmFubmVyLCAoSU1QICopJmdPcmlnUHJlc2VudEJhbm5lcik7DQogICAgICAgICAgICBob29rZWRQcmVzZW50ID0gWUVTOw0KICAgICAgICAgICAgb3NfbG9nKE9TX0xPR19ERUZBVUxULCAiW0dsaW50QmFubmVyXSBob29rZWQgcHJlc2VudDogJUAiLCBOU1N0cmluZ0Zyb21TZWxlY3RvcihzZWwpKTsNCiAgICAgICAgICAgIGJyZWFrOw0KICAgICAgICB9DQogICAgfQ0KDQogICAgU0VMIGRpc21pc3NTZWxzW10gPSB7DQogICAgICAgIE5TU2VsZWN0b3JGcm9tU3RyaW5nKEAiX2Rpc21pc3NCYW5uZXJWaWV3OiIpLA0KICAgICAgICBOU1NlbGVjdG9yRnJvbVN0cmluZyhAIl9kaXNtaXNzQnVsbGV0aW46IiksDQogICAgICAgIE5TU2VsZWN0b3JGcm9tU3RyaW5nKEAiZGlzbWlzc0Jhbm5lcjoiKQ0KICAgIH07DQogICAgZm9yIChTRUwgc2VsIGluIGRpc21pc3NTZWxzKSB7DQogICAgICAgIE1ldGhvZCBtID0gY2xhc3NfZ2V0SW5zdGFuY2VNZXRob2QoY2xzLCBzZWwpOw0KICAgICAgICBpZiAobSkgew0KICAgICAgICAgICAgTVNIb29rTWVzc2FnZUV4KGNscywgc2VsLCAoSU1QKSZob29rX2Rpc21pc3NCYW5uZXIsIChJTVAgKikmZ09yaWdEaXNtaXNzQmFubmVyKTsNCiAgICAgICAgICAgIG9zX2xvZyhPU19MT0dfREVGQVVMVCwgIltHbGludEJhbm5lcl0gaG9va2VkIGRpc21pc3M6ICVAIiwgTlNTdHJpbmdGcm9tU2VsZWN0b3Ioc2VsKSk7DQogICAgICAgICAgICBicmVhazsNCiAgICAgICAgfQ0KICAgIH0NCg0KICAgIGlmICghaG9va2VkUHJlc2VudCkgew0KICAgICAgICBvc19sb2coT1NfTE9HX0RFRkFVTFQsICJbR2xpbnRCYW5uZXJdIG5vIHByZXNlbnQgc2VsZWN0b3IgZm91bmQgb24gdGhpcyBmaXJtd2FyZSIpOw0KICAgIH0NCn0NCg0KKyAodm9pZCl1bmluc3RhbGwgew0KICAgIGlmIChnT3JpZ1ByZXNlbnRCYW5uZXIpIHsNCiAgICAgICAgQ2xhc3MgY2xzID0gTlNDbGFzc0Zyb21TdHJpbmcoQCJTQkJ1bGxldGluQmFubmVyQ29udHJvbGxlciIpOw0KICAgICAgICBpZiAoY2xzKSB7DQogICAgICAgICAgICBTRUwgc2VsID0gTlNTZWxlY3RvckZyb21TdHJpbmcoQCJfcHJlc2VudEJ1bGxldGluOiIpOw0KICAgICAgICAgICAgTWV0aG9kIG0gPSBjbGFzc19nZXRJbnN0YW5jZU1ldGhvZChjbHMsIHNlbCk7DQogICAgICAgICAgICBpZiAobSkgbWV0aG9kX3NldEltcGxlbWVudGF0aW9uKG0sIGdPcmlnUHJlc2VudEJhbm5lcik7DQogICAgICAgIH0NCiAgICAgICAgZ09yaWdQcmVzZW50QmFubmVyID0gTlVMTDsNCiAgICB9DQogICAgaWYgKGdPcmlnRGlzbWlzc0Jhbm5lcikgew0KICAgICAgICBDbGFzcyBjbHMgPSBOU0NsYXNzRnJvbVN0cmluZyhAIlNCQnVsbGV0aW5CYW5uZXJDb250cm9sbGVyIik7DQogICAgICAgIGlmIChjbHMpIHsNCiAgICAgICAgICAgIFNFTCBzZWwgPSBOU1NlbGVjdG9yRnJvbVN0cmluZyhAIl9kaXNtaXNzQmFubmVyVmlldzoiKTsNCiAgICAgICAgICAgIE1ldGhvZCBtID0gY2xhc3NfZ2V0SW5zdGFuY2VNZXRob2QoY2xzLCBzZWwpOw0KICAgICAgICAgICAgaWYgKG0pIG1ldGhvZF9zZXRJbXBsZW1lbnRhdGlvbihtLCBnT3JpZ0Rpc21pc3NCYW5uZXIpOw0KICAgICAgICB9DQogICAgICAgIGdPcmlnRGlzbWlzc0Jhbm5lciA9IE5VTEw7DQogICAgfQ0KfQ0KDQpAZW5kDQo=
+#import "GlintBannerObserver.h"
+#import "GlintStateManager.h"
+#import "GlintPrefs.h"
+#import <os/log.h>
+
+static void *gOrigPresentBanner = NULL;
+static void *gOrigDismissBanner = NULL;
+
+static void hook_presentBanner(id self, SEL _cmd, id bulletin) {
+    if (gOrigPresentBanner) ((void (*)(id, SEL, id))gOrigPresentBanner)(self, _cmd, bulletin);
+    if (![GlintPrefs boolForKey:@"glintShowNotifications" defaultValue:YES]) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[GlintStateManager sharedManager] addNotificationBulletin:bulletin];
+    });
+}
+
+static void hook_dismissBanner(id self, SEL _cmd, id bannerView) {
+    if (gOrigDismissBanner) ((void (*)(id, SEL, id))gOrigDismissBanner)(self, _cmd, bannerView);
+    id bulletin = [bannerView valueForKey:@"bulletin"];
+    if (bulletin) {
+        NSString *sid = [bulletin valueForKey:@"sectionID"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[GlintStateManager sharedManager] removeStateWithKey:sid ? [NSString stringWithFormat:@"notif:%@", sid] : @"notif:unknown"];
+        });
+    }
+}
+
+@implementation GlintBannerObserver
+
++ (void)install {
+    if (![GlintPrefs boolForKey:@"glintShowNotifications" defaultValue:YES]) return;
+    Class cls = NSClassFromString(@"SBBulletinBannerController");
+    if (!cls) return;
+
+    // РџСЂРѕР±СѓРµРј РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ СЃРµР»РµРєС‚РѕСЂР° РґР»СЏ iOS 12.4
+    SEL presentSels[] = {
+        NSSelectorFromString(@"_presentBulletin:"),
+        NSSelectorFromString(@"_presentBulletin:animated:"),
+        NSSelectorFromString(@"_presentBannerView:"),
+        NSSelectorFromString(@"_presentBannerView:animated:")
+    };
+    BOOL hookedPresent = NO;
+    for (SEL sel in presentSels) {
+        Method m = class_getInstanceMethod(cls, sel);
+        if (m) {
+            MSHookMessageEx(cls, sel, (IMP)&hook_presentBanner, (IMP *)&gOrigPresentBanner);
+            hookedPresent = YES;
+            os_log(OS_LOG_DEFAULT, "[GlintBanner] hooked present: %@", NSStringFromSelector(sel));
+            break;
+        }
+    }
+
+    SEL dismissSels[] = {
+        NSSelectorFromString(@"_dismissBannerView:"),
+        NSSelectorFromString(@"_dismissBulletin:"),
+        NSSelectorFromString(@"dismissBanner:")
+    };
+    for (SEL sel in dismissSels) {
+        Method m = class_getInstanceMethod(cls, sel);
+        if (m) {
+            MSHookMessageEx(cls, sel, (IMP)&hook_dismissBanner, (IMP *)&gOrigDismissBanner);
+            os_log(OS_LOG_DEFAULT, "[GlintBanner] hooked dismiss: %@", NSStringFromSelector(sel));
+            break;
+        }
+    }
+
+    if (!hookedPresent) {
+        os_log(OS_LOG_DEFAULT, "[GlintBanner] no present selector found on this firmware");
+    }
+}
+
++ (void)uninstall {
+    if (gOrigPresentBanner) {
+        Class cls = NSClassFromString(@"SBBulletinBannerController");
+        if (cls) {
+            SEL sel = NSSelectorFromString(@"_presentBulletin:");
+            Method m = class_getInstanceMethod(cls, sel);
+            if (m) method_setImplementation(m, gOrigPresentBanner);
+        }
+        gOrigPresentBanner = NULL;
+    }
+    if (gOrigDismissBanner) {
+        Class cls = NSClassFromString(@"SBBulletinBannerController");
+        if (cls) {
+            SEL sel = NSSelectorFromString(@"_dismissBannerView:");
+            Method m = class_getInstanceMethod(cls, sel);
+            if (m) method_setImplementation(m, gOrigDismissBanner);
+        }
+        gOrigDismissBanner = NULL;
+    }
+}
+
+@end

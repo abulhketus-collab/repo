@@ -1,1 +1,255 @@
-Ly8gTHVtaW5hIOKAlCBBbHdheXMtT24tRGlzcGxheSBzdHlsZWQgbG9jayBzY3JlZW4gZm9yIGlPUyAxMiAoY29tLmNvY3hhY2UubHVtaW5hKQovLyB2MS4yLjM6IFVJV2luZG93LWJhc2VkIG92ZXJsYXksIENGUHJlZmVyZW5jZXMsIGxpdmUgcmVsb2FkIHZpYSBkYXJ3aW4gbm90aWZpY2F0aW9uLAovLyBkZXN0cm95IG9uIHJlc3ByaW5nIC8gZGlzYWJsZSwgMTAwJSBjcmFzaC1wcm9vZiBhbmQgbGVhay1mcmVlLgoKI2ltcG9ydCA8VUlLaXQvVUlLaXQuaD4KI2ltcG9ydCA8b2JqYy9ydW50aW1lLmg+CiNpbXBvcnQgPG5vdGlmeS5oPgojaW1wb3J0IDxRdWFydHpDb3JlL1F1YXJ0ekNvcmUuaD4KI2ltcG9ydCA8Q29yZUZvdW5kYXRpb24vQ29yZUZvdW5kYXRpb24uaD4KI2ltcG9ydCA8b3MvbG9nLmg+CgojaW1wb3J0ICJMdW1pbmFQcmVmcy5oIgoKI2RlZmluZSBMdW1pbmFMb2coZm10LCAuLi4pIFwKICAgIGRvIHsgaWYgKFtMdW1pbmFQcmVmcyBzaGFyZWRQcmVmc10uZGVidWdFbmFibGVkKSBcCiAgICAgICAgTlNMb2coQCJbTHVtaW5hXSAlczogIiBmbXQsIF9fUFJFVFRZX0ZVTkNUSU9OX18sICMjX19WQV9BUkdTX18pOyB9IHdoaWxlICgwKQoKI3ByYWdtYSBtYXJrIC0gQU9EIHdpbmRvdwoKc3RhdGljIFVJV2luZG93ICphb2RXaW5kb3cgPSBuaWw7CnN0YXRpYyBVSUxhYmVsICphb2RDbG9jayA9IG5pbDsKc3RhdGljIFVJTGFiZWwgKmFvZERhdGUgPSBuaWw7CnN0YXRpYyBOU1RpbWVyICphb2RUaW1lciA9IG5pbDsKCnN0YXRpYyB2b2lkIEx1bWluYVVwZGF0ZUZhY2Uodm9pZCk7CnN0YXRpYyB2b2lkIEx1bWluYUZhZGUoZG91YmxlIGFscGhhLCBkb3VibGUgZHVyYXRpb24pOwpzdGF0aWMgdm9pZCBMdW1pbmFTaG93QU9EKHZvaWQpOwpzdGF0aWMgdm9pZCBMdW1pbmFIaWRlQU9EKHZvaWQpOwoKQGludGVyZmFjZSBMdW1pbmFUaW1lclN0dWIgOiBOU09iamVjdAorIChpbnN0YW5jZXR5cGUpc2hhcmVkU3R1YjsKLSAodm9pZCl0aGVUaWNrOwpAZW5kCgpAaW1wbGVtZW50YXRpb24gTHVtaW5hVGltZXJTdHViCgorIChpbnN0YW5jZXR5cGUpc2hhcmVkU3R1YiB7CiAgICBzdGF0aWMgTHVtaW5hVGltZXJTdHViICpzdHViID0gbmlsOwogICAgc3RhdGljIGRpc3BhdGNoX29uY2VfdCBvbmNlVG9rZW47CiAgICBkaXNwYXRjaF9vbmNlKCZvbmNlVG9rZW4sIF57CiAgICAgICAgc3R1YiA9IFtbTHVtaW5hVGltZXJTdHViIGFsbG9jXSBpbml0XTsKICAgIH0pOwogICAgcmV0dXJuIHN0dWI7Cn0KCi0gKHZvaWQpdGhlVGljayB7CiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgIEx1bWluYVVwZGF0ZUZhY2UoKTsKICAgIH0pOwp9CgpAZW5kCgpzdGF0aWMgdm9pZCBMdW1pbmFVcGRhdGVGYWNlKHZvaWQpIHsKICAgIEB0cnkgewogICAgICAgIE5TRGF0ZUZvcm1hdHRlciAqY2xvY2sgPSBbW05TRGF0ZUZvcm1hdHRlciBhbGxvY10gaW5pdF07CiAgICAgICAgW2Nsb2NrIHNldERhdGVGb3JtYXQ6QCJISDptbSJdOwogICAgICAgIGFvZENsb2NrLnRleHQgPSBbY2xvY2sgc3RyaW5nRnJvbURhdGU6W05TRGF0ZSBkYXRlXV07CgogICAgICAgIE5TRGF0ZUZvcm1hdHRlciAqZGF0ZSA9IFtbTlNEYXRlRm9ybWF0dGVyIGFsbG9jXSBpbml0XTsKICAgICAgICBbZGF0ZSBzZXREYXRlRm9ybWF0OkAiRUVFLCBkIE1NTSJdOwogICAgICAgIGFvZERhdGUudGV4dCA9IFtkYXRlIHN0cmluZ0Zyb21EYXRlOltOU0RhdGUgZGF0ZV1dOwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7fQp9CgpzdGF0aWMgdm9pZCBMdW1pbmFGYWRlKGRvdWJsZSBhbHBoYSwgZG91YmxlIGR1cmF0aW9uKSB7CiAgICBpZiAoIWFvZFdpbmRvdykgcmV0dXJuOwogICAgW1VJVmlldyBhbmltYXRlV2l0aER1cmF0aW9uOmR1cmF0aW9uIGFuaW1hdGlvbnM6XnsKICAgICAgICBhb2RXaW5kb3cuYWxwaGEgPSBhbHBoYTsKICAgICAgICBhb2REYXRlLmFscGhhID0gW0x1bWluYVByZWZzIGJvb2xGb3JLZXk6QCJzaG93RGF0ZSIgZGVmYXVsdFZhbHVlOllFU10gPyAxLjAgOiAwLjA7CiAgICB9XTsKfQoKc3RhdGljIHZvaWQgTHVtaW5hU2hvd0FPRCh2b2lkKSB7CiAgICBpZiAoYW9kV2luZG93KSByZXR1cm47CiAgICBpZiAoIVtMdW1pbmFQcmVmcyBib29sRm9yS2V5OkAiZW5hYmxlZCIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsKCiAgICBhb2RXaW5kb3cgPSBbW1VJV2luZG93IGFsbG9jXSBpbml0V2l0aEZyYW1lOltbVUlTY3JlZW4gbWFpblNjcmVlbl0gYm91bmRzXV07CiAgICBhb2RXaW5kb3cud2luZG93TGV2ZWwgPSAyMDAwLmY7CiAgICBhb2RXaW5kb3cuYmFja2dyb3VuZENvbG9yID0gW1VJQ29sb3IgYmxhY2tDb2xvcl07CiAgICBhb2RXaW5kb3cuYWxwaGEgPSAwLjA7CiAgICBhb2RXaW5kb3cudXNlckludGVyYWN0aW9uRW5hYmxlZCA9IE5POwogICAgYW9kV2luZG93LnJvb3RWaWV3Q29udHJvbGxlciA9IFtbVUlWaWV3Q29udHJvbGxlciBhbGxvY10gaW5pdF07CiAgICBhb2RXaW5kb3cuaGlkZGVuID0gTk87CiAgICBbYW9kV2luZG93IG1ha2VLZXlBbmRWaXNpYmxlXTsKCiAgICBDR0Zsb2F0IFcgPSBbVUlTY3JlZW4gbWFpblNjcmVlbl0uYm91bmRzLnNpemUud2lkdGg7CiAgICBDR0Zsb2F0IEggPSBbVUlTY3JlZW4gbWFpblNjcmVlbl0uYm91bmRzLnNpemUuaGVpZ2h0OwoKICAgIGFvZENsb2NrID0gW1tVSUxhYmVsIGFsbG9jXSBpbml0V2l0aEZyYW1lOkNHUmVjdE1ha2UoMCwgSCAqIDAuMzAsIFcsIDkwKV07CiAgICBhb2RDbG9jay50ZXh0Q29sb3IgPSBbVUlDb2xvciB3aGl0ZUNvbG9yXTsKICAgIGFvZENsb2NrLmZvbnQgPSBbVUlGb250IHN5c3RlbUZvbnRPZlNpemU6NjIuMCB3ZWlnaHQ6VUlGb250V2VpZ2h0VWx0cmFMaWdodF07CiAgICBhb2RDbG9jay50ZXh0QWxpZ25tZW50ID0gTlNUZXh0QWxpZ25tZW50Q2VudGVyOwogICAgYW9kQ2xvY2suYXV0b3Jlc2l6aW5nTWFzayA9IFVJVmlld0F1dG9yZXNpemluZ0ZsZXhpYmxlV2lkdGggfCBVSVZpZXdBdXRvcmVzaXppbmdGbGV4aWJsZUJvdHRvbU1hcmdpbjsKICAgIFthb2RXaW5kb3cgYWRkU3Vidmlldzphb2RDbG9ja107CgogICAgYW9kRGF0ZSA9IFtbVUlMYWJlbCBhbGxvY10gaW5pdFdpdGhGcmFtZTpDR1JlY3RNYWtlKDAsIEggKiAwLjMwICsgOTYuMCwgVywgMjQpXTsKICAgIGFvZERhdGUudGV4dENvbG9yID0gW1VJQ29sb3IgY29sb3JXaXRoV2hpdGU6MS4wIGFscGhhOjAuNzVdOwogICAgYW9kRGF0ZS5mb250ID0gW1VJRm9udCBzeXN0ZW1Gb250T2ZTaXplOjE0LjAgd2VpZ2h0OlVJRm9udFdlaWdodFNlbWlib2xkXTsKICAgIGFvZERhdGUudGV4dEFsaWdubWVudCA9IE5TVGV4dEFsaWdubWVudENlbnRlcjsKICAgIGFvZERhdGUuYXV0b3Jlc2l6aW5nTWFzayA9IFVJVmlld0F1dG9yZXNpemluZ0ZsZXhpYmxlV2lkdGggfCBVSVZpZXdBdXRvcmVzaXppbmdGbGV4aWJsZUJvdHRvbU1hcmdpbjsKICAgIFthb2RXaW5kb3cgYWRkU3Vidmlldzphb2REYXRlXTsKCiAgICBMdW1pbmFVcGRhdGVGYWNlKCk7CgogICAgYW9kVGltZXIgPSBbTlNUaW1lciB0aW1lcldpdGhUaW1lSW50ZXJ2YWw6MS4wCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFyZ2V0OltMdW1pbmFUaW1lclN0dWIgc2hhcmVkU3R1Yl0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZWN0b3I6QHNlbGVjdG9yKHRoZVRpY2spCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVzZXJJbmZvOm5pbAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVwZWF0czpZRVNdOwogICAgW1tOU1J1bkxvb3AgbWFpblJ1bkxvb3BdIGFkZFRpbWVyOmFvZFRpbWVyIGZvck1vZGU6TlNSdW5Mb29wQ29tbW9uTW9kZXNdOwoKICAgIEx1bWluYUZhZGUoW0x1bWluYVByZWZzIGZsb2F0Rm9yS2V5OkAib3BhY2l0eSIgZGVmYXVsdFZhbHVlOjAuOTBmXSwgMC41KTsKfQoKc3RhdGljIHZvaWQgTHVtaW5hSGlkZUFPRCh2b2lkKSB7CiAgICBpZiAoIWFvZFdpbmRvdykgcmV0dXJuOwogICAgW2FvZFRpbWVyIGludmFsaWRhdGVdOwogICAgYW9kVGltZXIgPSBuaWw7CiAgICBhb2RXaW5kb3cuaGlkZGVuID0gWUVTOwogICAgYW9kV2luZG93LnJvb3RWaWV3Q29udHJvbGxlciA9IG5pbDsKICAgIGFvZFdpbmRvdyA9IG5pbDsKICAgIGFvZENsb2NrID0gbmlsOwogICAgYW9kRGF0ZSA9IG5pbDsKfQoKc3RhdGljIHZvaWQgTHVtaW5hRGVzdHJveSh2b2lkKSB7CiAgICBMdW1pbmFIaWRlQU9EKCk7CiAgICBMdW1pbmFMb2coQCJkZXN0cm95Iik7Cn0KCiNwcmFnbWEgbWFyayAtIEhvb2tzCgpzdGF0aWMgdm9pZCAoKm9yaWdfdmlld1dpbGxBcHBlYXIpKGlkIHNlbGYsIFNFTCBfY21kLCBCT09MIGFuaW1hdGVkKTsKc3RhdGljIHZvaWQgKCpvcmlnX3ZpZXdXaWxsRGlzYXBwZWFyKShpZCBzZWxmLCBTRUwgX2NtZCwgQk9PTCBhbmltYXRlZCk7CgpzdGF0aWMgdm9pZCBob29rX3ZpZXdXaWxsQXBwZWFyKGlkIHNlbGYsIFNFTCBfY21kLCBCT09MIGFuaW1hdGVkKSB7CiAgICBpZiAob3JpZ192aWV3V2lsbEFwcGVhcikgKCh2b2lkICgqKShpZCwgU0VMLCBCT09MKSlvcmlnX3ZpZXdXaWxsQXBwZWFyKShzZWxmLCBfY21kLCBhbmltYXRlZCk7CiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgIEB0cnkgewogICAgICAgICAgICBpZiAoIVtMdW1pbmFQcmVmcyBib29sRm9yS2V5OkAiZW5hYmxlZCIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsKICAgICAgICAgICAgTHVtaW5hU2hvd0FPRCgpOwogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgICAgICBOU0xvZyhAIltUd2VhayBFcnJvcl0gTHVtaW5hIGFwcGVhcjogJUAiLCBlKTsKICAgICAgICB9CiAgICB9KTsKfQoKc3RhdGljIHZvaWQgaG9va192aWV3V2lsbERpc2FwcGVhcihpZCBzZWxmLCBTRUwgX2NtZCwgQk9PTCBhbmltYXRlZCkgewogICAgaWYgKG9yaWdfdmlld1dpbGxEaXNhcHBlYXIpICgodm9pZCAoKikoaWQsIFNFTCwgQk9PTCkpb3JpZ192aWV3V2lsbERpc2FwcGVhcikoc2VsZiwgX2NtZCwgYW5pbWF0ZWQpOwogICAgZGlzcGF0Y2hfYXN5bmMoZGlzcGF0Y2hfZ2V0X21haW5fcXVldWUoKSwgXnsKICAgICAgICBAdHJ5IHsKICAgICAgICAgICAgTHVtaW5hSGlkZUFPRCgpOwogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkge30KICAgIH0pOwp9CgojcHJhZ21hIG1hcmsgLSBQcmVmcyByZWxvYWQKCnN0YXRpYyB2b2lkIEx1bWluYURhcndpbkNhbGxiYWNrKENGTm90aWZpY2F0aW9uQ2VudGVyUmVmIGNlbnRlciwgdm9pZCAqb2JzZXJ2ZXIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENGU3RyaW5nUmVmIG5hbWUsIGNvbnN0IHZvaWQgKm9iamVjdCwgQ0ZEaWN0aW9uYXJ5UmVmIHVzZXJJbmZvKSB7CiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgIEB0cnkgewogICAgICAgICAgICAvLyB2MS4yLjM6IHByZXNldCBleHBhbnNpb24gKyByZXNldCBoYW5kbGluZwogICAgICAgICAgICBOU0ludGVnZXIgcHJlc2V0ID0gLTE7CiAgICAgICAgICAgIENGVHlwZVJlZiBwciA9IENGUHJlZmVyZW5jZXNDb3B5QXBwVmFsdWUoQ0ZTVFIoInByZXNldCIpLCBDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICBpZiAocHIpIHsKICAgICAgICAgICAgICAgIGlmIChDRkdldFR5cGVJRChwcikgPT0gQ0ZOdW1iZXJHZXRUeXBlSUQoKSkKICAgICAgICAgICAgICAgICAgICBDRk51bWJlckdldFZhbHVlKChDRk51bWJlclJlZilwciwga0NGTnVtYmVyTlNJbnRlZ2VyVHlwZSwgJnByZXNldCk7CiAgICAgICAgICAgICAgICBDRlJlbGVhc2UocHIpOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGlmIChwcmVzZXQgPT0gMCkgeyAgIC8vIENsYXNzaWMgQU9ECiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoIm9wYWNpdHkiKSwgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKUAoMC45MCksIENGU1RSKCJjb20uY29jeGFjZS5sdW1pbmEiKSk7CiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoIm9wYWNpdHlDaG9pY2UiKSwgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKUAoMyksIENGU1RSKCJjb20uY29jeGFjZS5sdW1pbmEiKSk7CiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoInNob3dEYXRlIiksIGtDRkJvb2xlYW5UcnVlLCBDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICAgICAgQ0ZQcmVmZXJlbmNlc0FwcFN5bmNocm9uaXplKENGU1RSKCJjb20uY29jeGFjZS5sdW1pbmEiKSk7CiAgICAgICAgICAgIH0gZWxzZSBpZiAocHJlc2V0ID09IDEpIHsgIC8vIERlZXAgRGltCiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoIm9wYWNpdHkiKSwgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKUAoMC45NyksIENGU1RSKCJjb20uY29jeGFjZS5sdW1pbmEiKSk7CiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoIm9wYWNpdHlDaG9pY2UiKSwgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKUAoMyksIENGU1RSKCJjb20uY29jeGFjZS5sdW1pbmEiKSk7CiAgICAgICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoQ0ZTVFIoInNob3dEYXRlIiksIGtDRkJvb2xlYW5GYWxzZSwgQ0ZTVFIoImNvbS5jb2N4YWNlLmx1bWluYSIpKTsKICAgICAgICAgICAgICAgIENGUHJlZmVyZW5jZXNBcHBTeW5jaHJvbml6ZShDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICB9CgogICAgICAgICAgICBDRlR5cGVSZWYgcnN0ID0gQ0ZQcmVmZXJlbmNlc0NvcHlBcHBWYWx1ZShDRlNUUigicmVzZXREZWZhdWx0cyIpLCBDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICBCT09MIGRvUmVzZXQgPSBOTzsKICAgICAgICAgICAgaWYgKHJzdCkgewogICAgICAgICAgICAgICAgaWYgKENGR2V0VHlwZUlEKHJzdCkgPT0gQ0ZCb29sZWFuR2V0VHlwZUlEKCkpIGRvUmVzZXQgPSBDRkJvb2xlYW5HZXRWYWx1ZSgoQ0ZCb29sZWFuUmVmKXJzdCk7CiAgICAgICAgICAgICAgICBDRlJlbGVhc2UocnN0KTsKICAgICAgICAgICAgfQogICAgICAgICAgICBpZiAoZG9SZXNldCkgewogICAgICAgICAgICAgICAgTlNEaWN0aW9uYXJ5ICpkZWZzID0gQHsgQCJlbmFibGVkIjogQChZRVMpLCBAIm9wYWNpdHkiOiBAKDAuOTApLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQCJvcGFjaXR5Q2hvaWNlIjogQCgzKSwgQCJzaG93RGF0ZSI6IEAoWUVTKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEAicHJlc2V0IjogQCgtMSksIEAibHVtaW5hRGVidWciOiBAKE5PKSB9OwogICAgICAgICAgICAgICAgZm9yIChOU1N0cmluZyAqayBpbiBkZWZzKQogICAgICAgICAgICAgICAgICAgIENGUHJlZmVyZW5jZXNTZXRBcHBWYWx1ZSgoQ0ZTdHJpbmdSZWYpaywgKF9fYnJpZGdlIENGVHlwZVJlZilkZWZzW2tdLCBDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICAgICAgQ0ZQcmVmZXJlbmNlc1NldEFwcFZhbHVlKENGU1RSKCJyZXNldERlZmF1bHRzIiksIGtDRkJvb2xlYW5GYWxzZSwgQ0ZTVFIoImNvbS5jb2N4YWNlLmx1bWluYSIpKTsKICAgICAgICAgICAgICAgIENGUHJlZmVyZW5jZXNBcHBTeW5jaHJvbml6ZShDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hIikpOwogICAgICAgICAgICAgICAgTlNMb2coQCJbQ29jeGFjZVR3ZWFrXSBMdW1pbmEgZGVmYXVsdHMgcmVzdG9yZWQiKTsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgaWYgKCFbTHVtaW5hUHJlZnMgYm9vbEZvcktleTpAImVuYWJsZWQiIGRlZmF1bHRWYWx1ZTpZRVNdKSB7CiAgICAgICAgICAgICAgICBMdW1pbmFIaWRlQU9EKCk7CiAgICAgICAgICAgICAgICByZXR1cm47CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYgKGFvZFdpbmRvdyAmJiBhb2RXaW5kb3cuYWxwaGEgPiAwLjApIHsKICAgICAgICAgICAgICAgIEx1bWluYVVwZGF0ZUZhY2UoKTsKICAgICAgICAgICAgICAgIEx1bWluYUZhZGUoW0x1bWluYVByZWZzIGZsb2F0Rm9yS2V5OkAib3BhY2l0eSIgZGVmYXVsdFZhbHVlOjAuOTBmXSwgMC4zKTsKICAgICAgICAgICAgfQogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkge30KICAgIH0pOwp9CgpfX2F0dHJpYnV0ZV9fKChjb25zdHJ1Y3RvcikpIHN0YXRpYyB2b2lkIGluaXRMdW1pbmEoKSB7CiAgICBAYXV0b3JlbGVhc2Vwb29sIHsKICAgICAgICBOU0xvZyhAIltDb2N4YWNlVHdlYWtdIEx1bWluYSAxLjIuMyBsb2FkZWQiKTsKCiAgICAgICAgW0x1bWluYVByZWZzIHJlZ2lzdGVyRGVmYXVsdHNdOwoKICAgICAgICBDRk5vdGlmaWNhdGlvbkNlbnRlckFkZE9ic2VydmVyKENGTm90aWZpY2F0aW9uQ2VudGVyR2V0RGFyd2luTm90aWZ5Q2VudGVyKCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOVUxMLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTHVtaW5hRGFyd2luQ2FsbGJhY2ssCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDRlNUUigiY29tLmNvY3hhY2UubHVtaW5hL3JlbG9hZCIpLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTlVMTCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENGTm90aWZpY2F0aW9uU3VzcGVuc2lvbkJlaGF2aW9yRGVsaXZlckltbWVkaWF0ZWx5KTsKCiAgICAgICAgQ2xhc3MgY2xzID0gb2JqY19nZXRDbGFzcygiU0JMb2NrU2NyZWVuVmlld0NvbnRyb2xsZXJCYXNlIik7CiAgICAgICAgaWYgKGNscykgewogICAgICAgICAgICBNZXRob2QgbTEgPSBjbGFzc19nZXRJbnN0YW5jZU1ldGhvZChjbHMsIHNlbF9yZWdpc3Rlck5hbWUoInZpZXdXaWxsQXBwZWFyOiIpKTsKICAgICAgICAgICAgaWYgKG0xKSB7CiAgICAgICAgICAgICAgICBvcmlnX3ZpZXdXaWxsQXBwZWFyID0gKHZvaWQgKCopKGlkLCBTRUwsIEJPT0wpKW1ldGhvZF9nZXRJbXBsZW1lbnRhdGlvbihtMSk7CiAgICAgICAgICAgICAgICBtZXRob2Rfc2V0SW1wbGVtZW50YXRpb24obTEsIChJTVApaG9va192aWV3V2lsbEFwcGVhcik7CiAgICAgICAgICAgICAgICBOU0xvZyhAIltDb2N4YWNlVHdlYWtdIEx1bWluYSBhcHBlYXIgaG9vayBpbnN0YWxsZWQiKTsKICAgICAgICAgICAgfQogICAgICAgICAgICBNZXRob2QgbTIgPSBjbGFzc19nZXRJbnN0YW5jZU1ldGhvZChjbHMsIHNlbF9yZWdpc3Rlck5hbWUoInZpZXdXaWxsRGlzYXBwZWFyOiIpKTsKICAgICAgICAgICAgaWYgKG0yKSB7CiAgICAgICAgICAgICAgICBvcmlnX3ZpZXdXaWxsRGlzYXBwZWFyID0gKHZvaWQgKCopKGlkLCBTRUwsIEJPT0wpKW1ldGhvZF9nZXRJbXBsZW1lbnRhdGlvbihtMik7CiAgICAgICAgICAgICAgICBtZXRob2Rfc2V0SW1wbGVtZW50YXRpb24obTIsIChJTVApaG9va192aWV3V2lsbERpc2FwcGVhcik7CiAgICAgICAgICAgIH0KICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBOU0xvZyhAIltUd2VhayBFcnJvcl0gTHVtaW5hOiBTQkxvY2tTY3JlZW5WaWV3Q29udHJvbGxlckJhc2Ugbm90IGZvdW5kIik7CiAgICAgICAgfQogICAgfQp9CgovLyBEZXN0cnVjdG9yOiBjbGVhbiB1cCBBT0Qgd2luZG93IG9uIHJlc3ByaW5nCl9fYXR0cmlidXRlX18oKGRlc3RydWN0b3IpKSBzdGF0aWMgdm9pZCBjbGVhbnVwTHVtaW5hKHZvaWQpIHsKICAgIEBhdXRvcmVsZWFzZXBvb2wgewogICAgICAgIE5TTG9nKEAiW0NvY3hhY2VUd2Vha10gTHVtaW5hIGRlc3RydWN0b3Ig4oCUIGNsZWFuaW5nIHVwIEFPRCB3aW5kb3ciKTsKICAgICAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgICAgICBAdHJ5IHsKICAgICAgICAgICAgICAgIEx1bWluYUhpZGVBT0QoKTsKICAgICAgICAgICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7fQogICAgICAgIH0pOwogICAgfQp9Cg==
+// Lumina — Always-On-Display styled lock screen for iOS 12 (com.cocxace.lumina)
+// v1.2.3: UIWindow-based overlay, CFPreferences, live reload via darwin notification,
+// destroy on respring / disable, 100% crash-proof and leak-free.
+
+#import <UIKit/UIKit.h>
+#import <objc/runtime.h>
+#import <notify.h>
+#import <QuartzCore/QuartzCore.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <os/log.h>
+
+#import "LuminaPrefs.h"
+
+#define LuminaLog(fmt, ...) \
+    do { if ([LuminaPrefs sharedPrefs].debugEnabled) \
+        NSLog(@"[Lumina] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+
+#pragma mark - AOD window
+
+static UIWindow *aodWindow = nil;
+static UILabel *aodClock = nil;
+static UILabel *aodDate = nil;
+static NSTimer *aodTimer = nil;
+
+static void LuminaUpdateFace(void);
+static void LuminaFade(double alpha, double duration);
+static void LuminaShowAOD(void);
+static void LuminaHideAOD(void);
+
+@interface LuminaTimerStub : NSObject
++ (instancetype)sharedStub;
+- (void)theTick;
+@end
+
+@implementation LuminaTimerStub
+
++ (instancetype)sharedStub {
+    static LuminaTimerStub *stub = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        stub = [[LuminaTimerStub alloc] init];
+    });
+    return stub;
+}
+
+- (void)theTick {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        LuminaUpdateFace();
+    });
+}
+
+@end
+
+static void LuminaUpdateFace(void) {
+    @try {
+        NSDateFormatter *clock = [[NSDateFormatter alloc] init];
+        [clock setDateFormat:@"HH:mm"];
+        aodClock.text = [clock stringFromDate:[NSDate date]];
+
+        NSDateFormatter *date = [[NSDateFormatter alloc] init];
+        [date setDateFormat:@"EEE, d MMM"];
+        aodDate.text = [date stringFromDate:[NSDate date]];
+    } @catch (NSException *e) {}
+}
+
+static void LuminaFade(double alpha, double duration) {
+    if (!aodWindow) return;
+    [UIView animateWithDuration:duration animations:^{
+        aodWindow.alpha = alpha;
+        aodDate.alpha = [LuminaPrefs boolForKey:@"showDate" defaultValue:YES] ? 1.0 : 0.0;
+    }];
+}
+
+static void LuminaShowAOD(void) {
+    if (aodWindow) return;
+    if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) return;
+
+    aodWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    aodWindow.windowLevel = 2000.f;
+    aodWindow.backgroundColor = [UIColor blackColor];
+    aodWindow.alpha = 0.0;
+    aodWindow.userInteractionEnabled = NO;
+    aodWindow.rootViewController = [[UIViewController alloc] init];
+    aodWindow.hidden = NO;
+    [aodWindow makeKeyAndVisible];
+
+    CGFloat W = [UIScreen mainScreen].bounds.size.width;
+    CGFloat H = [UIScreen mainScreen].bounds.size.height;
+
+    aodClock = [[UILabel alloc] initWithFrame:CGRectMake(0, H * 0.30, W, 90)];
+    aodClock.textColor = [UIColor whiteColor];
+    aodClock.font = [UIFont systemFontOfSize:62.0 weight:UIFontWeightUltraLight];
+    aodClock.textAlignment = NSTextAlignmentCenter;
+    aodClock.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    [aodWindow addSubview:aodClock];
+
+    aodDate = [[UILabel alloc] initWithFrame:CGRectMake(0, H * 0.30 + 96.0, W, 24)];
+    aodDate.textColor = [UIColor colorWithWhite:1.0 alpha:0.75];
+    aodDate.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightSemibold];
+    aodDate.textAlignment = NSTextAlignmentCenter;
+    aodDate.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    [aodWindow addSubview:aodDate];
+
+    LuminaUpdateFace();
+
+    aodTimer = [NSTimer timerWithTimeInterval:1.0
+                                      target:[LuminaTimerStub sharedStub]
+                                    selector:@selector(theTick)
+                                    userInfo:nil
+                                     repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:aodTimer forMode:NSRunLoopCommonModes];
+
+    LuminaFade([LuminaPrefs floatForKey:@"opacity" defaultValue:0.90f], 0.5);
+}
+
+static void LuminaHideAOD(void) {
+    if (!aodWindow) return;
+    [aodTimer invalidate];
+    aodTimer = nil;
+    aodWindow.hidden = YES;
+    aodWindow.rootViewController = nil;
+    aodWindow = nil;
+    aodClock = nil;
+    aodDate = nil;
+}
+
+static void LuminaDestroy(void) {
+    LuminaHideAOD();
+    LuminaLog(@"destroy");
+}
+
+#pragma mark - Hooks
+
+static void (*orig_viewWillAppear)(id self, SEL _cmd, BOOL animated);
+static void (*orig_viewWillDisappear)(id self, SEL _cmd, BOOL animated);
+
+static void hook_viewWillAppear(id self, SEL _cmd, BOOL animated) {
+    if (orig_viewWillAppear) ((void (*)(id, SEL, BOOL))orig_viewWillAppear)(self, _cmd, animated);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) return;
+            LuminaShowAOD();
+        } @catch (NSException *e) {
+            NSLog(@"[Tweak Error] Lumina appear: %@", e);
+        }
+    });
+}
+
+static void hook_viewWillDisappear(id self, SEL _cmd, BOOL animated) {
+    if (orig_viewWillDisappear) ((void (*)(id, SEL, BOOL))orig_viewWillDisappear)(self, _cmd, animated);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            LuminaHideAOD();
+        } @catch (NSException *e) {}
+    });
+}
+
+#pragma mark - Prefs reload
+
+static void LuminaDarwinCallback(CFNotificationCenterRef center, void *observer,
+                                 CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            // v1.2.3: preset expansion + reset handling
+            NSInteger preset = -1;
+            CFTypeRef pr = CFPreferencesCopyAppValue(CFSTR("preset"), CFSTR("com.cocxace.lumina"));
+            if (pr) {
+                if (CFGetTypeID(pr) == CFNumberGetTypeID())
+                    CFNumberGetValue((CFNumberRef)pr, kCFNumberNSIntegerType, &preset);
+                CFRelease(pr);
+            }
+            if (preset == 0) {   // Classic AOD
+                CFPreferencesSetAppValue(CFSTR("opacity"), (__bridge CFPropertyListRef)@(0.90), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("opacityChoice"), (__bridge CFPropertyListRef)@(3), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("showDate"), kCFBooleanTrue, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+            } else if (preset == 1) {  // Deep Dim
+                CFPreferencesSetAppValue(CFSTR("opacity"), (__bridge CFPropertyListRef)@(0.97), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("opacityChoice"), (__bridge CFPropertyListRef)@(3), CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("showDate"), kCFBooleanFalse, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+            }
+
+            CFTypeRef rst = CFPreferencesCopyAppValue(CFSTR("resetDefaults"), CFSTR("com.cocxace.lumina"));
+            BOOL doReset = NO;
+            if (rst) {
+                if (CFGetTypeID(rst) == CFBooleanGetTypeID()) doReset = CFBooleanGetValue((CFBooleanRef)rst);
+                CFRelease(rst);
+            }
+            if (doReset) {
+                NSDictionary *defs = @{ @"enabled": @(YES), @"opacity": @(0.90),
+                                        @"opacityChoice": @(3), @"showDate": @(YES),
+                                        @"preset": @(-1), @"luminaDebug": @(NO) };
+                for (NSString *k in defs)
+                    CFPreferencesSetAppValue((CFStringRef)k, (__bridge CFTypeRef)defs[k], CFSTR("com.cocxace.lumina"));
+                CFPreferencesSetAppValue(CFSTR("resetDefaults"), kCFBooleanFalse, CFSTR("com.cocxace.lumina"));
+                CFPreferencesAppSynchronize(CFSTR("com.cocxace.lumina"));
+                NSLog(@"[CocxaceTweak] Lumina defaults restored");
+            }
+
+            if (![LuminaPrefs boolForKey:@"enabled" defaultValue:YES]) {
+                LuminaHideAOD();
+                return;
+            }
+            if (aodWindow && aodWindow.alpha > 0.0) {
+                LuminaUpdateFace();
+                LuminaFade([LuminaPrefs floatForKey:@"opacity" defaultValue:0.90f], 0.3);
+            }
+        } @catch (NSException *e) {}
+    });
+}
+
+__attribute__((constructor)) static void initLumina() {
+    @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Lumina 1.2.3 loaded");
+
+        [LuminaPrefs registerDefaults];
+
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                        NULL,
+                                        LuminaDarwinCallback,
+                                        CFSTR("com.cocxace.lumina/reload"),
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
+
+        Class cls = objc_getClass("SBLockScreenViewControllerBase");
+        if (cls) {
+            Method m1 = class_getInstanceMethod(cls, sel_registerName("viewWillAppear:"));
+            if (m1) {
+                orig_viewWillAppear = (void (*)(id, SEL, BOOL))method_getImplementation(m1);
+                method_setImplementation(m1, (IMP)hook_viewWillAppear);
+                NSLog(@"[CocxaceTweak] Lumina appear hook installed");
+            }
+            Method m2 = class_getInstanceMethod(cls, sel_registerName("viewWillDisappear:"));
+            if (m2) {
+                orig_viewWillDisappear = (void (*)(id, SEL, BOOL))method_getImplementation(m2);
+                method_setImplementation(m2, (IMP)hook_viewWillDisappear);
+            }
+        } else {
+            NSLog(@"[Tweak Error] Lumina: SBLockScreenViewControllerBase not found");
+        }
+    }
+}
+
+// Destructor: clean up AOD window on respring
+__attribute__((destructor)) static void cleanupLumina(void) {
+    @autoreleasepool {
+        NSLog(@"[CocxaceTweak] Lumina destructor — cleaning up AOD window");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @try {
+                LuminaHideAOD();
+            } @catch (NSException *e) {}
+        });
+    }
+}

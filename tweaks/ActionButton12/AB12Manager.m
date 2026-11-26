@@ -1,1 +1,287 @@
-I2ltcG9ydCAiQUIxMk1hbmFnZXIuaCIKI2ltcG9ydCAiQUIxMlByZWZzLmgiCiNpbXBvcnQgPG9zL2xvZy5oPgojaW1wb3J0IDxvYmpjL21lc3NhZ2UuaD4KI2ltcG9ydCAiQUIxMkhVRFZpZXcuaCIKI2ltcG9ydCA8bm90aWZ5Lmg+CgojZGVmaW5lIEFCMTJMb2coZm10LCAuLi4pIE5TTG9nKEAiW0FjdGlvbkJ1dHRvbjEyXSAiIGZtdCwgIyNfX1ZBX0FSR1NfXykKCkBpbnRlcmZhY2UgU0JVSUNvbnRyb2xsZXIgOiBOU09iamVjdAorIChpbnN0YW5jZXR5cGUpc2hhcmVkSW5zdGFuY2U7Ci0gKHZvaWQpbGF1bmNoQXBwbGljYXRpb25XaXRoSWRlbnRpZmllcjooTlNTdHJpbmcgKilidW5kbGVJRCBzdXNwZW5kZWQ6KEJPT0wpc3VzcGVuZGVkOwotICh2b2lkKWxhdW5jaEFwcGxpY2F0aW9uV2l0aElkZW50aWZpZXI6KE5TU3RyaW5nICopYnVuZGxlSUQ7CkBlbmQKCkBpbnRlcmZhY2UgTFNBcHBsaWNhdGlvbldvcmtzcGFjZSA6IE5TT2JqZWN0CisgKGluc3RhbmNldHlwZSlkZWZhdWx0V29ya3NwYWNlOwotIChCT09MKW9wZW5BcHBsaWNhdGlvbldpdGhCdW5kbGVJRDooTlNTdHJpbmcgKilidW5kbGVJRDsKQGVuZAoKQGludGVyZmFjZSBTQldpRmlNYW5hZ2VyIDogTlNPYmplY3QKKyAoaW5zdGFuY2V0eXBlKXNoYXJlZEluc3RhbmNlOwotIChCT09MKXdpRmlFbmFibGVkOwotICh2b2lkKXNldFdpRmlFbmFibGVkOihCT09MKWVuYWJsZWQ7CkBlbmQKCkBpbnRlcmZhY2UgQmx1ZXRvb3RoTWFuYWdlciA6IE5TT2JqZWN0CisgKGluc3RhbmNldHlwZSlzaGFyZWRJbnN0YW5jZTsKLSAoQk9PTCllbmFibGVkOwotICh2b2lkKXNldEVuYWJsZWQ6KEJPT0wpZW5hYmxlZDsKQGVuZAoKc3RhdGljIHZvaWQgUHJlZmVyZW5jZXNDaGFuZ2VkQ2FsbGJhY2soQ0ZOb3RpZmljYXRpb25DZW50ZXJSZWYgY2VudGVyLCB2b2lkICpvYnNlcnZlciwgQ0ZTdHJpbmdSZWYgbmFtZSwgY29uc3Qgdm9pZCAqb2JqZWN0LCBDRkRpY3Rpb25hcnlSZWYgdXNlckluZm8pIHsKICAgIFtbQUIxMk1hbmFnZXIgc2hhcmVkTWFuYWdlcl0gbG9hZFByZWZlcmVuY2VzXTsKfQoKQGltcGxlbWVudGF0aW9uIEFCMTJNYW5hZ2VyCgorIChpbnN0YW5jZXR5cGUpc2hhcmVkTWFuYWdlciB7CiAgICBzdGF0aWMgQUIxMk1hbmFnZXIgKnNoYXJlZCA9IG5pbDsKICAgIHN0YXRpYyBkaXNwYXRjaF9vbmNlX3Qgb25jZVRva2VuOwogICAgZGlzcGF0Y2hfb25jZSgmb25jZVRva2VuLCBeewogICAgICAgIHNoYXJlZCA9IFtbQUIxMk1hbmFnZXIgYWxsb2NdIGluaXRdOwogICAgfSk7CiAgICByZXR1cm4gc2hhcmVkOwp9CgotIChpbnN0YW5jZXR5cGUpaW5pdCB7CiAgICBzZWxmID0gW3N1cGVyIGluaXRdOwogICAgaWYgKHNlbGYpIHsKICAgICAgICBbc2VsZiBsb2FkUHJlZmVyZW5jZXNdOwogICAgICAgIAogICAgICAgIC8vIExpc3RlbiBmb3IgcHJlZmVyZW5jZSBjaGFuZ2VzCiAgICAgICAgQ0ZOb3RpZmljYXRpb25DZW50ZXJBZGRPYnNlcnZlcigKICAgICAgICAgICAgQ0ZOb3RpZmljYXRpb25DZW50ZXJHZXREYXJ3aW5Ob3RpZnlDZW50ZXIoKSwKICAgICAgICAgICAgKF9fYnJpZGdlIGNvbnN0IHZvaWQgKikoc2VsZiksCiAgICAgICAgICAgIFByZWZlcmVuY2VzQ2hhbmdlZENhbGxiYWNrLAogICAgICAgICAgICBDRlNUUihQUkVGX0NIQU5HRURfTk9USUZJQ0FUSU9OKSwKICAgICAgICAgICAgTlVMTCwKICAgICAgICAgICAgQ0ZOb3RpZmljYXRpb25TdXNwZW5zaW9uQmVoYXZpb3JEZWxpdmVySW1tZWRpYXRlbHkKICAgICAgICApOwogICAgICAgIC8vIE5PVEU6IERPIE5PVCBpbml0aWFsaXplIFVJV2luZG93IGhlcmUhIFVJV2luZG93IG11c3QgYmUgMTAwJSBsYXp5IHRvIHByZXZlbnQgYm9vdCBjcmFzaGVzLgogICAgfQogICAgcmV0dXJuIHNlbGY7Cn0KCi0gKHZvaWQpZW5zdXJlV2luZG93U2V0dXAgewogICAgc3RhdGljIGRpc3BhdGNoX29uY2VfdCBvbmNlVG9rZW47CiAgICBkaXNwYXRjaF9vbmNlKCZvbmNlVG9rZW4sIF57CiAgICAgICAgQHRyeSB7CiAgICAgICAgICAgIEFCMTJIVURXaW5kb3cgKndpbmRvdyA9IFtBQjEySFVEV2luZG93IHNoYXJlZFdpbmRvd107CiAgICAgICAgICAgIEFCMTJWaWV3Q29udHJvbGxlciAqdmMgPSAoQUIxMlZpZXdDb250cm9sbGVyICopd2luZG93LnJvb3RWaWV3Q29udHJvbGxlcjsKICAgICAgICAgICAgX193ZWFrIHR5cGVvZihzZWxmKSB3ZWFrU2VsZiA9IHNlbGY7CiAgICAgICAgICAgIHZjLmFjdGlvbkJsb2NrID0gXihBQjEyQWN0aW9uIGFjdGlvbikgewogICAgICAgICAgICAgICAgW3dlYWtTZWxmIGhhbmRsZUFjdGlvblNlbGVjdGlvbjphY3Rpb25dOwogICAgICAgICAgICB9OwogICAgICAgICAgICB2Yy5kaXNtaXNzQmxvY2sgPSBeewogICAgICAgICAgICAgICAgW3dlYWtTZWxmIGhpZGVIVURdOwogICAgICAgICAgICB9OwogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgICAgICBOU0xvZyhAIltBY3Rpb25CdXR0b24xMl0gRXJyb3Igc2V0dGluZyB1cCBIVUQgd2luZG93OiAlQCIsIGUpOwogICAgICAgIH0KICAgIH0pOwp9CgotICh2b2lkKWxvYWRQcmVmZXJlbmNlcyB7CiAgICBOU0RpY3Rpb25hcnkgKnByZWZzID0gW05TRGljdGlvbmFyeSBkaWN0aW9uYXJ5V2l0aENvbnRlbnRzT2ZGaWxlOlBSRUZfUEFUSF07CiAgICBpZiAocHJlZnMpIHsKICAgICAgICBzZWxmLmVuYWJsZWQgPSBwcmVmc1tAImVuYWJsZWQiXSA/IFtwcmVmc1tAImVuYWJsZWQiXSBib29sVmFsdWVdIDogWUVTOwogICAgICAgIHNlbGYudHJpZ2dlciA9IHByZWZzW0AidHJpZ2dlciJdID8gW3ByZWZzW0AidHJpZ2dlciJdIGludGVnZXJWYWx1ZV0gOiBBQjEyVHJpZ2dlclBvd2VyOwogICAgICAgIHNlbGYuc2hvd1NsaWRlcnMgPSBwcmVmc1tAInNob3dTbGlkZXJzIl0gPyBbcHJlZnNbQCJzaG93U2xpZGVycyJdIGJvb2xWYWx1ZV0gOiBZRVM7CiAgICAgICAgc2VsZi5hY3Rpb24xID0gcHJlZnNbQCJhY3Rpb24xIl0gPyBbcHJlZnNbQCJhY3Rpb24xIl0gaW50ZWdlclZhbHVlXSA6IEFCMTJBY3Rpb25GbGFzaGxpZ2h0OwogICAgICAgIHNlbGYuYWN0aW9uMiA9IHByZWZzW0AiYWN0aW9uMiJdID8gW3ByZWZzW0AiYWN0aW9uMiJdIGludGVnZXJWYWx1ZV0gOiBBQjEyQWN0aW9uQ2FtZXJhOwogICAgICAgIHNlbGYuYWN0aW9uMyA9IHByZWZzW0AiYWN0aW9uMyJdID8gW3ByZWZzW0AiYWN0aW9uMyJdIGludGVnZXJWYWx1ZV0gOiBBQjEyQWN0aW9uVm9pY2VNZW1vczsKICAgICAgICBzZWxmLmFjdGlvbjQgPSBwcmVmc1tAImFjdGlvbjQiXSA/IFtwcmVmc1tAImFjdGlvbjQiXSBpbnRlZ2VyVmFsdWVdIDogQUIxMkFjdGlvblNjcmVlbnNob3Q7CiAgICB9IGVsc2UgewogICAgICAgIHNlbGYuZW5hYmxlZCA9IFlFUzsKICAgICAgICBzZWxmLnRyaWdnZXIgPSBBQjEyVHJpZ2dlclBvd2VyOwogICAgICAgIHNlbGYuc2hvd1NsaWRlcnMgPSBZRVM7CiAgICAgICAgc2VsZi5hY3Rpb24xID0gQUIxMkFjdGlvbkZsYXNobGlnaHQ7CiAgICAgICAgc2VsZi5hY3Rpb24yID0gQUIxMkFjdGlvbkNhbWVyYTsKICAgICAgICBzZWxmLmFjdGlvbjMgPSBBQjEyQWN0aW9uVm9pY2VNZW1vczsKICAgICAgICBzZWxmLmFjdGlvbjQgPSBBQjEyQWN0aW9uU2NyZWVuc2hvdDsKICAgIH0KfQoKLSAoTlNBcnJheTxOU051bWJlciAqPiAqKWN1cnJlbnRBY3Rpb25zIHsKICAgIHJldHVybiBAWwogICAgICAgIEAoc2VsZi5hY3Rpb24xKSwKICAgICAgICBAKHNlbGYuYWN0aW9uMiksCiAgICAgICAgQChzZWxmLmFjdGlvbjMpLAogICAgICAgIEAoc2VsZi5hY3Rpb240KQogICAgXTsKfQoKLSAodm9pZCl0b2dnbGVIVUQgewogICAgaWYgKCFzZWxmLmVuYWJsZWQpIHJldHVybjsKCiAgICBDbGFzcyBsc21DbHMgPSBOU0NsYXNzRnJvbVN0cmluZyhAIlNCTG9ja1NjcmVlbk1hbmFnZXIiKTsKICAgIGlmIChsc21DbHMpIHsKICAgICAgICBpZCBsc20gPSBbbHNtQ2xzIHBlcmZvcm1TZWxlY3RvcjpAc2VsZWN0b3Ioc2hhcmVkSW5zdGFuY2UpXTsKICAgICAgICBpZiAobHNtICYmIFtsc20gcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3Rvcihpc1VJTG9ja2VkKV0pIHsKICAgICAgICAgICAgQk9PTCBsb2NrZWQgPSAoKEJPT0wgKCopKGlkLCBTRUwpKW9iamNfbXNnU2VuZCkobHNtLCBAc2VsZWN0b3IoaXNVSUxvY2tlZCkpOwogICAgICAgICAgICBpZiAobG9ja2VkKSByZXR1cm47CiAgICAgICAgfQogICAgICAgIGlmIChsc20gJiYgW2xzbSByZXNwb25kc1RvU2VsZWN0b3I6QHNlbGVjdG9yKGlzUGFzc2NvZGVMb2NrVmlzaWJsZSldKSB7CiAgICAgICAgICAgIEJPT0wgcGFzcyA9ICgoQk9PTCAoKikoaWQsIFNFTCkpb2JqY19tc2dTZW5kKShsc20sIEBzZWxlY3Rvcihpc1Bhc3Njb2RlTG9ja1Zpc2libGUpKTsKICAgICAgICAgICAgaWYgKHBhc3MpIHJldHVybjsKICAgICAgICB9CiAgICB9CgogICAgLy8gRGVib3VuY2U6IHR3byBob29rZWQgcGF0aHMgY2FuIGZpcmUgZm9yIG9uZSBkb3VibGUtcHJlc3MgZ2VzdHVyZS4KICAgIHN0YXRpYyBOU1RpbWVJbnRlcnZhbCBsYXN0VG9nZ2xlVGltZSA9IDA7CiAgICBOU1RpbWVJbnRlcnZhbCBub3cgPSBbTlNEYXRlIHRpbWVJbnRlcnZhbFNpbmNlUmVmZXJlbmNlRGF0ZV07CiAgICBpZiAobm93IC0gbGFzdFRvZ2dsZVRpbWUgPCAwLjM1KSByZXR1cm47CiAgICBsYXN0VG9nZ2xlVGltZSA9IG5vdzsKCiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgIEB0cnkgewogICAgICAgICAgICBbc2VsZiBlbnN1cmVXaW5kb3dTZXR1cF07CiAgICAgICAgICAgIEFCMTJIVURXaW5kb3cgKndpbmRvdyA9IFtBQjEySFVEV2luZG93IHNoYXJlZFdpbmRvd107CiAgICAgICAgICAgIGlmICh3aW5kb3cuaXNTaG93aW5nKSB7CiAgICAgICAgICAgICAgICBbc2VsZiBoaWRlSFVEXTsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIFtzZWxmIHNob3dIVURdOwogICAgICAgICAgICB9CiAgICAgICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgICAgIE5TTG9nKEAiW0FjdGlvbkJ1dHRvbjEyXSBFcnJvciBpbiB0b2dnbGVIVUQ6ICVAIiwgZSk7CiAgICAgICAgfQogICAgfSk7Cn0KCi0gKHZvaWQpZGVzdHJveSB7CiAgICBkaXNwYXRjaF9hc3luYyhkaXNwYXRjaF9nZXRfbWFpbl9xdWV1ZSgpLCBeewogICAgICAgIEB0cnkgewogICAgICAgICAgICBbW0FCMTJIVURXaW5kb3cgc2hhcmVkV2luZG93XSBoaWRlV2l0aENvbXBsZXRpb246bmlsXTsKICAgICAgICB9IEBjYXRjaCAoTlNFeGNlcHRpb24gKmUpIHsKICAgICAgICAgICAgTlNMb2coQCJbQWN0aW9uQnV0dG9uMTJdIGRlc3Ryb3kgZXJyb3I6ICVAIiwgZSk7CiAgICAgICAgfQogICAgfSk7Cn0KCi0gKHZvaWQpc2hvd0hVRCB7CiAgICBpZiAoIXNlbGYuZW5hYmxlZCkgcmV0dXJuOwogICAgZGlzcGF0Y2hfYXN5bmMoZGlzcGF0Y2hfZ2V0X21haW5fcXVldWUoKSwgXnsKICAgICAgICBAdHJ5IHsKICAgICAgICAgICAgW3NlbGYgZW5zdXJlV2luZG93U2V0dXBdOwogICAgICAgICAgICBBdWRpb1NlcnZpY2VzUGxheVN5c3RlbVNvdW5kKDE1MTkpOwogICAgICAgICAgICBbW0FCMTJIVURXaW5kb3cgc2hhcmVkV2luZG93XSBzaG93V2l0aEFjdGlvbnM6W3NlbGYgY3VycmVudEFjdGlvbnNdIHNob3dTbGlkZXJzOnNlbGYuc2hvd1NsaWRlcnNdOwogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgICAgICBOU0xvZyhAIltBY3Rpb25CdXR0b24xMl0gRXJyb3IgaW4gc2hvd0hVRDogJUAiLCBlKTsKICAgICAgICB9CiAgICB9KTsKfQoKLSAodm9pZCloaWRlSFVEIHsKICAgIGRpc3BhdGNoX2FzeW5jKGRpc3BhdGNoX2dldF9tYWluX3F1ZXVlKCksIF57CiAgICAgICAgQHRyeSB7CiAgICAgICAgICAgIFtbQUIxMkhVRFdpbmRvdyBzaGFyZWRXaW5kb3ddIGhpZGVXaXRoQ29tcGxldGlvbjpuaWxdOwogICAgICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgICAgICBOU0xvZyhAIltBY3Rpb25CdXR0b24xMl0gRXJyb3IgaW4gaGlkZUhVRDogJUAiLCBlKTsKICAgICAgICB9CiAgICB9KTsKfQoKLSAodm9pZCloYW5kbGVBY3Rpb25TZWxlY3Rpb246KEFCMTJBY3Rpb24pYWN0aW9uIHsKICAgIEF1ZGlvU2VydmljZXNQbGF5U3lzdGVtU291bmQoMTUxOSk7CiAgICBfX3dlYWsgdHlwZW9mKHNlbGYpIHdlYWtTZWxmID0gc2VsZjsKICAgIFtbQUIxMkhVRFdpbmRvdyBzaGFyZWRXaW5kb3ddIGhpZGVXaXRoQ29tcGxldGlvbjpeewogICAgICAgIFt3ZWFrU2VsZiBleGVjdXRlQWN0aW9uOmFjdGlvbl07CiAgICB9XTsKfQoKLSAodm9pZClleGVjdXRlQWN0aW9uOihBQjEyQWN0aW9uKWFjdGlvbiB7CiAgICBzd2l0Y2ggKGFjdGlvbikgewogICAgICAgIGNhc2UgQUIxMkFjdGlvbkZsYXNobGlnaHQ6IHsKICAgICAgICAgICAgW3NlbGYgdG9nZ2xlRmxhc2hsaWdodF07CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgICAgICBjYXNlIEFCMTJBY3Rpb25DYW1lcmE6IHsKICAgICAgICAgICAgW3NlbGYgbGF1bmNoQXBwV2l0aEJ1bmRsZUlEOkAiY29tLmFwcGxlLmNhbWVyYSJdOwogICAgICAgICAgICBicmVhazsKICAgICAgICB9CiAgICAgICAgY2FzZSBBQjEyQWN0aW9uVm9pY2VNZW1vczogewogICAgICAgICAgICBbc2VsZiBsYXVuY2hBcHBXaXRoQnVuZGxlSUQ6QCJjb20uYXBwbGUuVm9pY2VNZW1vcyJdOwogICAgICAgICAgICBicmVhazsKICAgICAgICB9CiAgICAgICAgY2FzZSBBQjEyQWN0aW9uU2NyZWVuc2hvdDogewogICAgICAgICAgICBub3RpZnlfcG9zdCgiY29tLmFwcGxlLnNwcmluZ2JvYXJkLnRha2VTY3JlZW5zaG90Iik7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgICAgICBjYXNlIEFCMTJBY3Rpb25XaUZpOiB7CiAgICAgICAgICAgIFtzZWxmIHRvZ2dsZVdpRmldOwogICAgICAgICAgICBicmVhazsKICAgICAgICB9CiAgICAgICAgY2FzZSBBQjEyQWN0aW9uQmx1ZXRvb3RoOiB7CiAgICAgICAgICAgIFtzZWxmIHRvZ2dsZUJsdWV0b290aF07CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIH0KICAgIH0KfQoKLSAodm9pZCl0b2dnbGVGbGFzaGxpZ2h0IHsKICAgIENsYXNzIGNhcHR1cmVDbGFzcyA9IE5TQ2xhc3NGcm9tU3RyaW5nKEAiQVZDYXB0dXJlRGV2aWNlIik7CiAgICBpZiAoIWNhcHR1cmVDbGFzcykgcmV0dXJuOwogICAgQVZDYXB0dXJlRGV2aWNlICpkZXZpY2UgPSBbY2FwdHVyZUNsYXNzIGRlZmF1bHREZXZpY2VXaXRoTWVkaWFUeXBlOkFWTWVkaWFUeXBlVmlkZW9dOwogICAgaWYgKFtkZXZpY2UgaGFzVG9yY2hdICYmIFtkZXZpY2UgaXNUb3JjaEF2YWlsYWJsZV0pIHsKICAgICAgICBOU0Vycm9yICplcnJvciA9IG5pbDsKICAgICAgICBpZiAoW2RldmljZSBsb2NrRm9yQ29uZmlndXJhdGlvbjomZXJyb3JdKSB7CiAgICAgICAgICAgIGlmIChkZXZpY2UudG9yY2hNb2RlID09IEFWQ2FwdHVyZVRvcmNoTW9kZU9uKSB7CiAgICAgICAgICAgICAgICBbZGV2aWNlIHNldFRvcmNoTW9kZTpBVkNhcHR1cmVUb3JjaE1vZGVPZmZdOwogICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgW2RldmljZSBzZXRUb3JjaE1vZGU6QVZDYXB0dXJlVG9yY2hNb2RlT25dOwogICAgICAgICAgICB9CiAgICAgICAgICAgIFtkZXZpY2UgdW5sb2NrRm9yQ29uZmlndXJhdGlvbl07CiAgICAgICAgfQogICAgfQp9CgotICh2b2lkKWxhdW5jaEFwcFdpdGhCdW5kbGVJRDooTlNTdHJpbmcgKilidW5kbGVJRCB7CiAgICBDbGFzcyB1aUNvbnRyb2xsZXJDbGFzcyA9IE5TQ2xhc3NGcm9tU3RyaW5nKEAiU0JVSUNvbnRyb2xsZXIiKTsKICAgIGlmICh1aUNvbnRyb2xsZXJDbGFzcykgewogICAgICAgIGlkIHVpQ29udHJvbGxlciA9IFt1aUNvbnRyb2xsZXJDbGFzcyBzaGFyZWRJbnN0YW5jZV07CiAgICAgICAgaWYgKFt1aUNvbnRyb2xsZXIgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihsYXVuY2hBcHBsaWNhdGlvbldpdGhJZGVudGlmaWVyOnN1c3BlbmRlZDopXSkgewogICAgICAgICAgICBbdWlDb250cm9sbGVyIGxhdW5jaEFwcGxpY2F0aW9uV2l0aElkZW50aWZpZXI6YnVuZGxlSUQgc3VzcGVuZGVkOk5PXTsKICAgICAgICAgICAgcmV0dXJuOwogICAgICAgIH0gZWxzZSBpZiAoW3VpQ29udHJvbGxlciByZXNwb25kc1RvU2VsZWN0b3I6QHNlbGVjdG9yKGxhdW5jaEFwcGxpY2F0aW9uV2l0aElkZW50aWZpZXI6KV0pIHsKICAgICAgICAgICAgW3VpQ29udHJvbGxlciBsYXVuY2hBcHBsaWNhdGlvbldpdGhJZGVudGlmaWVyOmJ1bmRsZUlEXTsKICAgICAgICAgICAgcmV0dXJuOwogICAgICAgIH0KICAgIH0KICAgIAogICAgLy8gRmFsbGJhY2sgdmlhIExTQXBwbGljYXRpb25Xb3Jrc3BhY2UKICAgIENsYXNzIHdvcmtzcGFjZUNsYXNzID0gTlNDbGFzc0Zyb21TdHJpbmcoQCJMU0FwcGxpY2F0aW9uV29ya3NwYWNlIik7CiAgICBpZiAod29ya3NwYWNlQ2xhc3MpIHsKICAgICAgICBpZCB3b3Jrc3BhY2UgPSBbd29ya3NwYWNlQ2xhc3MgZGVmYXVsdFdvcmtzcGFjZV07CiAgICAgICAgaWYgKFt3b3Jrc3BhY2UgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihvcGVuQXBwbGljYXRpb25XaXRoQnVuZGxlSUQ6KV0pIHsKICAgICAgICAgICAgW3dvcmtzcGFjZSBvcGVuQXBwbGljYXRpb25XaXRoQnVuZGxlSUQ6YnVuZGxlSURdOwogICAgICAgIH0KICAgIH0KfQoKLSAodm9pZCl0b2dnbGVXaUZpIHsKICAgIENsYXNzIHdpZmlDbGFzcyA9IE5TQ2xhc3NGcm9tU3RyaW5nKEAiU0JXaUZpTWFuYWdlciIpOwogICAgaWYgKHdpZmlDbGFzcykgewogICAgICAgIGlkIHdpZmlNZ3IgPSBbd2lmaUNsYXNzIHNoYXJlZEluc3RhbmNlXTsKICAgICAgICBpZiAoW3dpZmlNZ3IgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3Rvcih3aUZpRW5hYmxlZCldICYmCiAgICAgICAgICAgIFt3aWZpTWdyIHJlc3BvbmRzVG9TZWxlY3RvcjpAc2VsZWN0b3Ioc2V0V2lGaUVuYWJsZWQ6KV0pIHsKICAgICAgICAgICAgQk9PTCBjdXJyZW50ID0gW3dpZmlNZ3Igd2lGaUVuYWJsZWRdOwogICAgICAgICAgICBbd2lmaU1nciBzZXRXaUZpRW5hYmxlZDohY3VycmVudF07CiAgICAgICAgfQogICAgfQp9CgotICh2b2lkKXRvZ2dsZUJsdWV0b290aCB7CiAgICBDbGFzcyBidENsYXNzID0gTlNDbGFzc0Zyb21TdHJpbmcoQCJCbHVldG9vdGhNYW5hZ2VyIik7CiAgICBpZiAoYnRDbGFzcykgewogICAgICAgIGlkIGJ0TWdyID0gW2J0Q2xhc3Mgc2hhcmVkSW5zdGFuY2VdOwogICAgICAgIGlmIChbYnRNZ3IgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihlbmFibGVkKV0gJiYKICAgICAgICAgICAgW2J0TWdyIHJlc3BvbmRzVG9TZWxlY3RvcjpAc2VsZWN0b3Ioc2V0RW5hYmxlZDopXSkgewogICAgICAgICAgICBCT09MIGN1cnJlbnQgPSBbYnRNZ3IgZW5hYmxlZF07CiAgICAgICAgICAgIFtidE1nciBzZXRFbmFibGVkOiFjdXJyZW50XTsKICAgICAgICB9CiAgICB9Cn0KCkBlbmQK
+#import "AB12Manager.h"
+#import "AB12Prefs.h"
+#import <os/log.h>
+#import <objc/message.h>
+#import "AB12HUDView.h"
+#import <notify.h>
+
+#define AB12Log(fmt, ...) NSLog(@"[ActionButton12] " fmt, ##__VA_ARGS__)
+
+@interface SBUIController : NSObject
++ (instancetype)sharedInstance;
+- (void)launchApplicationWithIdentifier:(NSString *)bundleID suspended:(BOOL)suspended;
+- (void)launchApplicationWithIdentifier:(NSString *)bundleID;
+@end
+
+@interface LSApplicationWorkspace : NSObject
++ (instancetype)defaultWorkspace;
+- (BOOL)openApplicationWithBundleID:(NSString *)bundleID;
+@end
+
+@interface SBWiFiManager : NSObject
++ (instancetype)sharedInstance;
+- (BOOL)wiFiEnabled;
+- (void)setWiFiEnabled:(BOOL)enabled;
+@end
+
+@interface BluetoothManager : NSObject
++ (instancetype)sharedInstance;
+- (BOOL)enabled;
+- (void)setEnabled:(BOOL)enabled;
+@end
+
+static void PreferencesChangedCallback(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    [[AB12Manager sharedManager] loadPreferences];
+}
+
+@implementation AB12Manager
+
++ (instancetype)sharedManager {
+    static AB12Manager *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = [[AB12Manager alloc] init];
+    });
+    return shared;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self loadPreferences];
+        
+        // Listen for preference changes
+        CFNotificationCenterAddObserver(
+            CFNotificationCenterGetDarwinNotifyCenter(),
+            (__bridge const void *)(self),
+            PreferencesChangedCallback,
+            CFSTR(PREF_CHANGED_NOTIFICATION),
+            NULL,
+            CFNotificationSuspensionBehaviorDeliverImmediately
+        );
+        // NOTE: DO NOT initialize UIWindow here! UIWindow must be 100% lazy to prevent boot crashes.
+    }
+    return self;
+}
+
+- (void)ensureWindowSetup {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        @try {
+            AB12HUDWindow *window = [AB12HUDWindow sharedWindow];
+            AB12ViewController *vc = (AB12ViewController *)window.rootViewController;
+            __weak typeof(self) weakSelf = self;
+            vc.actionBlock = ^(AB12Action action) {
+                [weakSelf handleActionSelection:action];
+            };
+            vc.dismissBlock = ^{
+                [weakSelf hideHUD];
+            };
+        } @catch (NSException *e) {
+            NSLog(@"[ActionButton12] Error setting up HUD window: %@", e);
+        }
+    });
+}
+
+- (void)loadPreferences {
+    NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:PREF_PATH];
+    if (prefs) {
+        self.enabled = prefs[@"enabled"] ? [prefs[@"enabled"] boolValue] : YES;
+        self.trigger = prefs[@"trigger"] ? [prefs[@"trigger"] integerValue] : AB12TriggerPower;
+        self.showSliders = prefs[@"showSliders"] ? [prefs[@"showSliders"] boolValue] : YES;
+        self.action1 = prefs[@"action1"] ? [prefs[@"action1"] integerValue] : AB12ActionFlashlight;
+        self.action2 = prefs[@"action2"] ? [prefs[@"action2"] integerValue] : AB12ActionCamera;
+        self.action3 = prefs[@"action3"] ? [prefs[@"action3"] integerValue] : AB12ActionVoiceMemos;
+        self.action4 = prefs[@"action4"] ? [prefs[@"action4"] integerValue] : AB12ActionScreenshot;
+    } else {
+        self.enabled = YES;
+        self.trigger = AB12TriggerPower;
+        self.showSliders = YES;
+        self.action1 = AB12ActionFlashlight;
+        self.action2 = AB12ActionCamera;
+        self.action3 = AB12ActionVoiceMemos;
+        self.action4 = AB12ActionScreenshot;
+    }
+}
+
+- (NSArray<NSNumber *> *)currentActions {
+    return @[
+        @(self.action1),
+        @(self.action2),
+        @(self.action3),
+        @(self.action4)
+    ];
+}
+
+- (void)toggleHUD {
+    if (!self.enabled) return;
+
+    Class lsmCls = NSClassFromString(@"SBLockScreenManager");
+    if (lsmCls) {
+        id lsm = [lsmCls performSelector:@selector(sharedInstance)];
+        if (lsm && [lsm respondsToSelector:@selector(isUILocked)]) {
+            BOOL locked = ((BOOL (*)(id, SEL))objc_msgSend)(lsm, @selector(isUILocked));
+            if (locked) return;
+        }
+        if (lsm && [lsm respondsToSelector:@selector(isPasscodeLockVisible)]) {
+            BOOL pass = ((BOOL (*)(id, SEL))objc_msgSend)(lsm, @selector(isPasscodeLockVisible));
+            if (pass) return;
+        }
+    }
+
+    // Debounce: two hooked paths can fire for one double-press gesture.
+    static NSTimeInterval lastToggleTime = 0;
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    if (now - lastToggleTime < 0.35) return;
+    lastToggleTime = now;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            [self ensureWindowSetup];
+            AB12HUDWindow *window = [AB12HUDWindow sharedWindow];
+            if (window.isShowing) {
+                [self hideHUD];
+            } else {
+                [self showHUD];
+            }
+        } @catch (NSException *e) {
+            NSLog(@"[ActionButton12] Error in toggleHUD: %@", e);
+        }
+    });
+}
+
+- (void)destroy {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            [[AB12HUDWindow sharedWindow] hideWithCompletion:nil];
+        } @catch (NSException *e) {
+            NSLog(@"[ActionButton12] destroy error: %@", e);
+        }
+    });
+}
+
+- (void)showHUD {
+    if (!self.enabled) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            [self ensureWindowSetup];
+            AudioServicesPlaySystemSound(1519);
+            [[AB12HUDWindow sharedWindow] showWithActions:[self currentActions] showSliders:self.showSliders];
+        } @catch (NSException *e) {
+            NSLog(@"[ActionButton12] Error in showHUD: %@", e);
+        }
+    });
+}
+
+- (void)hideHUD {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @try {
+            [[AB12HUDWindow sharedWindow] hideWithCompletion:nil];
+        } @catch (NSException *e) {
+            NSLog(@"[ActionButton12] Error in hideHUD: %@", e);
+        }
+    });
+}
+
+- (void)handleActionSelection:(AB12Action)action {
+    AudioServicesPlaySystemSound(1519);
+    __weak typeof(self) weakSelf = self;
+    [[AB12HUDWindow sharedWindow] hideWithCompletion:^{
+        [weakSelf executeAction:action];
+    }];
+}
+
+- (void)executeAction:(AB12Action)action {
+    switch (action) {
+        case AB12ActionFlashlight: {
+            [self toggleFlashlight];
+            break;
+        }
+        case AB12ActionCamera: {
+            [self launchAppWithBundleID:@"com.apple.camera"];
+            break;
+        }
+        case AB12ActionVoiceMemos: {
+            [self launchAppWithBundleID:@"com.apple.VoiceMemos"];
+            break;
+        }
+        case AB12ActionScreenshot: {
+            notify_post("com.apple.springboard.takeScreenshot");
+            break;
+        }
+        case AB12ActionWiFi: {
+            [self toggleWiFi];
+            break;
+        }
+        case AB12ActionBluetooth: {
+            [self toggleBluetooth];
+            break;
+        }
+    }
+}
+
+- (void)toggleFlashlight {
+    Class captureClass = NSClassFromString(@"AVCaptureDevice");
+    if (!captureClass) return;
+    AVCaptureDevice *device = [captureClass defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch] && [device isTorchAvailable]) {
+        NSError *error = nil;
+        if ([device lockForConfiguration:&error]) {
+            if (device.torchMode == AVCaptureTorchModeOn) {
+                [device setTorchMode:AVCaptureTorchModeOff];
+            } else {
+                [device setTorchMode:AVCaptureTorchModeOn];
+            }
+            [device unlockForConfiguration];
+        }
+    }
+}
+
+- (void)launchAppWithBundleID:(NSString *)bundleID {
+    Class uiControllerClass = NSClassFromString(@"SBUIController");
+    if (uiControllerClass) {
+        id uiController = [uiControllerClass sharedInstance];
+        if ([uiController respondsToSelector:@selector(launchApplicationWithIdentifier:suspended:)]) {
+            [uiController launchApplicationWithIdentifier:bundleID suspended:NO];
+            return;
+        } else if ([uiController respondsToSelector:@selector(launchApplicationWithIdentifier:)]) {
+            [uiController launchApplicationWithIdentifier:bundleID];
+            return;
+        }
+    }
+    
+    // Fallback via LSApplicationWorkspace
+    Class workspaceClass = NSClassFromString(@"LSApplicationWorkspace");
+    if (workspaceClass) {
+        id workspace = [workspaceClass defaultWorkspace];
+        if ([workspace respondsToSelector:@selector(openApplicationWithBundleID:)]) {
+            [workspace openApplicationWithBundleID:bundleID];
+        }
+    }
+}
+
+- (void)toggleWiFi {
+    Class wifiClass = NSClassFromString(@"SBWiFiManager");
+    if (wifiClass) {
+        id wifiMgr = [wifiClass sharedInstance];
+        if ([wifiMgr respondsToSelector:@selector(wiFiEnabled)] &&
+            [wifiMgr respondsToSelector:@selector(setWiFiEnabled:)]) {
+            BOOL current = [wifiMgr wiFiEnabled];
+            [wifiMgr setWiFiEnabled:!current];
+        }
+    }
+}
+
+- (void)toggleBluetooth {
+    Class btClass = NSClassFromString(@"BluetoothManager");
+    if (btClass) {
+        id btMgr = [btClass sharedInstance];
+        if ([btMgr respondsToSelector:@selector(enabled)] &&
+            [btMgr respondsToSelector:@selector(setEnabled:)]) {
+            BOOL current = [btMgr enabled];
+            [btMgr setEnabled:!current];
+        }
+    }
+}
+
+@end

@@ -1,1 +1,83 @@
-I2ltcG9ydCAiR2xpbnRSb290TGlzdENvbnRyb2xsZXIuaCINCiNpbXBvcnQgPHNwYXduLmg+DQojaW1wb3J0IDxDb3JlRm91bmRhdGlvbi9Db3JlRm91bmRhdGlvbi5oPg0KI2ltcG9ydCA8bm90aWZ5Lmg+DQojaW1wb3J0IDxBdWRpb1Rvb2xib3gvQXVkaW9TZXJ2aWNlcy5oPg0KDQojZGVmaW5lIEdMSU5UX1BSRUZTX0lEIENGU1RSKCJjb20uY29jeGFjZS5nbGludCIpDQojZGVmaW5lIEdMSU5UX1JFTE9BRCAgICJjb20uY29jeGFjZS5nbGludC9yZWxvYWQiDQoNCkBpbXBsZW1lbnRhdGlvbiBHbGludFJvb3RMaXN0Q29udHJvbGxlcg0KDQotICh2b2lkKXRlc3RBdWRpb0NoaW1lQmVsbCB7DQogICAgQXVkaW9TZXJ2aWNlc1BsYXlTeXN0ZW1Tb3VuZCgxMDA3KTsNCn0NCg0KLSAoTlNBcnJheSAqKXNwZWNpZmllcnMgew0KICAgIGlmICghX3NwZWNpZmllcnMpIHsNCiAgICAgICAgX3NwZWNpZmllcnMgPSBbc2VsZiBsb2FkU3BlY2lmaWVyc0Zyb21QbGlzdE5hbWU6QCJSb290IiB0YXJnZXQ6c2VsZl07DQogICAgfQ0KICAgIHJldHVybiBfc3BlY2lmaWVyczsNCn0NCg0KLSAodm9pZClyZXNwcmluZyB7DQogICAgVUlBbGVydENvbnRyb2xsZXIgKmFsZXJ0ID0gW1VJQWxlcnRDb250cm9sbGVyIGFsZXJ0Q29udHJvbGxlcldpdGhUaXRsZTpAIkdsaW50Ig0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1lc3NhZ2U6QCJSZXNwcmluZyBTcHJpbmdCb2FyZCB0byBhcHBseSBjaGFuZ2VzPyINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJlZmVycmVkU3R5bGU6VUlBbGVydENvbnRyb2xsZXJTdHlsZUFsZXJ0XTsNCiAgICBbYWxlcnQgYWRkQWN0aW9uOltVSUFsZXJ0QWN0aW9uIGFjdGlvbldpdGhUaXRsZTpAIkNhbmNlbCIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlQ2FuY2VsIGhhbmRsZXI6bmlsXV07DQogICAgW2FsZXJ0IGFkZEFjdGlvbjpbVUlBbGVydEFjdGlvbiBhY3Rpb25XaXRoVGl0bGU6QCJSZXNwcmluZyIgc3R5bGU6VUlBbGVydEFjdGlvblN0eWxlRGVzdHJ1Y3RpdmUgaGFuZGxlcjpeKFVJQWxlcnRBY3Rpb24gKmFjdGlvbikgew0KICAgICAgICBwaWRfdCBwaWQ7DQogICAgICAgIGNvbnN0IGNoYXIgKmFyZ3ZbXSA9IHsia2lsbGFsbCIsICItOSIsICJTcHJpbmdCb2FyZCIsIE5VTEx9Ow0KICAgICAgICBwb3NpeF9zcGF3bigmcGlkLCAiL3Vzci9iaW4va2lsbGFsbCIsIE5VTEwsIE5VTEwsIChjaGFyICpjb25zdCAqKWFyZ3YsIE5VTEwpOw0KICAgIH1dXTsNCiAgICBbc2VsZiBwcmVzZW50Vmlld0NvbnRyb2xsZXI6YWxlcnQgYW5pbWF0ZWQ6WUVTIGNvbXBsZXRpb246bmlsXTsNCn0NCg0KLSAodm9pZClyZXNldERlZmF1bHRzIHsNCiAgICBVSUFsZXJ0Q29udHJvbGxlciAqYWxlcnQgPSBbVUlBbGVydENvbnRyb2xsZXIgYWxlcnRDb250cm9sbGVyV2l0aFRpdGxlOkAiR2xpbnQiDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWVzc2FnZTpAIlJlc2V0IGFsbCBHbGludCBzZXR0aW5ncyB0byBkZWZhdWx0cz8iDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByZWZlcnJlZFN0eWxlOlVJQWxlcnRDb250cm9sbGVyU3R5bGVBbGVydF07DQogICAgW2FsZXJ0IGFkZEFjdGlvbjpbVUlBbGVydEFjdGlvbiBhY3Rpb25XaXRoVGl0bGU6QCJDYW5jZWwiIHN0eWxlOlVJQWxlcnRBY3Rpb25TdHlsZUNhbmNlbCBoYW5kbGVyOm5pbF1dOw0KICAgIFthbGVydCBhZGRBY3Rpb246W1VJQWxlcnRBY3Rpb24gYWN0aW9uV2l0aFRpdGxlOkAiUmVzZXQiIHN0eWxlOlVJQWxlcnRBY3Rpb25TdHlsZURlc3RydWN0aXZlIGhhbmRsZXI6XihVSUFsZXJ0QWN0aW9uICphY3Rpb24pIHsNCiAgICAgICAgLy8gdjEuMi4zIGRlZmF1bHRzIOKAlCBtdXN0IG1pcnJvciBHbGludFByZWZzIHJlZ2lzdGVyRGVmYXVsdHMNCiAgICAgICAgTlNEaWN0aW9uYXJ5PE5TU3RyaW5nICosIGlkPiAqZGVmYXVsdHMgPSBAew0KICAgICAgICAgICAgQCJwcmVmc1ZlcnNpb24iOiBAKDMpLA0KICAgICAgICAgICAgQCJlbmFibGVHbGludCI6IEAoWUVTKSwNCiAgICAgICAgICAgIEAiZ2xpbnRTaG93Tm90aWZpY2F0aW9ucyI6IEAoWUVTKSwNCiAgICAgICAgICAgIEAiZ2xpbnRTaG93Q2hhcmdpbmciOiBAKFlFUyksDQogICAgICAgICAgICBAImdsaW50U2hvd011c2ljIjogQChZRVMpLA0KICAgICAgICAgICAgQCJnbGludFNob3dUb3JjaCI6IEAoWUVTKSwNCiAgICAgICAgICAgIEAiZ2xpbnRTaG93VGltZXIiOiBAKFlFUyksDQogICAgICAgICAgICBAImdsaW50U2hvd0FydHdvcmsiOiBAKFlFUyksDQogICAgICAgICAgICBAImdsaW50QmVhdFB1bHNlIjogQChZRVMpLA0KICAgICAgICAgICAgQCJnbGludEdsb3dFbmFibGVkIjogQChZRVMpLA0KICAgICAgICAgICAgQCJnbGludEdsb3dTdHJlbmd0aCI6IEAoNTUuMCksDQogICAgICAgICAgICBAImdsaW50R2xvd1JhZGl1cyI6IEAoMTQuMCksDQogICAgICAgICAgICBAImdsaW50R2xvd1NwZWVkIjogQCg1LjApLA0KICAgICAgICAgICAgQCJnbGludEdsb3dIdWUiOiBAKDE5MC4wKSwNCiAgICAgICAgICAgIEAiZ2xpbnRHbG93SHVlMiI6IEAoMjU4LjApLA0KICAgICAgICAgICAgQCJnbGludEdsb3dSYWluYm93IjogQChOTyksDQogICAgICAgICAgICBAImdsaW50R2xvd0JsaW5rIjogQChOTyksDQogICAgICAgICAgICBAImdsaW50UG9zaXRpb24iOiBAInRvcCIsDQogICAgICAgICAgICBAImdsaW50Q29ybmVyUmFkaXVzIjogQCgxNi4wKSwNCiAgICAgICAgICAgIEAiZ2xpbnRFeHBhbmRlZEhlaWdodCI6IEAoMTQwLjApLA0KICAgICAgICAgICAgQCJnbGludFNwcmluZ1N0aWZmbmVzcyI6IEAoMjAwLjApLA0KICAgICAgICAgICAgQCJnbGludFNwcmluZ0RhbXBpbmciOiBAKDE4LjApLA0KICAgICAgICAgICAgQCJnbGludEF1dG9Db2xsYXBzZURlbGF5IjogQCg0LjApLA0KICAgICAgICAgICAgQCJnbGludEhhcHRpY09uVGFwIjogQChZRVMpLA0KICAgICAgICAgICAgQCJnbGludERlYnVnIjogQChOTykNCiAgICAgICAgfTsNCiAgICAgICAgZm9yIChOU1N0cmluZyAqa2V5IGluIGRlZmF1bHRzKSB7DQogICAgICAgICAgICBDRlByZWZlcmVuY2VzU2V0QXBwVmFsdWUoKENGU3RyaW5nUmVmKWtleSwgKF9fYnJpZGdlIENGVHlwZVJlZilkZWZhdWx0c1trZXldLCBHTElOVF9QUkVGU19JRCk7DQogICAgICAgIH0NCiAgICAgICAgQ0ZQcmVmZXJlbmNlc0FwcFN5bmNocm9uaXplKEdMSU5UX1BSRUZTX0lEKTsNCiAgICAgICAgbm90aWZ5X3Bvc3QoR0xJTlRfUkVMT0FEKTsNCg0KICAgICAgICBkaXNwYXRjaF9hZnRlcihkaXNwYXRjaF90aW1lKERJU1BBVENIX1RJTUVfTk9XLCAoaW50NjRfdCkoMC40ICogTlNFQ19QRVJfU0VDKSksIGRpc3BhdGNoX2dldF9tYWluX3F1ZXVlKCksIF57DQogICAgICAgICAgICBbc2VsZiByZWxvYWRTcGVjaWZpZXJzXTsNCiAgICAgICAgfSk7DQogICAgfV1dOw0KICAgIFtzZWxmIHByZXNlbnRWaWV3Q29udHJvbGxlcjphbGVydCBhbmltYXRlZDpZRVMgY29tcGxldGlvbjpuaWxdOw0KfQ0KDQpAZW5kDQo=
+#import "GlintRootListController.h"
+#import <spawn.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <notify.h>
+#import <AudioToolbox/AudioServices.h>
+
+#define GLINT_PREFS_ID CFSTR("com.cocxace.glint")
+#define GLINT_RELOAD   "com.cocxace.glint/reload"
+
+@implementation GlintRootListController
+
+- (void)testAudioChimeBell {
+    AudioServicesPlaySystemSound(1007);
+}
+
+- (NSArray *)specifiers {
+    if (!_specifiers) {
+        _specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
+    }
+    return _specifiers;
+}
+
+- (void)respring {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Glint"
+                                                                   message:@"Respring SpringBoard to apply changes?"
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Respring" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        pid_t pid;
+        const char *argv[] = {"killall", "-9", "SpringBoard", NULL};
+        posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char *const *)argv, NULL);
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)resetDefaults {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Glint"
+                                                                   message:@"Reset all Glint settings to defaults?"
+                                                           preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        // v1.2.3 defaults — must mirror GlintPrefs registerDefaults
+        NSDictionary<NSString *, id> *defaults = @{
+            @"prefsVersion": @(3),
+            @"enableGlint": @(YES),
+            @"glintShowNotifications": @(YES),
+            @"glintShowCharging": @(YES),
+            @"glintShowMusic": @(YES),
+            @"glintShowTorch": @(YES),
+            @"glintShowTimer": @(YES),
+            @"glintShowArtwork": @(YES),
+            @"glintBeatPulse": @(YES),
+            @"glintGlowEnabled": @(YES),
+            @"glintGlowStrength": @(55.0),
+            @"glintGlowRadius": @(14.0),
+            @"glintGlowSpeed": @(5.0),
+            @"glintGlowHue": @(190.0),
+            @"glintGlowHue2": @(258.0),
+            @"glintGlowRainbow": @(NO),
+            @"glintGlowBlink": @(NO),
+            @"glintPosition": @"top",
+            @"glintCornerRadius": @(16.0),
+            @"glintExpandedHeight": @(140.0),
+            @"glintSpringStiffness": @(200.0),
+            @"glintSpringDamping": @(18.0),
+            @"glintAutoCollapseDelay": @(4.0),
+            @"glintHapticOnTap": @(YES),
+            @"glintDebug": @(NO)
+        };
+        for (NSString *key in defaults) {
+            CFPreferencesSetAppValue((CFStringRef)key, (__bridge CFTypeRef)defaults[key], GLINT_PREFS_ID);
+        }
+        CFPreferencesAppSynchronize(GLINT_PREFS_ID);
+        notify_post(GLINT_RELOAD);
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self reloadSpecifiers];
+        });
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+@end

@@ -1,1 +1,15 @@
-PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCgk8a2V5PkNGQnVuZGxlRGV2ZWxvcG1lbnRSZWdpb248L2tleT48c3RyaW5nPkVuZ2xpc2g8L3N0cmluZz4NCgk8a2V5PkNGQnVuZGxlRXhlY3V0YWJsZTwva2V5PjxzdHJpbmc+Vm9sdHByZWZzPC9zdHJpbmc+DQoJPGtleT5DRkJ1bmRsZUlkZW50aWZpZXI8L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLnZvbHQucHJlZnM8L3N0cmluZz4NCgk8a2V5PkNGQnVuZGxlSW5mb0RpY3Rpb25hcnlWZXJzaW9uPC9rZXk+PHN0cmluZz42LjA8L3N0cmluZz4NCgk8a2V5PkNGQnVuZGxlUGFja2FnZVR5cGU8L2tleT48c3RyaW5nPkJOREw8L3N0cmluZz4NCgk8a2V5PkNGQnVuZGxlU2hvcnRWZXJzaW9uU3RyaW5nPC9rZXk+PHN0cmluZz4xLjIuMzwvc3RyaW5nPg0KCTxrZXk+Q0ZCdW5kbGVTaWduYXR1cmU8L2tleT48c3RyaW5nPj8/Pz88L3N0cmluZz4NCgk8a2V5PkNGQnVuZGxlVmVyc2lvbjwva2V5PjxzdHJpbmc+MS4yLjM8L3N0cmluZz4NCgk8a2V5Pk5TUHJpbmNpcGFsQ2xhc3M8L2tleT48c3RyaW5nPlZvbHRSb290TGlzdENvbnRyb2xsZXI8L3N0cmluZz4NCjwvZGljdD4NCjwvcGxpc3Q+DQo=
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key><string>English</string>
+	<key>CFBundleExecutable</key><string>Voltprefs</string>
+	<key>CFBundleIdentifier</key><string>com.cocxace.volt.prefs</string>
+	<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+	<key>CFBundlePackageType</key><string>BNDL</string>
+	<key>CFBundleShortVersionString</key><string>1.2.3</string>
+	<key>CFBundleSignature</key><string>????</string>
+	<key>CFBundleVersion</key><string>1.2.3</string>
+	<key>NSPrincipalClass</key><string>VoltRootListController</string>
+</dict>
+</plist>

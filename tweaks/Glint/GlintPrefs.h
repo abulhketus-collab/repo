@@ -1,1 +1,33 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgR2xpbnRQcmVmcyA6IE5TT2JqZWN0DQoNCisgKGluc3RhbmNldHlwZSlzaGFyZWRQcmVmczsNCg0KKyAoQk9PTClib29sRm9yS2V5OihOU1N0cmluZyAqKWtleSBkZWZhdWx0VmFsdWU6KEJPT0wpZGVmOw0KKyAoTlNJbnRlZ2VyKWludGVnZXJGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooTlNJbnRlZ2VyKWRlZjsNCisgKENHRmxvYXQpZmxvYXRGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooQ0dGbG9hdClkZWY7DQorIChOU1N0cmluZyAqKXN0cmluZ0ZvcktleTooTlNTdHJpbmcgKilrZXkgZGVmYXVsdFZhbHVlOihOU1N0cmluZyAqKWRlZjsNCg0KKyAodm9pZClzZXRCb29sOihCT09MKXZhbHVlIGZvcktleTooTlNTdHJpbmcgKilrZXk7DQorICh2b2lkKXNldEludGVnZXI6KE5TSW50ZWdlcil2YWx1ZSBmb3JLZXk6KE5TU3RyaW5nICopa2V5Ow0KKyAodm9pZClzZXRGbG9hdDooQ0dGbG9hdCl2YWx1ZSBmb3JLZXk6KE5TU3RyaW5nICopa2V5Ow0KKyAodm9pZClzZXRTdHJpbmc6KE5TU3RyaW5nICopdmFsdWUgZm9yS2V5OihOU1N0cmluZyAqKWtleTsNCg0KKyAodm9pZClyZWdpc3RlckRlZmF1bHRzOw0KKyAodm9pZCltaWdyYXRlUHJlZnNJZk5lZWRlZDsNCg0KKyAodm9pZClwb3N0UmVsb2FkTm90aWZpY2F0aW9uOw0KKyAodm9pZClpbnN0YWxsRGFyd2luUmVsb2FkT2JzZXJ2ZXI6KHZvaWQgKF4pKHZvaWQpKWJsb2NrOw0KDQorIChCT09MKWRlYnVnRW5hYmxlZDsNCisgKE5TSW50ZWdlcilwcmVmc1ZlcnNpb247DQoNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBhc3NpZ24sIHJlYWRvbmx5KSBCT09MIGRlYnVnRW5hYmxlZDsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBhc3NpZ24sIHJlYWRvbmx5KSBOU0ludGVnZXIgcHJlZnNWZXJzaW9uOw0KDQpAZW5kDQoNCk5TX0FTU1VNRV9OT05OVUxMX0VORA==
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GlintPrefs : NSObject
+
++ (instancetype)sharedPrefs;
+
++ (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)def;
++ (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)def;
++ (CGFloat)floatForKey:(NSString *)key defaultValue:(CGFloat)def;
++ (NSString *)stringForKey:(NSString *)key defaultValue:(NSString *)def;
+
++ (void)setBool:(BOOL)value forKey:(NSString *)key;
++ (void)setInteger:(NSInteger)value forKey:(NSString *)key;
++ (void)setFloat:(CGFloat)value forKey:(NSString *)key;
++ (void)setString:(NSString *)value forKey:(NSString *)key;
+
++ (void)registerDefaults;
++ (void)migratePrefsIfNeeded;
+
++ (void)postReloadNotification;
++ (void)installDarwinReloadObserver:(void (^)(void))block;
+
++ (BOOL)debugEnabled;
++ (NSInteger)prefsVersion;
+
+@property (nonatomic, assign, readonly) BOOL debugEnabled;
+@property (nonatomic, assign, readonly) NSInteger prefsVersion;
+
+@end
+
+NS_ASSUME_NONNULL_END

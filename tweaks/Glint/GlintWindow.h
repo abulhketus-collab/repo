@@ -1,1 +1,18 @@
-I2ltcG9ydCA8VUlLaXQvVUlLaXQuaD4NCiNpbXBvcnQgIkdsaW50U3RhdGUuaCINCg0KTlNfQVNTVU1FX05PTk5VTExfQkVHSU4NCg0KQGludGVyZmFjZSBHbGludFdpbmRvdyA6IFVJV2luZG93DQoNCisgKGluc3RhbmNldHlwZSlzaGFyZWRXaW5kb3c7DQotICh2b2lkKXNob3dTdGF0ZToobnVsbGFibGUgR2xpbnRTdGF0ZSAqKXN0YXRlIGFuaW1hdGVkOihCT09MKWFuaW1hdGVkOw0KLSAodm9pZCljb2xsYXBzZUFuaW1hdGVkOihCT09MKWFuaW1hdGVkOw0KLSAodm9pZClkZXN0cm95Ow0KLSAodm9pZCl1cGRhdGVQb3NpdGlvbjsNCg0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbiwgcmVhZG9ubHkpIEJPT0wgaXNWaXNpYmxlOw0KDQpAZW5kDQoNCk5TX0FTU1VNRV9OT05OVUxMX0VORA==
+#import <UIKit/UIKit.h>
+#import "GlintState.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GlintWindow : UIWindow
+
++ (instancetype)sharedWindow;
+- (void)showState:(nullable GlintState *)state animated:(BOOL)animated;
+- (void)collapseAnimated:(BOOL)animated;
+- (void)destroy;
+- (void)updatePosition;
+
+@property (nonatomic, assign, readonly) BOOL isVisible;
+
+@end
+
+NS_ASSUME_NONNULL_END

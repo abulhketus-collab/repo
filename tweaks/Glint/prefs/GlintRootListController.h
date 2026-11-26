@@ -1,1 +1,5 @@
-I2ltcG9ydCA8UHJlZmVyZW5jZXMvUFNMaXN0Q29udHJvbGxlci5oPg0KDQpAaW50ZXJmYWNlIEdsaW50Um9vdExpc3RDb250cm9sbGVyIDogUFNMaXN0Q29udHJvbGxlcg0KDQpAZW5k
+#import <Preferences/PSListController.h>
+
+@interface GlintRootListController : PSListController
+
+@end

@@ -1,1 +1,9 @@
-UGFja2FnZTogY29tLmNvY3hhY2UuZ2xpbnQNCk5hbWU6IEdsaW50DQpWZXJzaW9uOiAxLjIuMw0KQXJjaGl0ZWN0dXJlOiBpcGhvbmVvcy1hcm0NCkRlc2NyaXB0aW9uOiBEeW5hbWljIElzbGFuZCBmb3IgaU9TIDEyIG5vdGNobGVzcyBkZXZpY2VzOiBub3RpZmljYXRpb25zLCBjaGFyZ2luZywgbm93LXBsYXlpbmcgd2l0aCBhcnR3b3JrLCBuYXRpdmUgY291bnRkb3duIHRpbWVyLCBjdXN0b21pemFibGUgZ2xvdyAoYW55IGNvbG9yLCByYWluYm93LCBibGluayksIGJlYXQgcHVsc2UgLSBhbGwgd2l0aCBzcHJpbmcgYW5pbWF0aW9ucw0KTWFpbnRhaW5lcjogY29jeGFjZSA8QGNvY3hhY2U+DQpBdXRob3I6IGNvY3hhY2UgPEBjb2N4YWNlPg0KU2VjdGlvbjogVHdlYWtzDQpEZXBlbmRzOiBtb2JpbGVzdWJzdHJhdGUsIGZpcm13YXJlICg+PSAxMi4wKQ0K
+Package: com.cocxace.glint
+Name: Glint
+Version: 1.2.3
+Architecture: iphoneos-arm
+Description: Dynamic Island for iOS 12 notchless devices: notifications, charging, now-playing with artwork, native countdown timer, customizable glow (any color, rainbow, blink), beat pulse - all with spring animations
+Maintainer: cocxace <@cocxace>
+Author: cocxace <@cocxace>
+Section: Tweaks
+Depends: mobilesubstrate, firmware (>= 12.0)

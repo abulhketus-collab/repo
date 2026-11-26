@@ -1,1 +1,62 @@
-I2ltcG9ydCAiR2xpbnRUb3JjaE9ic2VydmVyLmgiDQojaW1wb3J0ICJHbGludFN0YXRlTWFuYWdlci5oIg0KI2ltcG9ydCAiR2xpbnRQcmVmcy5oIg0KI2ltcG9ydCA8QVZGb3VuZGF0aW9uL0FWRm91bmRhdGlvbi5oPg0KI2ltcG9ydCA8b3MvbG9nLmg+DQoNCkBpbXBsZW1lbnRhdGlvbiBHbGludFRvcmNoT2JzZXJ2ZXINCg0KKyAodm9pZClpbnN0YWxsIHsNCiAgICBpZiAoIVtHbGludFByZWZzIGJvb2xGb3JLZXk6QCJnbGludFNob3dUb3JjaCIgZGVmYXVsdFZhbHVlOllFU10pIHJldHVybjsNCiAgICBbW05TTm90aWZpY2F0aW9uQ2VudGVyIGRlZmF1bHRDZW50ZXJdIGFkZE9ic2VydmVyOnNlbGYNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlbGVjdG9yOkBzZWxlY3RvcihkZXZpY2VDaGFuZ2VkOikNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuYW1lOkFWQ2FwdHVyZURldmljZVdhc0Nvbm5lY3RlZE5vdGlmaWNhdGlvbg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvYmplY3Q6bmlsXTsNCiAgICBbW05TTm90aWZpY2F0aW9uQ2VudGVyIGRlZmF1bHRDZW50ZXJdIGFkZE9ic2VydmVyOnNlbGYNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNlbGVjdG9yOkBzZWxlY3RvcihkZXZpY2VDaGFuZ2VkOikNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuYW1lOkFWQ2FwdHVyZURldmljZVdhc0Rpc2Nvbm5lY3RlZE5vdGlmaWNhdGlvbg0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvYmplY3Q6bmlsXTsNCiAgICBbW0dsaW50U3RhdGVNYW5hZ2VyIHNoYXJlZE1hbmFnZXJdIHVwZGF0ZVRvcmNoU3RhdGVdOw0KfQ0KDQorICh2b2lkKXVuaW5zdGFsbCB7DQogICAgW1tOU05vdGlmaWNhdGlvbkNlbnRlciBkZWZhdWx0Q2VudGVyXSByZW1vdmVPYnNlcnZlcjpzZWxmXTsNCn0NCg0KKyAoQk9PTCloYXNUb3JjaCB7DQogICAgQVZDYXB0dXJlRGV2aWNlICpkID0gW0FWQ2FwdHVyZURldmljZSBkZWZhdWx0RGV2aWNlV2l0aE1lZGlhVHlwZTpBVk1lZGlhVHlwZVZpZGVvXTsNCiAgICBpZiAoIWQpIHJldHVybiBOTzsNCiAgICBpZiAoW2QgcmVzcG9uZHNUb1NlbGVjdG9yOkBzZWxlY3RvcihoYXNUb3JjaCldKSByZXR1cm4gW2QgaGFzVG9yY2hdOw0KICAgIGlmIChbZCByZXNwb25kc1RvU2VsZWN0b3I6QHNlbGVjdG9yKGlzVG9yY2hBdmFpbGFibGUpXSkgcmV0dXJuIFtkIGlzVG9yY2hBdmFpbGFibGVdOw0KICAgIHJldHVybiBOTzsNCn0NCg0KKyAoQk9PTClpc1RvcmNoT24gew0KICAgIEFWQ2FwdHVyZURldmljZSAqZCA9IFtBVkNhcHR1cmVEZXZpY2UgZGVmYXVsdERldmljZVdpdGhNZWRpYVR5cGU6QVZNZWRpYVR5cGVWaWRlb107DQogICAgaWYgKCFkKSByZXR1cm4gTk87DQogICAgcmV0dXJuIGQudG9yY2hNb2RlID09IEFWQ2FwdHVyZVRvcmNoTW9kZU9uOw0KfQ0KDQorICh2b2lkKXNldFRvcmNoT246KEJPT0wpb24gew0KICAgIEFWQ2FwdHVyZURldmljZSAqZCA9IFtBVkNhcHR1cmVEZXZpY2UgZGVmYXVsdERldmljZVdpdGhNZWRpYVR5cGU6QVZNZWRpYVR5cGVWaWRlb107DQogICAgaWYgKCFkKSByZXR1cm47DQogICAgTlNFcnJvciAqZXJyID0gbmlsOw0KICAgIGlmIChbZCBsb2NrRm9yQ29uZmlndXJhdGlvbjomZXJyXSkgew0KICAgICAgICBpZiAob24pIHsNCiAgICAgICAgICAgIGlmIChbZCBpc1RvcmNoTW9kZVN1cHBvcnRlZDpBVkNhcHR1cmVUb3JjaE1vZGVPbl0pIHsNCiAgICAgICAgICAgICAgICBbZCBzZXRUb3JjaE1vZGVPbldpdGhMZXZlbDoxLjAgZXJyb3I6JmVycl07DQogICAgICAgICAgICB9DQogICAgICAgIH0gZWxzZSB7DQogICAgICAgICAgICBbZCBzZXRUb3JjaE1vZGU6QVZDYXB0dXJlVG9yY2hNb2RlT2ZmXTsNCiAgICAgICAgfQ0KICAgICAgICBbZCB1bmxvY2tGb3JDb25maWd1cmF0aW9uXTsNCiAgICB9DQogICAgaWYgKGVycikgb3NfbG9nKE9TX0xPR19ERUZBVUxULCAiW0dsaW50VG9yY2hdIGxvY2sgZXJyb3I6ICVAIiwgZXJyKTsNCiAgICBbW0dsaW50U3RhdGVNYW5hZ2VyIHNoYXJlZE1hbmFnZXJdIHVwZGF0ZVRvcmNoU3RhdGVdOw0KfQ0KDQotICh2b2lkKWRldmljZUNoYW5nZWQ6KGlkKW5vdGUgew0KICAgIFtbR2xpbnRTdGF0ZU1hbmFnZXIgc2hhcmVkTWFuYWdlcl0gdXBkYXRlVG9yY2hTdGF0ZV07DQp9DQoNCkBlbmQNCg==
+#import "GlintTorchObserver.h"
+#import "GlintStateManager.h"
+#import "GlintPrefs.h"
+#import <AVFoundation/AVFoundation.h>
+#import <os/log.h>
+
+@implementation GlintTorchObserver
+
++ (void)install {
+    if (![GlintPrefs boolForKey:@"glintShowTorch" defaultValue:YES]) return;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceChanged:)
+                                                 name:AVCaptureDeviceWasConnectedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceChanged:)
+                                                 name:AVCaptureDeviceWasDisconnectedNotification
+                                               object:nil];
+    [[GlintStateManager sharedManager] updateTorchState];
+}
+
++ (void)uninstall {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
++ (BOOL)hasTorch {
+    AVCaptureDevice *d = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (!d) return NO;
+    if ([d respondsToSelector:@selector(hasTorch)]) return [d hasTorch];
+    if ([d respondsToSelector:@selector(isTorchAvailable)]) return [d isTorchAvailable];
+    return NO;
+}
+
++ (BOOL)isTorchOn {
+    AVCaptureDevice *d = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (!d) return NO;
+    return d.torchMode == AVCaptureTorchModeOn;
+}
+
++ (void)setTorchOn:(BOOL)on {
+    AVCaptureDevice *d = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (!d) return;
+    NSError *err = nil;
+    if ([d lockForConfiguration:&err]) {
+        if (on) {
+            if ([d isTorchModeSupported:AVCaptureTorchModeOn]) {
+                [d setTorchModeOnWithLevel:1.0 error:&err];
+            }
+        } else {
+            [d setTorchMode:AVCaptureTorchModeOff];
+        }
+        [d unlockForConfiguration];
+    }
+    if (err) os_log(OS_LOG_DEFAULT, "[GlintTorch] lock error: %@", err);
+    [[GlintStateManager sharedManager] updateTorchState];
+}
+
+- (void)deviceChanged:(id)note {
+    [[GlintStateManager sharedManager] updateTorchState];
+}
+
+@end

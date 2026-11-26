@@ -1,1 +1,166 @@
-PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBwbGUvL0RURCBQTElTVCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFREcy9Qcm9wZXJ0eUxpc3QtMS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8ZGljdD4KCTxrZXk+aXRlbXM8L2tleT4KCTxhcnJheT4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5DYW02MEVuYWJsZXI1czwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPldpdGggdGhlIHR3ZWFrOiB0aGUgQ2FtZXJhIGFwcCBleHBvc2VzIDEwODBwIDYwIGZwcyByZWNvcmRpbmcgb24gaVBob25lIDVzLiBXaXRob3V0IGl0OiBzdG9jayAxMDgwcCAzMCBmcHMgb25seS4gSWYgYW55dGhpbmcgZmFpbHMsIHRoZSB0d2VhayBkaXNhYmxlcyBpdHNlbGYgYW5kIHRoZSBzdG9jayBjYW1lcmEga2VlcHMgd29ya2luZyDigJQgbm8gU2FmZSBNb2RlLjwvc3RyaW5nPgoJCTwvZGljdD4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU1N3aXRjaENlbGw8L3N0cmluZz4KCQkJPGtleT5kZWZhdWx0PC9rZXk+PHRydWUvPgoJCQk8a2V5PmRlZmF1bHRzPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1czwvc3RyaW5nPgoJCQk8a2V5PmtleTwva2V5PjxzdHJpbmc+ZW5hYmxlZDwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz4xMDgwcCBAIDYwIEZQUzwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkZvcmNlcyAxMDgwcCA2MCBGUFMgdmlkZW8gcmVjb3JkaW5nIG9uIGlQaG9uZSA1cyBDYW1lcmEuIEZhbGxzIGJhY2sgdG8gMzAgZnBzIHNhZmVseSBvbiBoYXJkd2FyZSBlcnJvcnMgdG8gcHJldmVudCBTYWZlIE1vZGUuPC9zdHJpbmc+CgkJCTxrZXk+UG9zdE5vdGlmaWNhdGlvbjwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMvcmVsb2FkPC9zdHJpbmc+CgkJPC9kaWN0PgoKCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5Qcm9maWxlIFByZXNldDwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkEgcHJlc2V0IGFwcGxpZXMgYSByZWFkeS1tYWRlIHNldCBvZiBhbGwgb3B0aW9ucyBiZWxvdyBhdCBvbmNlLiBDaG9vc2UgQ3VzdG9tIHRvIGtlZXAgeW91ciBvd24gdmFsdWVzLjwvc3RyaW5nPgoJCTwvZGljdD4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU0xpbmtMaXN0Q2VsbDwvc3RyaW5nPgoJCQk8a2V5PmRlZmF1bHQ8L2tleT48aW50ZWdlcj4tMTwvaW50ZWdlcj4KCQkJPGtleT5kZWZhdWx0czwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXM8L3N0cmluZz4KCQkJPGtleT5rZXk8L2tleT48c3RyaW5nPnByb2ZpbGU8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+UHJlc2V0PC9zdHJpbmc+CgkJCTxrZXk+ZGV0YWlsPC9rZXk+PHN0cmluZz5QU0xpc3RJdGVtc0NvbnRyb2xsZXI8L3N0cmluZz4KCQkJPGtleT52YWxpZFRpdGxlczwva2V5PjxhcnJheT4KCQkJCTxzdHJpbmc+TWF4IFF1YWxpdHkgKDEwODBwNjAgKyBzbG93LW1vLCA4MCBNYi9zKTwvc3RyaW5nPgoJCQkJPHN0cmluZz5CYWxhbmNlICgxMDgwcDYwLCA1MCBNYi9zKTwvc3RyaW5nPgoJCQkJPHN0cmluZz5CYXR0ZXJ5IFNhdmUgKDMwIGZwcywgMzAgTWIvcyk8L3N0cmluZz4KCQkJCTxzdHJpbmc+Q3VzdG9tPC9zdHJpbmc+CgkJCTwvYXJyYXk+CgkJCTxrZXk+dmFsaWRWYWx1ZXM8L2tleT48YXJyYXk+CgkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJCQkJPGludGVnZXI+MTwvaW50ZWdlcj4KCQkJCTxpbnRlZ2VyPjI8L2ludGVnZXI+CgkJCQk8aW50ZWdlcj4tMTwvaW50ZWdlcj4KCQkJPC9hcnJheT4KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQ8L3N0cmluZz4KCQk8L2RpY3Q+CgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTR3JvdXBDZWxsPC9zdHJpbmc+CgkJCTxrZXk+bGFiZWw8L2tleT48c3RyaW5nPlJlY29yZGluZyBNb2Rlczwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkNvbXBhdGliaWxpdHkgaXMgaG9uZXN0OiBmZWF0dXJlcyB0aGUgQTcgY2hpcCBwaHlzaWNhbGx5IGNhbm5vdCBkZWxpdmVyIGFyZSBjbGVhcmx5IG1hcmtlZCBhbmQgc2FmZWx5IGlnbm9yZWQgaW5zdGVhZCBvZiBjcmFzaGluZyB0aGUgY2FtZXJhLjwvc3RyaW5nPgoJCTwvZGljdD4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU1N3aXRjaENlbGw8L3N0cmluZz4KCQkJPGtleT5kZWZhdWx0PC9rZXk+PGZhbHNlLz4KCQkJPGtleT5kZWZhdWx0czwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXM8L3N0cmluZz4KCQkJPGtleT5rZXk8L2tleT48c3RyaW5nPnNsb3dtbzwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5TbG93LU1vIDcyMHAxMjA8L3N0cmluZz4KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+PHN0cmluZz5BNyBvZmZpY2lhbGx5IHN1c3RhaW5zIDcyMHAgYXQgMTIwIGZwcyDigJQgdGhlIG1vc3QgcmVhbGlzdGljIHNsb3ctbW90aW9uIHdpbiBvbiBpUGhvbmUgNXMuPC9zdHJpbmc+CgkJCTxrZXk+UG9zdE5vdGlmaWNhdGlvbjwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMvcmVsb2FkPC9zdHJpbmc+CgkJPC9kaWN0PgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTU3dpdGNoQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmRlZmF1bHQ8L2tleT48ZmFsc2UvPgoJCQk8a2V5PmRlZmF1bHRzPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1czwvc3RyaW5nPgoJCQk8a2V5PmtleTwva2V5PjxzdHJpbmc+ZjRrNjA8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+NEsgQCA2MCBGUFMg4oCUIE5PVCBPTiA1czwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPjRLNjAgbmVlZHMgYW4gQTkgY2hpcCBvciBuZXdlci4gT24gaVBob25lIDVzIHRoaXMgc3dpdGNoIGlzIGFjY2VwdGVkIGJ1dCBzYWZlbHkgaWdub3JlZCB0byBwcm90ZWN0IG1lZGlhc2VydmVyZC48L3N0cmluZz4KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQ8L3N0cmluZz4KCQk8L2RpY3Q+CgkJPGRpY3Q+CgkJCTxrZXk+Y2VsbDwva2V5PjxzdHJpbmc+UFNTd2l0Y2hDZWxsPC9zdHJpbmc+CgkJCTxrZXk+ZGVmYXVsdDwva2V5PjxmYWxzZS8+CgkJCTxrZXk+ZGVmYXVsdHM8L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLmNhbTYwZW5hYmxlcjVzPC9zdHJpbmc+CgkJCTxrZXk+a2V5PC9rZXk+PHN0cmluZz5wcm9yYXc8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+UHJvUkFXIOKAlCBOT1QgT04gNXM8L3N0cmluZz4KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+PHN0cmluZz5Qcm9SQVcgbmVlZHMgQTEyIG9yIG5ld2VyIHBsdXMgYSBuZXdlciBpT1MgQVBJLiBTYWZlbHkgaWdub3JlZCBvbiBpT1MgMTIgLyBBNy48L3N0cmluZz4KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQ8L3N0cmluZz4KCQk8L2RpY3Q+CgkJPGRpY3Q+CgkJCTxrZXk+Y2VsbDwva2V5PjxzdHJpbmc+UFNTd2l0Y2hDZWxsPC9zdHJpbmc+CgkJCTxrZXk+ZGVmYXVsdDwva2V5PjxmYWxzZS8+CgkJCTxrZXk+ZGVmYXVsdHM8L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLmNhbTYwZW5hYmxlcjVzPC9zdHJpbmc+CgkJCTxrZXk+a2V5PC9rZXk+PHN0cmluZz5jaW5lPC9zdHJpbmc+CgkJCTxrZXk+bGFiZWw8L2tleT48c3RyaW5nPkNpbmVtYXRpYyBNb2RlIOKAlCBOT1QgT04gNXM8L3N0cmluZz4KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+PHN0cmluZz5DaW5lbWF0aWMgbW9kZSBzaGlwcyB3aXRoIGlQaG9uZSAxMyBhbmQgbmV3ZXIuIFNhZmVseSBpZ25vcmVkIGhlcmUuPC9zdHJpbmc+CgkJCTxrZXk+UG9zdE5vdGlmaWNhdGlvbjwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMvcmVsb2FkPC9zdHJpbmc+CgkJPC9kaWN0PgoKCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU0dyb3VwQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5RdWFsaXR5PC9zdHJpbmc+CgkJPC9kaWN0PgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTU2xpZGVyQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmRlZmF1bHQ8L2tleT48cmVhbD41MDwvcmVhbD4KCQkJPGtleT5kZWZhdWx0czwva2V5PjxzdHJpbmc+Y29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXM8L3N0cmluZz4KCQkJPGtleT5rZXk8L2tleT48c3RyaW5nPmJpdHJhdGU8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+VmlkZW8gQml0cmF0ZSAoTWIvcyk8L3N0cmluZz4KCQkJPGtleT5taW48L2tleT48cmVhbD4yMDwvcmVhbD4KCQkJPGtleT5tYXg8L2tleT48cmVhbD44MDwvcmVhbD4KCQkJPGtleT5pbnRlcnZhbDwva2V5PjxyZWFsPjU8L3JlYWw+CgkJCTxrZXk+Zm9vdGVyVGV4dDwva2V5PjxzdHJpbmc+SGlnaGVyID0gc2hhcnBlciB2aWRlbywgbW9yZSBoZWF0IGFuZCBiYXR0ZXJ5IGRyYWluLiA1MCBNYi9zIGlzIGEgZ29vZCBiYWxhbmNlIGZvciBBNy48L3N0cmluZz4KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQ8L3N0cmluZz4KCQk8L2RpY3Q+CgkJPGRpY3Q+CgkJCTxrZXk+Y2VsbDwva2V5PjxzdHJpbmc+UFNTbGlkZXJDZWxsPC9zdHJpbmc+CgkJCTxrZXk+ZGVmYXVsdDwva2V5PjxyZWFsPjg1PC9yZWFsPgoJCQk8a2V5PmRlZmF1bHRzPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1czwvc3RyaW5nPgoJCQk8a2V5PmtleTwva2V5PjxzdHJpbmc+cXVhbGl0eTwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5FbmNvZGVyIFF1YWxpdHkgKCUpPC9zdHJpbmc+CgkJCTxrZXk+bWluPC9rZXk+PHJlYWw+NjA8L3JlYWw+CgkJCTxrZXk+bWF4PC9rZXk+PHJlYWw+MTAwPC9yZWFsPgoJCQk8a2V5PmludGVydmFsPC9rZXk+PHJlYWw+NTwvcmVhbD4KCQkJPGtleT5Qb3N0Tm90aWZpY2F0aW9uPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQ8L3N0cmluZz4KCQk8L2RpY3Q+CgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTR3JvdXBDZWxsPC9zdHJpbmc+CgkJCTxrZXk+bGFiZWw8L2tleT48c3RyaW5nPlNhZmV0eTwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkJvdGggZ3VhcmRzIGFyZSBvbiBieSBkZWZhdWx0LiBUaGV5IGFyZSB0aGUgcmVhc29uIHRoZSBzdG9jayBjYW1lcmEgbmV2ZXIgYnJlYWtzIGFuZCB0aGUgcGhvbmUgbmV2ZXIgZW50ZXJzIFNhZmUgTW9kZSBiZWNhdXNlIG9mIHRoaXMgdHdlYWsuPC9zdHJpbmc+CgkJPC9kaWN0PgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTU3dpdGNoQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmRlZmF1bHQ8L2tleT48dHJ1ZS8+CgkJCTxrZXk+ZGVmYXVsdHM8L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLmNhbTYwZW5hYmxlcjVzPC9zdHJpbmc+CgkJCTxrZXk+a2V5PC9rZXk+PHN0cmluZz50aGVybWFsPC9zdHJpbmc+CgkJCTxrZXk+bGFiZWw8L2tleT48c3RyaW5nPlRoZXJtYWwgUHJvdGVjdGlvbjwvc3RyaW5nPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkRyb3BzIGJhY2sgdG8gMzAgZnBzIGF1dG9tYXRpY2FsbHkgd2hlbiB0aGUgcGhvbmUgZ2V0cyBzZXJpb3VzbHkgaG90Ljwvc3RyaW5nPgoJCQk8a2V5PlBvc3ROb3RpZmljYXRpb248L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLmNhbTYwZW5hYmxlcjVzL3JlbG9hZDwvc3RyaW5nPgoJCTwvZGljdD4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU1N3aXRjaENlbGw8L3N0cmluZz4KCQkJPGtleT5kZWZhdWx0PC9rZXk+PHRydWUvPgoJCQk8a2V5PmRlZmF1bHRzPC9rZXk+PHN0cmluZz5jb20uY29jeGFjZS5jYW02MGVuYWJsZXI1czwvc3RyaW5nPgoJCQk8a2V5PmtleTwva2V5PjxzdHJpbmc+YXV0b2Rpczwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5BdXRvLURpc2FibGUgb24gRXJyb3I8L3N0cmluZz4KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+PHN0cmluZz5JZiB0aGUgY2FtZXJhIHBpcGVsaW5lIHJlamVjdHMgdGhlIDYwIGZwcyBjb25maWcsIHRoZSB0d2VhayBzd2l0Y2hlcyBpdHNlbGYgb2ZmIGFuZCB3cml0ZXMgdGhhdCB0byBTZXR0aW5ncyDigJQgdGhlIHN0b2NrIGNhbWVyYSBrZWVwcyB3b3JraW5nLjwvc3RyaW5nPgoJCQk8a2V5PlBvc3ROb3RpZmljYXRpb248L2tleT48c3RyaW5nPmNvbS5jb2N4YWNlLmNhbTYwZW5hYmxlcjVzL3JlbG9hZDwvc3RyaW5nPgoJCTwvZGljdD4KCgkJPGRpY3Q+CgkJCTxrZXk+Y2VsbDwva2V5PjxzdHJpbmc+UFNHcm91cENlbGw8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+UmVzZXQ8L3N0cmluZz4KCQkJPGtleT5mb290ZXJUZXh0PC9rZXk+PHN0cmluZz5SZXNldCByZXN0b3JlcyBldmVyeSBvcHRpb24gYWJvdmUgdG8gdGhlIHNhZmUgdjEuMC4zIGRlZmF1bHRzICg2MCBmcHMgb2ZmLCB0aGVybWFsIGFuZCBhdXRvLWRpc2FibGUgb24pLjwvc3RyaW5nPgoJCTwvZGljdD4KCQk8ZGljdD4KCQkJPGtleT5jZWxsPC9rZXk+PHN0cmluZz5QU0J1dHRvbkNlbGw8L3N0cmluZz4KCQkJPGtleT5sYWJlbDwva2V5PjxzdHJpbmc+UmVzZXQgQWxsIFNldHRpbmdzPC9zdHJpbmc+CgkJCTxrZXk+YWN0aW9uPC9rZXk+PHN0cmluZz5yZXNldERlZmF1bHRzPC9zdHJpbmc+CgkJPC9kaWN0PgoJCTxkaWN0PgoJCQk8a2V5PmNlbGw8L2tleT48c3RyaW5nPlBTQnV0dG9uQ2VsbDwvc3RyaW5nPgoJCQk8a2V5PmxhYmVsPC9rZXk+PHN0cmluZz5SZXNwcmluZzwvc3RyaW5nPgoJCQk8a2V5PmFjdGlvbjwva2V5PjxzdHJpbmc+cmVzcHJpbmc8L3N0cmluZz4KCQk8L2RpY3Q+CgkJPGRpY3Q+CgkJCTxrZXk+Y2VsbDwva2V5PjxzdHJpbmc+UFNHcm91cENlbGw8L3N0cmluZz4KCQkJPGtleT5mb290ZXJBbGlnbm1lbnQ8L2tleT48aW50ZWdlcj4xPC9pbnRlZ2VyPgoJCQk8a2V5PmZvb3RlclRleHQ8L2tleT48c3RyaW5nPkNhbTYwRW5hYmxlcjVzIDEuMC4zIGJ5IEBjb2N4YWNlIOKAlCBwcm9maWxlcywgc2xvdy1tbywgYml0cmF0ZSBjb250cm9sLCBzZWxmLXByb3RlY3Rpb24uPC9zdHJpbmc+CgkJPC9kaWN0PgoJPC9hcnJheT4KCTxrZXk+dGl0bGU8L2tleT48c3RyaW5nPkNhbTYwRW5hYmxlcjVzPC9zdHJpbmc+CjwvZGljdD4KPC9wbGlzdD4K
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Cam60Enabler5s</string>
+			<key>footerText</key><string>With the tweak: the Camera app exposes 1080p 60 fps recording on iPhone 5s. Without it: stock 1080p 30 fps only. If anything fails, the tweak disables itself and the stock camera keeps working — no Safe Mode.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>enabled</string>
+			<key>label</key><string>1080p @ 60 FPS</string>
+			<key>footerText</key><string>Forces 1080p 60 FPS video recording on iPhone 5s Camera. Falls back to 30 fps safely on hardware errors to prevent Safe Mode.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Profile Preset</string>
+			<key>footerText</key><string>A preset applies a ready-made set of all options below at once. Choose Custom to keep your own values.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSLinkListCell</string>
+			<key>default</key><integer>-1</integer>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>profile</string>
+			<key>label</key><string>Preset</string>
+			<key>detail</key><string>PSListItemsController</string>
+			<key>validTitles</key><array>
+				<string>Max Quality (1080p60 + slow-mo, 80 Mb/s)</string>
+				<string>Balance (1080p60, 50 Mb/s)</string>
+				<string>Battery Save (30 fps, 30 Mb/s)</string>
+				<string>Custom</string>
+			</array>
+			<key>validValues</key><array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>-1</integer>
+			</array>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Recording Modes</string>
+			<key>footerText</key><string>Compatibility is honest: features the A7 chip physically cannot deliver are clearly marked and safely ignored instead of crashing the camera.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>slowmo</string>
+			<key>label</key><string>Slow-Mo 720p120</string>
+			<key>footerText</key><string>A7 officially sustains 720p at 120 fps — the most realistic slow-motion win on iPhone 5s.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>f4k60</string>
+			<key>label</key><string>4K @ 60 FPS — NOT ON 5s</string>
+			<key>footerText</key><string>4K60 needs an A9 chip or newer. On iPhone 5s this switch is accepted but safely ignored to protect mediaserverd.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>proraw</string>
+			<key>label</key><string>ProRAW — NOT ON 5s</string>
+			<key>footerText</key><string>ProRAW needs A12 or newer plus a newer iOS API. Safely ignored on iOS 12 / A7.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><false/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>cine</string>
+			<key>label</key><string>Cinematic Mode — NOT ON 5s</string>
+			<key>footerText</key><string>Cinematic mode ships with iPhone 13 and newer. Safely ignored here.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Quality</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>default</key><real>50</real>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>bitrate</string>
+			<key>label</key><string>Video Bitrate (Mb/s)</string>
+			<key>min</key><real>20</real>
+			<key>max</key><real>80</real>
+			<key>interval</key><real>5</real>
+			<key>footerText</key><string>Higher = sharper video, more heat and battery drain. 50 Mb/s is a good balance for A7.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSliderCell</string>
+			<key>default</key><real>85</real>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>quality</string>
+			<key>label</key><string>Encoder Quality (%)</string>
+			<key>min</key><real>60</real>
+			<key>max</key><real>100</real>
+			<key>interval</key><real>5</real>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Safety</string>
+			<key>footerText</key><string>Both guards are on by default. They are the reason the stock camera never breaks and the phone never enters Safe Mode because of this tweak.</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>thermal</string>
+			<key>label</key><string>Thermal Protection</string>
+			<key>footerText</key><string>Drops back to 30 fps automatically when the phone gets seriously hot.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSSwitchCell</string>
+			<key>default</key><true/>
+			<key>defaults</key><string>com.cocxace.cam60enabler5s</string>
+			<key>key</key><string>autodis</string>
+			<key>label</key><string>Auto-Disable on Error</string>
+			<key>footerText</key><string>If the camera pipeline rejects the 60 fps config, the tweak switches itself off and writes that to Settings — the stock camera keeps working.</string>
+			<key>PostNotification</key><string>com.cocxace.cam60enabler5s/reload</string>
+		</dict>
+
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Reset</string>
+			<key>footerText</key><string>Reset restores every option above to the safe v1.0.3 defaults (60 fps off, thermal and auto-disable on).</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Reset All Settings</string>
+			<key>action</key><string>resetDefaults</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSButtonCell</string>
+			<key>label</key><string>Respring</string>
+			<key>action</key><string>respring</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>footerAlignment</key><integer>1</integer>
+			<key>footerText</key><string>Cam60Enabler5s 1.0.3 by @cocxace — profiles, slow-mo, bitrate control, self-protection.</string>
+		</dict>
+	</array>
+	<key>title</key><string>Cam60Enabler5s</string>
+</dict>
+</plist>

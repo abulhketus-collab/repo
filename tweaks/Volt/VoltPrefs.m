@@ -1,1 +1,46 @@
-I2ltcG9ydCAiVm9sdFByZWZzLmgiCiNpbXBvcnQgPENvcmVGb3VuZGF0aW9uL0NvcmVGb3VuZGF0aW9uLmg+CgojZGVmaW5lIFZPTFRfQVBQX0lEIENGU1RSKCJjb20uY29jeGFjZS52b2x0IikKCkBpbXBsZW1lbnRhdGlvbiBWb2x0UHJlZnMgewogICAgQk9PTCBfZGVidWdFbmFibGVkOwp9CgorIChpbnN0YW5jZXR5cGUpc2hhcmVkUHJlZnMgewogICAgc3RhdGljIFZvbHRQcmVmcyAqczsKICAgIHN0YXRpYyBkaXNwYXRjaF9vbmNlX3Qgb25jZTsKICAgIGRpc3BhdGNoX29uY2UoJm9uY2UsIF57CiAgICAgICAgcyA9IFtbc2VsZiBhbGxvY10gaW5pdF07CiAgICAgICAgQ0ZCb29sZWFuUmVmIGRiZyA9IENGUHJlZmVyZW5jZXNDb3B5QXBwVmFsdWUoQ0ZTVFIoInZvbHREZWJ1ZyIpLCBWT0xUX0FQUF9JRCk7CiAgICAgICAgaWYgKGRiZykgewogICAgICAgICAgICBzLT5fZGVidWdFbmFibGVkID0gQ0ZCb29sZWFuR2V0VmFsdWUoZGJnKTsKICAgICAgICAgICAgQ0ZSZWxlYXNlKGRiZyk7CiAgICAgICAgfQogICAgfSk7CiAgICByZXR1cm4gczsKfQoKKyAodm9pZClyZWdpc3RlckRlZmF1bHRzIHsKICAgIE5TRGljdGlvbmFyeSAqZGVmcyA9IEB7CiAgICAgICAgQCJoaWdoVGhyZXNob2xkIjogQCg0MC4wKSwKICAgICAgICBAImxvd1RocmVzaG9sZCI6IEAoMjAuMCksCiAgICAgICAgQCJoaWdoQ29sb3JDaG9pY2UiOiBAKDApLAogICAgICAgIEAibWlkQ29sb3JDaG9pY2UiOiBAKDEpLAogICAgICAgIEAibG93Q29sb3JDaG9pY2UiOiBAKDIpLAogICAgICAgIEAidm9sdERlYnVnIjogQChOTykKICAgIH07CiAgICBmb3IgKE5TU3RyaW5nICprZXkgaW4gZGVmcykgewogICAgICAgIGlmIChDRlByZWZlcmVuY2VzQ29weUFwcFZhbHVlKChfX2JyaWRnZSBDRlN0cmluZ1JlZilrZXksIFZPTFRfQVBQX0lEKSA9PSBOVUxMKSB7CiAgICAgICAgICAgIENGUHJlZmVyZW5jZXNTZXRBcHBWYWx1ZSgoX19icmlkZ2UgQ0ZTdHJpbmdSZWYpa2V5LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKF9fYnJpZGdlIENGUHJvcGVydHlMaXN0UmVmKWRlZnNba2V5XSwgVk9MVF9BUFBfSUQpOwogICAgICAgIH0KICAgIH0KICAgIENGUHJlZmVyZW5jZXNBcHBTeW5jaHJvbml6ZShWT0xUX0FQUF9JRCk7Cn0KCi0gKEJPT0wpZGVidWdFbmFibGVkIHsgcmV0dXJuIF9kZWJ1Z0VuYWJsZWQ7IH0KCisgKEJPT0wpZGVidWdFbmFibGVkIHsgcmV0dXJuIFtzZWxmIHNoYXJlZFByZWZzXS5kZWJ1Z0VuYWJsZWQ7IH0KCkBlbmQK
+#import "VoltPrefs.h"
+#import <CoreFoundation/CoreFoundation.h>
+
+#define VOLT_APP_ID CFSTR("com.cocxace.volt")
+
+@implementation VoltPrefs {
+    BOOL _debugEnabled;
+}
+
++ (instancetype)sharedPrefs {
+    static VoltPrefs *s;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        s = [[self alloc] init];
+        CFBooleanRef dbg = CFPreferencesCopyAppValue(CFSTR("voltDebug"), VOLT_APP_ID);
+        if (dbg) {
+            s->_debugEnabled = CFBooleanGetValue(dbg);
+            CFRelease(dbg);
+        }
+    });
+    return s;
+}
+
++ (void)registerDefaults {
+    NSDictionary *defs = @{
+        @"highThreshold": @(40.0),
+        @"lowThreshold": @(20.0),
+        @"highColorChoice": @(0),
+        @"midColorChoice": @(1),
+        @"lowColorChoice": @(2),
+        @"voltDebug": @(NO)
+    };
+    for (NSString *key in defs) {
+        if (CFPreferencesCopyAppValue((__bridge CFStringRef)key, VOLT_APP_ID) == NULL) {
+            CFPreferencesSetAppValue((__bridge CFStringRef)key,
+                                     (__bridge CFPropertyListRef)defs[key], VOLT_APP_ID);
+        }
+    }
+    CFPreferencesAppSynchronize(VOLT_APP_ID);
+}
+
+- (BOOL)debugEnabled { return _debugEnabled; }
+
++ (BOOL)debugEnabled { return [self sharedPrefs].debugEnabled; }
+
+@end

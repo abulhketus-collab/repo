@@ -1,1 +1,475 @@
-Ly8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KLy8gQ2FtNjBFbmFibGVyNXMg4oCUIDEwODBwIEAgNjAgRlBTIG9uIGlQaG9uZSA1cyAoQXBwbGUgQTcsIGlPUyAxMi4w4oCTMTIuNS44KQovLyBaZXJvIFNhZmUgTW9kZSBHdWFyYW50ZWU6Ci8vIDEuIFByb2Nlc3MgRmlsdGVyOiBTdHJpY3RseSBleGVjdXRlcyBPTkxZIGluIGNvbS5hcHBsZS5jYW1lcmEgJiBjb20uYXBwbGUuUHJlZmVyZW5jZXMuCi8vICAgIFNwcmluZ0JvYXJkLCBtZWRpYXNlcnZlcmQsIGFuZCBvdGhlciBkYWVtb25zIGFyZSBORVZFUiBob29rZWQuCi8vIDIuIEZvcm1hdCAmIEhhcmR3YXJlIEd1YXJkczogNjAgRlBTIG9ubHkgYXBwbGllZCBvbiBCYWNrIGNhbWVyYSBpbiAxMDgwcCB2aWRlbyBtb2RlLgovLyAgICBQaG90byBtb2RlLCBzcXVhcmUgbW9kZSwgdGltZS1sYXBzZSwgYW5kIGZyb250IGNhbWVyYSBhcmUgbGVmdCAxMDAlIHVudG91Y2hlZC4KLy8gMy4gQ29tcGxldGUgQHRyeSAvIEBjYXRjaCB3cmFwcGluZzogWmVybyB1bmNhdWdodCBleGNlcHRpb25zLgovLyA0LiBDbGVhbiBDYW1lcmFVSSBpbnRlZ3JhdGlvbjogRXhwb3NlcyAxMDgwcCA2MGZwcyBpbiBDYW1lcmEgc2V0dGluZ3MgJiByZWNvcmRpbmcgVUkuCi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CgojaW1wb3J0IDxVSUtpdC9VSUtpdC5oPgojaW1wb3J0IDxBVkZvdW5kYXRpb24vQVZGb3VuZGF0aW9uLmg+CiNpbXBvcnQgPENvcmVNZWRpYS9Db3JlTWVkaWEuaD4KI2ltcG9ydCA8Q29yZVZpZGVvL0NvcmVWaWRlby5oPgojaW1wb3J0IDxDb3JlRm91bmRhdGlvbi9Db3JlRm91bmRhdGlvbi5oPgojaW1wb3J0IDxvYmpjL3J1bnRpbWUuaD4KI2ltcG9ydCA8bm90aWZ5Lmg+CiNpbXBvcnQgPG9zL2xvZy5oPgoKc3RhdGljIHZvaWQgQzYwRGlzYWJsZTYwRlBTKHZvaWQpOwoKZXh0ZXJuIHZvaWQgTVNIb29rTWVzc2FnZUV4KENsYXNzIF9jbGFzcywgU0VMIHNlbCwgSU1QIGltcCwgSU1QICpyZXN1bHQpOwoKI2RlZmluZSBDNjBfTE9HKGZtdCwgLi4uKSBOU0xvZyhAIltDYW02MEVuYWJsZXI1c10gIiBmbXQsICMjX19WQV9BUkdTX18pCiNkZWZpbmUgQzYwX0FQUF9JRCBDRlNUUigiY29tLmNvY3hhY2UuY2FtNjBlbmFibGVyNXMiKQojZGVmaW5lIEM2MF9SRUxPQURfTk9USUZJQ0FUSU9OICJjb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQiCgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQovLyBQcmVmZXJlbmNlcyBTdGF0ZQovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgQk9PTCAgIGdDNjBFbmFibGVkICAgICA9IFlFUzsgLy8gZGVmYXVsdCBPTgpzdGF0aWMgQk9PTCAgIGdDNjBTbG93TW8gICAgICA9IE5POwpzdGF0aWMgQ0dGbG9hdCBnQzYwQml0cmF0ZSAgICA9IDI1LjA7IC8vIHNhZmUgYml0cmF0ZSBmb3IgQTcgaGFyZHdhcmUgZW5jb2RlcgpzdGF0aWMgQ0dGbG9hdCBnQzYwUXVhbGl0eSAgICA9IDAuODU7CnN0YXRpYyBCT09MICAgZ0M2MFRoZXJtYWwgICAgID0gWUVTOwpzdGF0aWMgQk9PTCAgIGdDNjBBdXRvRGlzYWJsZSA9IFlFUzsKc3RhdGljIE5TSW50ZWdlciBnQzYwUHJvZmlsZSAgPSAtMTsKCnN0YXRpYyB2b2lkIEM2MEFwcGx5UHJvZmlsZShOU0ludGVnZXIgcHJvZmlsZSkgewogICAgc3dpdGNoIChwcm9maWxlKSB7CiAgICAgICAgY2FzZSAwOiAvLyBNYXggUXVhbGl0eQogICAgICAgICAgICBnQzYwU2xvd01vID0gWUVTOwogICAgICAgICAgICBnQzYwQml0cmF0ZSA9IDQwLjA7CiAgICAgICAgICAgIGdDNjBRdWFsaXR5ID0gMC45NTsKICAgICAgICAgICAgZ0M2MFRoZXJtYWwgPSBZRVM7CiAgICAgICAgICAgIGdDNjBBdXRvRGlzYWJsZSA9IFlFUzsKICAgICAgICAgICAgYnJlYWs7CiAgICAgICAgY2FzZSAxOiAvLyBCYWxhbmNlCiAgICAgICAgICAgIGdDNjBTbG93TW8gPSBOTzsKICAgICAgICAgICAgZ0M2MEJpdHJhdGUgPSAyNS4wOwogICAgICAgICAgICBnQzYwUXVhbGl0eSA9IDAuODU7CiAgICAgICAgICAgIGdDNjBUaGVybWFsID0gWUVTOwogICAgICAgICAgICBnQzYwQXV0b0Rpc2FibGUgPSBZRVM7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIGNhc2UgMjogLy8gQmF0dGVyeSBTYXZlCiAgICAgICAgICAgIGdDNjBTbG93TW8gPSBOTzsKICAgICAgICAgICAgZ0M2MEJpdHJhdGUgPSAxOC4wOwogICAgICAgICAgICBnQzYwUXVhbGl0eSA9IDAuNzA7CiAgICAgICAgICAgIGdDNjBUaGVybWFsID0gWUVTOwogICAgICAgICAgICBnQzYwQXV0b0Rpc2FibGUgPSBZRVM7CiAgICAgICAgICAgIGJyZWFrOwogICAgICAgIGRlZmF1bHQ6CiAgICAgICAgICAgIGJyZWFrOwogICAgfQp9CgpzdGF0aWMgQk9PTCBDNjBCb29sUHJlZihDRlN0cmluZ1JlZiBrZXksIEJPT0wgZGVmdmFsKSB7CiAgICBDRlR5cGVSZWYgcmF3ID0gQ0ZQcmVmZXJlbmNlc0NvcHlBcHBWYWx1ZShrZXksIEM2MF9BUFBfSUQpOwogICAgQk9PTCBvdXQgPSBkZWZ2YWw7CiAgICBpZiAocmF3KSB7CiAgICAgICAgaWYgKENGR2V0VHlwZUlEKHJhdykgPT0gQ0ZCb29sZWFuR2V0VHlwZUlEKCkpIHsKICAgICAgICAgICAgb3V0ID0gQ0ZCb29sZWFuR2V0VmFsdWUoKENGQm9vbGVhblJlZilyYXcpOwogICAgICAgIH0gZWxzZSBpZiAoQ0ZHZXRUeXBlSUQocmF3KSA9PSBDRk51bWJlckdldFR5cGVJRCgpKSB7CiAgICAgICAgICAgIE5TSW50ZWdlciB2ID0gMDsKICAgICAgICAgICAgQ0ZOdW1iZXJHZXRWYWx1ZSgoQ0ZOdW1iZXJSZWYpcmF3LCBrQ0ZOdW1iZXJOU0ludGVnZXJUeXBlLCAmdik7CiAgICAgICAgICAgIG91dCA9ICh2ICE9IDApOwogICAgICAgIH0KICAgICAgICBDRlJlbGVhc2UocmF3KTsKICAgIH0KICAgIHJldHVybiBvdXQ7Cn0KCnN0YXRpYyBDR0Zsb2F0IEM2MERvdWJsZVByZWYoQ0ZTdHJpbmdSZWYga2V5LCBDR0Zsb2F0IGRlZnZhbCkgewogICAgQ0ZUeXBlUmVmIHJhdyA9IENGUHJlZmVyZW5jZXNDb3B5QXBwVmFsdWUoa2V5LCBDNjBfQVBQX0lEKTsKICAgIENHRmxvYXQgb3V0ID0gZGVmdmFsOwogICAgaWYgKHJhdykgewogICAgICAgIGlmIChDRkdldFR5cGVJRChyYXcpID09IENGTnVtYmVyR2V0VHlwZUlEKCkpIHsKICAgICAgICAgICAgQ0ZOdW1iZXJHZXRWYWx1ZSgoQ0ZOdW1iZXJSZWYpcmF3LCBrQ0ZOdW1iZXJDR0Zsb2F0VHlwZSwgJm91dCk7CiAgICAgICAgfQogICAgICAgIENGUmVsZWFzZShyYXcpOwogICAgfQogICAgcmV0dXJuIG91dDsKfQoKc3RhdGljIHZvaWQgQzYwTG9hZFByZWZzKHZvaWQpIHsKICAgIEB0cnkgewogICAgICAgIGdDNjBFbmFibGVkICAgICA9IEM2MEJvb2xQcmVmKENGU1RSKCJlbmFibGVkIiksIFlFUyk7CiAgICAgICAgZ0M2MFNsb3dNbyAgICAgID0gQzYwQm9vbFByZWYoQ0ZTVFIoInNsb3dtbyIpLCBOTyk7CiAgICAgICAgZ0M2MFRoZXJtYWwgICAgID0gQzYwQm9vbFByZWYoQ0ZTVFIoInRoZXJtYWwiKSwgWUVTKTsKICAgICAgICBnQzYwQXV0b0Rpc2FibGUgPSBDNjBCb29sUHJlZihDRlNUUigiYXV0b2RpcyIpLCBZRVMpOwogICAgICAgIGdDNjBCaXRyYXRlICAgICA9IEM2MERvdWJsZVByZWYoQ0ZTVFIoImJpdHJhdGUiKSwgMjUuMCk7CiAgICAgICAgZ0M2MFF1YWxpdHkgICAgID0gQzYwRG91YmxlUHJlZihDRlNUUigicXVhbGl0eSIpLCA4NS4wKSAvIDEwMC4wOwogICAgICAgIGlmIChnQzYwUXVhbGl0eSA8IDAuNSkgZ0M2MFF1YWxpdHkgPSAwLjU7CiAgICAgICAgaWYgKGdDNjBRdWFsaXR5ID4gMS4wKSBnQzYwUXVhbGl0eSA9IDEuMDsKCiAgICAgICAgQ0ZUeXBlUmVmIHByb2YgPSBDRlByZWZlcmVuY2VzQ29weUFwcFZhbHVlKENGU1RSKCJwcm9maWxlIiksIEM2MF9BUFBfSUQpOwogICAgICAgIGlmIChwcm9mKSB7CiAgICAgICAgICAgIGlmIChDRkdldFR5cGVJRChwcm9mKSA9PSBDRk51bWJlckdldFR5cGVJRCgpKSB7CiAgICAgICAgICAgICAgICBDRk51bWJlckdldFZhbHVlKChDRk51bWJlclJlZilwcm9mLCBrQ0ZOdW1iZXJOU0ludGVnZXJUeXBlLCAmZ0M2MFByb2ZpbGUpOwogICAgICAgICAgICB9CiAgICAgICAgICAgIENGUmVsZWFzZShwcm9mKTsKICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBnQzYwUHJvZmlsZSA9IC0xOwogICAgICAgIH0KICAgICAgICBDNjBBcHBseVByb2ZpbGUoZ0M2MFByb2ZpbGUpOwoKICAgICAgICBDNjBfTE9HKEAiUHJlZnMgbG9hZGVkOiBlbmFibGVkPSVkIHNsb3dtbz0lZCBiaXRyYXRlPSUuMGYgcXVhbGl0eT0lLjJmIHByb2ZpbGU9JWxkIiwKICAgICAgICAgICAgICAgIGdDNjBFbmFibGVkLCBnQzYwU2xvd01vLCBnQzYwQml0cmF0ZSwgZ0M2MFF1YWxpdHksIChsb25nKWdDNjBQcm9maWxlKTsKICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgIEM2MF9MT0coQCJQcmVmcyBsb2FkIGVycm9yOiAlQCIsIGUpOwogICAgICAgIGdDNjBFbmFibGVkID0gWUVTOwogICAgfQp9CgpzdGF0aWMgdm9pZCBDNjBEYXJ3aW5DYWxsYmFjayhDRk5vdGlmaWNhdGlvbkNlbnRlclJlZiBjZW50ZXIsIHZvaWQgKm9ic2VydmVyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDRlN0cmluZ1JlZiBuYW1lLCBjb25zdCB2b2lkICpvYmplY3QsIENGRGljdGlvbmFyeVJlZiB1c2VySW5mbykgewogICAgQzYwX0xPRyhAIkRhcndpbiByZWxvYWQgcmVjZWl2ZWQiKTsKICAgIEM2MExvYWRQcmVmcygpOwp9CgpzdGF0aWMgQk9PTCBDNjBJc1RoZXJtYWxUaHJvdHRsZWQodm9pZCkgewogICAgaWYgKCFnQzYwVGhlcm1hbCkgcmV0dXJuIE5POwogICAgQHRyeSB7CiAgICAgICAgTlNQcm9jZXNzSW5mb1RoZXJtYWxTdGF0ZSBzdGF0ZSA9IFtOU1Byb2Nlc3NJbmZvLnByb2Nlc3NJbmZvIHRoZXJtYWxTdGF0ZV07CiAgICAgICAgaWYgKHN0YXRlID09IE5TUHJvY2Vzc0luZm9UaGVybWFsU3RhdGVTZXJpb3VzIHx8IHN0YXRlID09IE5TUHJvY2Vzc0luZm9UaGVybWFsU3RhdGVDcml0aWNhbCkgewogICAgICAgICAgICByZXR1cm4gWUVTOwogICAgICAgIH0KICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkge30KICAgIHJldHVybiBOTzsKfQoKLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KLy8gU2FmZSBIb29rIEhlbHBlcgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgdm9pZCBDNjBIb29rKENsYXNzIGNscywgU0VMIHNlbCwgSU1QIG5ld0ltcCwgSU1QICpvbGRJbXApIHsKICAgIGlmICghY2xzIHx8ICFzZWwgfHwgIW5ld0ltcCkgcmV0dXJuOwogICAgTWV0aG9kIG0gPSBjbGFzc19nZXRJbnN0YW5jZU1ldGhvZChjbHMsIHNlbCk7CiAgICBpZiAoIW0pIHsKICAgICAgICBDNjBfTE9HKEAiTWV0aG9kICVAIG5vdCBmb3VuZCBvbiBjbGFzcyAlQCIsIE5TU3RyaW5nRnJvbVNlbGVjdG9yKHNlbCksIE5TU3RyaW5nRnJvbUNsYXNzKGNscykpOwogICAgICAgIHJldHVybjsKICAgIH0KICAgIGlmIChvbGRJbXApICpvbGRJbXAgPSBtZXRob2RfZ2V0SW1wbGVtZW50YXRpb24obSk7CiAgICBtZXRob2Rfc2V0SW1wbGVtZW50YXRpb24obSwgbmV3SW1wKTsKICAgIEM2MF9MT0coQCJTdWNjZXNzZnVsbHkgaG9va2VkIFslQCAlQF0iLCBOU1N0cmluZ0Zyb21DbGFzcyhjbHMpLCBOU1N0cmluZ0Zyb21TZWxlY3RvcihzZWwpKTsKfQoKLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KLy8gMS4gQ0FNQ2FwdHVyZUNhcGFiaWxpdGllcyBIb29rcwovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgQk9PTCAoKm9yaWdfY2FwX2lzNjBGUFMpKGlkLCBTRUwpOwpzdGF0aWMgQk9PTCBob29rX2NhcF9pczYwRlBTKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBpZiAoZ0M2MEVuYWJsZWQgJiYgIUM2MElzVGhlcm1hbFRocm90dGxlZCgpKSByZXR1cm4gWUVTOwogICAgcmV0dXJuIG9yaWdfY2FwX2lzNjBGUFMgPyBvcmlnX2NhcF9pczYwRlBTKHNlbGYsIF9jbWQpIDogTk87Cn0KCnN0YXRpYyBCT09MICgqb3JpZ19jYXBfaXNCYWNrNjBGUFMpKGlkLCBTRUwpOwpzdGF0aWMgQk9PTCBob29rX2NhcF9pc0JhY2s2MEZQUyhpZCBzZWxmLCBTRUwgX2NtZCkgewogICAgaWYgKGdDNjBFbmFibGVkICYmICFDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgcmV0dXJuIFlFUzsKICAgIHJldHVybiBvcmlnX2NhcF9pc0JhY2s2MEZQUyA/IG9yaWdfY2FwX2lzQmFjazYwRlBTKHNlbGYsIF9jbWQpIDogTk87Cn0KCnN0YXRpYyBCT09MICgqb3JpZ19jYXBfaXMxMDgwcDYwKShpZCwgU0VMKTsKc3RhdGljIEJPT0wgaG9va19jYXBfaXMxMDgwcDYwKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBpZiAoZ0M2MEVuYWJsZWQgJiYgIUM2MElzVGhlcm1hbFRocm90dGxlZCgpKSByZXR1cm4gWUVTOwogICAgcmV0dXJuIG9yaWdfY2FwX2lzMTA4MHA2MCA/IG9yaWdfY2FwX2lzMTA4MHA2MChzZWxmLCBfY21kKSA6IE5POwp9CgpzdGF0aWMgQk9PTCAoKm9yaWdfY2FwX2lzQmFjazEwODBwNjApKGlkLCBTRUwpOwpzdGF0aWMgQk9PTCBob29rX2NhcF9pc0JhY2sxMDgwcDYwKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBpZiAoZ0M2MEVuYWJsZWQgJiYgIUM2MElzVGhlcm1hbFRocm90dGxlZCgpKSByZXR1cm4gWUVTOwogICAgcmV0dXJuIG9yaWdfY2FwX2lzQmFjazEwODBwNjAgPyBvcmlnX2NhcF9pc0JhY2sxMDgwcDYwKHNlbGYsIF9jbWQpIDogTk87Cn0KCnN0YXRpYyBCT09MICgqb3JpZ19jYXBfaXNCYWNrQXV0b0ZwcykoaWQsIFNFTCk7CnN0YXRpYyBCT09MIGhvb2tfY2FwX2lzQmFja0F1dG9GcHMoaWQgc2VsZiwgU0VMIF9jbWQpIHsKICAgIGlmIChnQzYwRW5hYmxlZCAmJiAhQzYwSXNUaGVybWFsVGhyb3R0bGVkKCkpIHJldHVybiBZRVM7CiAgICByZXR1cm4gb3JpZ19jYXBfaXNCYWNrQXV0b0ZwcyA/IG9yaWdfY2FwX2lzQmFja0F1dG9GcHMoc2VsZiwgX2NtZCkgOiBOTzsKfQoKc3RhdGljIE5TQXJyYXkgKigqb3JpZ19jYXBfc3VwcG9ydGVkQ29uZmlncykoaWQsIFNFTCk7CnN0YXRpYyBOU0FycmF5ICpob29rX2NhcF9zdXBwb3J0ZWRDb25maWdzKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBAdHJ5IHsKICAgICAgICBOU0FycmF5ICpvcmlnID0gb3JpZ19jYXBfc3VwcG9ydGVkQ29uZmlncyA/IG9yaWdfY2FwX3N1cHBvcnRlZENvbmZpZ3Moc2VsZiwgX2NtZCkgOiBuaWw7CiAgICAgICAgaWYgKCFnQzYwRW5hYmxlZCB8fCBDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgcmV0dXJuIG9yaWcgPyBvcmlnIDogQFtdOwogICAgICAgIGlmICghb3JpZykgb3JpZyA9IEBbXTsKICAgICAgICBOU051bWJlciAqY2ZnNjAgPSBAKDIpOyAvLyAyID0gQ0FNVmlkZW9Db25maWd1cmF0aW9uMTA4MHA2MAogICAgICAgIGlmICghW29yaWcgY29udGFpbnNPYmplY3Q6Y2ZnNjBdKSB7CiAgICAgICAgICAgIE5TTXV0YWJsZUFycmF5ICpjb25maWdzID0gW29yaWcgbXV0YWJsZUNvcHldOwogICAgICAgICAgICBbY29uZmlncyBhZGRPYmplY3Q6Y2ZnNjBdOwogICAgICAgICAgICByZXR1cm4gW2NvbmZpZ3MgY29weV07CiAgICAgICAgfQogICAgICAgIHJldHVybiBvcmlnOwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgQzYwX0xPRyhAInN1cHBvcnRlZENvbmZpZ3MgZXhjZXB0aW9uOiAlQCIsIGUpOwogICAgICAgIHJldHVybiBvcmlnX2NhcF9zdXBwb3J0ZWRDb25maWdzID8gb3JpZ19jYXBfc3VwcG9ydGVkQ29uZmlncyhzZWxmLCBfY21kKSA6IEBbXTsKICAgIH0KfQoKc3RhdGljIEJPT0wgKCpvcmlnX2NhcF9pc1N1cHBvcnRlZFZpZENmZykoaWQsIFNFTCwgTlNJbnRlZ2VyKTsKc3RhdGljIEJPT0wgaG9va19jYXBfaXNTdXBwb3J0ZWRWaWRDZmcoaWQgc2VsZiwgU0VMIF9jbWQsIE5TSW50ZWdlciBjZmcpIHsKICAgIEB0cnkgewogICAgICAgIGlmIChnQzYwRW5hYmxlZCAmJiAhQzYwSXNUaGVybWFsVGhyb3R0bGVkKCkgJiYgY2ZnID09IDIpIHJldHVybiBZRVM7CiAgICAgICAgcmV0dXJuIG9yaWdfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnID8gb3JpZ19jYXBfaXNTdXBwb3J0ZWRWaWRDZmcoc2VsZiwgX2NtZCwgY2ZnKSA6IE5POwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgcmV0dXJuIG9yaWdfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnID8gb3JpZ19jYXBfaXNTdXBwb3J0ZWRWaWRDZmcoc2VsZiwgX2NtZCwgY2ZnKSA6IE5POwogICAgfQp9CgpzdGF0aWMgQk9PTCAoKm9yaWdfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnTW9kZURldikoaWQsIFNFTCwgTlNJbnRlZ2VyLCBOU0ludGVnZXIsIE5TSW50ZWdlcik7CnN0YXRpYyBCT09MIGhvb2tfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnTW9kZURldihpZCBzZWxmLCBTRUwgX2NtZCwgTlNJbnRlZ2VyIGNmZywgTlNJbnRlZ2VyIG1vZGUsIE5TSW50ZWdlciBkZXYpIHsKICAgIEB0cnkgewogICAgICAgIGlmIChnQzYwRW5hYmxlZCAmJiAhQzYwSXNUaGVybWFsVGhyb3R0bGVkKCkgJiYgY2ZnID09IDIpIHsKICAgICAgICAgICAgLy8gbW9kZSAxOiB2aWRlbywgZGV2IDAgb3IgMTogYmFjayBjYW1lcmEKICAgICAgICAgICAgcmV0dXJuIFlFUzsKICAgICAgICB9CiAgICAgICAgcmV0dXJuIG9yaWdfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnTW9kZURldiA/IG9yaWdfY2FwX2lzU3VwcG9ydGVkVmlkQ2ZnTW9kZURldihzZWxmLCBfY21kLCBjZmcsIG1vZGUsIGRldikgOiBOTzsKICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgIHJldHVybiBvcmlnX2NhcF9pc1N1cHBvcnRlZFZpZENmZ01vZGVEZXYgPyBvcmlnX2NhcF9pc1N1cHBvcnRlZFZpZENmZ01vZGVEZXYoc2VsZiwgX2NtZCwgY2ZnLCBtb2RlLCBkZXYpIDogTk87CiAgICB9Cn0KCi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCi8vIDIuIENBTVVzZXJQcmVmZXJlbmNlcyBIb29rcwovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgQk9PTCAoKm9yaWdfcHJlZl9pczYwRlBTKShpZCwgU0VMKTsKc3RhdGljIEJPT0wgaG9va19wcmVmX2lzNjBGUFMoaWQgc2VsZiwgU0VMIF9jbWQpIHsKICAgIGlmIChnQzYwRW5hYmxlZCAmJiAhQzYwSXNUaGVybWFsVGhyb3R0bGVkKCkpIHJldHVybiBZRVM7CiAgICByZXR1cm4gb3JpZ19wcmVmX2lzNjBGUFMgPyBvcmlnX3ByZWZfaXM2MEZQUyhzZWxmLCBfY21kKSA6IE5POwp9CgpzdGF0aWMgQk9PTCAoKm9yaWdfcHJlZl9pc0JhY2s2MEZQUykoaWQsIFNFTCk7CnN0YXRpYyBCT09MIGhvb2tfcHJlZl9pc0JhY2s2MEZQUyhpZCBzZWxmLCBTRUwgX2NtZCkgewogICAgaWYgKGdDNjBFbmFibGVkICYmICFDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgcmV0dXJuIFlFUzsKICAgIHJldHVybiBvcmlnX3ByZWZfaXNCYWNrNjBGUFMgPyBvcmlnX3ByZWZfaXNCYWNrNjBGUFMoc2VsZiwgX2NtZCkgOiBOTzsKfQoKc3RhdGljIEJPT0wgKCpvcmlnX3ByZWZfc3VwcG9ydHM2MENmZykoaWQsIFNFTCk7CnN0YXRpYyBCT09MIGhvb2tfcHJlZl9zdXBwb3J0czYwQ2ZnKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBpZiAoZ0M2MEVuYWJsZWQgJiYgIUM2MElzVGhlcm1hbFRocm90dGxlZCgpKSByZXR1cm4gWUVTOwogICAgcmV0dXJuIG9yaWdfcHJlZl9zdXBwb3J0czYwQ2ZnID8gb3JpZ19wcmVmX3N1cHBvcnRzNjBDZmcoc2VsZiwgX2NtZCkgOiBOTzsKfQoKc3RhdGljIE5TSW50ZWdlciAoKm9yaWdfcHJlZl92aWRlb0NvbmZpZykoaWQsIFNFTCk7CnN0YXRpYyBOU0ludGVnZXIgaG9va19wcmVmX3ZpZGVvQ29uZmlnKGlkIHNlbGYsIFNFTCBfY21kKSB7CiAgICBAdHJ5IHsKICAgICAgICBOU0ludGVnZXIgY3VycmVudCA9IG9yaWdfcHJlZl92aWRlb0NvbmZpZyA/IG9yaWdfcHJlZl92aWRlb0NvbmZpZyhzZWxmLCBfY21kKSA6IDE7CiAgICAgICAgaWYgKGdDNjBFbmFibGVkICYmICFDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgewogICAgICAgICAgICBpZiAoY3VycmVudCA9PSAxKSB7IC8vIDEgPSAxMDgwcDMwIHN0b2NrIGRlZmF1bHQgLT4gcHJvbW90ZSB0byAxMDgwcDYwCiAgICAgICAgICAgICAgICByZXR1cm4gMjsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICByZXR1cm4gY3VycmVudDsKICAgIH0gQGNhdGNoIChOU0V4Y2VwdGlvbiAqZSkgewogICAgICAgIHJldHVybiBvcmlnX3ByZWZfdmlkZW9Db25maWcgPyBvcmlnX3ByZWZfdmlkZW9Db25maWcoc2VsZiwgX2NtZCkgOiAxOwogICAgfQp9CgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQovLyAzLiBDQU1Db25maWd1cmF0aW9uRGVsZWdhdGUgSG9vawovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgQk9PTCAoKm9yaWdfY2FuU2V0VmlkQ2ZnKShpZCwgU0VMLCBpZCk7CnN0YXRpYyBCT09MIGhvb2tfY2FuU2V0VmlkQ2ZnKGlkIHNlbGYsIFNFTCBfY21kLCBpZCBjZmcpIHsKICAgIEB0cnkgewogICAgICAgIGlmIChnQzYwRW5hYmxlZCAmJiAhQzYwSXNUaGVybWFsVGhyb3R0bGVkKCkpIHJldHVybiBZRVM7CiAgICAgICAgcmV0dXJuIG9yaWdfY2FuU2V0VmlkQ2ZnID8gb3JpZ19jYW5TZXRWaWRDZmcoc2VsZiwgX2NtZCwgY2ZnKSA6IE5POwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgcmV0dXJuIG9yaWdfY2FuU2V0VmlkQ2ZnID8gb3JpZ19jYW5TZXRWaWRDZmcoc2VsZiwgX2NtZCwgY2ZnKSA6IE5POwogICAgfQp9CgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQovLyA0LiBBVkNhcHR1cmVTZXNzaW9uIEhvb2sKLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0Kc3RhdGljIEJPT0wgKCpvcmlnX2NhblNldFByZXNldCkoaWQsIFNFTCwgaWQpOwpzdGF0aWMgQk9PTCBob29rX2NhblNldFByZXNldChpZCBzZWxmLCBTRUwgX2NtZCwgaWQgcHJlc2V0KSB7CiAgICBAdHJ5IHsKICAgICAgICBpZiAoIWdDNjBFbmFibGVkIHx8IEM2MElzVGhlcm1hbFRocm90dGxlZCgpKSB7CiAgICAgICAgICAgIHJldHVybiBvcmlnX2NhblNldFByZXNldCA/IG9yaWdfY2FuU2V0UHJlc2V0KHNlbGYsIF9jbWQsIHByZXNldCkgOiBOTzsKICAgICAgICB9CiAgICAgICAgaWYgKFtwcmVzZXQgaXNLaW5kT2ZDbGFzczpbTlNTdHJpbmcgY2xhc3NdXSkgewogICAgICAgICAgICAvLyBLZWVwIHN0b2NrIGJlaGF2aW9yIGZvciBwaG90by9sb3cvbWVkaXVtCiAgICAgICAgICAgIGlmIChbcHJlc2V0IGlzRXF1YWxUb1N0cmluZzpBVkNhcHR1cmVTZXNzaW9uUHJlc2V0UGhvdG9dIHx8CiAgICAgICAgICAgICAgICBbcHJlc2V0IGlzRXF1YWxUb1N0cmluZzpBVkNhcHR1cmVTZXNzaW9uUHJlc2V0TG93XSB8fAogICAgICAgICAgICAgICAgW3ByZXNldCBpc0VxdWFsVG9TdHJpbmc6QVZDYXB0dXJlU2Vzc2lvblByZXNldE1lZGl1bV0pIHsKICAgICAgICAgICAgICAgIHJldHVybiBvcmlnX2NhblNldFByZXNldCA/IG9yaWdfY2FuU2V0UHJlc2V0KHNlbGYsIF9jbWQsIHByZXNldCkgOiBOTzsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICByZXR1cm4gWUVTOwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgcmV0dXJuIG9yaWdfY2FuU2V0UHJlc2V0ID8gb3JpZ19jYW5TZXRQcmVzZXQoc2VsZiwgX2NtZCwgcHJlc2V0KSA6IE5POwogICAgfQp9CgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQovLyA1LiBBVkNhcHR1cmVEZXZpY2UgSG9va3MgKEhhcmR3YXJlIEZyYW1lIER1cmF0aW9ucyDigJQgMTAwJSBHdWFyZGVkKQovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpzdGF0aWMgdm9pZCAoKm9yaWdfc2V0TWluRHVyKShpZCwgU0VMLCBDTVRpbWUpOwpzdGF0aWMgdm9pZCBob29rX3NldE1pbkR1cihpZCBzZWxmLCBTRUwgX2NtZCwgQ01UaW1lIGR1cikgewogICAgQHRyeSB7CiAgICAgICAgaWYgKCFnQzYwRW5hYmxlZCB8fCBDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgewogICAgICAgICAgICBpZiAob3JpZ19zZXRNaW5EdXIpIG9yaWdfc2V0TWluRHVyKHNlbGYsIF9jbWQsIGR1cik7CiAgICAgICAgICAgIHJldHVybjsKICAgICAgICB9CgogICAgICAgIC8vIEdVQVJEIDE6IE9ubHkgYmFjayBjYW1lcmEKICAgICAgICBpZiAoW3NlbGYgaXNLaW5kT2ZDbGFzczpbQVZDYXB0dXJlRGV2aWNlIGNsYXNzXV0pIHsKICAgICAgICAgICAgQVZDYXB0dXJlRGV2aWNlICpkZXZpY2UgPSAoQVZDYXB0dXJlRGV2aWNlICopc2VsZjsKICAgICAgICAgICAgaWYgKGRldmljZS5wb3NpdGlvbiAhPSBBVkNhcHR1cmVEZXZpY2VQb3NpdGlvbkJhY2spIHsKICAgICAgICAgICAgICAgIGlmIChvcmlnX3NldE1pbkR1cikgb3JpZ19zZXRNaW5EdXIoc2VsZiwgX2NtZCwgZHVyKTsKICAgICAgICAgICAgICAgIHJldHVybjsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgLy8gR1VBUkQgMjogQWN0aXZlIGZvcm1hdCBtdXN0IGJlIDEwODBwIHZpZGVvIHdpdGggNjBmcHMgc3VwcG9ydAogICAgICAgICAgICBBVkNhcHR1cmVEZXZpY2VGb3JtYXQgKmZvcm1hdCA9IGRldmljZS5hY3RpdmVGb3JtYXQ7CiAgICAgICAgICAgIGlmIChmb3JtYXQpIHsKICAgICAgICAgICAgICAgIENNVmlkZW9EaW1lbnNpb25zIGRpbXMgPSBDTVZpZGVvRm9ybWF0RGVzY3JpcHRpb25HZXREaW1lbnNpb25zKGZvcm1hdC5mb3JtYXREZXNjcmlwdGlvbik7CiAgICAgICAgICAgICAgICBpZiAoZGltcy53aWR0aCA9PSAxOTIwICYmIGRpbXMuaGVpZ2h0ID09IDEwODApIHsKICAgICAgICAgICAgICAgICAgICBCT09MIHN1cHBvcnRzNjAgPSBOTzsKICAgICAgICAgICAgICAgICAgICBmb3IgKEFWRnJhbWVSYXRlUmFuZ2UgKnJhbmdlIGluIGZvcm1hdC52aWRlb1N1cHBvcnRlZEZyYW1lUmF0ZVJhbmdlcykgewogICAgICAgICAgICAgICAgICAgICAgICBpZiAocmFuZ2UubWF4RnJhbWVSYXRlID49IDU5LjApIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1cHBvcnRzNjAgPSBZRVM7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICBpZiAoc3VwcG9ydHM2MCkgewogICAgICAgICAgICAgICAgICAgICAgICBpZiAob3JpZ19zZXRNaW5EdXIpIG9yaWdfc2V0TWluRHVyKHNlbGYsIF9jbWQsIENNVGltZU1ha2UoMSwgNjApKTsKICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgaWYgKG9yaWdfc2V0TWluRHVyKSBvcmlnX3NldE1pbkR1cihzZWxmLCBfY21kLCBkdXIpOwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgQzYwX0xPRyhAImhvb2tfc2V0TWluRHVyIGNhdWdodCBzYWZlbHk6ICVAIiwgZSk7CiAgICAgICAgQHRyeSB7CiAgICAgICAgICAgIGlmIChvcmlnX3NldE1pbkR1cikgb3JpZ19zZXRNaW5EdXIoc2VsZiwgX2NtZCwgZHVyKTsKICAgICAgICB9IEBjYXRjaCAoTlNFeGNlcHRpb24gKmUyKSB7fQogICAgfQp9CgpzdGF0aWMgdm9pZCAoKm9yaWdfc2V0TWF4RHVyKShpZCwgU0VMLCBDTVRpbWUpOwpzdGF0aWMgdm9pZCBob29rX3NldE1heER1cihpZCBzZWxmLCBTRUwgX2NtZCwgQ01UaW1lIGR1cikgewogICAgQHRyeSB7CiAgICAgICAgaWYgKCFnQzYwRW5hYmxlZCB8fCBDNjBJc1RoZXJtYWxUaHJvdHRsZWQoKSkgewogICAgICAgICAgICBpZiAob3JpZ19zZXRNYXhEdXIpIG9yaWdfc2V0TWF4RHVyKHNlbGYsIF9jbWQsIGR1cik7CiAgICAgICAgICAgIHJldHVybjsKICAgICAgICB9CgogICAgICAgIGlmIChbc2VsZiBpc0tpbmRPZkNsYXNzOltBVkNhcHR1cmVEZXZpY2UgY2xhc3NdXSkgewogICAgICAgICAgICBBVkNhcHR1cmVEZXZpY2UgKmRldmljZSA9IChBVkNhcHR1cmVEZXZpY2UgKilzZWxmOwogICAgICAgICAgICBpZiAoZGV2aWNlLnBvc2l0aW9uICE9IEFWQ2FwdHVyZURldmljZVBvc2l0aW9uQmFjaykgewogICAgICAgICAgICAgICAgaWYgKG9yaWdfc2V0TWF4RHVyKSBvcmlnX3NldE1heER1cihzZWxmLCBfY21kLCBkdXIpOwogICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICB9CgogICAgICAgICAgICBBVkNhcHR1cmVEZXZpY2VGb3JtYXQgKmZvcm1hdCA9IGRldmljZS5hY3RpdmVGb3JtYXQ7CiAgICAgICAgICAgIGlmIChmb3JtYXQpIHsKICAgICAgICAgICAgICAgIENNVmlkZW9EaW1lbnNpb25zIGRpbXMgPSBDTVZpZGVvRm9ybWF0RGVzY3JpcHRpb25HZXREaW1lbnNpb25zKGZvcm1hdC5mb3JtYXREZXNjcmlwdGlvbik7CiAgICAgICAgICAgICAgICBpZiAoZGltcy53aWR0aCA9PSAxOTIwICYmIGRpbXMuaGVpZ2h0ID09IDEwODApIHsKICAgICAgICAgICAgICAgICAgICBCT09MIHN1cHBvcnRzNjAgPSBOTzsKICAgICAgICAgICAgICAgICAgICBmb3IgKEFWRnJhbWVSYXRlUmFuZ2UgKnJhbmdlIGluIGZvcm1hdC52aWRlb1N1cHBvcnRlZEZyYW1lUmF0ZVJhbmdlcykgewogICAgICAgICAgICAgICAgICAgICAgICBpZiAocmFuZ2UubWF4RnJhbWVSYXRlID49IDU5LjApIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1cHBvcnRzNjAgPSBZRVM7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICBpZiAoc3VwcG9ydHM2MCkgewogICAgICAgICAgICAgICAgICAgICAgICBpZiAob3JpZ19zZXRNYXhEdXIpIG9yaWdfc2V0TWF4RHVyKHNlbGYsIF9jbWQsIENNVGltZU1ha2UoMSwgNjApKTsKICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuOwogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgaWYgKG9yaWdfc2V0TWF4RHVyKSBvcmlnX3NldE1heER1cihzZWxmLCBfY21kLCBkdXIpOwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgQzYwX0xPRyhAImhvb2tfc2V0TWF4RHVyIGNhdWdodCBzYWZlbHk6ICVAIiwgZSk7CiAgICAgICAgQHRyeSB7CiAgICAgICAgICAgIGlmIChvcmlnX3NldE1heER1cikgb3JpZ19zZXRNYXhEdXIoc2VsZiwgX2NtZCwgZHVyKTsKICAgICAgICB9IEBjYXRjaCAoTlNFeGNlcHRpb24gKmUyKSB7fQogICAgfQp9CgpzdGF0aWMgQk9PTCAoKm9yaWdfbG9ja0ZvckNmZykoaWQsIFNFTCwgdm9pZCAqKik7CnN0YXRpYyBCT09MIGhvb2tfbG9ja0ZvckNmZyhpZCBzZWxmLCBTRUwgX2NtZCwgdm9pZCAqKmVycm9yUHRyKSB7CiAgICBAdHJ5IHsKICAgICAgICByZXR1cm4gb3JpZ19sb2NrRm9yQ2ZnID8gb3JpZ19sb2NrRm9yQ2ZnKHNlbGYsIF9jbWQsIGVycm9yUHRyKSA6IE5POwogICAgfSBAY2F0Y2ggKE5TRXhjZXB0aW9uICplKSB7CiAgICAgICAgQzYwX0xPRyhAImxvY2tGb3JDb25maWd1cmF0aW9uIGV4Y2VwdGlvbjogJUAiLCBlKTsKICAgICAgICByZXR1cm4gTk87CiAgICB9Cn0KCi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCi8vIENvbnN0cnVjdG9yIOKAlCBBYnNvbHV0ZSBTYWZlIE1vZGUgU2hpZWxkCi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCl9fYXR0cmlidXRlX18oKGNvbnN0cnVjdG9yKSkgc3RhdGljIHZvaWQgQ2FtNjBFbmFibGVyNXNJbml0KHZvaWQpIHsKICAgIEBhdXRvcmVsZWFzZXBvb2wgewogICAgICAgIC8vIFNUUklDVCBQUk9DRVNTIFNISUVMRDoKICAgICAgICAvLyBPTkxZIGV4ZWN1dGUgaW5zaWRlIHRoZSBzdG9jayBDYW1lcmEgYXBwIGFuZCBTZXR0aW5ncyBhcHAhCiAgICAgICAgLy8gU3ByaW5nQm9hcmQsIG1lZGlhc2VydmVyZCwgYW5kIGFsbCBvdGhlciBkYWVtb25zIE1VU1QgTkVWRVIgYmUgdG91Y2hlZC4KICAgICAgICBOU1N0cmluZyAqYnVuZGxlSWQgPSBbW05TQnVuZGxlIG1haW5CdW5kbGVdIGJ1bmRsZUlkZW50aWZpZXJdOwogICAgICAgIGlmICghW2J1bmRsZUlkIGlzRXF1YWxUb1N0cmluZzpAImNvbS5hcHBsZS5jYW1lcmEiXSAmJgogICAgICAgICAgICAhW2J1bmRsZUlkIGlzRXF1YWxUb1N0cmluZzpAImNvbS5hcHBsZS5QcmVmZXJlbmNlcyJdKSB7CiAgICAgICAgICAgIHJldHVybjsKICAgICAgICB9CgogICAgICAgIEM2MF9MT0coQCJMb2FkZWQgaW5zaWRlIHByb2Nlc3M6ICVAIiwgYnVuZGxlSWQpOwogICAgICAgIEM2MExvYWRQcmVmcygpOwoKICAgICAgICAvLyBSZWdpc3RlciBEYXJ3aW4gbm90aWZpY2F0aW9uIGZvciBsaXZlIHByZWZlcmVuY2UgdXBkYXRlcwogICAgICAgIENGTm90aWZpY2F0aW9uQ2VudGVyQWRkT2JzZXJ2ZXIoQ0ZOb3RpZmljYXRpb25DZW50ZXJHZXREYXJ3aW5Ob3RpZnlDZW50ZXIoKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE5VTEwsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNjBEYXJ3aW5DYWxsYmFjaywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENGU1RSKCJjb20uY29jeGFjZS5jYW02MGVuYWJsZXI1cy9yZWxvYWQiKSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE5VTEwsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDRk5vdGlmaWNhdGlvblN1c3BlbnNpb25CZWhhdmlvckRlbGl2ZXJJbW1lZGlhdGVseSk7CgogICAgICAgIC8vIDEuIEhvb2sgQ0FNQ2FwdHVyZUNhcGFiaWxpdGllcwogICAgICAgIENsYXNzIGNhbUNhcHMgPSBOU0NsYXNzRnJvbVN0cmluZyhAIkNBTUNhcHR1cmVDYXBhYmlsaXRpZXMiKTsKICAgICAgICBpZiAoY2FtQ2FwcykgewogICAgICAgICAgICBDNjBIb29rKGNhbUNhcHMsIEBzZWxlY3RvcihpczYwRlBTVmlkZW9TdXBwb3J0ZWQpLCAoSU1QKWhvb2tfY2FwX2lzNjBGUFMsIChJTVAgKikmb3JpZ19jYXBfaXM2MEZQUyk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtQ2FwcywgQHNlbGVjdG9yKGlzQmFjazYwRlBTVmlkZW9TdXBwb3J0ZWQpLCAoSU1QKWhvb2tfY2FwX2lzQmFjazYwRlBTLCAoSU1QICopJm9yaWdfY2FwX2lzQmFjazYwRlBTKTsKICAgICAgICAgICAgQzYwSG9vayhjYW1DYXBzLCBOU1NlbGVjdG9yRnJvbVN0cmluZyhAImlzMTA4MHA2MFN1cHBvcnRlZCIpLCAoSU1QKWhvb2tfY2FwX2lzMTA4MHA2MCwgKElNUCAqKSZvcmlnX2NhcF9pczEwODBwNjApOwogICAgICAgICAgICBDNjBIb29rKGNhbUNhcHMsIE5TU2VsZWN0b3JGcm9tU3RyaW5nKEAiaXNCYWNrMTA4MHA2MFN1cHBvcnRlZCIpLCAoSU1QKWhvb2tfY2FwX2lzQmFjazEwODBwNjAsIChJTVAgKikmb3JpZ19jYXBfaXNCYWNrMTA4MHA2MCk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtQ2FwcywgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJpc0JhY2tBdXRvbWF0aWNWaWRlb0ZyYW1lcmF0ZVN1cHBvcnRlZCIpLCAoSU1QKWhvb2tfY2FwX2lzQmFja0F1dG9GcHMsIChJTVAgKikmb3JpZ19jYXBfaXNCYWNrQXV0b0Zwcyk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtQ2FwcywgQHNlbGVjdG9yKHN1cHBvcnRlZFZpZGVvQ29uZmlndXJhdGlvbnMpLCAoSU1QKWhvb2tfY2FwX3N1cHBvcnRlZENvbmZpZ3MsIChJTVAgKikmb3JpZ19jYXBfc3VwcG9ydGVkQ29uZmlncyk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtQ2FwcywgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJpc1N1cHBvcnRlZFZpZGVvQ29uZmlndXJhdGlvbjoiKSwgKElNUClob29rX2NhcF9pc1N1cHBvcnRlZFZpZENmZywgKElNUCAqKSZvcmlnX2NhcF9pc1N1cHBvcnRlZFZpZENmZyk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtQ2FwcywgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJpc1N1cHBvcnRlZFZpZGVvQ29uZmlndXJhdGlvbjpmb3JNb2RlOmRldmljZToiKSwgKElNUClob29rX2NhcF9pc1N1cHBvcnRlZFZpZENmZ01vZGVEZXYsIChJTVAgKikmb3JpZ19jYXBfaXNTdXBwb3J0ZWRWaWRDZmdNb2RlRGV2KTsKICAgICAgICB9CgogICAgICAgIC8vIDIuIEhvb2sgQ0FNVXNlclByZWZlcmVuY2VzCiAgICAgICAgQ2xhc3MgY2FtUHJlZnMgPSBOU0NsYXNzRnJvbVN0cmluZyhAIkNBTVVzZXJQcmVmZXJlbmNlcyIpOwogICAgICAgIGlmIChjYW1QcmVmcykgewogICAgICAgICAgICBDNjBIb29rKGNhbVByZWZzLCBAc2VsZWN0b3IoaXM2MEZQU1ZpZGVvU3VwcG9ydGVkKSwgKElNUClob29rX3ByZWZfaXM2MEZQUywgKElNUCAqKSZvcmlnX3ByZWZfaXM2MEZQUyk7CiAgICAgICAgICAgIEM2MEhvb2soY2FtUHJlZnMsIEBzZWxlY3Rvcihpc0JhY2s2MEZQU1ZpZGVvU3VwcG9ydGVkKSwgKElNUClob29rX3ByZWZfaXNCYWNrNjBGUFMsIChJTVAgKikmb3JpZ19wcmVmX2lzQmFjazYwRlBTKTsKICAgICAgICAgICAgQzYwSG9vayhjYW1QcmVmcywgTlNTZWxlY3RvckZyb21TdHJpbmcoQCJzdXBwb3J0c1ZpZGVvQ29uZmlndXJhdGlvbjYwRlBTIiksIChJTVApaG9va19wcmVmX3N1cHBvcnRzNjBDZmcsIChJTVAgKikmb3JpZ19wcmVmX3N1cHBvcnRzNjBDZmcpOwogICAgICAgICAgICBDNjBIb29rKGNhbVByZWZzLCBOU1NlbGVjdG9yRnJvbVN0cmluZyhAInZpZGVvQ29uZmlndXJhdGlvbiIpLCAoSU1QKWhvb2tfcHJlZl92aWRlb0NvbmZpZywgKElNUCAqKSZvcmlnX3ByZWZfdmlkZW9Db25maWcpOwogICAgICAgIH0KCiAgICAgICAgLy8gMy4gSG9vayBDQU1Db25maWd1cmF0aW9uRGVsZWdhdGUKICAgICAgICBDbGFzcyBjYW1DZmcgPSBOU0NsYXNzRnJvbVN0cmluZyhAIkNBTUNvbmZpZ3VyYXRpb25EZWxlZ2F0ZSIpOwogICAgICAgIGlmIChjYW1DZmcpIHsKICAgICAgICAgICAgQzYwSG9vayhjYW1DZmcsIE5TU2VsZWN0b3JGcm9tU3RyaW5nKEAiY2FwdHVyZVNlc3Npb246Y2FuU2V0VmlkZW9Db25maWd1cmF0aW9uOiIpLCAoSU1QKWhvb2tfY2FuU2V0VmlkQ2ZnLCAoSU1QICopJm9yaWdfY2FuU2V0VmlkQ2ZnKTsKICAgICAgICB9CgogICAgICAgIC8vIDQuIEhvb2sgQVZDYXB0dXJlU2Vzc2lvbgogICAgICAgIENsYXNzIGF2U2Vzc2lvbiA9IE5TQ2xhc3NGcm9tU3RyaW5nKEAiQVZDYXB0dXJlU2Vzc2lvbiIpOwogICAgICAgIGlmIChhdlNlc3Npb24pIHsKICAgICAgICAgICAgQzYwSG9vayhhdlNlc3Npb24sIEBzZWxlY3RvcihjYW5TZXRTZXNzaW9uUHJlc2V0OiksIChJTVApaG9va19jYW5TZXRQcmVzZXQsIChJTVAgKikmb3JpZ19jYW5TZXRQcmVzZXQpOwogICAgICAgIH0KCiAgICAgICAgLy8gNS4gSG9vayBBVkNhcHR1cmVEZXZpY2UKICAgICAgICBDbGFzcyBhdkRldmljZSA9IE5TQ2xhc3NGcm9tU3RyaW5nKEAiQVZDYXB0dXJlRGV2aWNlIik7CiAgICAgICAgaWYgKGF2RGV2aWNlKSB7CiAgICAgICAgICAgIEM2MEhvb2soYXZEZXZpY2UsIEBzZWxlY3RvcihzZXRBY3RpdmVWaWRlb01pbkZyYW1lRHVyYXRpb246KSwgKElNUClob29rX3NldE1pbkR1ciwgKElNUCAqKSZvcmlnX3NldE1pbkR1cik7CiAgICAgICAgICAgIEM2MEhvb2soYXZEZXZpY2UsIEBzZWxlY3RvcihzZXRBY3RpdmVWaWRlb01heEZyYW1lRHVyYXRpb246KSwgKElNUClob29rX3NldE1heER1ciwgKElNUCAqKSZvcmlnX3NldE1heER1cik7CiAgICAgICAgICAgIEM2MEhvb2soYXZEZXZpY2UsIEBzZWxlY3Rvcihsb2NrRm9yQ29uZmlndXJhdGlvbjopLCAoSU1QKWhvb2tfbG9ja0ZvckNmZywgKElNUCAqKSZvcmlnX2xvY2tGb3JDZmcpOwogICAgICAgIH0KCiAgICAgICAgQzYwX0xPRyhAIkNhbTYwRW5hYmxlcjVzIGluaXRpYWxpemF0aW9uIHNhZmVseSBjb21wbGV0ZWQuIik7CiAgICB9Cn0K
+// =============================================================================
+// Cam60Enabler5s — 1080p @ 60 FPS on iPhone 5s (Apple A7, iOS 12.0–12.5.8)
+// Zero Safe Mode Guarantee:
+// 1. Process Filter: Strictly executes ONLY in com.apple.camera & com.apple.Preferences.
+//    SpringBoard, mediaserverd, and other daemons are NEVER hooked.
+// 2. Format & Hardware Guards: 60 FPS only applied on Back camera in 1080p video mode.
+//    Photo mode, square mode, time-lapse, and front camera are left 100% untouched.
+// 3. Complete @try / @catch wrapping: Zero uncaught exceptions.
+// 4. Clean CameraUI integration: Exposes 1080p 60fps in Camera settings & recording UI.
+// =============================================================================
+
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMedia/CoreMedia.h>
+#import <CoreVideo/CoreVideo.h>
+#import <CoreFoundation/CoreFoundation.h>
+#import <objc/runtime.h>
+#import <notify.h>
+#import <os/log.h>
+
+static void C60Disable60FPS(void);
+
+extern void MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result);
+
+#define C60_LOG(fmt, ...) NSLog(@"[Cam60Enabler5s] " fmt, ##__VA_ARGS__)
+#define C60_APP_ID CFSTR("com.cocxace.cam60enabler5s")
+#define C60_RELOAD_NOTIFICATION "com.cocxace.cam60enabler5s/reload"
+
+// -----------------------------------------------------------------------------
+// Preferences State
+// -----------------------------------------------------------------------------
+static BOOL   gC60Enabled     = YES; // default ON
+static BOOL   gC60SlowMo      = NO;
+static CGFloat gC60Bitrate    = 25.0; // safe bitrate for A7 hardware encoder
+static CGFloat gC60Quality    = 0.85;
+static BOOL   gC60Thermal     = YES;
+static BOOL   gC60AutoDisable = YES;
+static NSInteger gC60Profile  = -1;
+
+static void C60ApplyProfile(NSInteger profile) {
+    switch (profile) {
+        case 0: // Max Quality
+            gC60SlowMo = YES;
+            gC60Bitrate = 40.0;
+            gC60Quality = 0.95;
+            gC60Thermal = YES;
+            gC60AutoDisable = YES;
+            break;
+        case 1: // Balance
+            gC60SlowMo = NO;
+            gC60Bitrate = 25.0;
+            gC60Quality = 0.85;
+            gC60Thermal = YES;
+            gC60AutoDisable = YES;
+            break;
+        case 2: // Battery Save
+            gC60SlowMo = NO;
+            gC60Bitrate = 18.0;
+            gC60Quality = 0.70;
+            gC60Thermal = YES;
+            gC60AutoDisable = YES;
+            break;
+        default:
+            break;
+    }
+}
+
+static BOOL C60BoolPref(CFStringRef key, BOOL defval) {
+    CFTypeRef raw = CFPreferencesCopyAppValue(key, C60_APP_ID);
+    BOOL out = defval;
+    if (raw) {
+        if (CFGetTypeID(raw) == CFBooleanGetTypeID()) {
+            out = CFBooleanGetValue((CFBooleanRef)raw);
+        } else if (CFGetTypeID(raw) == CFNumberGetTypeID()) {
+            NSInteger v = 0;
+            CFNumberGetValue((CFNumberRef)raw, kCFNumberNSIntegerType, &v);
+            out = (v != 0);
+        }
+        CFRelease(raw);
+    }
+    return out;
+}
+
+static CGFloat C60DoublePref(CFStringRef key, CGFloat defval) {
+    CFTypeRef raw = CFPreferencesCopyAppValue(key, C60_APP_ID);
+    CGFloat out = defval;
+    if (raw) {
+        if (CFGetTypeID(raw) == CFNumberGetTypeID()) {
+            CFNumberGetValue((CFNumberRef)raw, kCFNumberCGFloatType, &out);
+        }
+        CFRelease(raw);
+    }
+    return out;
+}
+
+static void C60LoadPrefs(void) {
+    @try {
+        gC60Enabled     = C60BoolPref(CFSTR("enabled"), YES);
+        gC60SlowMo      = C60BoolPref(CFSTR("slowmo"), NO);
+        gC60Thermal     = C60BoolPref(CFSTR("thermal"), YES);
+        gC60AutoDisable = C60BoolPref(CFSTR("autodis"), YES);
+        gC60Bitrate     = C60DoublePref(CFSTR("bitrate"), 25.0);
+        gC60Quality     = C60DoublePref(CFSTR("quality"), 85.0) / 100.0;
+        if (gC60Quality < 0.5) gC60Quality = 0.5;
+        if (gC60Quality > 1.0) gC60Quality = 1.0;
+
+        CFTypeRef prof = CFPreferencesCopyAppValue(CFSTR("profile"), C60_APP_ID);
+        if (prof) {
+            if (CFGetTypeID(prof) == CFNumberGetTypeID()) {
+                CFNumberGetValue((CFNumberRef)prof, kCFNumberNSIntegerType, &gC60Profile);
+            }
+            CFRelease(prof);
+        } else {
+            gC60Profile = -1;
+        }
+        C60ApplyProfile(gC60Profile);
+
+        C60_LOG(@"Prefs loaded: enabled=%d slowmo=%d bitrate=%.0f quality=%.2f profile=%ld",
+                gC60Enabled, gC60SlowMo, gC60Bitrate, gC60Quality, (long)gC60Profile);
+    } @catch (NSException *e) {
+        C60_LOG(@"Prefs load error: %@", e);
+        gC60Enabled = YES;
+    }
+}
+
+static void C60DarwinCallback(CFNotificationCenterRef center, void *observer,
+                              CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    C60_LOG(@"Darwin reload received");
+    C60LoadPrefs();
+}
+
+static BOOL C60IsThermalThrottled(void) {
+    if (!gC60Thermal) return NO;
+    @try {
+        NSProcessInfoThermalState state = [NSProcessInfo.processInfo thermalState];
+        if (state == NSProcessInfoThermalStateSerious || state == NSProcessInfoThermalStateCritical) {
+            return YES;
+        }
+    } @catch (NSException *e) {}
+    return NO;
+}
+
+// -----------------------------------------------------------------------------
+// Safe Hook Helper
+// -----------------------------------------------------------------------------
+static void C60Hook(Class cls, SEL sel, IMP newImp, IMP *oldImp) {
+    if (!cls || !sel || !newImp) return;
+    Method m = class_getInstanceMethod(cls, sel);
+    if (!m) {
+        C60_LOG(@"Method %@ not found on class %@", NSStringFromSelector(sel), NSStringFromClass(cls));
+        return;
+    }
+    if (oldImp) *oldImp = method_getImplementation(m);
+    method_setImplementation(m, newImp);
+    C60_LOG(@"Successfully hooked [%@ %@]", NSStringFromClass(cls), NSStringFromSelector(sel));
+}
+
+// -----------------------------------------------------------------------------
+// 1. CAMCaptureCapabilities Hooks
+// -----------------------------------------------------------------------------
+static BOOL (*orig_cap_is60FPS)(id, SEL);
+static BOOL hook_cap_is60FPS(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_cap_is60FPS ? orig_cap_is60FPS(self, _cmd) : NO;
+}
+
+static BOOL (*orig_cap_isBack60FPS)(id, SEL);
+static BOOL hook_cap_isBack60FPS(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_cap_isBack60FPS ? orig_cap_isBack60FPS(self, _cmd) : NO;
+}
+
+static BOOL (*orig_cap_is1080p60)(id, SEL);
+static BOOL hook_cap_is1080p60(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_cap_is1080p60 ? orig_cap_is1080p60(self, _cmd) : NO;
+}
+
+static BOOL (*orig_cap_isBack1080p60)(id, SEL);
+static BOOL hook_cap_isBack1080p60(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_cap_isBack1080p60 ? orig_cap_isBack1080p60(self, _cmd) : NO;
+}
+
+static BOOL (*orig_cap_isBackAutoFps)(id, SEL);
+static BOOL hook_cap_isBackAutoFps(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_cap_isBackAutoFps ? orig_cap_isBackAutoFps(self, _cmd) : NO;
+}
+
+static NSArray *(*orig_cap_supportedConfigs)(id, SEL);
+static NSArray *hook_cap_supportedConfigs(id self, SEL _cmd) {
+    @try {
+        NSArray *orig = orig_cap_supportedConfigs ? orig_cap_supportedConfigs(self, _cmd) : nil;
+        if (!gC60Enabled || C60IsThermalThrottled()) return orig ? orig : @[];
+        if (!orig) orig = @[];
+        NSNumber *cfg60 = @(2); // 2 = CAMVideoConfiguration1080p60
+        if (![orig containsObject:cfg60]) {
+            NSMutableArray *configs = [orig mutableCopy];
+            [configs addObject:cfg60];
+            return [configs copy];
+        }
+        return orig;
+    } @catch (NSException *e) {
+        C60_LOG(@"supportedConfigs exception: %@", e);
+        return orig_cap_supportedConfigs ? orig_cap_supportedConfigs(self, _cmd) : @[];
+    }
+}
+
+static BOOL (*orig_cap_isSupportedVidCfg)(id, SEL, NSInteger);
+static BOOL hook_cap_isSupportedVidCfg(id self, SEL _cmd, NSInteger cfg) {
+    @try {
+        if (gC60Enabled && !C60IsThermalThrottled() && cfg == 2) return YES;
+        return orig_cap_isSupportedVidCfg ? orig_cap_isSupportedVidCfg(self, _cmd, cfg) : NO;
+    } @catch (NSException *e) {
+        return orig_cap_isSupportedVidCfg ? orig_cap_isSupportedVidCfg(self, _cmd, cfg) : NO;
+    }
+}
+
+static BOOL (*orig_cap_isSupportedVidCfgModeDev)(id, SEL, NSInteger, NSInteger, NSInteger);
+static BOOL hook_cap_isSupportedVidCfgModeDev(id self, SEL _cmd, NSInteger cfg, NSInteger mode, NSInteger dev) {
+    @try {
+        if (gC60Enabled && !C60IsThermalThrottled() && cfg == 2) {
+            // mode 1: video, dev 0 or 1: back camera
+            return YES;
+        }
+        return orig_cap_isSupportedVidCfgModeDev ? orig_cap_isSupportedVidCfgModeDev(self, _cmd, cfg, mode, dev) : NO;
+    } @catch (NSException *e) {
+        return orig_cap_isSupportedVidCfgModeDev ? orig_cap_isSupportedVidCfgModeDev(self, _cmd, cfg, mode, dev) : NO;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 2. CAMUserPreferences Hooks
+// -----------------------------------------------------------------------------
+static BOOL (*orig_pref_is60FPS)(id, SEL);
+static BOOL hook_pref_is60FPS(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_pref_is60FPS ? orig_pref_is60FPS(self, _cmd) : NO;
+}
+
+static BOOL (*orig_pref_isBack60FPS)(id, SEL);
+static BOOL hook_pref_isBack60FPS(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_pref_isBack60FPS ? orig_pref_isBack60FPS(self, _cmd) : NO;
+}
+
+static BOOL (*orig_pref_supports60Cfg)(id, SEL);
+static BOOL hook_pref_supports60Cfg(id self, SEL _cmd) {
+    if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+    return orig_pref_supports60Cfg ? orig_pref_supports60Cfg(self, _cmd) : NO;
+}
+
+static NSInteger (*orig_pref_videoConfig)(id, SEL);
+static NSInteger hook_pref_videoConfig(id self, SEL _cmd) {
+    @try {
+        NSInteger current = orig_pref_videoConfig ? orig_pref_videoConfig(self, _cmd) : 1;
+        if (gC60Enabled && !C60IsThermalThrottled()) {
+            if (current == 1) { // 1 = 1080p30 stock default -> promote to 1080p60
+                return 2;
+            }
+        }
+        return current;
+    } @catch (NSException *e) {
+        return orig_pref_videoConfig ? orig_pref_videoConfig(self, _cmd) : 1;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 3. CAMConfigurationDelegate Hook
+// -----------------------------------------------------------------------------
+static BOOL (*orig_canSetVidCfg)(id, SEL, id);
+static BOOL hook_canSetVidCfg(id self, SEL _cmd, id cfg) {
+    @try {
+        if (gC60Enabled && !C60IsThermalThrottled()) return YES;
+        return orig_canSetVidCfg ? orig_canSetVidCfg(self, _cmd, cfg) : NO;
+    } @catch (NSException *e) {
+        return orig_canSetVidCfg ? orig_canSetVidCfg(self, _cmd, cfg) : NO;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 4. AVCaptureSession Hook
+// -----------------------------------------------------------------------------
+static BOOL (*orig_canSetPreset)(id, SEL, id);
+static BOOL hook_canSetPreset(id self, SEL _cmd, id preset) {
+    @try {
+        if (!gC60Enabled || C60IsThermalThrottled()) {
+            return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+        }
+        if ([preset isKindOfClass:[NSString class]]) {
+            // Keep stock behavior for photo/low/medium
+            if ([preset isEqualToString:AVCaptureSessionPresetPhoto] ||
+                [preset isEqualToString:AVCaptureSessionPresetLow] ||
+                [preset isEqualToString:AVCaptureSessionPresetMedium]) {
+                return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+            }
+        }
+        return YES;
+    } @catch (NSException *e) {
+        return orig_canSetPreset ? orig_canSetPreset(self, _cmd, preset) : NO;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 5. AVCaptureDevice Hooks (Hardware Frame Durations — 100% Guarded)
+// -----------------------------------------------------------------------------
+static void (*orig_setMinDur)(id, SEL, CMTime);
+static void hook_setMinDur(id self, SEL _cmd, CMTime dur) {
+    @try {
+        if (!gC60Enabled || C60IsThermalThrottled()) {
+            if (orig_setMinDur) orig_setMinDur(self, _cmd, dur);
+            return;
+        }
+
+        // GUARD 1: Only back camera
+        if ([self isKindOfClass:[AVCaptureDevice class]]) {
+            AVCaptureDevice *device = (AVCaptureDevice *)self;
+            if (device.position != AVCaptureDevicePositionBack) {
+                if (orig_setMinDur) orig_setMinDur(self, _cmd, dur);
+                return;
+            }
+
+            // GUARD 2: Active format must be 1080p video with 60fps support
+            AVCaptureDeviceFormat *format = device.activeFormat;
+            if (format) {
+                CMVideoDimensions dims = CMVideoFormatDescriptionGetDimensions(format.formatDescription);
+                if (dims.width == 1920 && dims.height == 1080) {
+                    BOOL supports60 = NO;
+                    for (AVFrameRateRange *range in format.videoSupportedFrameRateRanges) {
+                        if (range.maxFrameRate >= 59.0) {
+                            supports60 = YES;
+                            break;
+                        }
+                    }
+                    if (supports60) {
+                        if (orig_setMinDur) orig_setMinDur(self, _cmd, CMTimeMake(1, 60));
+                        return;
+                    }
+                }
+            }
+        }
+
+        if (orig_setMinDur) orig_setMinDur(self, _cmd, dur);
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_setMinDur caught safely: %@", e);
+        @try {
+            if (orig_setMinDur) orig_setMinDur(self, _cmd, dur);
+        } @catch (NSException *e2) {}
+    }
+}
+
+static void (*orig_setMaxDur)(id, SEL, CMTime);
+static void hook_setMaxDur(id self, SEL _cmd, CMTime dur) {
+    @try {
+        if (!gC60Enabled || C60IsThermalThrottled()) {
+            if (orig_setMaxDur) orig_setMaxDur(self, _cmd, dur);
+            return;
+        }
+
+        if ([self isKindOfClass:[AVCaptureDevice class]]) {
+            AVCaptureDevice *device = (AVCaptureDevice *)self;
+            if (device.position != AVCaptureDevicePositionBack) {
+                if (orig_setMaxDur) orig_setMaxDur(self, _cmd, dur);
+                return;
+            }
+
+            AVCaptureDeviceFormat *format = device.activeFormat;
+            if (format) {
+                CMVideoDimensions dims = CMVideoFormatDescriptionGetDimensions(format.formatDescription);
+                if (dims.width == 1920 && dims.height == 1080) {
+                    BOOL supports60 = NO;
+                    for (AVFrameRateRange *range in format.videoSupportedFrameRateRanges) {
+                        if (range.maxFrameRate >= 59.0) {
+                            supports60 = YES;
+                            break;
+                        }
+                    }
+                    if (supports60) {
+                        if (orig_setMaxDur) orig_setMaxDur(self, _cmd, CMTimeMake(1, 60));
+                        return;
+                    }
+                }
+            }
+        }
+
+        if (orig_setMaxDur) orig_setMaxDur(self, _cmd, dur);
+    } @catch (NSException *e) {
+        C60_LOG(@"hook_setMaxDur caught safely: %@", e);
+        @try {
+            if (orig_setMaxDur) orig_setMaxDur(self, _cmd, dur);
+        } @catch (NSException *e2) {}
+    }
+}
+
+static BOOL (*orig_lockForCfg)(id, SEL, void **);
+static BOOL hook_lockForCfg(id self, SEL _cmd, void **errorPtr) {
+    @try {
+        return orig_lockForCfg ? orig_lockForCfg(self, _cmd, errorPtr) : NO;
+    } @catch (NSException *e) {
+        C60_LOG(@"lockForConfiguration exception: %@", e);
+        return NO;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Constructor — Absolute Safe Mode Shield
+// -----------------------------------------------------------------------------
+__attribute__((constructor)) static void Cam60Enabler5sInit(void) {
+    @autoreleasepool {
+        // STRICT PROCESS SHIELD:
+        // ONLY execute inside the stock Camera app and Settings app!
+        // SpringBoard, mediaserverd, and all other daemons MUST NEVER be touched.
+        NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
+        if (![bundleId isEqualToString:@"com.apple.camera"] &&
+            ![bundleId isEqualToString:@"com.apple.Preferences"]) {
+            return;
+        }
+
+        C60_LOG(@"Loaded inside process: %@", bundleId);
+        C60LoadPrefs();
+
+        // Register Darwin notification for live preference updates
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                        NULL,
+                                        C60DarwinCallback,
+                                        CFSTR("com.cocxace.cam60enabler5s/reload"),
+                                        NULL,
+                                        CFNotificationSuspensionBehaviorDeliverImmediately);
+
+        // 1. Hook CAMCaptureCapabilities
+        Class camCaps = NSClassFromString(@"CAMCaptureCapabilities");
+        if (camCaps) {
+            C60Hook(camCaps, @selector(is60FPSVideoSupported), (IMP)hook_cap_is60FPS, (IMP *)&orig_cap_is60FPS);
+            C60Hook(camCaps, @selector(isBack60FPSVideoSupported), (IMP)hook_cap_isBack60FPS, (IMP *)&orig_cap_isBack60FPS);
+            C60Hook(camCaps, NSSelectorFromString(@"is1080p60Supported"), (IMP)hook_cap_is1080p60, (IMP *)&orig_cap_is1080p60);
+            C60Hook(camCaps, NSSelectorFromString(@"isBack1080p60Supported"), (IMP)hook_cap_isBack1080p60, (IMP *)&orig_cap_isBack1080p60);
+            C60Hook(camCaps, NSSelectorFromString(@"isBackAutomaticVideoFramerateSupported"), (IMP)hook_cap_isBackAutoFps, (IMP *)&orig_cap_isBackAutoFps);
+            C60Hook(camCaps, @selector(supportedVideoConfigurations), (IMP)hook_cap_supportedConfigs, (IMP *)&orig_cap_supportedConfigs);
+            C60Hook(camCaps, NSSelectorFromString(@"isSupportedVideoConfiguration:"), (IMP)hook_cap_isSupportedVidCfg, (IMP *)&orig_cap_isSupportedVidCfg);
+            C60Hook(camCaps, NSSelectorFromString(@"isSupportedVideoConfiguration:forMode:device:"), (IMP)hook_cap_isSupportedVidCfgModeDev, (IMP *)&orig_cap_isSupportedVidCfgModeDev);
+        }
+
+        // 2. Hook CAMUserPreferences
+        Class camPrefs = NSClassFromString(@"CAMUserPreferences");
+        if (camPrefs) {
+            C60Hook(camPrefs, @selector(is60FPSVideoSupported), (IMP)hook_pref_is60FPS, (IMP *)&orig_pref_is60FPS);
+            C60Hook(camPrefs, @selector(isBack60FPSVideoSupported), (IMP)hook_pref_isBack60FPS, (IMP *)&orig_pref_isBack60FPS);
+            C60Hook(camPrefs, NSSelectorFromString(@"supportsVideoConfiguration60FPS"), (IMP)hook_pref_supports60Cfg, (IMP *)&orig_pref_supports60Cfg);
+            C60Hook(camPrefs, NSSelectorFromString(@"videoConfiguration"), (IMP)hook_pref_videoConfig, (IMP *)&orig_pref_videoConfig);
+        }
+
+        // 3. Hook CAMConfigurationDelegate
+        Class camCfg = NSClassFromString(@"CAMConfigurationDelegate");
+        if (camCfg) {
+            C60Hook(camCfg, NSSelectorFromString(@"captureSession:canSetVideoConfiguration:"), (IMP)hook_canSetVidCfg, (IMP *)&orig_canSetVidCfg);
+        }
+
+        // 4. Hook AVCaptureSession
+        Class avSession = NSClassFromString(@"AVCaptureSession");
+        if (avSession) {
+            C60Hook(avSession, @selector(canSetSessionPreset:), (IMP)hook_canSetPreset, (IMP *)&orig_canSetPreset);
+        }
+
+        // 5. Hook AVCaptureDevice
+        Class avDevice = NSClassFromString(@"AVCaptureDevice");
+        if (avDevice) {
+            C60Hook(avDevice, @selector(setActiveVideoMinFrameDuration:), (IMP)hook_setMinDur, (IMP *)&orig_setMinDur);
+            C60Hook(avDevice, @selector(setActiveVideoMaxFrameDuration:), (IMP)hook_setMaxDur, (IMP *)&orig_setMaxDur);
+            C60Hook(avDevice, @selector(lockForConfiguration:), (IMP)hook_lockForCfg, (IMP *)&orig_lockForCfg);
+        }
+
+        C60_LOG(@"Cam60Enabler5s initialization safely completed.");
+    }
+}

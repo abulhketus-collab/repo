@@ -1,1 +1,12 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgR2xpbnRCYW5uZXJPYnNlcnZlciA6IE5TT2JqZWN0DQoNCisgKHZvaWQpaW5zdGFsbDsNCisgKHZvaWQpdW5pbnN0YWxsOw0KDQpAZW5kDQoNCk5TX0FTU1VNRV9OT05OVUxMX0VORA==
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GlintBannerObserver : NSObject
+
++ (void)install;
++ (void)uninstall;
+
+@end
+
+NS_ASSUME_NONNULL_END

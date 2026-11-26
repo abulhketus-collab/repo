@@ -1,1 +1,16 @@
-I2ltcG9ydCAiR2xpbnRTdGF0ZS5oIg0KDQpAaW1wbGVtZW50YXRpb24gR2xpbnRTdGF0ZQ0KDQotIChpbnN0YW5jZXR5cGUpaW5pdFdpdGhUeXBlOihHbGludFN0YXRlVHlwZSl0eXBlIGtleTooTlNTdHJpbmcgKilrZXkgcHJpb3JpdHk6KE5TSW50ZWdlcilwcmlvcml0eSB7DQogICAgaWYgKHNlbGYgPSBbc3VwZXIgaW5pdF0pIHsNCiAgICAgICAgX3R5cGUgPSB0eXBlOw0KICAgICAgICBfcHJpb3JpdHkgPSBwcmlvcml0eTsNCiAgICAgICAgX2tleSA9IGtleSA/OiBAIiI7DQogICAgICAgIF90aW1lc3RhbXAgPSBDQUN1cnJlbnRNZWRpYVRpbWUoKTsNCiAgICAgICAgX3BlcnNpc3RlbnQgPSBOTzsNCiAgICB9DQogICAgcmV0dXJuIHNlbGY7DQp9DQoNCkBlbmQ=
+#import "GlintState.h"
+
+@implementation GlintState
+
+- (instancetype)initWithType:(GlintStateType)type key:(NSString *)key priority:(NSInteger)priority {
+    if (self = [super init]) {
+        _type = type;
+        _priority = priority;
+        _key = key ?: @"";
+        _timestamp = CACurrentMediaTime();
+        _persistent = NO;
+    }
+    return self;
+}
+
+@end

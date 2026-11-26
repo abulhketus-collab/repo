@@ -1,1 +1,21 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQojaW1wb3J0IDxDb3JlR3JhcGhpY3MvQ29yZUdyYXBoaWNzLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgTHVtaW5hUHJlZnMgOiBOU09iamVjdA0KDQorIChpbnN0YW5jZXR5cGUpc2hhcmVkUHJlZnM7DQorICh2b2lkKXJlZ2lzdGVyRGVmYXVsdHM7DQoNCisgKEJPT0wpYm9vbEZvcktleTooTlNTdHJpbmcgKilrZXkgZGVmYXVsdFZhbHVlOihCT09MKWRlZjsNCisgKENHRmxvYXQpZmxvYXRGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooQ0dGbG9hdClkZWY7DQoNCisgKHZvaWQpcG9zdFJlbG9hZE5vdGlmaWNhdGlvbjsNCg0KKyAoQk9PTClkZWJ1Z0VuYWJsZWQ7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgYXNzaWduLCByZWFkb25seSkgQk9PTCBkZWJ1Z0VuYWJsZWQ7DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5E
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface LuminaPrefs : NSObject
+
++ (instancetype)sharedPrefs;
++ (void)registerDefaults;
+
++ (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)def;
++ (CGFloat)floatForKey:(NSString *)key defaultValue:(CGFloat)def;
+
++ (void)postReloadNotification;
+
++ (BOOL)debugEnabled;
+@property (nonatomic, assign, readonly) BOOL debugEnabled;
+
+@end
+
+NS_ASSUME_NONNULL_END

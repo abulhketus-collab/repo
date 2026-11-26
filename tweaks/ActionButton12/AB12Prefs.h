@@ -1,1 +1,23 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgQUIxMlByZWZzIDogTlNPYmplY3QNCg0KKyAoaW5zdGFuY2V0eXBlKXNoYXJlZFByZWZzOw0KDQorIChCT09MKWJvb2xGb3JLZXk6KE5TU3RyaW5nICopa2V5IGRlZmF1bHRWYWx1ZTooQk9PTClkZWY7DQorIChOU0ludGVnZXIpaW50ZWdlckZvcktleTooTlNTdHJpbmcgKilrZXkgZGVmYXVsdFZhbHVlOihOU0ludGVnZXIpZGVmOw0KDQorICh2b2lkKXNldEJvb2w6KEJPT0wpdmFsdWUgZm9yS2V5OihOU1N0cmluZyAqKWtleTsNCisgKHZvaWQpc2V0SW50ZWdlcjooTlNJbnRlZ2VyKXZhbHVlIGZvcktleTooTlNTdHJpbmcgKilrZXk7DQoNCisgKHZvaWQpcmVnaXN0ZXJEZWZhdWx0czsNCisgKHZvaWQpcG9zdFJlbG9hZE5vdGlmaWNhdGlvbjsNCg0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbiwgcmVhZG9ubHkpIEJPT0wgZGVidWdFbmFibGVkOw0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbiwgcmVhZG9ubHkpIE5TSW50ZWdlciBwcmVmc1ZlcnNpb247DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5EDQo=
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface AB12Prefs : NSObject
+
++ (instancetype)sharedPrefs;
+
++ (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)def;
++ (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)def;
+
++ (void)setBool:(BOOL)value forKey:(NSString *)key;
++ (void)setInteger:(NSInteger)value forKey:(NSString *)key;
+
++ (void)registerDefaults;
++ (void)postReloadNotification;
+
+@property (nonatomic, assign, readonly) BOOL debugEnabled;
+@property (nonatomic, assign, readonly) NSInteger prefsVersion;
+
+@end
+
+NS_ASSUME_NONNULL_END

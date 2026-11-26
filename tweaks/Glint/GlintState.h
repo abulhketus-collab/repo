@@ -1,1 +1,31 @@
-I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQojaW1wb3J0IDxVSUtpdC9VSUtpdC5oPg0KDQp0eXBlZGVmIE5TX0VOVU0oTlNJbnRlZ2VyLCBHbGludFN0YXRlVHlwZSkgew0KICAgIEdsaW50U3RhdGVOb25lID0gMCwNCiAgICBHbGludFN0YXRlVG9yY2ggPSAxMDAsDQogICAgR2xpbnRTdGF0ZUNoYXJnaW5nID0gMzAwLA0KICAgIEdsaW50U3RhdGVUaW1lciA9IDQ1MCwNCiAgICBHbGludFN0YXRlTXVzaWMgPSA2MDAsDQogICAgR2xpbnRTdGF0ZU5vdGlmaWNhdGlvbiA9IDEwMDAsDQp9Ow0KDQpOU19BU1NVTUVfTk9OTlVMTF9CRUdJTg0KDQpAaW50ZXJmYWNlIEdsaW50U3RhdGUgOiBOU09iamVjdA0KDQpAcHJvcGVydHkgKG5vbmF0b21pYywgYXNzaWduKSBHbGludFN0YXRlVHlwZSB0eXBlOw0KQHByb3BlcnR5IChub25hdG9taWMsIGFzc2lnbikgTlNJbnRlZ2VyIHByaW9yaXR5Ow0KQHByb3BlcnR5IChub25hdG9taWMsIGNvcHkpIE5TU3RyaW5nICprZXk7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgY29weSkgTlNTdHJpbmcgKnRpdGxlOw0KQHByb3BlcnR5IChub25hdG9taWMsIGNvcHkpIE5TU3RyaW5nICpzdWJ0aXRsZTsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBjb3B5KSBOU1N0cmluZyAqYnVuZGxlSUQ7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgc3Ryb25nLCBudWxsYWJsZSkgVUlJbWFnZSAqaWNvbjsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBhc3NpZ24pIENGVGltZUludGVydmFsIHRpbWVzdGFtcDsNCkBwcm9wZXJ0eSAobm9uYXRvbWljLCBhc3NpZ24pIEJPT0wgcGVyc2lzdGVudDsNCg0KLSAoaW5zdGFuY2V0eXBlKWluaXRXaXRoVHlwZTooR2xpbnRTdGF0ZVR5cGUpdHlwZSBrZXk6KE5TU3RyaW5nICopa2V5IHByaW9yaXR5OihOU0ludGVnZXIpcHJpb3JpdHk7DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5EDQo=
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef NS_ENUM(NSInteger, GlintStateType) {
+    GlintStateNone = 0,
+    GlintStateTorch = 100,
+    GlintStateCharging = 300,
+    GlintStateTimer = 450,
+    GlintStateMusic = 600,
+    GlintStateNotification = 1000,
+};
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GlintState : NSObject
+
+@property (nonatomic, assign) GlintStateType type;
+@property (nonatomic, assign) NSInteger priority;
+@property (nonatomic, copy) NSString *key;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, copy) NSString *bundleID;
+@property (nonatomic, strong, nullable) UIImage *icon;
+@property (nonatomic, assign) CFTimeInterval timestamp;
+@property (nonatomic, assign) BOOL persistent;
+
+- (instancetype)initWithType:(GlintStateType)type key:(NSString *)key priority:(NSInteger)priority;
+
+@end
+
+NS_ASSUME_NONNULL_END
