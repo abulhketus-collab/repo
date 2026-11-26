@@ -36,23 +36,43 @@ jobs:
             aarch64) ASSET=ldid_linux_aarch64 ;;
             *) echo "Unsupported arch: $(uname -m)"; exit 1 ;;
           esac
-          curl -fsSL -o /tmp/ldid "https://github.com/ProcursusTeam/ldid/releases/latest/download/$ASSET"
+          for i in 1 2 3 4 5; do
+            if curl -fsSL -o /tmp/ldid "https://github.com/ProcursusTeam/ldid/releases/latest/download/$ASSET"; then break; fi
+            echo "ldid download retry $i"
+            sleep 10
+          done
+          test -s /tmp/ldid
           sudo install -m 755 /tmp/ldid /usr/local/bin/ldid
           which ldid
 
       - name: Install Theos (no GitHub API)
         run: |
           export THEOS="$HOME/theos"
-          git clone --recursive --depth 1 https://github.com/theos/theos.git "$THEOS"
+          for i in 1 2 3; do
+            if git clone --recursive --depth 1 https://github.com/theos/theos.git "$THEOS"; then break; fi
+            rm -rf "$THEOS"
+            sleep 10
+          done
           mkdir -p "$THEOS/toolchain"
-          curl -fsSL https://github.com/L1ghtmann/llvm-project/releases/latest/download/iOSToolchain-x86_64.tar.xz | tar -xJ -C "$THEOS/toolchain/"
+          for i in 1 2 3; do
+            if curl -fsSL -o /tmp/toolchain.tar.xz "https://github.com/L1ghtmann/llvm-project/releases/latest/download/iOSToolchain-x86_64.tar.xz"; then break; fi
+            echo "toolchain download retry $i"
+            sleep 10
+          done
+          tar -xJ -C "$THEOS/toolchain/" -f /tmp/toolchain.tar.xz
           test -x "$THEOS/toolchain/linux/iphone/bin/clang"
           echo "THEOS=$HOME/theos" >> "$GITHUB_ENV"
 
       - name: Install iOS 12.4 SDK
         run: |
-          git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks
+          for i in 1 2 3; do
+            rm -rf /tmp/sdks
+            if git clone --depth 1 https://github.com/theos/sdks.git /tmp/sdks; then break; fi
+            echo "SDK clone retry $i"
+            sleep 10
+          done
           mkdir -p "$THEOS/sdks"
+          test -d /tmp/sdks/iPhoneOS12.4.sdk
           cp -a /tmp/sdks/iPhoneOS12.4.sdk "$THEOS/sdks/"
           ls "$THEOS/sdks"
 
