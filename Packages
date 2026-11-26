@@ -1,111 +1,134 @@
 Package: com.cocxace.actionbutton12
-Name: ActionButton12
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Action Button HUD with interactive volume & brightness sliders and Settings pane
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 164
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb
-Size: 36028
-MD5sum: 70cf669d7c4f1d19627a8cd01ddcfff9
-SHA1: 36634531b2f173555fdd604ed73f38b33b83cdd9
-SHA256: dd91554765340cf9dde7f3be37eaa6f656372090117627a159e2675e85548f72
+Size: 18938
+MD5sum: 421c2f90cf014d1da8a60bbfc10b49ef
+SHA1: b04c7e192387bac1bf27be6176c54b68308e9dc7
+SHA256: a7d20a8db2ba90b1dea19575c736719d4bdaf258908574cd64411cc4c0f3dfd1
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Action Button HUD for iOS 12: long-press Power / double-tap Home panel with torch, camera, voice memos, screenshot, Wi-Fi, Bluetooth
+Author: cocxace <@cocxace>
+Name: ActionButton12
 
 Package: com.cocxace.aura
-Name: Aura
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Action Button HUD with Apple spring physics (damping: 0.7), dark glass blur and Settings pane
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 160
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb
-Size: 17964
-MD5sum: 9d56aaf03405e447d09fef3b386823f2
-SHA1: 36a4119f2b0ca8fda842f77ab7c6df4435aa6137
-SHA256: 11cbe9c91faa57cf4fc6f42d87e0fe20a8c4507144c4adae3c2f9f5cd89609f3
+Size: 13972
+MD5sum: adfe74fdf762f1915ff098af6f269413
+SHA1: 3253055f5f53e301eb9e5698890bb209c3e5a043
+SHA256: b96c17bda5566a8bbfcfb52941027ac15131044e64b8f3ea5ec15066ab63ab86
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
+Author: cocxace <@cocxace>
+Name: Aura
 
 Package: com.cocxace.cam60enabler5s
-Name: Camera60Enabler5s
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: cocxace <@cocxace>
+Installed-Size: 144
+Depends: mobilesubstrate, firmware (>= 12.0)
+Filename: debs/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb
+Size: 10268
+MD5sum: 36d36c2dc860725ab8204cc28bb7525d
+SHA1: 62944b8f3ddde94e6dd8bb70e45072083a833f0f
+SHA256: e03592a0b67b12bca5d75bfcbe9fb0d7e1dd3678897bbd943efc6ad06c8de53f
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
+Author: cocxace <@cocxace>
+Name: Cam60Enabler5s
+
+Package: com.cocxace.cam60enabler5s
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: 1080p 60 FPS Camera Unlock for iPhone 5s with Settings Pane, Quality Presets & Crash Safeguard
 Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
 Filename: debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb
 Size: 15770
 MD5sum: 86d5f9310f2e7694bbf2f7ffb096aff8
 SHA1: 83c116c0aa5913f6a154cb175162db361fa13f91
 SHA256: 7ec05215f2a9411da0c9b5f8fd5d4438642e921da6d5e39ca56fc60dc0b2586b
+Section: Tweaks
+Homepage: https://abulhketus-collab.github.io/repo/
+Description: 1080p 60 FPS Camera Unlock for iPhone 5s with Settings Pane, Quality Presets & Crash Safeguard
+Author: @cocxace
+Name: Camera60Enabler5s
 
 Package: com.cocxace.echo
-Name: Echo
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Custom carrier string in iOS 12 status bar with instant Darwin reload and Settings pane
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 140
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb
-Size: 9570
-MD5sum: 57fdc13d4e4710cfb005f961a346c58e
-SHA1: 13f620b7da040298636fe9fa25348534cc2304b8
-SHA256: c80100d5f22a073426f0e2f0b8c9879b18b8ec55a37792d22c4fec098a7e1564
+Size: 5940
+MD5sum: ea1e7a6ebf8f52b77c8cb7e4b2bed878
+SHA1: 4563c24ec32350b919b2cdd5440f43d10baaf26e
+SHA256: eadf0b4ed552c1593cdcb08138ac8ec1193777aabb37d01259889c83112f1e33
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
+Author: cocxace <@cocxace>
+Name: Echo
 
 Package: com.cocxace.glint
-Name: Glint
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Dynamic Island for iOS 12 with Timer, Music Equalizer, Beat Pulse, Rainbow Glow, 1s Breathing Blink & Settings
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 216
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb
-Size: 48010
-MD5sum: 8e63069cb68e837ea931a6933141053c
-SHA1: 4f937e7f2b75e68c8a260a4f9e00be419b3c215d
-SHA256: 5be29a3fc329a19a18c790849a0a469171e2744c2ac96e1a7abdb1c9a67a93a1
+Size: 31246
+MD5sum: 50c64a49ca651578066141c43c9e8739
+SHA1: 5b7cce06d2f38e83881afc1ec3ee4a5c2d6b6ec8
+SHA256: 6508a7c3f1da07edc818814f00b088af45ce85d8197cd1a607ad7d5d49fa3367
+Section: Tweaks
+Description: Dynamic Island for iOS 12 notchless devices: notifications, charging, now-playing with artwork, native countdown timer, customizable glow (any color, rainbow, blink), beat pulse - all with spring animations
+Author: cocxace <@cocxace>
+Name: Glint
 
 Package: com.cocxace.lumina
-Name: Lumina
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Always-On Display lockscreen clock with UltraLight typography and Settings pane
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 144
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb
-Size: 15160
-MD5sum: b06721a010b94bd2b38e194e0bbbafc8
-SHA1: d34d63fa3680aa049e264c5aa6ac0a0b3a46e878
-SHA256: 04e68eca0bc0299a6e2a8d556e1e4bad47603bcacb706ac393d884f9531e1544
+Size: 9734
+MD5sum: 416440132f7d7a2ffbd931c1b5f69a33
+SHA1: db9644ade7f3603e1d893e6f4d701e0cf13ef199
+SHA256: 5d04d448269af82c4c19ac25cdd49dbcaf3a91289f487ec7dd1f6301f73a522f
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
+Author: cocxace <@cocxace>
+Name: Lumina
 
 Package: com.cocxace.volt
-Name: Volt
 Version: 1.2.3
 Architecture: iphoneos-arm
-Description: Battery percent with dynamic color gradient transitions and Settings pane
-Maintainer: @cocxace
-Author: @cocxace
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Homepage: https://abulhketus-collab.github.io/repo/
+Maintainer: cocxace <@cocxace>
+Installed-Size: 144
+Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb
-Size: 13208
-MD5sum: e6ca46844a08f56a78e3ddcf1701d69d
-SHA1: 4e018167b7433d99016d6ddb9fcbbef7255d8c82
-SHA256: ee83b58d73dbad0aaf26f12a242ce6746f0f89fb7d729508f297a0ca39d8c81f
+Size: 8542
+MD5sum: efa7911eeaa09991a8fe084cffdb1b6a
+SHA1: af5bb06b79e6d697cf0bd810b12be7396e4b4d8c
+SHA256: 6eb3ddfcfdc14f804b4754775f807b844eb97df87bf670477c15d95bd5f22318
+Section: Tweaks
+Homepage: https://github.com/abulhketus-collab/repo
+Description: Battery percent color by level with configurable thresholds for iOS 12
+Author: cocxace <@cocxace>
+Name: Volt
+
