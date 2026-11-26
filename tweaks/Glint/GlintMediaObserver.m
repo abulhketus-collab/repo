@@ -12,29 +12,47 @@
 - (BOOL)isPlaying;
 @end
 
+static NSDictionary *gGlintLastMRInfo = nil;
+
 static void _glintMediaCallback(void) {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[GlintStateManager sharedManager] updateMusicState];
     });
 }
 
+static void _glintMediaDarwinCallback(CFNotificationCenterRef center, void *observer,
+                                      CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    _glintMediaCallback();
+}
+
 @implementation GlintMediaObserver
 
 + (void)install {
     if (![GlintPrefs boolForKey:@"glintShowMusic" defaultValue:YES]) return;
-    // Регистрируем MediaRemote уведомления (fallback)
-    MRMediaRemoteRegisterForNowPlayingNotifications(_glintMediaCallback, dispatch_get_main_queue());
-    // Первичная проверка
+
+    // MediaRemote notifications are delivered to this queue; Darwin observer
+    // triggers a refresh of the island state when Safari/Music changes track.
+    MRMediaRemoteRegisterForNowPlayingNotifications(dispatch_get_main_queue());
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                    NULL,
+                                    _glintMediaDarwinCallback,
+                                    CFSTR("com.apple.mobilemedia.remote.nowplaying.info"),
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
     [[GlintStateManager sharedManager] updateMusicState];
 }
 
 + (void)uninstall {
-    // Публичного API отписки у MediaRemote на iOS 12 нет
+    CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                       NULL,
+                                       CFSTR("com.apple.mobilemedia.remote.nowplaying.info"),
+                                       NULL);
+    gGlintLastMRInfo = nil;
 }
 
 + (NSDictionary *)currentNowPlayingInfo {
     @try {
-        // ОСНОВНОЙ источник на iOS 12 — SBMediaController (надёжнее MediaRemote)
+        // Primary source on iOS 12: SBMediaController (works for Music and Safari audio).
         Class sbMediaCls = NSClassFromString(@"SBMediaController");
         if (sbMediaCls) {
             id media = [sbMediaCls performSelector:@selector(sharedInstance)];
@@ -56,7 +74,6 @@ static void _glintMediaCallback(void) {
                             bundleID = [app performSelector:@selector(bundleIdentifier)];
                         }
                     }
-                    // v1.2.3: artwork if SBMediaController exposes it (guarded)
                     UIImage *artwork = nil;
                     if ([media respondsToSelector:@selector(nowPlayingArtwork)]) {
                         @try {
@@ -65,7 +82,7 @@ static void _glintMediaCallback(void) {
                         } @catch (NSException *e) { artwork = nil; }
                     }
                     return @{
-                        @"title": title ?: @"",
+                        @"title": title,
                         @"artist": artist ?: @"",
                         @"bundleID": bundleID ?: @"",
                         @"artwork": artwork ?: [NSNull null],
@@ -75,22 +92,21 @@ static void _glintMediaCallback(void) {
             }
         }
 
-        // FALLBACK — MediaRemote
-        CFDictionaryRef info = MRMediaRemoteGetNowPlayingInfo();
-        if (!info) return nil;
-        NSDictionary *dict = (__bridge_transfer NSDictionary *)info;
+        // Fallback: MediaRemote (async, cached between callbacks).
+        MRMediaRemoteGetNowPlayingInfo(dispatch_get_main_queue(), ^(CFDictionaryRef info) {
+            if (info) gGlintLastMRInfo = [(__bridge NSDictionary *)info copy];
+            _glintMediaCallback();
+        });
+        NSDictionary *dict = gGlintLastMRInfo;
+        if (!dict) return nil;
 
-        // Ключи MediaRemote — строковые литералы, т.к. константы могут не существовать в iOS 12 заголовках
-        NSString *title = dict[@"title"] ?: dict[@(kMRMediaRemoteNowPlayingInfoTitle)];
-        NSString *artist = dict[@"artist"] ?: dict[@(kMRMediaRemoteNowPlayingInfoArtist)];
-        NSDictionary *client = dict[@"clientPropertiesData"] ?: dict[@(kMRMediaRemoteNowPlayingInfoClientPropertiesData)];
-        NSString *clientBundle = client ? (client[@"bundleID"] ?: client[@(kMRMediaRemoteNowPlayingInfoClientBundleID)]) : @"";
-
+        NSString *title = dict[@"title"] ?: dict[(__bridge NSString *)kMRMediaRemoteNowPlayingInfoTitle];
+        NSString *artist = dict[@"artist"] ?: dict[(__bridge NSString *)kMRMediaRemoteNowPlayingInfoArtist];
         if (!title || title.length == 0) return nil;
 
-        // v1.2.3: album artwork bytes → UIImage (Safari web audio тоже попадает сюда)
+        // v1.2.3: album artwork bytes -> UIImage (Safari web audio included)
         UIImage *artwork = nil;
-        NSData *artData = dict[@"artworkData"] ?: dict[@(kMRMediaRemoteNowPlayingInfoArtworkData)];
+        NSData *artData = dict[@"artworkData"] ?: dict[(__bridge NSString *)kMRMediaRemoteNowPlayingInfoArtworkData];
         if ([artData isKindOfClass:[NSData class]] && artData.length > 0) {
             UIImage *decoded = [UIImage imageWithData:artData];
             if (decoded) artwork = decoded;
@@ -99,7 +115,7 @@ static void _glintMediaCallback(void) {
         return @{
             @"title": title,
             @"artist": artist ?: @"",
-            @"bundleID": clientBundle ?: @"",
+            @"bundleID": @"",
             @"artwork": artwork ?: [NSNull null],
             @"source": @"MediaRemote"
         };
