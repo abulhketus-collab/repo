@@ -21,4 +21,6 @@ Voltprefs_FRAMEWORKS = UIKit
 Voltprefs_PRIVATE_FRAMEWORKS = Preferences
 Voltprefs_CFLAGS = -fobjc-arc
 
+Voltprefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

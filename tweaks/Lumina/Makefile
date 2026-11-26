@@ -21,4 +21,6 @@ Luminaprefs_FRAMEWORKS = UIKit
 Luminaprefs_PRIVATE_FRAMEWORKS = Preferences
 Luminaprefs_CFLAGS = -fobjc-arc
 
+Luminaprefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

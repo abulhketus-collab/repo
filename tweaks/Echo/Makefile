@@ -21,4 +21,6 @@ Echoprefs_FRAMEWORKS = UIKit
 Echoprefs_PRIVATE_FRAMEWORKS = Preferences
 Echoprefs_CFLAGS = -fobjc-arc
 
+Echoprefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

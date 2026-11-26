@@ -28,4 +28,6 @@ GlintPreferences_FRAMEWORKS = UIKit
 GlintPreferences_PRIVATE_FRAMEWORKS = Preferences
 GlintPreferences_CFLAGS = -fobjc-arc
 
+GlintPreferences_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

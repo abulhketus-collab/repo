@@ -22,4 +22,6 @@ ActionButton12Prefs_FRAMEWORKS = UIKit
 ActionButton12Prefs_PRIVATE_FRAMEWORKS = Preferences
 ActionButton12Prefs_CFLAGS = -fobjc-arc
 
+ActionButton12Prefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

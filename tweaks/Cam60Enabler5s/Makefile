@@ -24,4 +24,6 @@ Cam60Prefs_FRAMEWORKS = UIKit
 Cam60Prefs_PRIVATE_FRAMEWORKS = Preferences
 Cam60Prefs_CFLAGS = -fobjc-arc
 
+Cam60Prefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk

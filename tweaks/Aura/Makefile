@@ -21,4 +21,6 @@ Auraprefs_FRAMEWORKS = UIKit
 Auraprefs_PRIVATE_FRAMEWORKS = Preferences
 Auraprefs_CFLAGS = -fobjc-arc
 
+Auraprefs_RESOURCE_FILES = prefs/Info.plist prefs/Root.plist
+
 include $(THEOS_MAKE_PATH)/bundle.mk
