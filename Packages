@@ -5,10 +5,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 180
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.actionbutton12_1.2.3_iphoneos-arm.deb
-Size: 19978
-MD5sum: e67f47ea2be797f8aba49515cefd3407
-SHA1: 4c49eaf052159272212e9807ae8c820ce66d169b
-SHA256: 0aea65d5cb2b43f73010b910bb7d7044a9ca554c336cdc536df89f4c5468a08a
+Size: 19976
+MD5sum: 8175289592465a2de2de3fa3c97d0440
+SHA1: 817e0a6f35c9c192b85a7a9d32c1acb5b06d7bf5
+SHA256: 2113b4a6c2cc69262a3ae4d58f84356dda8cfa07e660e5c87bc59f54b7d5ee3d
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Action Button HUD for iOS 12: long-press Power / double-tap Home panel with torch, camera, voice memos, screenshot, Wi-Fi, Bluetooth
@@ -22,10 +22,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 176
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.aura_1.2.3_iphoneos-arm.deb
-Size: 15036
-MD5sum: 19c82a20da795ad5df2423a5ca6c0f1c
-SHA1: d050cf045f943adb95efca05645d32b1e4e2bd6c
-SHA256: eed87092bc57a9abbb7e6f970f5d47e6258c5308df020356d4a1ceb65db7c224
+Size: 15040
+MD5sum: 2698ce837b29e121e9a3370913ea5cf4
+SHA1: 890b1f23c605251b01c4949c5498e4f588d52f9d
+SHA256: a813475b6c91a3f429946e7f7a3d7f88a7b54b3103546b886ec6e9c5655ffbf9
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Premium Action Button HUD: long-press panel with torch, camera, voice memos and screenshot
@@ -39,31 +39,15 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 156
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.cam60enabler5s_1.0.3_iphoneos-arm.deb
-Size: 11824
-MD5sum: b6e210ab653efffbf153f652689096f9
-SHA1: 6dfdb3683483e782b81fecd6f6e10b2ee3afe01d
-SHA256: 11fef0376c523424b00fae13ff45696f8a41975df542fbcc48e3e99b58a8bd07
+Size: 11802
+MD5sum: 9f2f4ff791b20fd8580e75e0a43c4afc
+SHA1: bfced00bd512aaf3e242708f68a2f180227b52b9
+SHA256: ac63410369b3c06d418589d5f4826415f7b6aa1f7494f9de598c45782dc615be
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Force 1080p Full HD video recording at 60 FPS on iPhone 5s Camera app (A7). Overrides CameraUI and AVFoundation frame-rate checks.
 Author: cocxace <@cocxace>
 Name: Cam60Enabler5s
-
-Package: com.cocxace.cam60enabler5s
-Version: 1.2.3
-Architecture: iphoneos-arm
-Maintainer: @cocxace
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
-Filename: debs/com.cocxace.cam60enabler5s_1.2.3_iphoneos-arm.deb
-Size: 15770
-MD5sum: 86d5f9310f2e7694bbf2f7ffb096aff8
-SHA1: 83c116c0aa5913f6a154cb175162db361fa13f91
-SHA256: 7ec05215f2a9411da0c9b5f8fd5d4438642e921da6d5e39ca56fc60dc0b2586b
-Section: Tweaks
-Homepage: https://abulhketus-collab.github.io/repo/
-Description: 1080p 60 FPS Camera Unlock for iPhone 5s with Settings Pane, Quality Presets & Crash Safeguard
-Author: @cocxace
-Name: Camera60Enabler5s
 
 Package: com.cocxace.echo
 Version: 1.2.3
@@ -72,10 +56,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 148
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.echo_1.2.3_iphoneos-arm.deb
-Size: 6704
-MD5sum: fb0ef0afa9e0298e6e8692896a8aaf77
-SHA1: 3a8ab873dead42cf96ffe6643a96010e42fd0990
-SHA256: 0d61ebf1916467133b9c8f8a7f8a3b8d9f64a8eb54cc7953f32c63cd8c442236
+Size: 6706
+MD5sum: 35a41e161ef0c151498cbec058c4af1e
+SHA1: 4caa3b9136cbe03988a0e463cd4d2c7953e4e0c8
+SHA256: 1551e4b4a0d15cd7dd287c8a80b63a72bbbee4232dba91baf8ba47c7667b2f44
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
@@ -89,10 +73,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 236
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.glint_1.2.3_iphoneos-arm.deb
-Size: 32938
-MD5sum: 901269714404e9192cb98276d081f64f
-SHA1: 32cc40a8d5c94093b89fd46086e245f4361902bd
-SHA256: 840e0317ab4373fc8ab7096338d7c3a3ff80da59e65dcda50b136ddc4453c531
+Size: 32822
+MD5sum: 1a95998c34b614b1186961919413c91f
+SHA1: b1fc54d5ed6952a622302e80be2bf68378e1b007
+SHA256: fc86eb2aacbe0e6e96118af381a9c4a1bc89fc98580f993984fb3797178adeab
 Section: Tweaks
 Description: Dynamic Island for iOS 12 notchless devices: notifications, charging, now-playing with artwork, native countdown timer, customizable glow (any color, rainbow, blink), beat pulse - all with spring animations
 Author: cocxace <@cocxace>
@@ -105,10 +89,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 152
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.lumina_1.2.3_iphoneos-arm.deb
-Size: 10528
-MD5sum: adc8edd557e5a7780b57a34b58706c84
-SHA1: 75529adb4c933faa2a3120d245fd6e3a7e305e56
-SHA256: 02d059c505b47cc2ed76d932e9cf6400bd7b54e63d0a6ab4dbd31183827d46f2
+Size: 10498
+MD5sum: 190a8bd1f5c5f359c2e26c808fbd5e2b
+SHA1: 8d031375ddecc6cf16501a4612e1b2868b9e17c5
+SHA256: 2ab0c7404b2bec64d016e6373843784b77a1dc9574fd7e548e2009f4acb561e5
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
@@ -122,10 +106,10 @@ Maintainer: cocxace <@cocxace>
 Installed-Size: 156
 Depends: mobilesubstrate, firmware (>= 12.0)
 Filename: debs/com.cocxace.volt_1.2.3_iphoneos-arm.deb
-Size: 9510
-MD5sum: 50a150927d7fbe4a133cf1d6e0101d8b
-SHA1: fe0c8582f9cc6f508531164f04c299096b82fab9
-SHA256: d7bf7d8e585ccf340078111189e8c5a4697fe4219f29ce0b9ec8887d46919c40
+Size: 9520
+MD5sum: 28ef75c9418f3b5ab5c4f04a0156024a
+SHA1: 7c50f2d9a5ee990c785244f6b69f2eb8de2de6d7
+SHA256: b9148c20d8648d94524fe801e2c2ac53b47842bd810e82e275ac69e52927a9cc
 Section: Tweaks
 Homepage: https://github.com/abulhketus-collab/repo
 Description: Battery percent color by level with configurable thresholds for iOS 12
