@@ -1,10 +1,1 @@
-Package: com.cocxace.volt
-Name: Volt
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Battery percent color by level with configurable thresholds for iOS 12
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+UGFja2FnZTogY29tLmNvY3hhY2Uudm9sdA0KTmFtZTogVm9sdA0KVmVyc2lvbjogMS4yLjMNCkFyY2hpdGVjdHVyZTogaXBob25lb3MtYXJtDQpEZXNjcmlwdGlvbjogQmF0dGVyeSBwZXJjZW50IGNvbG9yIGJ5IGxldmVsIHdpdGggY29uZmlndXJhYmxlIHRocmVzaG9sZHMgZm9yIGlPUyAxMg0KTWFpbnRhaW5lcjogY29jeGFjZSA8QGNvY3hhY2U+DQpBdXRob3I6IGNvY3hhY2UgPEBjb2N4YWNlPg0KU2VjdGlvbjogVHdlYWtzDQpEZXBlbmRzOiBtb2JpbGVzdWJzdHJhdGUsIGZpcm13YXJlICg+PSAxMi4wKQ0KSG9tZXBhZ2U6IGh0dHBzOi8vZ2l0aHViLmNvbS9hYnVsaGtldHVzLWNvbGxhYi9yZXBvDQo=

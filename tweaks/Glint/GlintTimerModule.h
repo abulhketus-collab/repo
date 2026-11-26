@@ -1,17 +1,1 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-// v1.2.3: system countdown timer (Clock app) mirrored in the island.
-// Reads the mobiletimerd preference domain (safe, read-only) and exposes
-// the remaining seconds; GlintStateManager drives the island from it.
-@interface GlintTimerModule : NSObject
-
-+ (void)install;      // starts the 1 Hz poll (main run loop)
-+ (void)uninstall;    // stops the poll, clears island state
-+ (NSInteger)remainingSeconds;  // -1 when no active timer
-
-@end
-
-NS_ASSUME_NONNULL_END
+I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQojaW1wb3J0IDxVSUtpdC9VSUtpdC5oPg0KDQpOU19BU1NVTUVfTk9OTlVMTF9CRUdJTg0KDQovLyB2MS4yLjM6IHN5c3RlbSBjb3VudGRvd24gdGltZXIgKENsb2NrIGFwcCkgbWlycm9yZWQgaW4gdGhlIGlzbGFuZC4NCi8vIFJlYWRzIHRoZSBtb2JpbGV0aW1lcmQgcHJlZmVyZW5jZSBkb21haW4gKHNhZmUsIHJlYWQtb25seSkgYW5kIGV4cG9zZXMNCi8vIHRoZSByZW1haW5pbmcgc2Vjb25kczsgR2xpbnRTdGF0ZU1hbmFnZXIgZHJpdmVzIHRoZSBpc2xhbmQgZnJvbSBpdC4NCkBpbnRlcmZhY2UgR2xpbnRUaW1lck1vZHVsZSA6IE5TT2JqZWN0DQoNCisgKHZvaWQpaW5zdGFsbDsgICAgICAvLyBzdGFydHMgdGhlIDEgSHogcG9sbCAobWFpbiBydW4gbG9vcCkNCisgKHZvaWQpdW5pbnN0YWxsOyAgICAvLyBzdG9wcyB0aGUgcG9sbCwgY2xlYXJzIGlzbGFuZCBzdGF0ZQ0KKyAoTlNJbnRlZ2VyKXJlbWFpbmluZ1NlY29uZHM7ICAvLyAtMSB3aGVuIG5vIGFjdGl2ZSB0aW1lcg0KDQpAZW5kDQoNCk5TX0FTU1VNRV9OT05OVUxMX0VORA0K

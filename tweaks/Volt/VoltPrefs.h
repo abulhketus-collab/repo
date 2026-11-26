@@ -1,13 +1,1 @@
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface VoltPrefs : NSObject
-
-+ (instancetype)sharedPrefs;
-+ (void)registerDefaults;
-+ (BOOL)debugEnabled;
-
-@end
-
-NS_ASSUME_NONNULL_END
+I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgVm9sdFByZWZzIDogTlNPYmplY3QNCg0KKyAoaW5zdGFuY2V0eXBlKXNoYXJlZFByZWZzOw0KKyAodm9pZClyZWdpc3RlckRlZmF1bHRzOw0KKyAoQk9PTClkZWJ1Z0VuYWJsZWQ7DQpAcHJvcGVydHkgKG5vbmF0b21pYywgYXNzaWduLCByZWFkb25seSkgQk9PTCBkZWJ1Z0VuYWJsZWQ7DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5E

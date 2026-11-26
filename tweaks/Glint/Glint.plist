@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Filter</key>
-    <dict>
-        <key>Bundles</key>
-        <array>
-            <string>com.apple.springboard</string>
-        </array>
-    </dict>
-</dict>
-</plist>
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCiAgICA8a2V5PkZpbHRlcjwva2V5Pg0KICAgIDxkaWN0Pg0KICAgICAgICA8a2V5PkJ1bmRsZXM8L2tleT4NCiAgICAgICAgPGFycmF5Pg0KICAgICAgICAgICAgPHN0cmluZz5jb20uYXBwbGUuc3ByaW5nYm9hcmQ8L3N0cmluZz4NCiAgICAgICAgPC9hcnJheT4NCiAgICA8L2RpY3Q+DQo8L2RpY3Q+DQo8L3BsaXN0Pg==

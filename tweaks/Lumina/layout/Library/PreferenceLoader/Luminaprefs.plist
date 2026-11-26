@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>entry</key>
-	<dict>
-		<key>bundle</key>
-		<string>Luminaprefs</string>
-		<key>cell</key>
-		<string>PSLinkCell</string>
-		<key>isController</key>
-		<true/>
-		<key>label</key>
-		<string>Lumina</string>
-	</dict>
-</dict>
-</plist>
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCgk8a2V5PmVudHJ5PC9rZXk+DQoJPGRpY3Q+DQoJCTxrZXk+YnVuZGxlPC9rZXk+DQoJCTxzdHJpbmc+THVtaW5hcHJlZnM8L3N0cmluZz4NCgkJPGtleT5jZWxsPC9rZXk+DQoJCTxzdHJpbmc+UFNMaW5rQ2VsbDwvc3RyaW5nPg0KCQk8a2V5PmlzQ29udHJvbGxlcjwva2V5Pg0KCQk8dHJ1ZS8+DQoJCTxrZXk+bGFiZWw8L2tleT4NCgkJPHN0cmluZz5MdW1pbmE8L3N0cmluZz4NCgk8L2RpY3Q+DQo8L2RpY3Q+DQo8L3BsaXN0Pg0K

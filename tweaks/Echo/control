@@ -1,10 +1,1 @@
-Package: com.cocxace.echo
-Name: Echo
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Live carrier text override with CFPreferences and darwin reload for iOS 12
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+UGFja2FnZTogY29tLmNvY3hhY2UuZWNobw0KTmFtZTogRWNobw0KVmVyc2lvbjogMS4yLjMNCkFyY2hpdGVjdHVyZTogaXBob25lb3MtYXJtDQpEZXNjcmlwdGlvbjogTGl2ZSBjYXJyaWVyIHRleHQgb3ZlcnJpZGUgd2l0aCBDRlByZWZlcmVuY2VzIGFuZCBkYXJ3aW4gcmVsb2FkIGZvciBpT1MgMTINCk1haW50YWluZXI6IGNvY3hhY2UgPEBjb2N4YWNlPg0KQXV0aG9yOiBjb2N4YWNlIDxAY29jeGFjZT4NClNlY3Rpb246IFR3ZWFrcw0KRGVwZW5kczogbW9iaWxlc3Vic3RyYXRlLCBmaXJtd2FyZSAoPj0gMTIuMCkNCkhvbWVwYWdlOiBodHRwczovL2dpdGh1Yi5jb20vYWJ1bGhrZXR1cy1jb2xsYWIvcmVwbw0K

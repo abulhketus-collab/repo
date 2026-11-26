@@ -1,14 +1,1 @@
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface GlintPowerObserver : NSObject
-
-+ (void)install;
-+ (void)uninstall;
-+ (BOOL)isCharging;
-+ (CGFloat)currentCapacity;
-
-@end
-
-NS_ASSUME_NONNULL_END
+I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgR2xpbnRQb3dlck9ic2VydmVyIDogTlNPYmplY3QNCg0KKyAodm9pZClpbnN0YWxsOw0KKyAodm9pZCl1bmluc3RhbGw7DQorIChCT09MKWlzQ2hhcmdpbmc7DQorIChDR0Zsb2F0KWN1cnJlbnRDYXBhY2l0eTsNCg0KQGVuZA0KDQpOU19BU1NVTUVfTk9OTlVMTF9FTkQ=

@@ -1,10 +1,1 @@
-Package: com.cocxace.lumina
-Name: Lumina
-Version: 1.2.3
-Architecture: iphoneos-arm
-Description: Always-On-Display styled lock screen: dimmed overlay with live clock and date
-Maintainer: cocxace <@cocxace>
-Author: cocxace <@cocxace>
-Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 12.0)
-Homepage: https://github.com/abulhketus-collab/repo
+UGFja2FnZTogY29tLmNvY3hhY2UubHVtaW5hDQpOYW1lOiBMdW1pbmENClZlcnNpb246IDEuMi4zDQpBcmNoaXRlY3R1cmU6IGlwaG9uZW9zLWFybQ0KRGVzY3JpcHRpb246IEFsd2F5cy1Pbi1EaXNwbGF5IHN0eWxlZCBsb2NrIHNjcmVlbjogZGltbWVkIG92ZXJsYXkgd2l0aCBsaXZlIGNsb2NrIGFuZCBkYXRlDQpNYWludGFpbmVyOiBjb2N4YWNlIDxAY29jeGFjZT4NCkF1dGhvcjogY29jeGFjZSA8QGNvY3hhY2U+DQpTZWN0aW9uOiBUd2Vha3MNCkRlcGVuZHM6IG1vYmlsZXN1YnN0cmF0ZSwgZmlybXdhcmUgKD49IDEyLjApDQpIb21lcGFnZTogaHR0cHM6Ly9naXRodWIuY29tL2FidWxoa2V0dXMtY29sbGFiL3JlcG8NCg==

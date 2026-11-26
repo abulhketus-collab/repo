@@ -1,5 +1,1 @@
-#import <Preferences/PSListController.h>
-
-@interface AB12RootListController : PSListController
-
-@end
+I2ltcG9ydCA8UHJlZmVyZW5jZXMvUFNMaXN0Q29udHJvbGxlci5oPg0KDQpAaW50ZXJmYWNlIEFCMTJSb290TGlzdENvbnRyb2xsZXIgOiBQU0xpc3RDb250cm9sbGVyDQoNCkBlbmQNCg==

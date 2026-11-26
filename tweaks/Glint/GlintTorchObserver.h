@@ -1,15 +1,1 @@
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface GlintTorchObserver : NSObject
-
-+ (void)install;
-+ (void)uninstall;
-+ (BOOL)hasTorch;
-+ (BOOL)isTorchOn;
-+ (void)setTorchOn:(BOOL)on;
-
-@end
-
-NS_ASSUME_NONNULL_END
+I2ltcG9ydCA8Rm91bmRhdGlvbi9Gb3VuZGF0aW9uLmg+DQoNCk5TX0FTU1VNRV9OT05OVUxMX0JFR0lODQoNCkBpbnRlcmZhY2UgR2xpbnRUb3JjaE9ic2VydmVyIDogTlNPYmplY3QNCg0KKyAodm9pZClpbnN0YWxsOw0KKyAodm9pZCl1bmluc3RhbGw7DQorIChCT09MKWhhc1RvcmNoOw0KKyAoQk9PTClpc1RvcmNoT247DQorICh2b2lkKXNldFRvcmNoT246KEJPT0wpb247DQoNCkBlbmQNCg0KTlNfQVNTVU1FX05PTk5VTExfRU5E

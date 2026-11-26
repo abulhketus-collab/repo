@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>entry</key>
-	<dict>
-		<key>bundle</key>
-		<string>Echoprefs</string>
-		<key>cell</key>
-		<string>PSLinkCell</string>
-		<key>isController</key>
-		<true/>
-		<key>label</key>
-		<string>Echo</string>
-	</dict>
-</dict>
-</plist>
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCgk8a2V5PmVudHJ5PC9rZXk+DQoJPGRpY3Q+DQoJCTxrZXk+YnVuZGxlPC9rZXk+DQoJCTxzdHJpbmc+RWNob3ByZWZzPC9zdHJpbmc+DQoJCTxrZXk+Y2VsbDwva2V5Pg0KCQk8c3RyaW5nPlBTTGlua0NlbGw8L3N0cmluZz4NCgkJPGtleT5pc0NvbnRyb2xsZXI8L2tleT4NCgkJPHRydWUvPg0KCQk8a2V5PmxhYmVsPC9rZXk+DQoJCTxzdHJpbmc+RWNobzwvc3RyaW5nPg0KCTwvZGljdD4NCjwvZGljdD4NCjwvcGxpc3Q+DQo=

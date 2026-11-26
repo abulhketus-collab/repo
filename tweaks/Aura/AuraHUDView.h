@@ -1,7 +1,1 @@
-#import <UIKit/UIKit.h>
-
-@interface AuraHUDView : UIView
-+ (instancetype)sharedInstance;
-- (void)presentHUD;
-- (void)dismissHUD;
-@end
+I2ltcG9ydCA8VUlLaXQvVUlLaXQuaD4KCkBpbnRlcmZhY2UgQXVyYUhVRFZpZXcgOiBVSVZpZXcKKyAoaW5zdGFuY2V0eXBlKXNoYXJlZEluc3RhbmNlOwotICh2b2lkKXByZXNlbnRIVUQ7Ci0gKHZvaWQpZGlzbWlzc0hVRDsKQGVuZAo=

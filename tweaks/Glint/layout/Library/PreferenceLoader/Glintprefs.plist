@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>entry</key>
-	<dict>
-		<key>bundle</key>
-		<string>GlintPreferences</string>
-		<key>cell</key>
-		<string>PSLinkCell</string>
-		<key>isController</key>
-		<true/>
-		<key>label</key>
-		<string>Glint</string>
-	</dict>
-</dict>
-</plist>
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQiPg0KPHBsaXN0IHZlcnNpb249IjEuMCI+DQo8ZGljdD4NCgk8a2V5PmVudHJ5PC9rZXk+DQoJPGRpY3Q+DQoJCTxrZXk+YnVuZGxlPC9rZXk+DQoJCTxzdHJpbmc+R2xpbnRQcmVmZXJlbmNlczwvc3RyaW5nPg0KCQk8a2V5PmNlbGw8L2tleT4NCgkJPHN0cmluZz5QU0xpbmtDZWxsPC9zdHJpbmc+DQoJCTxrZXk+aXNDb250cm9sbGVyPC9rZXk+DQoJCTx0cnVlLz4NCgkJPGtleT5sYWJlbDwva2V5Pg0KCQk8c3RyaW5nPkdsaW50PC9zdHJpbmc+DQoJPC9kaWN0Pg0KPC9kaWN0Pg0KPC9wbGlzdD4NCg==
