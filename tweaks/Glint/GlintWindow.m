@@ -230,9 +230,11 @@ static GlintWindow *_sharedWindow = nil;
 
     BOOL isMusic = (state.type == GlintStateMusic);
     [self setWavesVisible:isMusic];
-    [self setBeatPulseActive:isMusic && [GlintPrefs boolForKey:@"glintBeatPulse" defaultValue:YES]];
+    BOOL beatPulse = [GlintPrefs boolForKey:@"glintBeatPulse" defaultValue:YES];
+    [self setBeatPulseActive:(isMusic && beatPulse)];
 
-    if ([GlintPrefs stringForKey:@"glintPosition" defaultValue:@"top"] isEqualToString:@"minimal"]) {
+    NSString *glintPosition = [GlintPrefs stringForKey:@"glintPosition" defaultValue:@"top"];
+    if ([glintPosition isEqualToString:@"minimal"]) {
         _minimalDotView.hidden = NO;
         _minimalDotView.backgroundColor = (state.type == GlintStateTorch) ? [UIColor yellowColor] :
                                             (state.type == GlintStateCharging) ? [UIColor orangeColor] :
@@ -250,12 +252,12 @@ static GlintWindow *_sharedWindow = nil;
         for (NSInteger i = 0; i < _waveLayers.count; i++) {
             CALayer *wave = _waveLayers[i];
             wave.frame = CGRectMake(startX + i * step, (rect.size.height - wave.frame.size.height) / 2.f, wave.frame.size.width, wave.frame.size.height);
-            if (!wave.animationForKey:@"waveScale") {
+            if (![wave animationForKey:@"waveScale"]) {
                 CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.scale.y"];
                 anim.fromValue = @(0.5f);
                 anim.toValue = @(1.8f);
                 anim.duration = 0.35f + (0.1f * (arc4random_uniform(100) / 100.0f));
-                anim.autoreverse = YES;
+                anim.autoreverses = YES;
                 anim.repeatCount = HUGE_VALF;
                 anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
                 [wave addAnimation:anim forKey:@"waveScale"];
@@ -313,14 +315,14 @@ static GlintWindow *_sharedWindow = nil;
     group.removedOnCompletion = NO;
 
     [_pillLayer addAnimation:group forKey:@"glintPillSpring"];
-    CATransaction.begin();
-    CATransaction.setAnimationDuration(spring.duration);
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:spring.duration];
     _pillLayer.frame = targetRect;
     _pillLayer.cornerRadius = targetRadius;
     _pillLayer.path = [UIBezierPath bezierPathWithRoundedRect:targetRect cornerRadius:targetRadius].CGPath;
     [self layoutContentForRect:targetRect];
     self.alpha = 1.f;
-    CATransaction.commit();
+    [CATransaction commit];
 }
 
 - (void)layoutContentForRect:(CGRect)rect {
@@ -347,7 +349,7 @@ static GlintWindow *_sharedWindow = nil;
     _backdropView.layer.cornerRadius = rect.size.height / 2.f;
 
     if (_glowRing) {
-        CGRect ringRect = CGRectInset(rect, -2.f);
+        CGRect ringRect = CGRectInset(rect, -2.f, -2.f);
         _glowRing.frame = ringRect;
         _glowRing.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, ringRect.size.width, ringRect.size.height)
                                                     cornerRadius:ringRect.size.height / 2.f].CGPath;

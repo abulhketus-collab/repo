@@ -6,7 +6,6 @@ include $(THEOS)/makefiles/common.mk
 TWEAK_NAME = ActionButton12
 ActionButton12_FILES = Tweak.xm AB12Manager.m AB12HUDView.m AB12Prefs.m
 ActionButton12_FRAMEWORKS = UIKit CoreGraphics AudioToolbox AVFoundation
-ActionButton12_PRIVATE_FRAMEWORKS = SpringBoard
 ActionButton12_CFLAGS = -fobjc-arc -fobjc-exceptions -Wno-deprecated-declarations -Wno-arc-performSelector-leaks
 ActionButton12_LIBRARIES = substrate
 

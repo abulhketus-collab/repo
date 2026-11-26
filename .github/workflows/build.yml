@@ -69,7 +69,7 @@ jobs:
           cd "tweaks/${{ matrix.tweak }}"
           make clean package FINALPACKAGE=1 THEOS_PACKAGE_COMPRESSION=gzip THEOS_PACKAGE_FORMAT=gnu
           mkdir -p ../../debs-new
-          cp -v ./*.deb ../../debs-new/
+          cp -v ./packages/*.deb ../../debs-new/
           ls -la ../../debs-new
 
       - name: Upload deb artifact

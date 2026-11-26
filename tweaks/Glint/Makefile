@@ -14,7 +14,6 @@ Glint_FILES = Tweak.xm \
               GlintTimerModule.m \
               GlintPrefs.m
 Glint_FRAMEWORKS = UIKit CoreGraphics QuartzCore AudioToolbox MediaRemote IOKit AVFoundation
-Glint_PRIVATE_FRAMEWORKS = SpringBoard
 Glint_CFLAGS = -fobjc-arc -fobjc-exceptions -Wno-deprecated-declarations -Wno-arc-performSelector-leaks
 Glint_LIBRARIES = substrate
 THEOS_PACKAGE_COMPRESSION = gzip

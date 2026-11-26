@@ -41,7 +41,7 @@ static void _glintPowerCallback(void *context) {
         CFStringRef name = CFArrayGetValueAtIndex(list, i);
         CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
         if (desc) {
-            CFBooleanRef isChg = CFDictionaryGetValue(desc, kIOPSIsChargingKey);
+            CFBooleanRef isChg = CFDictionaryGetValue(desc, CFSTR("Is Charging"));
             if (isChg == kCFBooleanTrue) charging = YES;
         }
     }
@@ -59,7 +59,7 @@ static void _glintPowerCallback(void *context) {
         CFStringRef name = CFArrayGetValueAtIndex(list, i);
         CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
         if (desc) {
-            CFNumberRef c = CFDictionaryGetValue(desc, kIOPSCurrentCapacityKey);
+            CFNumberRef c = CFDictionaryGetValue(desc, CFSTR("Current Capacity"));
             if (c) CFNumberGetValue(c, kCFNumberCGFloatType, &cap);
         }
     }

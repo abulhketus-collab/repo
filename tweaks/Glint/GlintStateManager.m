@@ -4,6 +4,7 @@
 #import "GlintTimerModule.h"
 #import "GlintMediaObserver.h"
 #import "GlintPowerObserver.h"
+#import "GlintTorchObserver.h"
 #import <os/log.h>
 
 NSString *const GlintStateDidChangeNotification = @"GlintStateDidChangeNotification";
@@ -280,9 +281,11 @@ static NSTimeInterval gLastNotifAt = 0;
 
 - (void)removeStatesOfType:(GlintStateType)type {
     dispatch_sync(_queue, ^{
-        [_states removeObjectsWithOptions:NSSortConcurrent usingBlock:^BOOL(GlintState *s, NSUInteger idx, BOOL *stop) {
-            return s.type == type;
+        NSMutableIndexSet *toRemove = [NSMutableIndexSet indexSet];
+        [_states enumerateObjectsUsingBlock:^(GlintState *s, NSUInteger idx, BOOL *stop) {
+            if (s.type == type) [toRemove addIndex:idx];
         }];
+        [_states removeObjectsAtIndexes:toRemove];
     });
     dispatch_async(dispatch_get_main_queue(), ^{
         [[GlintWindow sharedWindow] showState:self.topState animated:YES];
