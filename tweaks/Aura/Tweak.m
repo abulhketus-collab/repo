@@ -14,7 +14,7 @@
 
 #define AuraLog(fmt, ...) \
     do { if ([AuraPrefs sharedPrefs].debugEnabled) \
-        os_log(OS_LOG_DEFAULT, "[Aura] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[Aura] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 #pragma mark - Local interfaces (runtime-guarded)
 
@@ -185,10 +185,18 @@ static void AuraLaunchApp(NSString *bundleID, NSString *fallbackURL) {
     AuraTapBuzz();
     @try {
         switch (btn.tag) {
-            case AuraActionTorch:       AuraTorchToggle();    break;
-            case AuraActionCamera:      AuraLaunchApp(@"com.apple.camera", @"camera:");           break;
-            case AuraActionVoiceMemos:  AuraLaunchApp(@"com.apple.VoiceMemos", @"voicememos:");   break;
-            case AuraActionScreenshot:  AuraScreenshot();     break;
+            case AuraActionTorch:
+                if (!AuraActionDisabled(AB12ActionFlashlight)) AuraTorchToggle();
+                break;
+            case AuraActionCamera:
+                if (!AuraActionDisabled(AB12ActionCamera)) AuraLaunchApp(@"com.apple.camera", @"camera:");
+                break;
+            case AuraActionVoiceMemos:
+                if (!AuraActionDisabled(AB12ActionVoiceMemos)) AuraLaunchApp(@"com.apple.VoiceMemos", @"voicememos:");
+                break;
+            case AuraActionScreenshot:
+                if (!AuraActionDisabled(AB12ActionScreenshot)) AuraScreenshot();
+                break;
             default: break;
         }
     } @catch (NSException *e) {

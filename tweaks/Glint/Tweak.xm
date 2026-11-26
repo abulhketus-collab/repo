@@ -11,7 +11,7 @@
 
 #define GlintXLog(fmt, ...) \
     do { if ([GlintPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[Glint.xm] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while(0)
+        NSLog(@"[Glint.xm] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while(0)
 
 static void GlintShowGreeting(void) {
     // One-shot "Glint 1.2.3" pill on launch, low priority so real events win

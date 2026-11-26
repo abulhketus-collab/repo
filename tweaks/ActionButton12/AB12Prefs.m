@@ -7,7 +7,7 @@
 
 #define AB12Log(fmt, ...) \
     do { if ([AB12Prefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[ActionButton12] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[ActionButton12] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 @implementation AB12Prefs {
     BOOL _debugEnabled;

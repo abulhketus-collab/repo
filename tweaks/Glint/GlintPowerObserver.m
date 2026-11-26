@@ -17,7 +17,7 @@ static void _glintPowerCallback(void *context) {
 
 + (void)install {
     if (![GlintPrefs boolForKey:@"glintShowCharging" defaultValue:YES]) return;
-    _glintPowerRLS = IOPSNotificationCreateRunLoopSource(CFRunLoopGetMain(), NULL, NULL, NULL);
+    _glintPowerRLS = IOPSNotificationCreateRunLoopSource(_glintPowerCallback, NULL);
     if (_glintPowerRLS) {
         CFRunLoopAddSource(CFRunLoopGetMain(), _glintPowerRLS, kCFRunLoopCommonModes);
     }
@@ -41,7 +41,7 @@ static void _glintPowerCallback(void *context) {
         CFStringRef name = CFArrayGetValueAtIndex(list, i);
         CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
         if (desc) {
-            CFBooleanRef isChg = CFDictionaryGetValue(desc, CFSTR(kIOPSIsChargingKey));
+            CFBooleanRef isChg = CFDictionaryGetValue(desc, kIOPSIsChargingKey);
             if (isChg == kCFBooleanTrue) charging = YES;
         }
     }
@@ -59,7 +59,7 @@ static void _glintPowerCallback(void *context) {
         CFStringRef name = CFArrayGetValueAtIndex(list, i);
         CFDictionaryRef desc = IOPSGetPowerSourceDescription(info, name);
         if (desc) {
-            CFNumberRef c = CFDictionaryGetValue(desc, CFSTR(kIOPSCurrentCapacityKey));
+            CFNumberRef c = CFDictionaryGetValue(desc, kIOPSCurrentCapacityKey);
             if (c) CFNumberGetValue(c, kCFNumberCGFloatType, &cap);
         }
     }

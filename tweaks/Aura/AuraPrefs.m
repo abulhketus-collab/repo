@@ -41,4 +41,23 @@
 
 + (void)registerDefaults {}
 
++ (void)setBool:(BOOL)value forKey:(NSString *)key {
+    CFPreferencesSetAppValue((__bridge CFStringRef)key, value ? kCFBooleanTrue : kCFBooleanFalse,
+                             CFSTR("com.cocxace.aura"));
+    CFPreferencesAppSynchronize(CFSTR("com.cocxace.aura"));
+    [self postReloadNotification];
+}
+
++ (void)setInteger:(NSInteger)value forKey:(NSString *)key {
+    CFPreferencesSetAppValue((__bridge CFStringRef)key, (__bridge CFNumberRef)@(value),
+                             CFSTR("com.cocxace.aura"));
+    CFPreferencesAppSynchronize(CFSTR("com.cocxace.aura"));
+    [self postReloadNotification];
+}
+
++ (void)postReloadNotification {
+    CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(),
+                                         CFSTR("com.cocxace.aura/reload"), NULL, NULL, YES);
+}
+
 @end

@@ -12,7 +12,7 @@ static const char *kGlintLog = "GlintStateManager";
 
 #define GlintSMLog(fmt, ...) \
     do { if ([GlintPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[GlintSM] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while(0)
+        NSLog(@"[GlintSM] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while(0)
 
 // Дедупликация уведомлений: одно и то же приложение не спамит чаще 1 раза в 2 сек
 static NSString *gLastNotifKey = nil;

@@ -6,6 +6,7 @@
 #import <notify.h>
 
 #define AB12Log(fmt, ...) NSLog(@"[ActionButton12] " fmt, ##__VA_ARGS__)
+#define PREF_PATH @"/var/mobile/Library/Preferences/com.cocxace.actionbutton12.plist"
 
 @interface SBUIController : NSObject
 + (instancetype)sharedInstance;

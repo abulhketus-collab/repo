@@ -248,7 +248,7 @@ __attribute__((destructor)) static void cleanupLumina(void) {
         NSLog(@"[CocxaceTweak] Lumina destructor — cleaning up AOD window");
         dispatch_async(dispatch_get_main_queue(), ^{
             @try {
-                LuminaHideAOD();
+                LuminaDestroy();
             } @catch (NSException *e) {}
         });
     }

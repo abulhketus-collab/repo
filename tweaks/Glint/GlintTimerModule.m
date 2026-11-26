@@ -10,7 +10,7 @@ static BOOL _finishFired = NO;
 
 #define GlintTLog(fmt, ...) \
     do { if ([GlintPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[GlintTimer] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[GlintTimer] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 #pragma mark - Deep search helpers
 

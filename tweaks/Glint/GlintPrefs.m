@@ -8,7 +8,7 @@
 
 #define GlintLog(fmt, ...) \
     do { if ([GlintPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[GlintPrefs] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[GlintPrefs] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 static void (^gGlintReloadBlock)(void) = nil;
 

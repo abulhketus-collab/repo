@@ -12,7 +12,7 @@
 
 #define VoltLog(fmt, ...) \
     do { if ([VoltPrefs sharedPrefs].debugEnabled) \
-        os_log(OS_LOG_DEFAULT, "[Volt] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[Volt] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 #pragma mark - Preferences
 

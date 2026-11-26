@@ -3,6 +3,8 @@
 #import "GlintPrefs.h"
 #import <os/log.h>
 
+extern void MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result);
+
 static void *gOrigPresentBanner = NULL;
 static void *gOrigDismissBanner = NULL;
 

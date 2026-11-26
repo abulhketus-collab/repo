@@ -8,7 +8,7 @@
 
 #define AB12Log(fmt, ...) \
     do { if ([AB12Prefs sharedPrefs].debugEnabled) \
-        os_log(OS_LOG_DEFAULT, "[ActionButton12.xm] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while(0)
+        NSLog(@"[ActionButton12.xm] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while(0)
 
 // Forward declarations for SpringBoard classes
 @interface SpringBoard : UIApplication

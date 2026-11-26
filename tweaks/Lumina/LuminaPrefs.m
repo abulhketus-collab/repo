@@ -7,7 +7,7 @@
 
 #define LuminaLog(fmt, ...) \
     do { if ([LuminaPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[Lumina] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while (0)
+        NSLog(@"[Lumina] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while (0)
 
 @implementation LuminaPrefs {
     BOOL _debugEnabled;

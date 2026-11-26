@@ -23,7 +23,7 @@ static const char *kGlintLog = "GlintWindow";
 
 #define GlintWinLog(fmt, ...) \
     do { if ([GlintPrefs debugEnabled]) \
-        os_log(OS_LOG_DEFAULT, "[GlintWin] %s: " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__); } while(0)
+        NSLog(@"[GlintWin] %@: " fmt, @(__PRETTY_FUNCTION__), ##__VA_ARGS__); } while(0)
 
 @interface GlintWindow ()
 
